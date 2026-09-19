@@ -1,0 +1,87 @@
+# Module 5: Scaling Past Solo — Study Guide
+
+## What This Module Covers
+
+This module covers the move from solo builder to a builder who directs other builders: when to make the move, how to subcontract without getting burned, how quality stays consistent when you're no longer the one directing the AI on every build, and how your own job changes when coordination becomes the work.
+
+Here's your real situation: scaling is not a milestone you hit on a calendar. It's a response to one specific signal: demand consistently exceeds your capacity, and you're declining good work or watching quality slip. Scale before that signal and you've bought overhead. Ignore it after and you've capped the business at the size of your own week.
+
+You'll direct AI to build the machine that makes scaling safe: drafting subcontractor agreements, writing the shared playbook and quality checklists, modeling your delivery capacity before you sign new work, and running the coordination paperwork. Your job is to pick the people, hold the quality bar, and stay the accountable voice your clients trust. AI builds the system. You run it.
+
+## Why It Matters
+
+Scaling is where good solo builders destroy good reputations. The work that made your name was work you personally controlled. The moment another builder delivers under your brand, every one of their shortcuts becomes your review, and every missed deadline becomes your apology. Clients didn't hire your subcontractor. They hired you. The spread you keep on delegated work isn't free money: it pays for your QA, your client management, your revisions risk, and the weight of owning the outcome.
+
+AI tools are excellent at producing the infrastructure of a team: agreements, playbooks, checklists, capacity models, and onboarding documents in a fraction of the time. They're terrible at judging whether a builder is actually reliable, whether a quality dip is a person problem or a process problem, and when a working relationship needs to end. Those decisions are yours. This module teaches you what to systematize and what to keep.
+
+## Module Certification Goal
+
+You can direct AI to build the agreements, playbooks, and review gates that let other builders deliver to your standard, run capacity-checked sales and prompt, predictable subcontractor payment, and keep the selling, scoping, and final quality call in your own hands.
+
+## What You Need to Know
+
+- **Scale on signal, subcontract first:** The clear trigger is demand exceeding capacity: good work declined, or quality slipping under load. For a first expansion, subcontracting beats hiring because capacity flexes with the pipeline: you pay for delivery when there's work, without fixed overhead. Before signing more builds in a good sales month, the first check is delivery capacity: committed builder hours against what you're about to promise. Direct AI to model it. Revenue you can't deliver on time and to standard isn't revenue. It's a reputation invoice with a due date.
+- **The agreement comes before the work:** A subcontractor agreement covers scope, pay, deadlines, confidentiality, work ownership, and whether they may approach your clients: a non-solicitation term, backed by you staying genuinely valuable in the relationship. Direct AI to draft your standard agreement and adapt it per engagement. Where a subcontractor touches client systems, add the access rules: client consent where required, minimum necessary access, and confidentiality in writing. Never share your own credentials for convenience.
+- **Quality lives in the process, not the person:** Once you're not directing every build, consistency comes from written standards and checklists every build must pass. A shared playbook: the same process, standards, and review gates applied to every single build. And one gate above all: nothing ships to a client until it passes the quality bar you own. Direct AI to turn your personal delivery habits into that playbook, plus the templates, prompts, and reusable components every build starts from. If your solo process is chaotic, fix it before you hire, because scaling amplifies whatever process exists.
+- **Delegate the defined, pilot the person:** Delegate well-defined, repeatable build work with clear standards first, where your playbook already exists. Ambiguous problems stay with you until the relationship has a track record. Every new builder starts with a small, paid, low-stakes pilot with clear standards, so you learn how they work before clients depend on them. Select on demonstrated work and process discipline: can they ship to your standard, shown by real builds. Not the lowest rate, not years of traditional coding, not friendship.
+- **One accountable voice, honestly presented:** The client hears from you, or a clearly designated lead, so there's one accountable voice regardless of who builds. And you represent the team honestly: you lead a small team you stand behind, and you remain accountable for the result. Team-delivered work is priced by the outcome's value, same as always. Clients buy the result and the accountability, not a labor markup.
+- **Your job changes, and that's the point:** Pay subcontractors on the terms you agreed, promptly and predictably. Reliable pay is how you keep reliable builders. When a good builder delivers below standard twice, diagnose the person and the process: was the scope clear, the standard shared, the workload sane? When it truly isn't working, part ways directly and cleanly: settle what's owed, transition the work, end it per the agreement. And the hours you now spend coordinating are not waste. Coordination is how team output becomes greater than yours alone. What stays yours longest: selling, scoping, and the final quality call. That judgment is what the whole business is built on.
+
+## Your Toolkit
+
+- **Claude or ChatGPT:** Drafts your subcontractor agreement, builds the shared playbook and checklists, models delivery capacity, and turns your habits into documented process.
+- **Notion:** Home of the playbook, quality checklists, project assignments, and review gates. If the standard isn't written where the team works, it doesn't exist.
+- **Slack or your team channel:** One place for build communication, so decisions and blockers don't scatter across five inboxes.
+- **QuickBooks or Wave:** Subcontractor invoicing and prompt payment. The spread, the margins, and the pay dates all live here.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+- Can you identify the clear signal to bring in other builders, and what subcontracting offers a first expansion that hiring does not?
+- Can you evaluate what a subcontractor agreement must cover before any client work is shared, including access to client systems and data?
+- Can you assess how quality stays consistent when others deliver: written standards, a shared playbook, and the review gate you own?
+- Can you identify what the spread between your rate and the subcontractor's pay must cover?
+- Can you choose what to delegate first, structure a new builder's first assignment, and select builders on the right criteria?
+- Can you run the client relationship correctly: one accountable voice, honest team representation, and outcome-based pricing?
+- Can you handle the operational calls: capacity checks before signing, prompt payment, diagnosing quality dips, and parting ways cleanly?
+- Can you recognize why documentation becomes critical with a second builder, and how coordination time should be counted?
+
+## Common Pitfalls
+
+- **You scale the chaos.** Your solo process works because you personally compensate for it, and you hire into it anyway. Scaling amplifies whatever process exists, so the chaos multiplies with every builder you add. Fix the system first. Direct AI to document it, then hand people a playbook instead of a mess.
+- **You hand a stranger your biggest client.** High stakes reveal capability, sure, and they reveal it on the client who pays your rent. Every new builder gets a small, paid, low-stakes pilot first. You're not testing whether they can build. You're learning how they work before anyone depends on it.
+- **You skip the agreement because they seem great.** Then the deadline slips, the ownership question surfaces, or your client gets a direct offer, and there's nothing in writing to point to. Scope, pay, deadlines, confidentiality, ownership, non-solicitation. Signed before any client work moves.
+- **You keep the whole spread and skip the QA.** The margin on delegated work felt like pure profit, so the review gate got soft, and something below standard shipped under your name. The spread pays for your ownership of the outcome. Spend it there.
+- **You pay when the client pays you.** Risk flows downhill and your best subcontractor quietly starts prioritizing clients who pay on time. Pay on the terms you agreed, promptly and predictably. Reliable pay is the cheapest retention program that exists.
+- **You keep building because coordinating doesn't feel like work.** Ten hours of coordination a week feels like overhead, so you dive back into production and the team drifts. Coordination is the job now. It's how three builders produce more than three builders' worth of output.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+- Do you know your current weekly delivery capacity in committed builder hours, including your own?
+- Have you directed AI to draft a standard subcontractor agreement covering scope, pay, confidentiality, ownership, and non-solicitation?
+- Does a written playbook exist that another builder could deliver from without asking you twenty questions?
+- Is there a defined quality gate that every deliverable passes before a client sees it?
+- Does every new builder start with a small, paid pilot before touching client work?
+- Do your clients experience one accountable voice, and do they know honestly how your team works?
+- Are your subcontractors paid on agreed terms, promptly, every time?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to get a quick health check on your scaling readiness. It checks the same things the certification exam covers.
+
+> Review my readiness to scale past solo and check the following. For each one, tell me pass or fail with a specific example: Signal: Here is my current pipeline and capacity [describe them]. Is demand actually exceeding capacity, or would scaling now just add overhead? Agreement: Here is my subcontractor agreement [paste it or say none]. Does it cover scope, pay, deadlines, confidentiality, work ownership, and non-solicitation? Process: Here is my delivery process [describe it]. Could a competent builder deliver to my standard from what's written down, and where are the gaps? Quality gate: Is there a defined review that everything passes before clients see it, and do I own it? Economics: Based on my rate and planned subcontractor pay [give numbers], does the spread cover QA, client management, revisions risk, and margin? People: Do I have a pilot structure, prompt payment terms, and a clean exit path defined? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 5 exam. The best way to prepare: build the machine before you need it. Direct AI to draft your agreement, write your playbook from your last three builds, and model your real capacity. If you can hand those three documents to a builder tomorrow, you're ready. Every gap you find is exactly what the exam tests.
+
+## Certification Pathway
+
+- **Launchpad Specialist — Builder Business Foundations:** Pass all 7 module exams in this course
+- **CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+- **CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush, take the time to build something real first.

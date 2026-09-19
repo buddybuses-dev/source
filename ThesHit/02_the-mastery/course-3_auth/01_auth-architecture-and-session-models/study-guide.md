@@ -1,0 +1,94 @@
+# Module 1: Auth Architecture and Session Models — Study Guide
+
+## T4 The Mastery | Authentication Systems Build
+
+This is the study guide. Everything for Auth Architecture and Session Models is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module is the foundation of everything you will build in this course: what authentication actually is, how a logged-in state is represented and maintained, and the architectural decisions that decide whether your app's front door holds or folds. You will learn the difference between authentication and authorization, how server sessions and stateless tokens trade off against each other, where secrets live, what logout must really do, and why revocation has to be designed on day one, not bolted on after the first compromised account.
+
+## Why It Matters
+
+Authentication answers one question: who is this person, proven by something only the real account holder can provide. Everything else in your app sits behind that answer. Get it wrong and no feature, no design, no pricing page matters, because an attacker is walking through the front door wearing your user's face. Most builders treat auth as a checkbox: the login form renders, the demo works, ship it. Operators know that auth quality lives in the parts a demo never touches: what happens when a session is stolen, when a user logs out on a shared computer, when an employee leaves and their access must die instantly. You are not writing this code by hand. You are directing AI, and AI will happily give you a login form that works and an architecture that leaks. Reading the architecture underneath the form is the judgment this module installs.
+
+## Certification Goal
+
+Passing the Module 1 exam proves you can direct an AI to build auth on proven components, choose correctly between server sessions and stateless tokens, keep secrets out of code and cookies out of reach of page scripts, and design logout, expiry, and revocation so a compromised credential has a short, controlled life.
+
+## What You Need to Know
+
+**Authentication versus authorization.** Authentication proves who you are. Authorization decides what that identity is allowed to do. They are different checks that run at different moments, and every request to a protected resource needs both. Builders who blur them build apps where a valid login unlocks everything, which is exactly the failure Module 4 exists to prevent.
+
+**Sessions versus stateless tokens.** A server session is a record on your server, referenced by an ID the browser sends with each request. A stateless token carries its own proof and skips the server lookup. The real trade-off: tokens avoid a lookup but are hard to revoke, because issued tokens stay valid until they expire. Sessions revoke instantly but need storage. When a user reports a compromised account, this decision is the difference between cutting the attacker off now and building extra machinery to do it.
+
+**Proven parts, never scratch builds.** Auth is full of subtle failure modes that took the industry decades to find. Direct your AI to use a proven auth library or a managed provider, never to write auth from scratch. Managed providers win when speed, breach liability, and features like SSO matter more than control and per-user cost. That is your business call, never one you delegate to whatever your AI recommends.
+
+**Cookies, secrets, and storage discipline.** Session cookies need the HttpOnly and Secure flags, which keep the cookie away from page scripts and off plain connections. Never let your AI park a session token in localStorage: any script that runs on the page can read it, so one injected script walks away with logins. Secret keys that sign or protect sessions live in protected server configuration, never in code files that get committed or shared.
+
+**The session lifecycle.** Sessions expire so a stolen or abandoned session becomes worthless, capping the damage window. The session ID must be regenerated at login, because an ID that existed before login could have been planted. Logout must invalidate the session on the server, so the old ID stops working even if replayed. Long-lived remember-me sessions are an honest trade: convenience rises, and so does exposure when a device or cookie is stolen.
+
+**Server-side enforcement and CSRF.** The "is this user logged in and allowed" check runs on the server for every protected request, because anything client-side can be bypassed. And because browsers attach cookies automatically, another site can trigger actions as your user unless your AI handles CSRF protection. Cookie sessions without CSRF handling are an open invitation.
+
+## Your Toolkit
+
+- **The auth flow map.** Before your AI writes any auth code, direct it to produce a written map of the flows: signup, login, logout, reset, and expiry, with every decision made. This document is the spec you audit against, and it costs you thirty minutes instead of a rebuild.
+- **Managed auth providers.** Services like Clerk, Auth0, and Supabase Auth that carry years of security fixes, session handling, and revocation machinery you would otherwise relearn painfully. Know when to rent versus own.
+- **The session control screen.** A user-facing page listing active sessions and devices with a revoke button. When users suspect compromise, they see what is connected and cut intruders off directly.
+- **Auth event logging.** Logins, failures, logouts, resets, and permission changes, recorded with time, account, and source from day one. This is the evidence trail every future investigation depends on.
+
+## Exam Topics
+
+The Module 1 exam will test you on:
+
+1. What authentication proves and how it differs from authorization
+2. Server sessions versus stateless tokens and the revocation trade-off
+3. Cookie flags, localStorage risk, and where secrets must live
+4. What real logout, expiry, and session ID regeneration accomplish
+5. When a managed auth provider beats building into your own backend
+6. Server-side checks on every protected request and CSRF handling
+7. Session edge cases: anonymous-to-account upgrades, expiry mid-task, concurrent sessions
+8. Testing session handling: expiry, revocation, tampered IDs, and reuse after password change
+
+## Common Pitfalls
+
+- **Calling the demo done.** A login that works in the happy path proves nothing. The test plan covers expiry, logout, revoked sessions, tampered IDs, and reuse after a password change.
+- **Fake logout.** Clearing the browser while the server session stays alive means the old ID still works when replayed. Logout is a server-side event.
+- **Tokens in localStorage.** Convenient for your AI, catastrophic for you. One injected script reads it and the attacker owns every login.
+- **Secrets in the codebase.** Keys committed to code files end up in repos, chat threads, and AI context windows. Protected server configuration only.
+- **Shared logins for staff.** One password for the admin dashboard destroys accountability and clean offboarding. Nobody can say who did what, and nobody can be cut out alone.
+- **Ignoring the expired-session experience.** Good handling preserves the user's work and returns them to it after re-login. A dead end teaches users your app cannot be trusted mid-task.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I explain authentication versus authorization in two sentences?
+- [ ] Can I state the session versus token trade-off and pick one for a given app?
+- [ ] Can I name the cookie flags that matter and say what each blocks?
+- [ ] Can I describe what must happen server-side when a user logs out?
+- [ ] Can I list five auth events that deserve logging from day one?
+- [ ] Can I explain why CSRF matters for cookie-based sessions?
+- [ ] Could I hand my AI a complete written auth flow map before it writes a line?
+
+## AI Audit Prompt Template
+
+Use this prompt to audit the auth architecture your AI proposes:
+
+> "You are a security architect reviewing the auth design for my app. Here is the plan: [paste flow map and decisions]. Audit it. Confirm sessions or tokens fit my revocation needs, check where secrets and session identifiers are stored, verify cookie flags, CSRF handling, session ID regeneration at login, and server-side logout. List every auth event that should be logged. Then tell me the single weakest point in this architecture and exactly what to direct next."
+
+## What's Next
+
+Module 2 puts credentials into this architecture: email and password flows, hashing, magic links, verification, and the rate limiting that keeps guessers out. The session model you chose here is what those credentials will unlock, so every decision from this module carries forward.
+
+## Certification Pathway
+
+This module is the foundation of the Authentication Systems Build course, a paid T4 The Mastery course inside Builder Access. It sits alongside the SaaS Build and Database Design courses in the tier. Pass all seven module exams to earn the Auth Build Specialist badge, proof inside The Faction that you can build the front door, not just the rooms behind it.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the Auth Architecture and Session Models Exam →

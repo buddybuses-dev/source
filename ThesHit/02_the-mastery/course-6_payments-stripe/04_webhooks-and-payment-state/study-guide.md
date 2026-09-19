@@ -1,0 +1,88 @@
+# Module 4: Webhooks and Payment State — Study Guide
+
+## Stripe Payments Build
+
+### T4 The Mastery | Module 4 Study Guide
+
+## Module 4: Webhooks and Payment State
+
+> Direct AI to treat webhooks as the source of truth for every payment your product processes.
+
+## What This Module Covers
+
+This module covers the layer that makes every other module trustworthy: webhooks. You will learn why webhooks, not redirects, are the source of truth for payment state, how signature verification works, which events matter, and how to direct AI to build a handler that is idempotent, ordered correctly, and does not lose money.
+
+## Why It Matters
+
+Everything before this module produced payment events. This module is how your application finds out about them reliably. Renewals happen while no one is browsing your site. Payments fail at 3 AM. Banks reverse charges days later. The redirect-based view of payments only sees customers who complete a happy path in an open browser tab. A business that fulfills from redirects and ignores webhooks will ship product it was never paid for, keep billing customers who canceled, and revoke access from customers in the middle of a retry cycle. The webhook handler is the piece of payment infrastructure that most directly maps to money kept or lost.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI to build a production-grade webhook handler: signature-verified, idempotent, resilient to duplicate and out-of-order delivery, responding fast, processing asynchronously, and covering the events that move money and access.
+
+## What You Need to Know
+
+**1. Webhooks are the source of truth; redirects are UX.** Stripe sends your endpoint a signed event for everything that matters: sessions completing, invoices paying, payments failing, subscriptions changing. These arrive whether or not a browser is open, and Stripe retries failed deliveries for days. Fulfillment, access grants, and access revocation hang off events. The redirect is where you show a thank-you page.
+
+**2. Signature verification is non-negotiable.** Anyone can send JSON to a public URL. Stripe signs every event with your endpoint's signing secret, and your handler verifies that signature against the raw request body before trusting anything. Two classic failures you direct AI to avoid: skipping verification entirely, which lets an attacker grant themselves access with a forged event, and running the body through a framework's JSON parser before verification, which alters the raw bytes and makes valid signatures fail.
+
+**3. The events that matter.** checkout.session.completed: a Checkout customer finished paying, match it to your order and fulfill. invoice.paid: recurring payment succeeded, extend access for the period. invoice.payment_failed: a renewal failed, begin the Module 6 recovery path, do not revoke access yet. customer.subscription.updated: plan, quantity, or status changed, sync entitlements. customer.subscription.deleted: the subscription is gone, end access per your policy. Handle these five well and you have covered the money.
+
+**4. Idempotency: every event may arrive more than once.** Stripe's delivery is at-least-once. Retries, network flaps, and your own deploys mean duplicates are normal, not exceptional. The pattern: record each event ID as processed, and if an ID has been seen, acknowledge and skip. Without this, a duplicate checkout.session.completed ships two units, sends two welcome emails, or grants access twice. Idempotency turns duplicates from incidents into non-events.
+
+**5. Ordering and the fast-ack pattern.** Events can arrive out of order; do not assume subscription.updated precedes invoice.paid. Robust handlers treat events as signals and fetch current object state from Stripe when the truth matters, rather than replaying event payloads as gospel history. And handlers acknowledge fast: return a 2xx quickly, then do real work asynchronously via a queue or background job. A handler that does heavy work inline times out, gets retried, and manufactures its own duplicate storm.
+
+**6. Local testing with the Stripe CLI.** The CLI forwards live test-mode events to your local machine and can trigger synthetic events on demand. You direct AI to build the handler, then verify it by triggering checkout completions, failed invoices, and subscription changes locally, including replaying the same event twice to prove idempotency. A webhook handler that has only ever been tested by clicking through checkout once is untested.
+
+## Your Toolkit
+
+- **Stripe CLI**: forward test events to localhost, trigger synthetic events, replay deliveries
+- **Webhook endpoint signing secrets**: per-endpoint credentials your verification step depends on
+- **Stripe dashboard event log**: every event, every delivery attempt, every response your endpoint returned
+- **A job queue or background worker** (your stack's equivalent): where real processing happens after the fast acknowledgment
+
+## Exam Topics
+
+1. Why fulfillment and access control hang off webhooks rather than redirects
+2. Signature verification mechanics and the raw-body requirement
+3. The five core events and the correct business response to each
+4. Idempotent processing keyed on event ID
+5. At-least-once delivery, retries, and duplicate handling
+6. Out-of-order events and fetching current state vs replaying payloads
+7. Fast acknowledgment with asynchronous processing
+8. Stripe CLI workflows for local testing and event replay
+
+## Common Pitfalls
+
+- Verifying signatures against a parsed and re-serialized body instead of the raw bytes, then disabling verification "temporarily" when it fails
+- Fulfilling on invoice.payment_failed style logic inversions because event names were assumed, not read
+- Processing events inline, timing out, and turning Stripe's retries into duplicate fulfillment
+- Revoking access the instant a payment fails instead of entering the recovery path
+- Building state by replaying event payloads in arrival order and drifting from reality
+- Shipping a handler that was never tested against a duplicate or out-of-order delivery
+
+## Self-Assessment Checklist
+
+- Can I explain what an attacker can do to an unverified webhook endpoint?
+- Do I know why the raw request body matters for signature verification?
+- Can I name the five core events and my system's action for each?
+- Would my handler survive the same event delivered three times? Have I proven it?
+- Does my handler acknowledge in milliseconds and process in the background?
+- Have I used the Stripe CLI to trigger failure events, not just successes?
+- If my endpoint was down for six hours, do I know what Stripe does and how I recover?
+
+## AI Audit Prompt Template
+
+> You are auditing the webhook layer of my payment system. Review it and report: (1) whether signature verification runs against the raw body before any parsing, (2) which events are handled, which of the five core money events are missing, and whether each maps to the correct business action, (3) idempotency: how duplicate event IDs are detected and what happens on replay, (4) response time: what work happens before the 2xx and what is deferred to background processing, (5) how out-of-order delivery is handled, (6) what local testing exists, including duplicate and failure-event replays. Output findings with severity, the money-loss scenario each enables, and a remediation plan I can direct you to execute.
+
+## What's Next
+
+Module 5 builds on reliable payment state to handle the paperwork of revenue: invoices, taxes, receipts, and credit notes, the layer B2B customers and accountants live in.
+
+## Certification Pathway
+
+This is Module 4 of 7 in the Stripe Payments Build course, part of T4 The Mastery. Passing all seven module exams earns the Payments Build Specialist badge. This module is the reliability backbone of the entire payment system.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

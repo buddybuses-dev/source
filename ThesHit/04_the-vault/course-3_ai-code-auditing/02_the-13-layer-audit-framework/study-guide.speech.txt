@@ -1,0 +1,83 @@
+Module 2: The 13-Layer Audit Framework — Study Guide
+
+Vibecoder Security Audit Method
+
+T6 The Vault | Module 2 Study Guide
+
+Direct AI through all thirteen layers so your coverage is systematic instead of impressionistic.
+
+What This Module Covers
+
+This module delivers the spine of the entire method: the CADE 13-layer stack as an audit framework. You will learn what each layer covers, the questions an auditor asks at each one, and how RED/YELLOW/GREEN grading turns a sprawling codebase into a scorecard a founder can act on.
+
+Why It Matters
+
+Unstructured audits find whatever the auditor happens to look at. The 13-layer framework exists so coverage is systematic: every audit walks the same stack in the same order, which means nothing is skipped because it was boring, unfamiliar, or invisible from the code alone. This framework is the method behind The Faction Group's Rapid Platform Audit; it is what makes the audit repeatable, delegable to AI direction, and comparable across engagements. When you certify on this module, you are learning the exact structure the audit business runs on.
+
+Certification Goal
+
+Passing this exam proves you know all thirteen layers, can name the core audit questions at each layer, and can apply RED/YELLOW/GREEN grading with consistent, defensible criteria.
+
+What You Need to Know
+
+The thirteen layers, in audit order. Frontend, APIs, Database, Auth, Hosting, Cloud, CI/CD, Security (headers and transport), Rate Limiting, Caching, Load Balancing, Error Tracking, Availability. The order runs from what the user touches down through what the business depends on. Every audit walks all thirteen; a layer that does not apply is graded as such, never silently skipped, because "we don't have that layer" is itself a finding when the business assumed they did.
+
+The user-facing layers: Frontend, APIs, Database, Auth. Frontend: XSS exposure, client-side trust (validation or authorization living only in the browser), secrets shipped in bundles. APIs: authentication on every endpoint, not just the documented ones; input validation; rate limiting per route. Database: row-level security or equivalent tenant isolation, injection resistance, connection security. Auth: session handling, password storage, privilege escalation paths, reset flows. These four carry most Critical findings in vibebuilt apps because they are where AI builds fastest and replicates hardest.
+
+The infrastructure layers: Hosting, Cloud, CI/CD. Hosting: configuration defaults, exposed services and ports, admin panels reachable from the internet. Cloud: IAM over-permissioning, public storage buckets, network exposure. CI/CD: secrets committed to repositories, pipeline permissions, dependency supply chain. Vibecoders inherit these from templates and platform defaults, which means the posture was chosen by whoever wrote the template, not by anyone defending this business.
+
+The traffic layers: Security, Rate Limiting, Caching, Load Balancing. Security as a layer means transport and browser protections: HTTPS everywhere, security headers, CORS configured to a real allowlist rather than a wildcard. Rate Limiting: abuse resistance and cost protection, because an unthrottled endpoint attached to a paid API is a billing attack surface. Caching: cache poisoning and, critically, cached responses that leak one user's data to another or serve stale authorization. Load Balancing: session persistence and health behavior under instance failure.
+
+The operational layers: Error Tracking, Availability. Error Tracking: what gets logged and who can see it, stack traces reaching users, PII sitting in logs, tokens in error payloads. Availability: backups that exist, restores that have been tested, recovery time expectations. These layers rarely produce glamorous findings and routinely produce the ones that end businesses, because an unrestorable database is a company-ending event with no attacker required.
+
+RED/YELLOW/GREEN per layer. GREEN: no material findings; the layer meets baseline for the business's stage. YELLOW: gaps exist that need scheduled remediation; not currently exploitable in a business-ending way. RED: exploitable now or a single failure from disaster; remediate before continuing normal operations. The grade is per layer, evidence-backed, and calibrated to the business, a solo founder's tool and a healthcare platform earn RED at different thresholds. The scorecard exists so a non-technical founder can see their whole system on one page and know where the fire is.
+
+Your Toolkit
+
+The 13-layer checklist: the walk order and per-layer question set every audit follows
+RED/YELLOW/GREEN scorecard template: one page, thirteen grades, evidence-linked
+Layer-scoped AI direction prompts: each layer audited with a prompt scoped to its questions
+Evidence log: every grade traces to findings; no grade is a vibe
+
+Exam Topics
+
+Naming all thirteen layers and the audit walk order
+Core audit questions for Frontend, APIs, Database, and Auth
+Infrastructure layer risks: Hosting, Cloud, CI/CD
+Traffic layer risks: headers and CORS, rate limiting, caching, load balancing
+Operational layer risks: error tracking exposure, backup and recovery
+RED/YELLOW/GREEN criteria and business-calibrated grading
+Why layers are graded rather than silently skipped
+The scorecard as founder-facing communication
+
+Common Pitfalls
+
+Auditing only the layers the auditor personally understands and skipping the rest
+Grading a layer GREEN because nothing was found after looking at nothing
+Treating CORS wildcards, missing headers, or default configs as too minor to log
+Ignoring caching and load balancing because the app is small today
+Grading availability GREEN because backups exist, without asking whether a restore was ever tested
+Letting one RED layer's drama crowd out the quiet YELLOWs that become next quarter's REDs
+
+Self-Assessment Checklist
+
+Can I list all thirteen layers from memory, in order?
+For any layer, can I state its two or three core audit questions?
+Can I defend a RED vs YELLOW call with evidence and business context?
+Do I know why an inapplicable layer is graded rather than skipped?
+Could I hand a founder the scorecard and walk them through it in five minutes?
+Do my grades trace to logged findings rather than impressions?
+
+AI Audit Prompt Template
+
+You are running the 13-layer CADE audit walk on this codebase and its deployment. For each layer (Frontend, APIs, Database, Auth, Hosting, Cloud, CI/CD, Security, Rate Limiting, Caching, Load Balancing, Error Tracking, Availability): (1) answer the layer's core audit questions with evidence from code, config, or deployment, (2) list findings with file or resource references, (3) assign RED, YELLOW, or GREEN with one sentence of justification tied to this business's stage and data sensitivity, (4) mark any layer you could not verify as UNVERIFIED with what access would be needed, never grade on absence of evidence. Output the full scorecard followed by the findings log.
+
+What's Next
+
+Module 3 puts tools behind the framework: directing AI to run the automated scanners that make the mechanical checks fast, repeatable, and cheap.
+
+Certification Pathway
+
+This is Module 2 of 7 in the Vibecoder Security Audit Method course, part of T6 The Vault. Passing all seven module exams earns the Code Audit Specialist badge. This module is the framework every other module operates inside.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

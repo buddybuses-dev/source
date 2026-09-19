@@ -1,0 +1,108 @@
+Module 6: Backups and Environments — Study Guide
+
+Supabase Backend Build
+
+T4 The Mastery | Module 6 Study Guide
+
+Module 6: Backups and Environments
+
+Direct AI to build production backends on Supabase with security policies that hold.
+
+What This Module Covers
+
+By Module 5 you have a backend that does real work: tables, RLS policies, auth, storage, realtime, and Edge Functions. Module 6 is about protecting all of it. You will learn how Supabase handles backups, when automatic daily backups are enough and when you need point-in-time recovery, and how to take a manual pg_dump so you always hold your own copy of your data.
+
+The second half is about environments. Right now you probably have one Supabase project and it is production. That works until the day your AI runs a migration that drops a column full of live customer data. You will set up a proper chain: local development with the Supabase CLI, a staging project that mirrors production, and production itself, plus branching, migrations, and seed data so staging behaves like the real thing.
+
+Most importantly, you will direct your AI to follow a deployment process that never touches production directly: write a SQL migration, test it locally, apply it to staging, verify, then promote to production. Your job is to supervise that pipeline, not to hand-run SQL against live data.
+
+Why It Matters
+
+Think about your SaaS app with 50 tenants. A bad migration that truncates a table, a careless UPDATE without a WHERE clause, or an AI-generated script run against the wrong project can destroy months of customer records in seconds. Without backups, that data is gone and so is your business. With daily backups you lose at most a day; with point-in-time recovery, minutes. The difference is a plan you set up before the disaster, not after.
+
+Environment separation is the other half of the same insurance policy. Builders who prototype fast tend to ship straight to production because there is nowhere else to ship. That is fine at zero users and reckless at fifty tenants. A staging project costs minutes to set up and saves you the 2 a.m. incident where a client portal shows the wrong role's data because an untested migration broke a policy.
+
+Certification Goal
+
+Passing this exam proves you can protect a production Supabase backend: you understand Supabase's backup tiers and recovery options, you can direct AI to run a local, staging, production migration workflow with the Supabase CLI, and you can design a deployment process that keeps untested SQL away from live customer data.
+
+What You Need to Know
+
+Supabase Automatic Backups
+
+Every paid Supabase project gets automatic daily backups, retained for a window that depends on your plan. These are full database snapshots you can restore from the dashboard. Know what they cover, the database, and what they do not, such as Storage objects, which need their own backup strategy.
+
+Point-in-Time Recovery (PITR)
+
+PITR, available on the Pro plan and above as an add-on, continuously archives write-ahead logs so you can restore your database to any moment in the retention window. Daily backups mean a bad migration at 4 p.m. costs the whole day's data; with PITR you roll back to 3:59 p.m. For any app with paying users, treat PITR as mandatory.
+
+Manual pg_dump
+
+Supabase runs on plain Postgres, so pg_dump works exactly as it does anywhere. A scheduled pg_dump gives you an off-platform copy you control, independent of your Supabase plan or account status. Direct your AI to script it, store dumps somewhere separate like S3, and test a restore at least once.
+
+Environment Separation
+
+A serious build runs three environments: local (the Supabase CLI running the full stack in Docker), staging (a separate Supabase project with fake data), and production (real users, real data). Each has its own project, API keys, and env vars. Your app switches between them by configuration, never by editing code.
+
+Migrations and Branching
+
+A migration is a versioned SQL file describing one schema change. The CLI tracks these files in your repo and applies them in order, so every environment can be rebuilt identically. Supabase branching goes further, spinning up a temporary preview database per Git branch so each pull request gets its own isolated schema.
+
+Seeding Test Data
+
+An empty staging database tests nothing. A seed file populates local and staging with realistic fake data: 50 fake tenants, users in multiple roles, sample uploads. Good seed data is what lets you verify the RLS policies from Module 3 actually isolate tenants before real tenants depend on it.
+
+Your Toolkit
+
+Supabase CLI: The command center for this module. supabase start runs the stack locally, supabase db diff and supabase migration new create migration files, supabase db push applies them to a linked remote project.
+The Backups Dashboard: Where you confirm daily backups exist, enable PITR, and trigger restores. Check it now, not during an incident.
+pg_dump and pg_restore: Standard Postgres tools for manual, off-platform backups. Have your AI write a scheduled script and document the restore procedure next to it.
+Seed Files: A version-controlled seed.sql that loads realistic multi-tenant test data into local and staging. Rebuild it whenever your schema changes so tests stay honest.
+
+Exam Topics
+
+What Supabase automatic daily backups include, how they are restored, and what falls outside them
+Point-in-time recovery: which plan tier offers it, how write-ahead logs enable it, and when it beats daily backups
+Running a manual pg_dump against a Supabase project and why off-platform copies matter
+The three-environment model: local, staging, production, and what belongs in each
+The four-step migration workflow: write the migration, test locally, apply to staging, promote to production
+Supabase CLI commands: migration new, db diff, db reset, db push, and what each does
+How Supabase branching creates per-branch preview databases in a Git workflow
+What makes seed data realistic enough to catch RLS and role-based access bugs
+
+Common Pitfalls
+
+Treating production as your only environment. Every experiment happens on live data, so your first serious mistake is also a customer-facing incident.
+Assuming backups exist without checking. Builders on the wrong plan discover at restore time that there is nothing to restore.
+Letting AI run SQL directly against production. An agent with a production connection string will happily execute a destructive statement. Give it local and staging access, and gate production behind your review.
+Making schema changes in the dashboard instead of migrations. Dashboard edits leave no versioned record, so environments drift apart and migrations start failing unpredictably.
+Testing on empty or unrealistic seed data. A migration that works on three rows can fail on 50 tenants of real data, and empty tables never expose RLS leaks.
+Ignoring Storage in your backup plan. Database restores do not bring back deleted marketplace uploads. Files need their own backup path.
+
+Self-Assessment Checklist
+
+I can explain daily backups versus point-in-time recovery and choose the right one for my app
+I can verify my project's backup status and enable PITR when real users arrive
+I can direct AI to script a manual pg_dump and store it off-platform
+I can run my full Supabase stack locally with the CLI and reset it cleanly
+I can direct AI to write a migration, test it locally, apply it to staging, and promote it to production
+I can build a seed file that produces realistic multi-tenant test data
+I can explain why my AI should never have direct write access to production
+
+AI Audit Prompt Template
+
+Give your AI this prompt to audit how well your current setup protects production.
+
+Audit the backup coverage, migration workflow, and environment separation for my Supabase project. Context: [describe your app, plan tier, and current environments]. 1. Backups: Confirm what automatic backups my plan includes and their retention. State whether PITR is enabled and, if not, my maximum data loss window. Check whether Storage files have a backup path. Propose a pg_dump script with an off-platform destination and a restore test. 2. Migration workflow: List every schema change made outside a migration file. Verify my migrations directory rebuilds the production schema from scratch via supabase db reset. Flag any drift between environments. 3. Environment separation: Confirm distinct local, staging, and production projects with separate keys and env vars, and that nothing holds a production connection string it does not need. Verify my seed file gives staging realistic multi-tenant, multi-role data so RLS policies get exercised. 4. Deliver a ranked list of gaps with severity and the exact steps or SQL to close each one. Do not execute anything against production. Propose changes for my review only.
+
+What's Next
+
+Module 7 is the capstone: Ship: Production Backend. You will take everything from Modules 1 through 6 and direct AI to assemble a complete production backend with a deployment pipeline that holds up under real users. Your safety net is built. Time to ship on top of it.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent, that is 20 of 25 questions, to earn the Module 6 badge. Pass all 7 module exams to earn the Supabase Specialist badge and certify that you can direct AI to build production backends on Supabase with security policies that hold.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

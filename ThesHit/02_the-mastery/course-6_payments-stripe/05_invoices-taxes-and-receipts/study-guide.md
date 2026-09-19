@@ -1,0 +1,88 @@
+# Module 5: Invoices, Taxes and Receipts — Study Guide
+
+## Stripe Payments Build
+
+### T4 The Mastery | Module 5 Study Guide
+
+## Module 5: Invoices, Taxes and Receipts
+
+> Direct AI to produce invoices, taxes, and receipts that hold up under an audit.
+
+## What This Module Covers
+
+This module covers the paperwork layer of revenue: Stripe Invoicing for B2B and service businesses, the invoice lifecycle, Stripe Tax for automatic calculation, tax ID collection, receipts, credit notes, and the difference between tax-inclusive and tax-exclusive pricing.
+
+## Why It Matters
+
+Consumers click buy and move on. Businesses need invoices with the right legal entity, a tax ID, correct tax treatment, and a document their accounting department will accept. Get this layer wrong and the symptoms are slow: deals stall because procurement cannot process your paperwork, finance discovers uncollected VAT during a funding diligence, a refund gets issued with no credit note and the books stop reconciling. None of it breaks loudly. All of it costs money and credibility. This module is how you direct AI to make the paperwork automatic instead of a monthly cleanup project.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI to run the invoice lifecycle correctly, configure Stripe Tax and tax ID collection, choose inclusive vs exclusive pricing deliberately, and handle receipts and credit notes so the paper trail always matches the money.
+
+## What You Need to Know
+
+**1. The invoice lifecycle has real states.** An invoice starts as a draft, which is editable: add line items, adjust, review. Finalizing locks it, assigns a number, and makes it a legal document. Then it is collected one of two ways. charge_automatically bills the customer's stored payment method, which is how subscription invoices work. send_invoice emails the customer a hosted invoice page with payment options and a due date, which is how B2B service billing works. After finalization you do not edit; you issue credit notes. Directing AI to "just fix the invoice" post-finalization is how books stop matching reality.
+
+**2. Subscriptions generate invoices; you can also create them directly.** Every subscription renewal is an invoice under the hood, which is why Module 4's invoice.paid and invoice.payment_failed events run recurring revenue. For project work, deposits, and one-off B2B charges, you direct AI to create standalone invoices with custom line items. One system, one paper trail, whether revenue is recurring or bespoke.
+
+**3. Stripe Tax turns tax into configuration.** Tax rates depend on what you sell and where the buyer is, and thresholds determine where you are even obligated to collect. Stripe Tax calculates the right tax per transaction based on product tax codes and customer location, and its monitoring shows where you are approaching registration thresholds. Your job is judgment, not computation: assign accurate tax codes to products, keep registrations current in the dashboard, and watch the threshold monitoring. Registering and remitting remain business obligations Stripe calculates for but does not absolve.
+
+**4. Tax IDs and reverse charge basics.** B2B sales across borders often shift tax responsibility to the buyer, the reverse charge mechanism in VAT systems. That only works if you collected and displayed the buyer's tax ID. Checkout and invoices can collect tax IDs and print them on documents. You are not becoming a tax advisor; you are directing AI to capture the data that makes correct treatment possible and visible on the paperwork.
+
+**5. Inclusive vs exclusive pricing is a market decision.** Exclusive: tax is added on top at checkout, the US norm. Inclusive: the displayed price contains tax, the consumer norm across much of Europe. This changes what customers see and what you net per sale. Pick per market deliberately; a European consumer product shown exclusive prices feels bait-and-switched at checkout, and an inclusive price means your revenue per unit varies with the buyer's tax rate.
+
+**6. Receipts and credit notes close the loop.** Receipts confirm payment to the payer and can be automatic per successful charge. Invoices are the request-and-record document; both matter and they are not the same thing. When money goes back, refund or adjustment, a credit note documents it against the original invoice, keeping totals reconcilable. The discipline you direct: no refund without its credit note, no post-finalization edits, ever.
+
+## Your Toolkit
+
+- **Stripe Invoicing**: draft, finalize, and collect invoices with hosted payment pages and automatic reminders
+- **Stripe Tax**: per-transaction calculation, product tax codes, and registration threshold monitoring
+- **Customer Tax IDs in Checkout and the customer object**: collection and display for B2B treatment
+- **Credit notes in the dashboard and API**: the correction instrument that keeps books reconcilable
+
+## Exam Topics
+
+1. Draft vs finalized invoices and what changes at finalization
+2. charge_automatically vs send_invoice collection methods and when each fits
+3. Subscription-generated invoices vs directly created invoices
+4. Stripe Tax configuration: product tax codes, registrations, threshold monitoring
+5. Tax ID collection and its role in B2B reverse charge treatment
+6. Tax-inclusive vs exclusive pricing by market
+7. Receipts vs invoices and what each documents
+8. Credit notes as the only correct post-finalization correction
+
+## Common Pitfalls
+
+- Editing revenue records outside the credit note mechanism after finalization and breaking reconciliation
+- Selling internationally for a year before anyone checks tax registration thresholds
+- Assigning no tax codes, or one generic code, to products with different tax treatment
+- Showing tax-exclusive prices to markets that expect inclusive pricing and eating the trust damage at checkout
+- Refunding through the dashboard with no credit note and leaving finance a puzzle
+- Using send_invoice for a subscription product that should charge automatically, creating a manual collections job
+
+## Self-Assessment Checklist
+
+- Can I explain what finalization changes about an invoice?
+- Do I know which collection method each of my revenue streams uses and why?
+- Are my products assigned real tax codes rather than defaults?
+- Do I know where threshold monitoring lives and when I last looked at it?
+- Does my B2B flow collect tax IDs and show them on invoices?
+- Is my pricing display strategy, inclusive or exclusive, deliberate per market?
+- Does every refund in my history have a matching credit note?
+
+## AI Audit Prompt Template
+
+> You are auditing the invoicing and tax layer of my payment system. Review it and report: (1) invoice lifecycle handling and any post-finalization edits in the history, (2) collection method per revenue stream and mismatches with how the business actually collects, (3) Stripe Tax status: product tax codes, active registrations, threshold monitoring findings, (4) tax ID collection in B2B flows and display on documents, (5) inclusive vs exclusive configuration per market, (6) refund history vs credit note history, flagging unreconciled gaps. Output findings with severity, the finance or compliance consequence of each, and a remediation plan I can direct you to execute.
+
+## What's Next
+
+Module 6 tackles the revenue you almost lost: failed payments and dunning. You will direct AI to build the recovery waterfall that turns involuntary churn back into paying customers.
+
+## Certification Pathway
+
+This is Module 5 of 7 in the Stripe Payments Build course, part of T4 The Mastery. Passing all seven module exams earns the Payments Build Specialist badge. This module makes your revenue auditable and your paperwork automatic.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

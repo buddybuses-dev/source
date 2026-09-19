@@ -1,0 +1,9 @@
+﻿Module 6: HTTPS, Headers & Transport Security — Study Guide
+
+This is the study guide. Everything for HTTPS, Headers & Transport Security is on this page — there's nothing to download.
+
+Note: Unlike the other modules, this study guide has no inline text body on the page. Its content is delivered as a course infographic image plus an attached PDF file: T6-Security-M6-TransportSecurity.pdf. The infographic lists the module's focus areas — SSL/TLS configuration, security headers, CSP and HSTS basics, X-Frame-Options and framing control, mixed content protection, certificate management, and secure app-to-internet transport ("Secure the connection. Protect data in transit.").
+
+———
+
+Ready? Take the HTTPS, Headers & Transport Security Exam →

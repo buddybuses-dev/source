@@ -1,0 +1,106 @@
+Module 6: Production Prompt Patterns — Study Guide
+
+Prompt Engineering at a Professional Level
+
+T8 The Frontier | Module 6 Study Guide
+
+Module 6: Production Prompt Patterns
+
+"Direct AI with the precision, structure, and repeatability that separates professionals from hobbyists."
+
+What This Module Covers
+
+A prompt that works once in a chat window is a demo. A prompt that works ten thousand times a day inside a system you shipped is infrastructure. Module 6 is where you make that jump: everything you built in M1 through M5 now gets packaged into patterns that survive contact with production traffic.
+
+You will learn to treat prompts as versioned, reusable assets: templates with variable injection instead of hand-edited strings, guardrails and validation instead of hoping the model behaves, and retry and fallback logic for when it does not. You will also build prompt libraries for reuse across projects, plus a cost model and caching strategies for production economics. This is the mindset M7, the capstone, assumes you already have.
+
+Why It Matters
+
+Picture a customer support bot handling 10K conversations a day. A prompt that fails on 2 percent of inputs means 200 broken customer interactions daily. A hobbyist tweaks the prompt and hopes. A professional wraps it in validation, catches malformed output before the customer sees it, retries with a corrective message, and falls back to a safe degraded response. The difference is not wording. It is architecture.
+
+The economics matter just as much. At production volume, every token is a recurring cost. A 3,000 token system prompt running 50K calls a day is a real line item, and a cached prefix versus an uncached one can change that line by an order of magnitude. Builders in The Faction who master these patterns ship systems that are cheaper to run, harder to break, and faster to extend. Builders who skip them ship systems that quietly bleed money and trust.
+
+Certification Goal
+
+Passing the Module 6 exam proves you can design prompt infrastructure for production: templating with variable injection, guardrails and validation, graceful failure handling, prompt libraries, and cost-aware optimization including caching. It certifies you build prompts as systems, not one-offs.
+
+What You Need to Know
+
+Prompts as Infrastructure
+
+A production prompt is a versioned artifact with an owner, a changelog, tests, and a deployment path, exactly like code. Centralize prompts, version them, and run every change through the evals you built in M5.
+
+Prompt Templates with Variable Injection
+
+Production prompts are templates with clearly delimited slots for runtime data: user input, retrieved context, account metadata. Injection points are where prompts break, so delimit and sanitize injected content so user text cannot masquerade as instructions, and enforce length limits on every variable. A template that breaks on adversarial inputs is not production ready.
+
+Guardrails and Output Validation
+
+Never trust raw model output in a pipeline. Validate structure with schemas, check values against allowed ranges and enums, and confirm required fields exist before anything downstream consumes them. For a data extraction system that must never hallucinate field values: instruct the model to return null for missing data, then reject any value not traceable to the source text.
+
+Graceful Failure Handling
+
+Models fail: malformed JSON, refusals, truncation, timeouts. Design the failure path first. Retry with the validation error fed back to the model, fall back to a different model or simpler prompt, and when all else fails, return a safe degraded output: a template response or a human escalation. Log every failure.
+
+Prompt Libraries and Reuse
+
+Your extraction pattern, your brand-voice pattern, your classifier pattern: these are assets. A prompt library packages proven templates with their eval suites, docs, and known failure modes. The Faction standard: no builder solves the same prompting problem twice.
+
+The Production Cost Model
+
+Cost per call is input plus output tokens times their rates, multiplied by daily volume. Optimizing means finding the shortest prompt that still passes your eval suite. Sometimes a longer prompt on a cheaper model beats a short prompt on a premium model; only your cost model and evals can tell you which.
+
+Your Toolkit
+
+Template Engine with Delimited Injection: One templating layer that renders every prompt from versioned templates, with fenced variable slots and sanitization built in.
+Schema Validator on Every Output: JSON Schema or equivalent validation as a mandatory gate between model output and downstream code, wired to trigger retries automatically on failure.
+Fallback Chain Configuration: A declared ordered list per prompt: primary model, retry with error feedback, fallback model, degraded static response. Written down and tested, not improvised.
+Prompt Cost Dashboard: A running tally of tokens per call, calls per day, and cache hit rate for each production prompt, so cost regressions surface as fast as quality regressions.
+
+Exam Topics
+
+The difference between a one-off prompt and a production prompt asset: versioning, testing, ownership, deployment
+Designing templates with variable injection: delimiting, sanitizing, and length-limiting injected content
+Defending against prompt injection through user-supplied template variables
+Output validation: schema checks, enum and range checks, required fields, and null-for-missing rules in extraction systems
+The retry-fallback-degrade pattern: when to retry with error feedback, when to fall back, when to return degraded output
+Structuring a prompt library for cross-project reuse and what ships with each template (evals, docs, failure modes)
+Computing production costs from token counts, rates, and volume, and the prompt length versus quality tradeoff
+Caching strategies: stable prefixes and volatile suffixes to maximize cache hits
+
+Common Pitfalls
+
+Hardcoding prompts inline across the codebase: Versions drift, changes require hunting through files, and no prompt ever gets properly tested.
+Trusting model output without validation: One malformed response breaks everything downstream, and hallucinated values flow silently into your data.
+Retrying blindly without feedback: Resending the identical prompt usually reproduces the failure. Feed the validation error back.
+Ignoring injection risk in template variables: Raw user text in a prompt slot can override your instructions. Delimit and sanitize everything you inject.
+Optimizing prompt length by feel instead of by evals: Cutting tokens without rerunning evals trades invisible quality losses for visible cost savings, and the quality losses cost more.
+Breaking cache with volatile prefixes: Timestamps or user IDs at the top of the prompt invalidate the cached prefix on every call and multiply input costs.
+
+Self-Assessment Checklist
+
+I can explain why production prompts must be versioned, tested artifacts rather than inline strings
+I can build a template with delimited variable injection that resists prompt injection through user input
+I can design validation that catches malformed structure, invalid values, and hallucinated fields before downstream code sees them
+I can implement retry with error feedback, model fallback, and a degraded safe response, and explain when each fires
+I can structure a prompt library entry another builder could reuse without asking me questions
+I can compute the daily cost of a production prompt and identify the cheapest configuration that passes evals
+I can restructure a prompt so its stable prefix maximizes cache hits while volatile data sits at the end
+
+AI Audit Prompt Template
+
+Give your AI this prompt along with your production prompt code.
+
+You are auditing my production prompt infrastructure. I will provide my templates, the code that calls them, and my validation and error handling logic. Score each area 1 to 5 with specific findings: 1. INFRASTRUCTURE: Are prompts centralized, versioned, and testable? List every inline hardcoded prompt string. 2. TEMPLATING: Are injection points delimited? Could user content override instructions? Show exact risks. 3. VALIDATION: Is every output validated for structure and values? Identify any path consuming raw model output. 4. FAILURE HANDLING: Trace malformed output, refusal, and timeout. Is there retry with error feedback, a fallback, and a safe degraded response? Flag paths that fail silently. 5. REUSE: Which prompts duplicate logic that belongs in a shared library? 6. COST: Estimate tokens per call. Identify cacheable stable prefixes and volatile content near the top that breaks caching. Output: a scored table, the three highest-risk findings with exact fixes, and the estimated monthly cost impact of your recommendations at [YOUR DAILY CALL VOLUME] calls per day.
+
+What's Next
+
+Module 7 is the capstone: Ship: Professional Prompt Architecture. You will assemble every pattern from M1 through M6 into a complete, production-grade prompt architecture for a real system, then ship it. The templates, guardrails, fallback chains, and cost model from this module are the raw material.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent (20 of 25 questions) to earn the Module 6 badge. Pass all 7 module exams to earn the Advanced Prompting Specialist badge.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

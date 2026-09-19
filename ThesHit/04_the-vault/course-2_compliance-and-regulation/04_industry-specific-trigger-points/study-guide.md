@@ -1,0 +1,102 @@
+# Module 4: Industry-Specific Trigger Points — Study Guide
+
+## Compliance Foundations for Builders
+
+T6 The Vault | Module 4 Study Guide
+
+Direct AI to map which regulations apply to any build before shipping it.
+
+## What This Module Covers
+
+Modules 1 through 3 gave you the wide view: the landscape, which laws touch your build, and where data can live. Module 4 zooms in on the question that actually burns builders: what changes when your product touches a specific industry? A scheduling app is just a scheduling app, until a dentist buys it. Then it might be a HIPAA problem.
+
+This module walks the five industries where builders trip most often: healthcare, education, financial, legal, and government. For each, you learn what triggers the regulation, what that means for your architecture and contracts, and the moment to stop and get counsel. By the end, you can name the triggers on any build and direct your AI to audit it before anyone signs up. The skill is not knowing every rule; it is knowing which rules are watching.
+
+## Why It Matters
+
+Seen in The Faction more than once: a builder ships a scheduling app for a dental practice. Patient names, appointment types, a notes field. Nobody said "HIPAA" on the sales call. But the moment that app handles protected health information for a covered entity, the builder may be a business associate under federal law, with obligations they never agreed to and penalties they never priced in. A $3,000 project becomes a five-figure problem.
+
+Industry triggers are invisible from inside the code. Stripe does not pop a modal saying "you may have entered GLBA scope." The SaaS founder who launched in the EU without GDPR at least saw cookie banners as a hint; industry rules give you none. The only defense is a map of trigger points, checked before you ship, every time.
+
+## Certification Goal
+
+Passing this exam proves you can identify trigger points in healthcare, education, financial, legal, and government builds, explain what each means for design and contracts, and name the point where licensed counsel must come in. It certifies boundary knowledge, not legal judgment: you know where the lines are, not that you can clear them alone.
+
+## What You Need to Know
+
+### HIPAA: The Business Associate Trigger
+
+HIPAA does not cover health data in general; it covers protected health information handled by covered entities (providers, health plans, clearinghouses) and their business associates. You become a business associate when you create, receive, maintain, or transmit PHI on behalf of a covered entity, which means a signed Business Associate Agreement before data flows. A wellness app selling directly to consumers, with no covered entity in the chain, typically sits outside HIPAA, though FTC health data rules may still apply. If you cannot say whether a covered entity is in your chain, that is a counsel question, not a guess.
+
+### FERPA and COPPA: Students and Kids
+
+FERPA triggers when your product handles student education records for federally funded schools, and it constrains reuse and disclosure. COPPA triggers when you collect personal information from children under 13, or your service is directed at them, and it demands verifiable parental consent and strict data limits. An edtech build can trip both at once: if your product touches classrooms or a young user base, treat both as live until proven otherwise.
+
+### Financial Triggers: GLBA, Money Transmission, and the SEC
+
+GLBA scope opens when you handle nonpublic personal information as a financial institution or its service provider, which reaches beyond banks to lenders and payment-adjacent tools. State money transmitter laws trigger when you hold or move other people's money: licensing is state by state, expensive, and criminal to skip in some states. Anything touching securities, investment advice, or tokenized assets raises SEC questions no builder should self-answer. Each of those is a hard stop for counsel.
+
+### Legal Industry: Privilege and Bar Rules
+
+Build for lawyers and you inherit attorney-client privilege plus bar rules on technology competence and confidentiality. Piping client documents through a third-party AI API without safeguards can put privilege at risk and put your client in front of their bar. Lawyers must vet their vendors, so design for confidentiality from day one, and pause for counsel before any feature exposes privileged material to an outside system.
+
+### Government Work: CMMC, FedRAMP, and Accessibility
+
+Selling into government, even as a subcontractor, triggers certification-heavy frameworks: CMMC for defense supply chain work, FedRAMP for cloud services used by federal agencies, and accessibility mandates like Section 508 and WCAG. You need awareness, not mastery: these take months and real money, and "we will deal with it after the contract" is how builds die. Accessibility is increasingly enforced against private builds too, so treat it as a default.
+
+### The Trigger, Meaning, Counsel Pattern
+
+Every rule here follows one pattern: what triggers the requirement, what it means for the build, and when the question requires a professional. Running your AI through that pattern per industry is the core move, and it feeds the compliance map you ship in Module 7.
+
+## Your Toolkit
+
+- **Industry Trigger Checklist:** A one-page list per industry of yes/no questions like "Is a covered entity in the data chain?" Run it at intake, before you quote a price.
+- **Client Intake Questions:** Five questions for every client: who are your users, whose data is it, what industry are you in, who regulates you, do you have counsel.
+- **AI Trigger Audit:** The prompt template below, run against your actual data model and user flows. It flags likely triggers and drafts questions for a professional.
+- **Counsel Escalation Log:** A running record of every point where you decided counsel was or was not needed, and why. It protects you if a decision is questioned later.
+
+## Exam Topics
+
+- When a builder becomes a HIPAA business associate, and the role of the Business Associate Agreement.
+- When a health-related app likely falls outside HIPAA, and what rules may still apply.
+- What triggers FERPA scope for a product used by schools, and what it restricts.
+- COPPA's under-13 trigger, the "directed at children" concept, and verifiable parental consent.
+- When GLBA applies to a builder as a service provider to a financial institution.
+- What triggers state money transmitter licensing, and why holding client funds is a hard stop.
+- How privilege and bar rules constrain legal-industry builds, especially AI features.
+- What CMMC, FedRAMP, and Section 508 each apply to, and when each triggers.
+
+## Common Pitfalls
+
+- **Assuming the client will mention the regulation:** The dentist does not say "HIPAA" and the school does not say "FERPA." The trigger map is your job.
+- **Treating all health data as HIPAA data:** You waste effort on builds outside scope and miss the FTC and state health privacy rules that do apply.
+- **Touching money "just briefly":** Even momentarily holding user funds can trigger money transmitter laws. Route funds through licensed processors, not your own accounts.
+- **Piping regulated data through AI APIs by default:** Sending PHI, student records, or privileged documents to a third-party model without proper agreements can itself be the violation.
+- **Ignoring accessibility until launch:** Retrofitting WCAG costs multiples of building it in, and government clients reject noncompliant deliverables.
+- **Confusing awareness with clearance:** Knowing CMMC or GLBA exists does not make you compliant. The map shows where to bring in professionals; it is not a substitute for them.
+
+## Self-Assessment Checklist
+
+- I can explain when a builder becomes a HIPAA business associate and what a BAA is for.
+- I can judge whether an app likely sits inside or outside HIPAA scope, and say why.
+- I can name the triggers for FERPA and COPPA and what each demands of a build.
+- I can list the financial triggers: GLBA scope, money transmission, and SEC territory.
+- I can explain why legal builds need special handling for privilege and AI features.
+- I can describe what CMMC, FedRAMP, and accessibility mandates apply to.
+- I can name the moments in each industry when the right move is to stop and get counsel.
+
+## AI Audit Prompt Template
+
+Give your AI this prompt with your build details filled in, and have it map industry trigger points before you ship.
+
+> You are auditing my build for industry-specific regulatory trigger points. You are not my lawyer and must not tell me I am compliant. Flag triggers and tell me where a licensed professional is needed. MY BUILD: [product, who buys it, who uses it] DATA I TOUCH: [all data types, including free-text fields] MONEY FLOWS: [do I hold, move, or store payment or account info] AI FEATURES: [what data goes to which third-party models or APIs] Check each industry: 1. HEALTHCARE: Is a covered entity in my data chain? Am I plausibly a business associate? If not HIPAA, what health rules apply? 2. EDUCATION: Do I touch student education records for a school? Could my product be directed at children under 13? 3. FINANCIAL: Could I be a GLBA service provider? Do any flows look like money transmission, securities, or investment advice? 4. LEGAL: Could my build handle privileged client material? Do any AI features send it to outside systems? 5. GOVERNMENT: Is any buyer a government agency or contractor? Could CMMC, FedRAMP, or accessibility mandates apply? For every trigger flagged, give me: (a) what activates it, (b) what it means for my architecture, contracts, or marketing, and (c) a STOP AND GET COUNSEL note with the exact questions to bring to a professional. End with a summary table: trigger, risk level, next step. Mark anything uncertain as "needs professional review."
+
+## What's Next
+
+You can now spot the triggers. Module 5, Compliance Documentation Systems, teaches you how to prove you spotted them: intake records, data maps, and decision logs that turn "I thought about this" into evidence a client, auditor, or attorney can use. Your trigger map becomes the backbone of that system.
+
+## Certification Pathway
+
+Pass this module's exam at 80 percent (20 of 25 questions) to earn the Module 4 badge. Pass all 7 module exams to earn the Compliance Foundations Specialist badge.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

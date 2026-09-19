@@ -1,0 +1,106 @@
+Module 5: SEO Metadata and Performance — Study Guide
+
+Next.js Application Build
+
+T4 The Mastery | Module 5 Study Guide
+
+Module 5: SEO, Metadata and Performance
+
+Direct AI to build fast, SEO-ready web applications on Next.js and Vercel.
+
+What This Module Covers
+
+You have built the app. Now you make sure the world can find it and that it feels instant when they do. This module covers the Next.js Metadata API for titles, descriptions, and Open Graph tags, dynamic metadata generation, structured data with JSON-LD, and generated sitemaps and robots.txt files. Then it moves to speed: Core Web Vitals, image optimization with next/image, font optimization with next/font, and bundle analysis with code splitting.
+
+The through line is simple. SEO and performance are architecture decisions, not polish you add at the end. Whether your AI is building a content site that needs to rank or a SaaS marketing page that needs to convert, the metadata strategy and performance budget belong in your first prompt. By the end of this module you can review any page your AI produces and answer three questions: can Google understand it, will it share correctly on social, and will it load fast enough that visitors stay.
+
+Why It Matters
+
+A content site that does not rank does not exist. Search is the largest free distribution channel on the internet, and Next.js exists in large part because it solves the SEO problems plain client-rendered React cannot. If your AI ships pages with missing titles, duplicate descriptions, or no structured data, you are paying to host pages nobody will find, and every week they rank poorly is traffic your competitor collects.
+
+Performance carries the same weight. Google uses Core Web Vitals as a ranking signal, and users abandon slow pages long before crawlers penalize them. An app serving 10K daily users on a 2 MB bundle with unoptimized hero images bleeds conversions on every visit. These fixes are cheap when specified up front and expensive when retrofitted, which is why you direct your AI toward them from the start.
+
+Certification Goal
+
+Passing this exam proves you can direct AI to implement complete metadata, structured data, sitemaps, and Core Web Vitals optimization in a Next.js app, and audit the output well enough to catch missing tags, layout shift, and bundle bloat before they reach production.
+
+What You Need to Know
+
+The Metadata API
+
+Next.js lets you export a metadata object from a layout or page with title, description, and Open Graph fields, and it renders the head tags server side so crawlers see them immediately. Layouts set defaults, including title templates like "%s | YourApp", and pages override them. Review check: every route has a unique title and description.
+
+Dynamic Metadata with generateMetadata
+
+A blog post or product page needs metadata built from its data. The generateMetadata function runs on the server, fetches the same data as the page, and returns the metadata object at request or build time. That is how a content site gets unique titles and Open Graph images for a thousand articles without anyone writing a thousand head tags.
+
+Structured Data with JSON-LD
+
+JSON-LD is a script tag of schema.org data that tells search engines exactly what a page is: an article, a product, a FAQ, an organization. It unlocks rich results like star ratings and article cards in search listings. Render it inside the page component, serialized from the same data source as your content so it never drifts out of sync.
+
+Sitemaps and robots.txt
+
+Next.js generates both from code: sitemap.ts exports your URL list, pulling dynamic routes from your data source, and robots.ts declares what crawlers may index. Because they are code, a new blog post appears in the sitemap automatically. Confirm the sitemap covers dynamic routes and robots.txt is not blocking the site, a common AI mistake carried over from staging.
+
+Core Web Vitals
+
+Three numbers define how Google measures page experience. LCP, Largest Contentful Paint, is how fast the main content appears: keep it under 2.5 seconds. CLS, Cumulative Layout Shift, is how much the page jumps while loading: keep it under 0.1. FID, First Input Delay, measures first-interaction responsiveness, with INP as its modern successor. Server Components, optimized images, and lean bundles hit these targets.
+
+Image, Font, and Bundle Optimization
+
+The next/image component resizes, compresses, lazy loads, and reserves layout space so images never cause shift, while the priority prop protects your LCP element. The next/font system self-hosts fonts at build time, eliminating render-blocking requests and font-swap shift. Bundle analysis shows what JavaScript you ship, and dynamic imports split heavy components, like a dashboard chart library, out of the initial load.
+
+Your Toolkit
+
+Next.js Metadata API: The built-in system for titles, descriptions, Open Graph, and Twitter cards, declared in layouts and pages and generated dynamically with generateMetadata.
+Lighthouse and PageSpeed Insights: Google's free auditing tools that score Core Web Vitals and list specific failures. Run them on every major page before you call a build done.
+@next/bundle-analyzer: A plugin that visualizes what is in your JavaScript bundles so you can spot the 300 KB library your AI imported for one function.
+Google Rich Results Test: The validator that confirms your JSON-LD is correct and eligible for rich search listings before you ship it.
+
+Exam Topics
+
+When to use a static metadata export versus the generateMetadata function
+How title templates in a root layout interact with page-level titles
+What Open Graph tags control and why a missing og:image hurts social sharing
+How to add JSON-LD to a page and which schema types fit articles, products, and organizations
+How sitemap.ts and robots.ts generate their files, including dynamic routes
+The three Core Web Vitals, what each measures, and the thresholds for LCP and CLS
+How next/image prevents layout shift and how the priority prop affects LCP
+What next/font optimizes and how dynamic imports reduce initial bundle size
+
+Common Pitfalls
+
+One generic title for every page: If every route inherits the root layout's metadata, search results show identical listings and nothing ranks for specific queries.
+Missing Open Graph images: Pages without og:image render as bare gray links when shared on social, and click-through rates collapse.
+Plain img tags instead of next/image: You lose resizing, lazy loading, and reserved layout space, which inflates LCP and causes layout shift in one move.
+robots.txt blocking production: AI often copies a disallow-all config meant for staging. One wrong line deindexes your entire site, and recovery takes weeks.
+Shipping the whole dashboard in one bundle: Top-level imports of charting and editor libraries send hundreds of kilobytes to users who came for the landing page. Split them with dynamic imports.
+Structured data that drifts from content: Hand-typed JSON-LD goes stale when content changes, and mismatched data costs you rich results. Generate it from the same data source as the page.
+
+Self-Assessment Checklist
+
+I can direct AI to implement unique titles, descriptions, and Open Graph tags on every route
+I can explain when to use generateMetadata and verify it pulls from real page data
+I can review JSON-LD and validate it with the Rich Results Test
+I can confirm a sitemap includes dynamic routes and robots.txt is not blocking production
+I can name the three Core Web Vitals, their thresholds, and the Next.js feature that addresses each
+I can spot missing next/image or next/font usage and predict the metric damage
+I can run a bundle analysis and direct AI to code split the heaviest components
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to audit your app before shipping.
+
+Audit this Next.js app for SEO, metadata, and performance readiness. Report findings as a table with severity (critical, warning, pass) and the exact file to fix: 1. Metadata: Confirm every route has a unique title and description and the root layout uses a title template. Flag routes inheriting generic root metadata. 2. Open Graph: Confirm every public page has og:title, og:description, og:image, and Twitter card tags. Flag placeholder images. 3. Dynamic metadata: Confirm every dynamic route has generateMetadata built from fetched data, not hardcoded strings. 4. Structured data: Identify which pages need JSON-LD (article, product, FAQ, organization) and confirm it is present, generated from live data, and valid schema.org syntax. 5. Sitemap and robots: Confirm sitemap.ts includes all dynamic routes and robots.ts allows production indexing. 6. Core Web Vitals: Flag img tags not using next/image, LCP images missing the priority prop, fonts loaded outside next/font, and likely layout shift sources. 7. Bundle size: List the five largest client dependencies and flag components that should use dynamic imports. Finish with a prioritized fix list, most critical first, with the specific code change for each item.
+
+What's Next
+
+With your app discoverable and fast, Module 6: Vercel Deployment and Environments takes it live. You will direct AI to configure deployments, preview environments, environment variables, and custom domains on the platform built for Next.js.
+
+Certification Pathway
+
+Pass this module's exam at 80% or higher, 20 of 25 questions, to earn the Module 5 badge. Pass all 7 module exams to earn the Next.js Specialist badge, certifying you can direct AI to build fast, SEO-ready web applications on Next.js and Vercel.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

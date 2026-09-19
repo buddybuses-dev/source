@@ -1,0 +1,500 @@
+Title: Module 3: Indexes and Query Performance — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-3-indexes-and-query-performance-study-guide
+Source element: <body>
+---
+Create
+Members
+Discovery
+Leaderboard
+Free AI Engineering Curriculum
+The Foundation
+The Mastery
+The Industry
+The Vault
+The Launchpad
+The Frontier
+The Faction Community
+Welcome To The Faction
+The Pit
+The Mentoring Lounge
+The Forge
+The Mastery
+Tier 4. Platform Mastery. Build a production SaaS from dashboard to deployment. 7 modules.
+Table of Contents
+Page
+Next up
+Module 3: Indexes and Query Performance — Study Guide
+Collapse All
+You Learned the Framework. Now Build What Ships.
+49 Lessons | 49 Quizzes
+Module 1 — Dashboard & Data Layer
+1 Lesson | 1 Quiz
+Module 01: SaaS Dashboard — Study Guide
+Module 01: SaaS Dashboard — Exam
+Module 2 — Payments & Billing Engine
+1 Lesson | 1 Quiz
+Module 02: Subscription Endpoints & Webhooks — Study Guide
+Module 02: Subscription Endpoints & Webhooks — Exam
+Module 3 — Multi-Tenant Architecture
+1 Lesson | 1 Quiz
+Module 03: Multi-Tenant Data Architecture — Study Guide
+Module 03: Multi-Tenant Data Architecture — Exam
+Module 4 — Access Control & Permissions
+1 Lesson | 1 Quiz
+Module 04: Users, Teams & RBAC — Study Guide
+Module 04: Users, Teams & RBAC — Exam
+Module 5 — Deployment & Infrastructure
+1 Lesson | 1 Quiz
+Module 05: SaaS Deployment Pipelines — Study Guide
+Module 05: SaaS Deployment Pipelines — Exam
+Module 6 — Usage Metering & Analytics
+1 Lesson | 1 Quiz
+Module 06: API Throttling & Usage Metering — Study Guide
+Module 06: API Throttling & Usage Metering — Exam
+Module 7 — Monitoring & Observability
+1 Lesson | 1 Quiz
+Module 07: Production Monitoring for SaaS — Study Guide
+Module 07: Production Monitoring for SaaS — Exam
+Module 1: Data Modeling Fundamentals
+1 Lesson | 1 Quiz
+Module 1: Data Modeling Fundamentals — Study Guide
+Module 1: Data Modeling Fundamentals — Exam
+Module 2: Relationships and Normalization Decisions
+1 Lesson | 1 Quiz
+Module 2: Relationships and Normalization Decisions — Study Guide
+Module 2: Relationships and Normalization Decisions — Exam
+Module 3: Indexes and Query Performance
+1 Lesson | 1 Quiz
+Module 3: Indexes and Query Performance — Study Guide
+Module 3: Indexes and Query Performance — Exam
+Module 4: Migrations Without Downtime
+1 Lesson | 1 Quiz
+Module 4: Migrations Without Downtime — Study Guide
+Module 4: Migrations Without Downtime — Exam
+Module 5: Seeding, Backups and Restores
+1 Lesson | 1 Quiz
+Module 5: Seeding, Backups and Restores — Study Guide
+Module 5: Seeding, Backups and Restores — Exam
+Module 6: Scaling and Read Replicas
+1 Lesson | 1 Quiz
+Module 6: Scaling and Read Replicas — Study Guide
+Module 6: Scaling and Read Replicas — Exam
+Module 7: Ship: Production Database
+1 Lesson | 1 Quiz
+Module 7: Ship: Production Database — Study Guide
+Module 7: Ship: Production Database — Exam
+Module 1: Auth Architecture and Session Models
+1 Lesson | 1 Quiz
+Module 1: Auth Architecture and Session Models — Study Guide
+Module 1: Auth Architecture and Session Models — Exam
+Module 2: Email, Password and Magic Links
+1 Lesson | 1 Quiz
+Module 2: Email, Password and Magic Links — Study Guide
+Module 2: Email, Password and Magic Links — Exam
+Module 3: Social and SSO Logins
+1 Lesson | 1 Quiz
+Module 3: Social and SSO Logins — Study Guide
+Module 3: Social and SSO Logins — Exam
+Module 4: Roles, Permissions and Teams
+1 Lesson | 1 Quiz
+Module 4: Roles, Permissions and Teams — Study Guide
+Module 4: Roles, Permissions and Teams — Exam
+Module 5: Two-Factor and Account Security
+1 Lesson | 1 Quiz
+Module 5: Two-Factor and Account Security — Study Guide
+Module 5: Two-Factor and Account Security — Exam
+Module 6: Password Reset and Edge Cases
+1 Lesson | 1 Quiz
+Module 6: Password Reset and Edge Cases — Study Guide
+Module 6: Password Reset and Edge Cases — Exam
+Module 7: Ship: Production Auth
+1 Lesson | 1 Quiz
+Module 7: Ship: Production Auth — Study Guide
+Module 7: Ship: Production Auth — Exam
+Module 1 — Next.js Architecture and Routing
+1 Lesson | 1 Quiz
+Module 1: Next.js Architecture and Routing — Study Guide
+Module 1: Next.js Architecture and Routing — Exam
+Module 2 — Server and Client Components
+1 Lesson | 1 Quiz
+Module 2: Server and Client Components — Study Guide
+Module 2: Server and Client Components — Exam
+Module 3 — Data Fetching and Caching
+1 Lesson | 1 Quiz
+Module 3: Data Fetching and Caching — Study Guide
+Module 3: Data Fetching and Caching — Exam
+Module 4 — API Routes and Server Actions
+1 Lesson | 1 Quiz
+Module 4: API Routes and Server Actions — Study Guide
+Module 4: API Routes and Server Actions — Exam
+Module 5 — SEO Metadata and Performance
+1 Lesson | 1 Quiz
+Module 5: SEO Metadata and Performance — Study Guide
+Module 5: SEO Metadata and Performance — Exam
+Module 6 — Vercel Deployment and Environments
+1 Lesson | 1 Quiz
+Module 6: Vercel Deployment and Environments — Study Guide
+Module 6: Vercel Deployment and Environments — Exam
+Module 7 — Ship: Production Next.js App
+1 Lesson | 1 Quiz
+Module 7: Ship: Production Next.js App — Study Guide
+Module 7: Ship: Production Next.js App — Exam
+Module 1 — Supabase Architecture and Project Setup
+1 Lesson | 1 Quiz
+Module 1: Supabase Architecture and Project Setup — Study Guide
+Module 1: Supabase Architecture and Project Setup — Exam
+Module 2 — Postgres Tables and Relationships
+1 Lesson | 1 Quiz
+Module 2: Postgres Tables and Relationships — Study Guide
+Module 2: Postgres Tables and Relationships — Exam
+Module 3 — Row-Level Security Policies
+1 Lesson | 1 Quiz
+Module 3: Row-Level Security Policies — Study Guide
+Module 3: Row-Level Security Policies — Exam
+Module 4 — Auth and User Management
+1 Lesson | 1 Quiz
+Module 4: Auth and User Management — Study Guide
+Module 4: Auth and User Management — Exam
+Module 5 — Storage Realtime and Edge Functions
+1 Lesson | 1 Quiz
+Module 5: Storage Realtime and Edge Functions — Study Guide
+Module 5: Storage Realtime and Edge Functions — Exam
+Module 6 — Backups and Environments
+1 Lesson | 1 Quiz
+Module 6: Backups and Environments — Study Guide
+Module 6: Backups and Environments — Exam
+Module 7 — Ship: Production Backend
+1 Lesson | 1 Quiz
+Module 7: Ship: Production Backend — Study Guide
+Module 7: Ship: Production Backend — Exam
+Module 1: Stripe Payment Architecture and Account Setup
+1 Lesson | 1 Quiz
+Module 1: Payments Architecture and Account Setup — Study Guide
+Module 1: Payments Architecture and Account Setup — Exam
+Module 2: One-Time Checkout Flows
+1 Lesson | 1 Quiz
+Module 2: One-Time Checkout Flows — Study Guide
+Module 2: One-Time Checkout Flows — Exam
+Module 3: Subscriptions and Billing Portal
+1 Lesson | 1 Quiz
+Module 3: Subscriptions and Billing Portal — Study Guide
+Module 3: Subscriptions and Billing Portal — Exam
+Module 4: Webhooks and Payment State
+1 Lesson | 1 Quiz
+Module 4: Webhooks and Payment State — Study Guide
+Module 4: Webhooks and Payment State — Exam
+Module 5: Invoices, Taxes and Receipts
+1 Lesson | 1 Quiz
+Module 5: Invoices, Taxes and Receipts — Study Guide
+Module 5: Invoices, Taxes and Receipts — Exam
+Module 6: Failed Payments and Dunning
+1 Lesson | 1 Quiz
+Module 6: Failed Payments and Dunning — Study Guide
+Module 6: Failed Payments and Dunning — Exam
+Module 7: Ship: Live Payment System
+1 Lesson | 1 Quiz
+Module 7: Ship: Live Payment System — Study Guide
+Module 7: Ship: Live Payment System — Exam
+Module 1: API Architecture and Endpoint Design
+1 Lesson | 1 Quiz
+Module 1: API Architecture and Endpoint Design — Study Guide
+Module 1: API Architecture and Endpoint Design — Exam
+Module 2: Auth Keys and Rate Limiting
+1 Lesson | 1 Quiz
+Module 2: Auth Keys and Rate Limiting — Study Guide
+Module 2: Auth Keys and Rate Limiting — Exam
+Module 3: Documentation and Developer Experience
+1 Lesson | 1 Quiz
+Module 3: Documentation and Developer Experience — Study Guide
+Module 3: Documentation and Developer Experience — Exam
+Module 4: Usage Metering and Billing
+1 Lesson | 1 Quiz
+Module 4: Usage Metering and Billing — Study Guide
+Module 4: Usage Metering and Billing — Exam
+Module 5: Versioning and Error Design
+1 Lesson | 1 Quiz
+Module 5: Versioning and Error Design — Study Guide
+Module 5: Versioning and Error Design — Exam
+Module 6: Monitoring and Uptime
+1 Lesson | 1 Quiz
+Module 6: Monitoring and Uptime — Study Guide
+Module 6: Monitoring and Uptime — Exam
+Module 7: Ship: Live API Product
+1 Lesson | 1 Quiz
+Module 7: Ship: Live API Product — Study Guide
+Module 7: Ship: Live API Product — Exam
+You Learned the Framework. Now Build What Ships.
+Module 1 — Dashboard & Data Layer
+Module 01: SaaS Dashboard — Study Guide
+Module 01: SaaS Dashboard — Exam
+Module 2 — Payments & Billing Engine
+Module 02: Subscription Endpoints & Webhooks — Study Guide
+Module 02: Subscription Endpoints & Webhooks — Exam
+Module 3 — Multi-Tenant Architecture
+Module 03: Multi-Tenant Data Architecture — Study Guide
+Module 03: Multi-Tenant Data Architecture — Exam
+Module 4 — Access Control & Permissions
+Module 04: Users, Teams & RBAC — Study Guide
+Module 04: Users, Teams & RBAC — Exam
+Module 5 — Deployment & Infrastructure
+Module 05: SaaS Deployment Pipelines — Study Guide
+Module 05: SaaS Deployment Pipelines — Exam
+Module 6 — Usage Metering & Analytics
+Module 06: API Throttling & Usage Metering — Study Guide
+Module 06: API Throttling & Usage Metering — Exam
+Module 7 — Monitoring & Observability
+Module 07: Production Monitoring for SaaS — Study Guide
+Module 07: Production Monitoring for SaaS — Exam
+Module 1: Data Modeling Fundamentals
+Module 1: Data Modeling Fundamentals — Study Guide
+Module 1: Data Modeling Fundamentals — Exam
+Module 2: Relationships and Normalization Decisions
+Module 2: Relationships and Normalization Decisions — Study Guide
+Module 2: Relationships and Normalization Decisions — Exam
+Module 3: Indexes and Query Performance
+Module 3: Indexes and Query Performance — Study Guide
+Module 3: Indexes and Query Performance — Exam
+Module 4: Migrations Without Downtime
+Module 4: Migrations Without Downtime — Study Guide
+Module 4: Migrations Without Downtime — Exam
+Module 5: Seeding, Backups and Restores
+Module 5: Seeding, Backups and Restores — Study Guide
+Module 5: Seeding, Backups and Restores — Exam
+Module 6: Scaling and Read Replicas
+Module 6: Scaling and Read Replicas — Study Guide
+Module 6: Scaling and Read Replicas — Exam
+Module 7: Ship: Production Database
+Module 7: Ship: Production Database — Study Guide
+Module 7: Ship: Production Database — Exam
+Module 1: Auth Architecture and Session Models
+Module 1: Auth Architecture and Session Models — Study Guide
+Module 1: Auth Architecture and Session Models — Exam
+Module 2: Email, Password and Magic Links
+Module 2: Email, Password and Magic Links — Study Guide
+Module 2: Email, Password and Magic Links — Exam
+Module 3: Social and SSO Logins
+Module 3: Social and SSO Logins — Study Guide
+Module 3: Social and SSO Logins — Exam
+Module 4: Roles, Permissions and Teams
+Module 4: Roles, Permissions and Teams — Study Guide
+Module 4: Roles, Permissions and Teams — Exam
+Module 5: Two-Factor and Account Security
+Module 5: Two-Factor and Account Security — Study Guide
+Module 5: Two-Factor and Account Security — Exam
+Module 6: Password Reset and Edge Cases
+Module 6: Password Reset and Edge Cases — Study Guide
+Module 6: Password Reset and Edge Cases — Exam
+Module 7: Ship: Production Auth
+Module 7: Ship: Production Auth — Study Guide
+Module 7: Ship: Production Auth — Exam
+Module 1 — Next.js Architecture and Routing
+Module 1: Next.js Architecture and Routing — Study Guide
+Module 1: Next.js Architecture and Routing — Exam
+Module 2 — Server and Client Components
+Module 2: Server and Client Components — Study Guide
+Module 2: Server and Client Components — Exam
+Module 3 — Data Fetching and Caching
+Module 3: Data Fetching and Caching — Study Guide
+Module 3: Data Fetching and Caching — Exam
+Module 4 — API Routes and Server Actions
+Module 4: API Routes and Server Actions — Study Guide
+Module 4: API Routes and Server Actions — Exam
+Module 5 — SEO Metadata and Performance
+Module 5: SEO Metadata and Performance — Study Guide
+Module 5: SEO Metadata and Performance — Exam
+Module 6 — Vercel Deployment and Environments
+Module 6: Vercel Deployment and Environments — Study Guide
+Module 6: Vercel Deployment and Environments — Exam
+Module 7 — Ship: Production Next.js App
+Module 7: Ship: Production Next.js App — Study Guide
+Module 7: Ship: Production Next.js App — Exam
+Module 1 — Supabase Architecture and Project Setup
+Module 1: Supabase Architecture and Project Setup — Study Guide
+Module 1: Supabase Architecture and Project Setup — Exam
+Module 2 — Postgres Tables and Relationships
+Module 2: Postgres Tables and Relationships — Study Guide
+Module 2: Postgres Tables and Relationships — Exam
+Module 3 — Row-Level Security Policies
+Module 3: Row-Level Security Policies — Study Guide
+Module 3: Row-Level Security Policies — Exam
+Module 4 — Auth and User Management
+Module 4: Auth and User Management — Study Guide
+Module 4: Auth and User Management — Exam
+Module 5 — Storage Realtime and Edge Functions
+Module 5: Storage Realtime and Edge Functions — Study Guide
+Module 5: Storage Realtime and Edge Functions — Exam
+Module 6 — Backups and Environments
+Module 6: Backups and Environments — Study Guide
+Module 6: Backups and Environments — Exam
+Module 7 — Ship: Production Backend
+Module 7: Ship: Production Backend — Study Guide
+Module 7: Ship: Production Backend — Exam
+Module 1: Stripe Payment Architecture and Account Setup
+Module 1: Payments Architecture and Account Setup — Study Guide
+Module 1: Payments Architecture and Account Setup — Exam
+Module 2: One-Time Checkout Flows
+Module 2: One-Time Checkout Flows — Study Guide
+Module 2: One-Time Checkout Flows — Exam
+Module 3: Subscriptions and Billing Portal
+Module 3: Subscriptions and Billing Portal — Study Guide
+Module 3: Subscriptions and Billing Portal — Exam
+Module 4: Webhooks and Payment State
+Module 4: Webhooks and Payment State — Study Guide
+Module 4: Webhooks and Payment State — Exam
+Module 5: Invoices, Taxes and Receipts
+Module 5: Invoices, Taxes and Receipts — Study Guide
+Module 5: Invoices, Taxes and Receipts — Exam
+Module 6: Failed Payments and Dunning
+Module 6: Failed Payments and Dunning — Study Guide
+Module 6: Failed Payments and Dunning — Exam
+Module 7: Ship: Live Payment System
+Module 7: Ship: Live Payment System — Study Guide
+Module 7: Ship: Live Payment System — Exam
+Module 1: API Architecture and Endpoint Design
+Module 1: API Architecture and Endpoint Design — Study Guide
+Module 1: API Architecture and Endpoint Design — Exam
+Module 2: Auth Keys and Rate Limiting
+Module 2: Auth Keys and Rate Limiting — Study Guide
+Module 2: Auth Keys and Rate Limiting — Exam
+Module 3: Documentation and Developer Experience
+Module 3: Documentation and Developer Experience — Study Guide
+Module 3: Documentation and Developer Experience — Exam
+Module 4: Usage Metering and Billing
+Module 4: Usage Metering and Billing — Study Guide
+Module 4: Usage Metering and Billing — Exam
+Module 5: Versioning and Error Design
+Module 5: Versioning and Error Design — Study Guide
+Module 5: Versioning and Error Design — Exam
+Module 6: Monitoring and Uptime
+Module 6: Monitoring and Uptime — Study Guide
+Module 6: Monitoring and Uptime — Exam
+Module 7: Ship: Live API Product
+Module 7: Ship: Live API Product — Study Guide
+Module 7: Ship: Live API Product — Exam
+Module 3: Indexes and Query Performance — Study Guide
+Matt Murphy
+🏅
+
+T4 The Mastery | Database Design and Migration
+
+This is the study guide. Everything for Indexes and Query Performance is on this page — there's nothing to download.
+
+1. What This Module Covers
+
+This module is about speed you can prove. You will learn what an index actually is, which columns deserve one, how to read what the database is really doing through execution plans, how to kill the N+1 query problem, and the discipline underneath all of it: measure before optimizing, and demand evidence after.
+
+2. Why It Matters
+
+Every AI-built app is fast on day one. Dev has hundreds of rows; production grows to millions. A query that scans the whole table is invisible at three hundred rows and a customer-facing outage at three million, which is why search "got slower every week since launch" even though the query never changed. Performance problems in AI-built apps almost never come from insufficient hardware. They come from inefficient queries and missing indexes: a dashboard firing two hundred queries per page load, unindexed foreign keys forcing every join to scan, deep pagination paying for every row it skips. Your AI will happily generate all of these patterns, and it will also happily report "the query is optimized" without proof. The builder who knows what to measure and what evidence to demand keeps the app fast for the price of a few prompts. The builder who guesses buys bigger servers to run bad queries faster. This module makes you the first kind.
+
+3. Certification Goal
+
+Passing the Module 3 exam proves you can direct evidence-based performance work: identify slow queries with data, read execution plans, index the columns queries actually use, fix N+1 patterns with set-based queries, and verify every fix with before-and-after proof instead of the agent's confidence.
+
+4. What You Need to Know
+
+What an index is and what it costs. An index is a lookup structure that lets the database find matching rows without scanning the whole table. It is not free: every write must also update it, so inserts and updates get a little slower with each one, and unused indexes are pure overhead. That is why you never index every column, and why the strongest first candidates are the columns your queries actually filter, join, or sort on often. Foreign keys almost always deserve an index, because joins and lookups constantly filter by them, and an unindexed foreign key makes core queries scan.
+
+Full table scans and execution plans. A full table scan means reading every row to answer a query, a red flag on large tables queried frequently. When a query is slow, do not rewrite it in a different style or guess: direct your AI to show the execution plan, which reveals whether indexes are used or rows are scanned. When an index exists but the query is still slow, check whether the query's pattern can even use it: leading wildcards and functions applied to the column defeat an index that is sitting right there.
+
+The N+1 problem. N+1 is loading a list, then running one extra query per item, turning one fetch into hundreds. It is the signature performance bug of AI-generated code. The fix is not caching or upgrading the plan: it is combining per-item lookups into set-based queries that fetch the needed data in a few trips. A dashboard running two hundred queries per load is an N+1 storm, and set-based fetching is the first tool you reach for.
+
+Patterns that degrade with data. Dev-versus-production speed differences are almost always data size: scans invisible at hundreds of rows hurt at millions. Offset-based pagination slows on deep pages because page 500 still walks past the 499 before it. Customers with long histories load slowly when queries fetch or sort everything without an index or paging. SELECT * everywhere moves wasted data, breaks when schemas change, and hides what the code actually needs. Learn these shapes; production will show you all of them.
+
+Where heavy work belongs. A forty-second report query joining six tables does not belong on the database serving customers: it belongs on a replica or analytics copy, so heavy reporting stops competing with customer traffic. Composite indexes, one index over multiple columns, win when queries filter on those columns together. And when measured joins remain the bottleneck after indexing, denormalizing for read speed becomes legitimate, provided you accept the sync cost knowingly.
+
+Measure, fix, verify, watch. Measure before optimizing means finding the actual slow queries with data first, so effort lands on real bottlenecks instead of guesses. Add indexes based on real query patterns, not up-front guessing that indexes the wrong things. Set up slow-query logging with thresholds and alerts so degradation shows up as signals rather than tickets, and watch query metrics after each release so a slow query introduced today is caught today. When your AI reports "optimized," ask for the before-and-after plan or timing that proves it. When it proposes caching, ask how stale the data can be and how the cache updates, because caching trades freshness for speed.
+
+5. Your Toolkit
+
+The execution plan. Your window into what the database really does with a query. Direct your AI to produce it for any slow query and explain whether it shows index use or a scan.
+
+Slow-query logging and alerts. Thresholds that turn quiet degradation into a signal you see the day it starts. Standing infrastructure, not a one-time investigation.
+
+The set-based rewrite. The standard N+1 cure: replace per-item lookups with queries that fetch what a whole screen needs in a few trips. Count queries per page load before and after.
+
+The evidence demand. A habit, not a tool: no performance claim is accepted without before-and-after timing or plans. "It should be faster now" is not a result.
+
+6. Exam Topics
+
+The Module 3 exam will test you on:
+
+What indexes are, what they cost on writes, and why you never index everything
+
+Choosing index candidates: filtered, joined, and sorted columns, especially foreign keys
+
+Full table scans, execution plans, and why growth makes unchanged queries slow
+
+The N+1 problem and set-based query fixes for query-storm pages
+
+Composite indexes and when they beat separate single-column indexes
+
+Degradation patterns: production data size, deep pagination, SELECT *, index-defeating query shapes
+
+Caching trade-offs, and moving heavy reporting onto replicas or analytics copies
+
+Measurement discipline: slow-query logging, post-release metrics, before-and-after evidence
+
+7. Common Pitfalls
+
+Optimizing by guess. Effort lands on queries that feel slow instead of queries that are slow. Measurement first, always.
+
+Indexing everything defensively. Every index taxes every write, and unused indexes are dead weight. Index what real query patterns use.
+
+Trusting "optimized" without proof. An agent's confidence is not a benchmark. Demand the before-and-after plan or timing.
+
+Fixing N+1 with capacity. Upgrading the plan to absorb two hundred queries per page load pays monthly for a bug one rewrite would remove.
+
+Caching without an invalidation answer. A cache with no freshness story converts a speed problem into a correctness problem.
+
+Letting reports fight customers. Analytics on the primary means every heavy report degrades every live user. Separate the workloads.
+
+8. Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+[ ] Can I explain what an index does and what it costs on every write?
+
+[ ] Can I name the columns that deserve indexes first, and why foreign keys qualify?
+
+[ ] Can I describe the N+1 problem and the set-based fix in two sentences?
+
+[ ] Can I explain why a query got slower over months without changing?
+
+[ ] Do I know what to ask for when my AI says a query is optimized?
+
+[ ] Can I list two query shapes that defeat an existing index?
+
+[ ] Do I know where a forty-second reporting query should run, and why?
+
+9. AI Audit Prompt Template
+
+Use this prompt to run a performance audit on any AI-built app:
+
+"You are a database performance auditor. Pull the slowest queries from our logs and, for each, show the execution plan and state whether it uses an index or scans. List every foreign key without an index. Count queries per page load on our three busiest screens, flag N+1 patterns, and propose set-based rewrites. Identify SELECT * and offset-based pagination on large tables. For every fix, give me the before measurement now and commit to an after measurement, and rank fixes by user impact, not ease. Do not propose caching without stating how stale the data may get and how the cache updates."
+
+10. What's Next
+
+Module 4 is where schema work meets live traffic: migrations without downtime. You will learn the expand-contract pattern, batched backfills, rollback plans, and why locking a table for ten minutes is a choice you refuse.
+
+11. Certification Pathway
+
+This is Module 3 of Database Design and Migration, a T4 The Mastery course available with paid Builder Access, sitting alongside the SaaS Build course in the tier. Pass all seven module exams to earn the Database Build Specialist badge. Performance is the bridge into the operational half of the course.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the Indexes and Query Performance Exam →
+
+Ready to move on to the next Lesson?
+Mark as Complete
+Previous
+Module 3: Indexes and Query Performance
+Next
+Module 3: Indexes and Query Performance — Exam
+
+Module 3: Indexes and Query Performance
+Module 3: Indexes and Query Performance — Study Guide
+0%
+Loading...

@@ -1,0 +1,94 @@
+Module 2: Relationships and Normalization Decisions — Study Guide
+
+T4 The Mastery | Database Design and Migration
+
+This is the study guide. Everything for Relationships and Normalization Decisions is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module connects the clean tables you built in Module 1. You will learn how one-to-many, many-to-many, and one-to-one relationships are modeled, what foreign keys and referential integrity protect you from, and how to make the normalization call: when every fact must live once, and when duplicating on purpose is the right move.
+
+Why It Matters
+
+Relationships are where the business logic of your app lives in the database. When your AI models them wrong, the failures are quiet and expensive: tags stored as comma-separated strings that cannot be searched, orders pointing at customers who no longer exist, a fifty-column users table where most fields sit empty. The flip side matters too: over-normalized schemas make everyday screens need six joins for basic data, and naive purity destroys history, since an order that joins live to the products table silently rewrites the past every time a price changes. The builders who pass this module can hear "a customer can have many orders" and know exactly what structure it demands, and they can defend deliberate duplication with a consistency plan. That judgment separates directing an AI from merely accepting its output.
+
+Certification Goal
+
+Passing the Module 2 exam proves you can translate plain business language into the right relationship structure, enforce integrity with foreign keys, decide cascade behavior deliberately, and make normalization calls with the real trade-off in view: consistency versus convenience.
+
+What You Need to Know
+
+Relationships start as sentences. State the relationship in plain business language first; the words tell you which structure fits. "A customer has many orders" is one-to-many: each order row carries the customer's ID. "Students enroll in many courses, and courses hold many students" is many-to-many: a separate join table where each row links one student to one course. Never let two tables both hold references to each other for the same relationship: the links can disagree, and the schema itself can then hold a contradiction.
+
+Foreign keys and referential integrity. A foreign key enforces that a reference points to a real row, so links between tables cannot silently break. Referential integrity protects you from orphaned records: rows referencing parents that were deleted or never existed, which break everything that assumes an order has a real customer. When your AI asks whether deleting a customer should delete their orders too, recognize the question: cascade behavior is a business decision, not a technical one. For records with financial or legal weight, orders, payments, consent, require history to survive rather than clean deletion.
+
+Normalization in practice. Normalization means each fact is stored once, so updates happen once and nothing drifts out of sync. The honest trade-off at its heart is consistency versus convenience: one copy is always right, but sometimes slower to read. Too normalized has a practical test: everyday screens need six or seven joins for basic data and simple features feel hard to build. When two features need the same data shaped differently, keep one source-of-truth table and derive each shape through queries or views.
+
+Denormalization is a deliberate act. Duplicating data is legitimate when a measured read pattern justifies it and you have a plan to keep the copies consistent. It is also correct when capturing history: an order records the product name and price that were true at purchase, even if the product changes later. When your AI proposes copying the user's subscription tier onto every activity row for convenience, ask the killer question: what happens when the tier changes, are millions of old rows now wrong, and does it matter?
+
+Structural patterns you will rule on. Tags belong in their own table with a join table, never a comma-separated string, so each link is a row you can query. Categories that may grow belong in a small lookup table the business can add rows to. A one-to-one profile split earns its place when the extra fields are optional, sensitive, or rarely loaded. When a join table needs its own facts, like enrollment date and grade, the relationship is a real entity deserving first-class modeling. And keep vocabularies consistent: per-feature "status" and "type" columns turn reporting into guesswork.
+
+Model for the questions the business will ask. When the business asks which customers bought product X this quarter and the schema cannot answer cleanly, the failure happened upstream: relationships were not modeled for the questions the business asks. And allow restructuring of live relationships only with a migration plan and a staging test, because restructuring moves real data.
+
+Your Toolkit
+
+The plain-language test. Say the relationship out loud in business words before approving any structure. Each relationship type sounds different in a sentence, and the sentence is the spec.
+The orphan check. Direct your AI to verify every reference column has a foreign key and every delete path has a decided cascade behavior. Orphans are a design decision you failed to make.
+The duplication interrogation. Three questions for any proposed copy: is this history capture, is there a measured read pattern, and what is the plan when the source changes? No answers, no duplication.
+The business-questions list. Write down the five questions the business will predictably ask and confirm the relationships can answer each one before data arrives.
+
+Exam Topics
+
+The Module 2 exam will test you on:
+
+Modeling one-to-many relationships with ID references
+Many-to-many join tables, including join tables that carry their own facts
+Foreign keys, referential integrity, and orphaned records
+Cascade behavior as a business decision, and where history must survive deletion
+Normalization, single source of truth, and consistency versus convenience
+Legitimate denormalization: measured read patterns, history capture, and sync plans
+Structural calls: tags tables, lookup tables, one-to-one splits, wide-table risks
+Restructuring live relationships safely with migration plans and staging tests
+
+Common Pitfalls
+
+Lists stuffed into columns. Comma-separated tags and text lists of IDs feel quick and become unsearchable, unenforceable debt. Relationships are rows, not strings.
+The fifty-column mega-table. One users table covering every role leaves most columns empty, makes meaning unclear, and turns every change into a risk to everything.
+Treating cascade rules as defaults. Whether deleting a parent removes its children is a business decision. Accepting the AI's default means deciding by accident.
+Purity that destroys history. Always joining orders to the live products table means every price change rewrites the past. Some duplication is the record of what was true.
+Convenience copies with no sync plan. Duplicated fields drift, and drift is discovered by the customer, not by you.
+Modeling for today's screens. The schema must answer what the business will predictably ask, not just render the current interface.
+
+Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+[ ] Can I hear a business sentence and name the relationship structure it requires?
+[ ] Can I explain what a foreign key enforces and what an orphaned record breaks?
+[ ] Can I explain why cascade behavior is a business decision and where history must survive?
+[ ] Can I state the normalization trade-off as consistency versus convenience in one sentence?
+[ ] Can I name the two legitimate reasons to duplicate data and the plan each requires?
+[ ] Can I explain why tags need their own table and growing categories a lookup table?
+[ ] Could I pressure-test my schema against five questions the business will ask this quarter?
+
+AI Audit Prompt Template
+
+Use this prompt to audit the relationships in any schema before approving it:
+
+"You are a database design reviewer. Here is my schema: [paste schema]. State every relationship in plain business language and confirm the structure matches: one-to-many via ID references, many-to-many via join tables, no mutual references, no lists in columns. Verify every reference has a foreign key, flag paths that can create orphaned records, and list every delete needing a cascade decision from me. Classify every duplicated fact: history capture, measured performance choice with a sync plan, or accidental drift risk. Finally, test whether this schema can cleanly answer: which customers bought a given product this quarter."
+
+What's Next
+
+Module 3 moves from structure to speed. You will direct AI to add indexes where queries actually filter and join, read execution plans, kill N+1 query storms, and adopt the rule that governs all performance work: measure before optimizing. The relationships you modeled here are exactly the joins that module makes fast.
+
+Certification Pathway
+
+This is Module 2 of Database Design and Migration, a T4 The Mastery course available with paid Builder Access, sitting alongside the SaaS Build course in the tier. Pass all seven module exams to earn the Database Build Specialist badge. Design is Modules 1 and 2; the operational half of the course begins next.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the Relationships and Normalization Decisions Exam →

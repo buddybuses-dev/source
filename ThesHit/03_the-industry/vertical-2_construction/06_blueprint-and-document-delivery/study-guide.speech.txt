@@ -1,0 +1,95 @@
+Module 6: Blueprint & Document Delivery — Study Guide
+
+Module 6: Blueprint & Document Delivery
+
+Caching & CDN for Construction Technology
+
+This is the study guide. Everything for Blueprint & Document Delivery is on this page — there's nothing to download.
+
+———
+
+What This Module Covers
+
+This module covers content delivery for construction technology—the blueprint distribution, plan set version control, large file delivery to field teams, photo and document management, and offline access patterns that let construction professionals work with massive files in bandwidth-constrained job site environments. Construction documents are big. A full plan set for a commercial building can exceed 1GB. Individual blueprint sheets are 50-200MB PDFs. Daily photo documentation generates hundreds of high-resolution images per project per week. RFIs, submittals, and shop drawings add hundreds more documents per project. Your platform must deliver these files to field teams who may be working in areas with weak cellular signal and no WiFi.
+
+Why It Matters
+
+When a superintendent needs to check a detail on the structural drawings, they need the current revision immediately—not in 10 minutes after a 200MB download on a 3G connection. When the GC issues a new plan revision, every subcontractor on the project needs to receive it and confirm receipt. When an inspector asks to see the approved shop drawing for the fire suppression system, the project manager needs to find it in seconds. Construction document delivery is about speed, version control, and universal access in difficult conditions.
+
+Module Certification Goal
+
+You can describe construction document delivery requirements to an AI coding tool—large file optimization, plan set version control, offline access, and field-condition bandwidth management—evaluate the output for delivery performance and version accuracy, and ship a document system that works at job sites with limited connectivity.
+
+What You Need to Know
+
+Plan set version control: Blueprint revisions are critical in construction. When the architect issues Revision 3 of the structural drawings, every subcontractor must work from Rev 3—not Rev 2. Your system must track revision history, distribute new revisions with receipt confirmation, and clearly mark which version is current. Building from an outdated plan set causes rework costing thousands of dollars.
+
+Large file optimization for field delivery: Blueprint PDFs at 50-200MB don't download well on job site cellular connections. Tiled rendering (loading only the visible portion at full resolution), progressive download, and resolution-appropriate delivery (full resolution for zoomed sections, overview for navigation) make large documents usable without downloading the entire file.
+
+Offline document access: Field teams need blueprints when they're in the basement with no signal. Your platform must support pre-downloading critical documents for offline access. The current plan set, specifications, and approved submittals should be available without connectivity.
+
+Photo management and organization: Construction photos need structured metadata: project, date, location (GPS), trade, phase, and description. A photo of rebar placement before a concrete pour is a quality record. Without metadata, it's an unsearchable image in a folder of 10,000 photos.
+
+Document distribution and receipt tracking: When new documents are issued, recipients must confirm they received the current version. Your system should track who has accessed each revision and flag team members who haven't yet viewed the latest version of critical documents.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your document management, version control, and offline access requirements to it.
+
+Object storage with CDN: AWS S3 + CloudFront, Cloudflare R2, or equivalent for storing and delivering large construction documents close to job site locations.
+
+PDF viewer with tiling: A document viewer that renders large PDFs by loading visible tiles at full resolution without requiring the entire file to download first.
+
+PWA with offline storage: Service workers and IndexedDB for caching critical documents locally so field teams can access plans without connectivity.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+Version control accuracy: Can you evaluate whether the system tracks blueprint revisions and clearly identifies the current version across all project participants?
+
+Large file delivery: Can you assess whether large blueprint PDFs are viewable on mobile devices without requiring full file download before any content is visible?
+
+Offline capability: Can you verify that critical documents like current plan sets are available to field teams without internet connectivity?
+
+Photo metadata: Can you evaluate whether construction photos include structured metadata for project, date, GPS location, trade, and categorization?
+
+Distribution tracking: Can you assess whether the system tracks who has received and viewed the latest revision of critical documents?
+
+Bandwidth optimization: Can you verify that document delivery adapts to available bandwidth so field teams on cellular can access plans without excessive wait times?
+
+Search and retrieval: Can you evaluate whether documents can be found by project, type, revision, trade, and date range in under 5 seconds?
+
+Storage scalability: Can you assess whether the document storage architecture handles the volume of a 3-year commercial project with thousands of documents?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Delivering full-resolution 200MB PDFs to every field worker's phone. Use tiled rendering and resolution-appropriate delivery so workers see what they need without downloading the entire file. Not tracking plan revision distribution. If 3 of 15 subcontractors are working from Revision 2 while everyone else has Revision 3, the rework costs are enormous. Track who has accessed each revision. Storing construction photos without metadata. A photo without project, date, and location metadata is unfindable in a folder of thousands. Require structured tagging at capture time. Requiring WiFi for document access. Job sites often have no WiFi. If your platform requires connectivity to view plans, field teams will photograph printed plans on their phones instead of using your app. Not version-locking documents referenced by RFIs and submittals. When an RFI references Drawing S-201 Rev 2, that reference must always point to Rev 2—even after Rev 3 is issued. Referenced documents are frozen at the revision current when the reference was made. Hosting documents on a single server without CDN distribution. Construction companies operate across geographic regions. A document server in Virginia serving a job site in Montana adds unnecessary latency to every download.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Does your system track blueprint revisions with clear current-version indicators visible to all project participants? Can field teams view large blueprint PDFs on mobile without downloading the entire file? Are critical documents like current plan sets available offline? Do construction photos include metadata for project, date, GPS location, and trade? Does the system track who has received and viewed the latest revision of issued documents? Can documents be found by project, type, revision, and date range in under 5 seconds? Does document delivery adapt to bandwidth conditions for field teams on cellular connections?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my construction document delivery system and check the following. For each one, tell me pass or fail with a specific example: Version control: Does the system track revisions and identify the current version? Large file delivery: Can large PDFs be viewed on mobile without full download? Offline access: Are critical documents available without connectivity? Photo metadata: Do photos include project, date, GPS, and trade tags? Distribution: Is receipt of new revisions tracked for all recipients? Search: Can documents be found by multiple filters in under 5 seconds? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you can answer yes to the self-assessment checklist, you're ready for the Module 6 exam. The best way to prepare: upload a 100MB blueprint PDF and try to view it on your phone over cellular data. Issue a revision and check who received it. Search for a specific document by trade and date. Turn on airplane mode and see what's still accessible. Every delivery gap you find is exactly what the exam tests.
+
+Certification Pathway
+
+Industry Specialist — Construction: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Blueprint & Document Delivery Exam →

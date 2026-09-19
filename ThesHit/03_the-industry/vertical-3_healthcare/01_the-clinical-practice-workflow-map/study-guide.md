@@ -1,0 +1,94 @@
+# Module 1: The Clinical Practice Workflow Map — Study Guide
+
+## T5 The Industry | Healthcare Practice AI Engineering
+
+This is the study guide. Everything for The Clinical Practice Workflow Map is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module maps the end-to-end operations of a medical practice: how a patient moves from first phone call to follow-up visit, how the front office and back office actually run, and where money enters and exits the building. You will learn to see a practice the way a systems builder sees it, so you know exactly where an AI-directed tool creates leverage and where it just creates noise.
+
+## Why It Matters
+
+Most builders walk into a medical practice and see a waiting room. A builder who has mapped the workflow sees a pipeline: intake, verification, scheduling, the visit itself, documentation, coding, claims, collections, and recall. Every practice, from a two-provider family medicine office to a twelve-provider orthopedic group, runs some version of this pipeline. The practices bleed time and revenue at predictable points. Front desk staff spend hours on phone tag. Claims sit unworked. Patients fall out of follow-up. When you can point at the exact spot in the pipeline where a practice is losing money and say "I can build a tool for that," you stop being a vendor and become an operator. That is the whole game in this vertical. The domain knowledge is the moat, not the code, because you are not writing the code anyway. You are directing AI to build it, and AI builds the right thing only when you can describe the workflow correctly.
+
+## Certification Goal
+
+Passing the Module 1 exam proves you can map the patient journey and revenue cycle of a real medical practice, identify the workflow bottlenecks that matter, and prioritize where an AI-directed build creates the most leverage. It tells a practice administrator you understand their operation before you touch a single tool.
+
+## What You Need to Know
+
+**The patient journey pipeline.** First contact, scheduling, pre-visit intake, check-in, the clinical encounter, checkout, documentation, billing, and follow-up. Every tool you ever build for a practice lives at one of these stages. Learn the sequence cold, because a tool that ignores what happens upstream or downstream of it will be rejected by staff within a week.
+
+**Front office versus back office.** The front office owns patient-facing work: phones, scheduling, check-in, collections at the desk. The back office owns what happens after the visit: coding, claim submission, denial follow-up, payment posting. Different staff, different software, different pain. A builder who lumps them together builds tools nobody asked for.
+
+**The revenue cycle.** A practice gets paid through a chain: eligibility check, visit, charge capture, claim submission, payer adjudication, payment posting, patient balance collection. Each handoff is a place where money leaks. Understanding this chain is what separates a builder who supports the practice from one who decorates it.
+
+**Compliance touchpoints.** Certain workflow moments carry regulatory weight: collecting patient information, storing it, transmitting it, and communicating about care. You do not need to be a compliance officer in this module. You need to know which steps are hot so you can flag them, design around them, and dig deeper in Module 4.
+
+**Leverage mapping.** Not every bottleneck deserves a tool. High leverage lives where volume is high, the task is repetitive, and errors are costly: reminders, intake data entry, eligibility checks, recall outreach. Low leverage lives in rare, judgment-heavy work. Your job is to rank the practice's pain by leverage before proposing anything.
+
+**Practice variation by specialty.** A pediatric office lives on vaccine schedules and parent communication. An orthopedic group lives on imaging, referrals, and surgical scheduling. An OB/GYN practice runs recurring visit sequences with hard deadlines. The pipeline is universal, but the pressure points move by specialty, and your discovery process has to find them.
+
+## Your Toolkit
+
+- **Workflow mapping canvas.** A simple swimlane diagram, built by directing AI, that lays out patient, front office, provider, and back office as lanes. This is your discovery deliverable and the artifact you review with the practice manager.
+- **Practice management systems (PMS).** The scheduling and billing backbone of a practice, such as athenahealth, Kareo/Tebra, or DrChrono. You will not replace these. You will build around their gaps.
+- **EHR platforms.** Electronic health record systems like Epic, eClinicalWorks, or Athena Clinicals hold the clinical chart. Know the difference between the EHR and the PMS, because practices use the terms loosely and your tools must not.
+- **AI discovery interviews.** Structured prompts you use to turn a rambling conversation with an office manager into a ranked bottleneck list. Direct AI to synthesize interview notes into the workflow map instead of drafting it by hand.
+
+## Exam Topics
+
+The Module 1 exam will test you on:
+
+1. Sequencing the patient journey from first contact through follow-up
+2. Distinguishing front office work from back office work and who owns what
+3. The revenue cycle chain and where practices commonly leak money
+4. Identifying high-leverage automation targets versus low-leverage ones
+5. How workflow pressure points shift across specialties like pediatrics, orthopedics, and OB/GYN
+6. Recognizing compliance-sensitive touchpoints in a workflow map
+7. Running discovery with practice staff and ranking bottlenecks by impact
+8. Reading a practice scenario and locating the true bottleneck rather than the loudest complaint
+
+## Common Pitfalls
+
+- **Building for the loudest complaint.** The front desk complains about the phones, but the real leak is unworked claims. Map first, build second.
+- **Ignoring the downstream step.** An intake tool that captures data nobody imports into the PMS just moved the typing to a different desk.
+- **Treating every practice as identical.** A tool tuned for family medicine volume will miss the referral-heavy rhythm of a specialty clinic.
+- **Confusing the EHR with the PMS.** Proposing a tool that "connects to the EHR" when the workflow actually lives in the scheduling system erodes trust instantly.
+- **Skipping the staff walkthrough.** The office manager's description and the front desk's reality often disagree. Watch the work happen before you map it.
+- **Proposing automation for judgment calls.** Clinical decisions and edge-case billing disputes are not automation targets. Aim at the repetitive volume.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- Can I name every stage of the patient journey in order, from first contact to follow-up?
+- Can I explain the difference between front office and back office work to a non-healthcare friend?
+- Can I walk through the revenue cycle and point at three places practices commonly lose money?
+- Can I rank three bottlenecks by leverage using volume, repetitiveness, and cost of error?
+- Can I describe how a pediatric office and an orthopedic group differ operationally?
+- Can I identify which steps in a workflow map touch protected patient information?
+- Could I sit with a practice manager tomorrow and leave with a credible workflow map?
+
+## AI Audit Prompt Template
+
+Use this prompt to audit your workflow map before presenting it to a practice:
+
+> "You are a medical practice operations consultant. Here is my workflow map for a [specialty] practice with [N] providers: [paste map]. Audit it. Identify any missing stages in the patient journey, any front office or back office handoffs I skipped, any revenue cycle steps I glossed over, and any compliance-sensitive touchpoints I failed to flag. Then rank my proposed automation targets by leverage, using volume, repetitiveness, and cost of error. Tell me which one target you would build first and why."
+
+## What's Next
+
+Module 2 takes the first stage of the map and goes deep: patient intake and forms. You will direct AI to build digital intake systems that capture demographics, history, insurance, and consent before the patient ever reaches the front desk. The workflow map you built here tells you exactly where that intake data has to land.
+
+## Certification Pathway
+
+This module is the foundation of the Healthcare Practice AI Engineering course, the third vertical in T5 The Industry. Pass all seven module exams to earn the Healthcare AI Specialist badge. Behind you sits T1 The Foundation. Ahead sit six modules that each build one piece of the Practice Admin Toolkit you will ship in Module 7.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the The Clinical Practice Workflow Map Exam →

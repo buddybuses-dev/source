@@ -1,0 +1,83 @@
+Module 7: Ship: Production Context System — Study Guide
+
+Context Engineering
+
+T8 The Frontier | Module 7 Study Guide
+
+Ship: Production Context System
+
+"Direct AI to build the complete context system: retrieval, memory, assembly, and monitoring, shipped as infrastructure."
+
+Why This Matters
+
+Six modules gave you components; clients pay for systems. A production context system is the difference between a clever demo and infrastructure a business runs on, and it is the qualification that separates Frontier builders from prompt hobbyists. This capstone is where you assemble, test, and monitor the whole thing on a real application.
+
+Core Concepts
+
+The four-part architecture. A complete context system has a retrieval pipeline (indexing, search, re-ranking from Module 3), memory management (compression, profiles, recall from Module 4), dynamic assembly (classification, recipes, tool injection from Module 5), and quality monitoring (logging, metrics, audits from Module 6), all laid out on the window architecture from Module 2. Remove any part and a predictable failure class returns.
+
+Context systems are infrastructure. Infrastructure means versioned, tested, monitored, and boring. Recipes and prompts live in version control; changes go through tests before production; behavior is observable from logs and dashboards. The standard is not "it worked when I tried it" but "I can prove it still works."
+
+Three test families. Regression tests for retrieval quality: the Module 3 test set, grown with every fixed bug, re-run on every change so quality cannot silently slip. Boundary tests for window limits: oversized documents, marathon conversations, maximum-recipe queries, verifying budgets hold and truncation follows priority rather than luck. Adversarial tests for context pollution: hostile or junk content inside retrieved documents and user input, verifying injected text is treated as data and instructions in documents are not obeyed.
+
+Production monitoring. Three signal families tell you the system's health. Context size trends: per-layer token counts over time, where creep predicts displacement failures weeks early. Retrieval hit rates: how often searches return above-threshold results, where a falling rate means drift in documents or queries. Output quality correlation: tie complaints, corrections, and ratings back to logged windows, so quality problems point at the layer that caused them.
+
+Ship criteria, not vibes. The capstone is done when defined checks pass: every test family green, logging keyed by request ID, dashboards live, budgets enforced, and a written runbook for the failure families. A system that merely demos well is not shipped.
+
+How It Works
+
+Build in sequence, testing each stage before the next. First the skeleton: window layout, budgets, logging from day one. Second, retrieval: index real documents, build the test set, tune until precision and recall clear your bar. Third, memory: compression thresholds, profile schema, recall rules, dated entries. Fourth, assembly: classify real query types, define recipes, wire tools, unit test the assembler. Fifth, the test suite: regression, boundary, adversarial, wired to run on every change. Sixth, monitoring: dashboards for size trends and hit rates, quality tied to request IDs. Then a soft launch with real users and daily log review before you call it shipped.
+
+Directing AI
+
+"Scaffold the four-part context system for this application: retrieval, memory, assembly, monitoring, with the window layout and per-layer budgets defined in one config file."
+"Build the regression suite from our retrieval test set and wire it to run on every change to chunking, embeddings, or recipes, failing loudly on any metric drop."
+"Write boundary tests that feed the system an oversized document, a 200-message conversation, and a max-recipe query, and assert budgets hold and truncation follows priority."
+"Write adversarial tests that plant instruction-like text inside retrieved documents and verify the model treats it as quoted data rather than obeying it."
+"Stand up a monitoring dashboard: per-layer context size trends, retrieval hit rate, and flagged outputs linked to their logged windows by request ID."
+
+Common Mistakes
+
+Shipping the demo: it answered ten questions nicely once, so it must be done.
+Testing components separately but never the assembled system, where the real failures live.
+Skipping adversarial tests because your documents are trusted today.
+Monitoring only uptime and cost while context size creeps toward displacement failures.
+Editing prompts and recipes directly in production with no version control and no test gate.
+Treating launch as the finish line instead of the start of monitoring and iteration.
+
+Real-World Application
+
+A builder lands a contract to deliver a knowledge assistant for a 40-person accounting firm. Instead of a heroic week of prompting, the builder runs the capstone sequence: skeleton with logging, retrieval over the firm's procedures with a 30-question test set, dated memory for client context, three assembly recipes for the query types the partners actually send, then the full test suite. The adversarial tests catch something real: text inside one imported document reads like instructions, and the early build obeys it. The fix ships before launch, not after an incident. Two weeks in, the dashboard shows history creep in long threads; compression thresholds get tuned before anyone notices quality dip. At the quarterly review the builder shows hit rates and resolved-flag stats instead of anecdotes, and walks out with a retainer and two referrals.
+
+Decision Framework
+
+Wondering if the system is complete? Check the four parts; a missing part is a failure class waiting.
+Deciding what to build first? Skeleton and logging, then retrieval, memory, assembly, tests, monitoring.
+Change touches chunking, recipes, or prompts? It goes through the regression suite first, no exceptions.
+Sizing the test effort? One suite per family: regression for quality, boundary for limits, adversarial for pollution.
+Choosing launch readiness? Written criteria pass, dashboards live, runbook exists; vibes do not count.
+Post-launch attention? Watch size trends and hit rates weekly; investigate drift before users report it.
+
+Tool and Platform Notes
+
+The Module 3 stack (pgvector or Pinecone, current embedding models) and Module 6 tracing (Langfuse, LangSmith, or JSONL logs) carry into production unchanged. Add pytest for the three test families, GitHub Actions to gate changes on the regression suite, and a simple dashboard: Grafana or Metabase over your logs is plenty. Boring, proven tools; the novelty budget was spent on the context design.
+
+Key Takeaways
+
+A complete context system is retrieval, memory, assembly, and monitoring on one designed window layout.
+Infrastructure standards apply: version control, test gates, observability, runbooks.
+Test all three families: regression for quality, boundary for limits, adversarial for pollution.
+Monitor size trends, hit rates, and quality correlation; drift announces itself early to those watching.
+Shipped means criteria pass and monitoring is live, not that the demo went well.
+
+What's Next
+
+This completes Context Engineering. You now hold the discipline that everything downstream builds on: Agent Memory Systems, RAG Systems, Structured Output, and Semantic Search all assume a builder who can design and debug the window. Take the exam, claim the badge, and bring a real project to the next course.
+
+Exam Prep Notes
+
+Expect scenario questions on sequencing the build, matching test families to the failures they catch, and reading monitoring signals like size creep and falling hit rates. Know the four architecture parts, what each test family proves, and what separates shipped infrastructure from a working demo.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

@@ -1,0 +1,89 @@
+# Module 3: The Client Delivery Playbook — Study Guide
+
+## What This Module Covers
+
+This module covers everything between "we have a deal" and "the client is delighted and paid in full": the statement of work, the kickoff meeting, milestone delivery, client communication, change control, and the final handoff. Winning the client was Module 1. Pricing the work was Module 2. This is the part where you actually keep the promise.
+
+Here's your real situation: your build speed is not your risk. You can direct AI to ship working software faster than any agency the client has ever hired. Your risk is everything around the build: scope that was never written down, feedback arriving from five directions, a client who remembers the deal differently than you do, and a handoff that leaves them confused. Delivery failures are almost never technical. They're process failures.
+
+You'll direct AI to run the process machinery: drafting the SOW, generating kickoff agendas and same-day recaps, writing status updates, maintaining the feedback log, and producing handoff documentation. Your job is to make the judgment calls, hold the boundaries, and stay the accountable voice the client trusts. AI keeps the paper trail. You keep the promise.
+
+## Why It Matters
+
+Delivery is where reputations are built or burned. One chaotic engagement produces a client who pays late, refers nobody, and describes you with a shrug. One clean engagement produces a testimonial, a case study, and the next two clients. Same build quality, completely different business outcomes. The difference is never the software. It's whether the client felt informed, respected, and safe the entire way through.
+
+AI tools are excellent at producing the delivery artifacts: scope documents, meeting recaps, status updates, and handoff guides in minutes instead of hours. They're terrible at deciding when a slipped deadline needs a hard conversation, whether a feedback comment is a revision or new scope, and how to tell a client no while keeping the relationship warm. Those decisions are yours. This module teaches you what to direct, what to document, and where to hold the line.
+
+## Module Certification Goal
+
+You can direct AI to produce a complete statement of work with explicit exclusions and acceptance criteria, run an engagement on a predictable rhythm of milestones, updates, and documented decisions, and close it with a handoff that leaves the client trained, paid up, and ready to refer you.
+
+## What You Need to Know
+
+- **The SOW is the engagement's constitution, and AI drafts it:** A statement of work defines in writing what will be delivered, by when, for how much, and under which conditions. Just as important, it states what is explicitly out of scope, so "I assumed that was included" never becomes a dispute. Direct AI to draft your SOW from your discovery notes, then have it brainstorm the exclusions list and the acceptance criteria: the specific, testable conditions that mean a deliverable is done. When memories differ mid-project, the SOW settles it. Anything outside it is priced as new work.
+- **Kickoff sets the rules everyone plays by:** After signature, the kickoff aligns goals, timeline, communication, access needs, and one critical appointment: a single decision maker on the client side whose call is final when stakeholders disagree. Direct AI to generate the kickoff agenda, the access checklist, and the same-day written recap covering timeline, communication plan, and decision owners. That recap, sent within a day, is the difference between a project with rules and a project with vibes.
+- **Milestones make progress visible and feedback cheap:** Deliver in defined milestones instead of one final reveal. Clients see progress early, feedback arrives while it's cheap to act on, and trust builds at every step. The most convincing update is a short demonstration of working software. Direct AI to structure the build into milestone chunks with acceptance criteria per chunk, and record a two-minute demo at each one. Seeing the thing run beats any percentage number.
+- **Communication runs on a cadence the client never has to chase:** A predictable update rhythm covering three things: what shipped, what's next, and anything blocked that needs their action. Direct AI to draft every update from your build notes so the habit costs you five minutes. When a milestone is going to slip, tell the client as soon as you know, with the reason and the recovery plan. They should hear it from you first, never discover it on the deadline. And when the client causes the delay, shift dependent dates and document it visibly, without blame.
+- **Change control keeps enthusiasm from eating the project:** Mid-project requests are welcome, and they're new scope: captured, affirmed, priced, and scheduled as additions. Verbal approvals get confirmed in writing with price and timeline impact before you build. Scattered feedback across email, calls, and chat gets consolidated into a single feedback list per review round. Direct AI to maintain that log, draft the change confirmations, and send the same-day recap after every call: decisions made, owners assigned, dates affected. And frame your speed early. Fast delivery without stated boundaries silently becomes the baseline the client expects on every request.
+- **Handoff is where delivered becomes done:** A complete handoff includes credentials transferred, documentation, a live walkthrough of the system, and clarity on what support comes next: a defined window and scope for fixes, with ongoing support as a separate arrangement. Adoption is the real finish line. A system the client can't confidently operate isn't delivered yet. Direct AI to produce the handoff guide, the walkthrough outline, and the closing summary confirming delivery against the SOW, final payment, and next steps.
+
+## Your Toolkit
+
+- **Claude or ChatGPT:** Your delivery office. SOW drafts, kickoff agendas, recaps, status updates, change confirmations, and handoff documentation all run through it.
+- **Notion:** The engagement hub. Scope, milestones, the consolidated feedback log, and every decision live here where both you and the client can see them.
+- **Loom:** Milestone demos and the handoff walkthrough. Two minutes of working software beats two pages of description.
+- **DocuSign or any e-signature tool:** Gets the SOW and change orders signed fast, so agreements exist outside memory before work starts.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+- Can you identify what a statement of work actually does, what it must state beyond deliverables, and how it settles mid-project memory disputes?
+- Can you evaluate what a kickoff meeting establishes, including the single decision maker, and what should exist in writing within a day?
+- Can you assess why milestone delivery beats one final reveal, and what acceptance criteria prevent at the end of each milestone?
+- Can you identify the communication cadence that keeps a relationship healthy, the three things every status update covers, and the most convincing form of progress?
+- Can you handle a slipping milestone, a silent client, and a client-caused delay professionally?
+- Can you route scope changes correctly: written confirmation of verbal approvals, consolidated feedback rounds, and live feature requests captured without committing?
+- Can you evaluate what belongs in a complete handoff, why the walkthrough matters, and what the engagement should say about support?
+- Can you recognize what marks a professionally closed engagement and why delivery should run as a repeatable system?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often at this stage. No judgment, they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam.
+
+- **You start building on a handshake.** The deal felt warm, the scope felt obvious, and writing it down felt like distrust. Three weeks later "obvious" means two different things and there's no document to settle it. The SOW protects the relationship by making expectations explicit while everyone still agrees.
+- **You let every stakeholder's opinion carry equal weight.** Three people give conflicting feedback on the same feature and you try to please all of them. That's not service, it's scope chaos. One decision maker, named at kickoff, whose call is final. Everything else is input.
+- **You go quiet when things go well and quieter when they don't.** The client shouldn't have to ask how the project is going, ever. And a slipping deadline communicated early with a recovery plan builds trust. The same slip discovered on the due date destroys it.
+- **You absorb the third small feature silently.** Each one felt too small to mention, and together they ate a week. Welcome every request and route it through change control: captured, priced, scheduled. Enthusiasm is a buying signal, not an obligation.
+- **You trust the call instead of the recap.** A productive meeting produces five decisions that live in two memories, and memories drift. The same-day written recap with decisions, owners, and dates is the habit that protects every engagement.
+- **You send credentials and call it a handoff.** The client logs in, gets lost, and quietly stops using what you built. An unadopted system is an undelivered system. Walk them through it live, hand over documentation, and state exactly what support comes next.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+- Does your SOW template state deliverables, price, timeline, explicit exclusions, and acceptance criteria?
+- Have you directed AI to build your kickoff agenda, access checklist, and recap template?
+- Do your engagements name a single client-side decision maker before work begins?
+- Is your build structured into milestones with a demo at each one?
+- Do you send updates on a rhythm the client never has to chase, covering shipped, next, and blocked?
+- Do verbal scope changes get confirmed in writing with price and timeline impact before you build them?
+- Does your handoff include documentation, a live walkthrough, and a defined support window?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to get a quick health check on your delivery system. It checks the same things the certification exam covers.
+
+> Review my client delivery process and check the following. For each one, tell me pass or fail with a specific example: Scope: Here is my SOW template [paste it]. Does it state deliverables, price, timeline, explicit exclusions, and testable acceptance criteria? Kickoff: Do I establish a single decision maker, communication plan, and access checklist, confirmed in a written recap within a day? Milestones: Is my delivery structured into defined milestones with working demos, or one final reveal? Communication: Here is my last status update [paste it]. Does it cover what shipped, what's next, and what's blocked? Change control: When scope changes mid-project, do I confirm in writing with price and timeline impact before building? Handoff: Does my closing process include documentation, a live walkthrough, final payment confirmation, and a defined support window? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 3 exam. The best way to prepare: run one engagement, even a small one, through the full playbook. Draft the SOW with AI, hold the kickoff, ship two milestones with demos, and close with a real handoff. Every place the process feels awkward is exactly what the exam tests.
+
+## Certification Pathway
+
+- **Launchpad Specialist — Builder Business Foundations:** Pass all 7 module exams in this course
+- **CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+- **CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush, take the time to build something real first.

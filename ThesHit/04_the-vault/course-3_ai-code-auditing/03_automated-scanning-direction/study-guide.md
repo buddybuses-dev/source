@@ -1,0 +1,87 @@
+# Module 3: Automated Scanning Direction — Study Guide
+
+## Vibecoder Security Audit Method
+
+### T6 The Vault | Module 3 Study Guide
+
+## Module 3: Automated Scanning Direction
+
+> Direct AI to run the scanners, then filter the noise down to what is actually exploitable.
+
+## What This Module Covers
+
+This module covers directing AI to run the automated layer of the audit: choosing the right scanner per layer, executing scans, parsing raw output into usable findings, filtering false positives, and assembling a repeatable scanning pipeline for the mechanical checks.
+
+## Why It Matters
+
+Automated scanning is where the audit gets its speed and its floor. Machines are better than humans at exhaustively checking dependencies, grepping for secrets, and testing header configurations; humans directing machines are better than either alone. The $200 rapid audit is economically possible because the mechanical layer is automated: scanners do in minutes what manual review does in days. But scanners without direction produce noise, hundreds of findings where twelve matter, and unfiltered scanner output dumped on a client is malpractice by volume. The skill is direction: right tool, right scope, parsed output, filtered signal.
+
+## Certification Goal
+
+Passing this exam proves you can match scanners to layers, direct AI to run and parse them, distinguish true findings from false positives, and assemble the results into a pipeline that runs the same way every audit.
+
+## What You Need to Know
+
+**1. Dependency scanners: npm audit, Snyk, Dependabot.** Every modern codebase stands on hundreds of packages, and known vulnerabilities in those packages are documented publicly, which means attackers have the same list you do. Dependency scanners compare the project's manifest against vulnerability databases. Reading them well means attending to severity, whether a fix version exists, and whether the vulnerable path is actually reachable in this app. A critical CVE in a package the code never invokes is a different conversation than one sitting in the login flow.
+
+**2. Static analysis: Semgrep, ESLint security rules, Bandit.** Static analyzers read source code for dangerous patterns: string-built SQL, unsanitized rendering, weak crypto calls, eval on user input. Semgrep's rule packs make it the workhorse across languages; Bandit covers Python; ESLint security plugins cover JavaScript. These tools shine on exactly the failure class Module 1 established: replicated patterns. One rule match across forty files is pattern replication made visible.
+
+**3. Secret scanners: Gitleaks, TruffleHog.** These scan the repository, including its full history, for API keys, tokens, and credentials. The history point is the one builders miss: a secret committed and later deleted is still in git history, still extractable, and still live if it was never rotated. A secret scanner finding is therefore two findings: the exposure, and the rotation that must follow. Public repositories get scraped by bots within minutes, so history hits on public repos are treated as compromised, full stop.
+
+**4. Header and transport analyzers: SecurityHeaders.com, Mozilla Observatory, SSL/TLS checkers.** These test the deployed application from outside: security headers present and correct, HTTPS configuration, certificate health, protocol versions. They are the fastest wins in the audit, minutes to run, and they check the deployed reality rather than the code's intentions, which frequently differ. A codebase that sets headers in middleware that the hosting platform strips is exactly the gap outside-in scanning catches.
+
+**5. Cloud config auditors: Prowler, ScoutSuite.** For systems on AWS or similar, these tools walk the account against benchmark checklists: IAM policies, public buckets, open security groups, logging configuration. They generate the largest raw output of any scanner class, and the direction discipline matters most here: scope to the services actually in use, and separate "benchmark says" from "this business is exposed."
+
+**6. Parsing, filtering, and the pipeline.** Raw scanner output is not a deliverable. You direct AI to parse results into a common structure, layer, finding, evidence, severity, then filter: deduplicate the same root cause reported by multiple tools, suppress findings for code paths that are unreachable, and downgrade benchmark items that do not apply to the business's threat model. False positive filtering is a judgment call you make with evidence, not a checkbox. The end state is a pipeline: the same scanners, in the same order, with the same parsing, every audit, so results are comparable across time and across clients.
+
+## Your Toolkit
+
+- **npm audit / Snyk / Dependabot**: dependency vulnerability coverage
+- **Semgrep (plus Bandit and ESLint security rules)**: static pattern analysis across the codebase
+- **Gitleaks / TruffleHog**: secrets in working tree and full git history
+- **SecurityHeaders.com, Mozilla Observatory, SSL checkers, Prowler/ScoutSuite**: deployed reality: headers, transport, cloud config
+
+## Exam Topics
+
+1. Matching scanner classes to audit layers
+2. Reading dependency scan results: severity, fix availability, reachability
+3. Static analysis as the detector for replicated patterns
+4. Secret scanning including git history and the rotation obligation
+5. Outside-in scanning of headers, TLS, and deployed configuration
+6. Cloud config auditing and scoping benchmark output
+7. False positive filtering with evidence
+8. Building the repeatable scanning pipeline
+
+## Common Pitfalls
+
+- Dumping raw scanner output into a report and calling it an audit
+- Treating every dependency CVE as equally urgent regardless of reachability
+- Scanning only the working tree for secrets and missing the git history
+- Trusting code-level header configuration without testing the deployed site
+- Running cloud auditors unscoped and drowning in inapplicable benchmark items
+- Suppressing a finding as false positive without recording why
+
+## Self-Assessment Checklist
+
+- For each of the thirteen layers, do I know which scanner class applies, if any?
+- Can I triage a dependency report into fix-now, fix-scheduled, and not-reachable?
+- Does my secret scanning always include history, and does every hit trigger rotation?
+- Do I verify headers and TLS against the deployed application, not the code?
+- Is my false positive filtering documented with reasons?
+- Could I re-run my full pipeline on a new codebase without redesigning it?
+
+## AI Audit Prompt Template
+
+> You are running the automated scanning pass of a 13-layer audit. Execute and report: (1) dependency scan: run the appropriate scanner, list vulnerabilities with severity, fix availability, and whether the vulnerable path is reachable from application code, (2) static analysis: run Semgrep with security rule packs (plus language-appropriate tools), group matches by pattern and list every file per pattern, (3) secret scan: run against working tree and full git history; for each hit, report the secret type, location, and rotation status, (4) deployed checks: test security headers, TLS configuration, and certificate health on the live URL, (5) cloud config (if access provided): run the auditor scoped to services in use. Parse everything into layer / finding / evidence / severity, deduplicate across tools, flag suspected false positives with reasoning, and output the consolidated findings table.
+
+## What's Next
+
+Module 4 covers what the machines cannot see: manual review hotspots, business logic flaws, auth boundaries, and the attacker's mindset that turns a scan into an audit.
+
+## Certification Pathway
+
+This is Module 3 of 7 in the Vibecoder Security Audit Method course, part of T6 The Vault. Passing all seven module exams earns the Code Audit Specialist badge. This module is the mechanical floor the manual pass builds on.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

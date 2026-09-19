@@ -1,0 +1,95 @@
+# Module 03: Multi-Tenant Data Architecture — Study Guide
+
+## Module 3: Database Design & Multi-Tenant Data
+
+**Data Architecture for SaaS Products**
+
+This is the study guide. Everything for Multi-Tenant Data Architecture is on this page — there's nothing to download.
+
+———
+
+## What This Module Covers
+
+This module covers database and storage architecture as it applies specifically to SaaS applications—the tenant isolation patterns, subscription state tables, usage tracking schemas, and data modeling decisions that determine whether your SaaS product can safely serve hundreds of customers from the same database without any of them seeing each other’s data. You already know database fundamentals from the CADE program. This goes deeper into the patterns unique to multi-tenant SaaS: tenant_id columns on every table, Row-Level Security policies that enforce isolation at the database layer, subscription status tracking that feeds your billing system, and usage metering tables that count API calls, storage, and active seats per customer. Your AI coding tool can create database tables in minutes. But if it forgets to add tenant_id to a table, if your RLS policies have a gap, or if your usage tracking misses events—one customer can see another customer’s data, or you’ll bill incorrectly.
+
+## Why It Matters
+
+In a SaaS product, every customer’s data lives in the same database. That’s the whole point—it’s why SaaS scales. But it means one missing WHERE clause, one RLS policy gap, or one tenant_id column that didn’t get added to a new table can expose Customer A’s data to Customer B. In regulated industries, that’s not just embarrassing—it’s a lawsuit. The subscription data model is equally critical. Your database needs to accurately track which plan each customer is on, when their billing period started, whether their payment is current, and how much of their allocation they’ve used. If this data is wrong, customers get features they haven’t paid for—or lose features they have.
+
+## Module Certification Goal
+
+You can describe a multi-tenant data architecture to an AI coding tool, evaluate the output for proper tenant isolation, subscription state management, and usage tracking, and ship a database schema that safely serves multiple customers from a shared database without data leaks or billing inaccuracies.
+
+## What You Need to Know
+
+**Multi-tenant data isolation:** Every table that stores customer-specific data needs a tenant_id column that links records to the owning organization. Every query must filter by tenant_id. Row-Level Security (RLS) at the database layer is the strongest enforcement—it prevents data leaks even if your application code has bugs.
+
+**Subscription state tables:** Your database needs tables that track each customer’s subscription: current plan, billing period start and end, payment status (active, past_due, canceled), and trial expiration date. This data drives plan-gated features, billing logic, and usage limits.
+
+**Usage metering schemas:** If your SaaS charges by usage, you need tables that record every countable event—API calls, storage bytes, active users, messages sent. These records must be timestamped, tenant-scoped, and queryable by billing period so you can report accurate usage to Stripe.
+
+**Shared vs. isolated tenancy:** In shared tenancy, all customers share the same tables with tenant_id filtering. In isolated tenancy, each customer gets their own schema or database. Most SaaS products start shared (simpler, cheaper) and only move to isolated for enterprise customers with compliance requirements.
+
+**Data lifecycle and retention:** When a customer cancels, what happens to their data? Most SaaS products retain data for 30-90 days, then archive or delete it. Your schema needs to support soft deletes (mark as deleted but keep the record) and scheduled purges.
+
+## Your Toolkit
+
+**AI coding tool (pick one):** Cursor, Lovable, Bolt, Claude Code—describe your tables, relationships, and RLS policies to it.
+
+**A database viewer:** Supabase dashboard, pgAdmin, TablePlus, or DBeaver—for visually inspecting your tables, checking data integrity, and verifying RLS policies work.
+
+**Migration tools:** Built into your framework or via a tool like Prisma Migrate. Schema changes should be versioned and reversible—never applied directly to production.
+
+**Seed data scripts:** Scripts that populate your database with test data across multiple tenants, so you can verify isolation before going live.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You’ll see a situation and need to identify what’s right, what’s wrong, or what to do next. Here’s what gets tested:
+
+**Tenant isolation:** Can you evaluate whether every customer-data table includes tenant_id and whether RLS policies enforce isolation at the database layer?
+
+**Subscription data modeling:** Can you assess whether subscription state tables accurately
+
+track plan, billing period, payment status, and trial expiration?
+
+**Usage tracking accuracy:** Can you verify that metering tables capture every countable event with proper timestamps and tenant scope?
+
+**RLS policy gaps:** Can you identify when an RLS policy has a gap that would allow cross-tenant data access?
+
+**Schema migration safety:** Can you evaluate whether schema changes are applied via reversible migrations rather than direct production edits?
+
+**Data retention policies:** Can you assess what happens to customer data after cancellation—is it retained, archived, or immediately deleted?
+
+**Indexing for multi-tenant queries:** Can you identify when queries filtering by tenant_id need composite indexes to avoid full table scans as data grows?
+
+**Seed data testing:** Can you evaluate whether test data spans multiple tenants to verify isolation before real customers use the system?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they’re easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Forgetting to add tenant_id to a new table. Every table that stores customer data needs this column. If one table is missing it, that table’s data is accessible to everyone—or inaccessible to anyone, depending on how your queries work. Relying on application-level filtering instead of database-level RLS. Application code can have bugs. A forgotten WHERE clause can leak data. RLS policies enforced by the database engine catch what your code misses. Storing subscription status only in Stripe and not in your own database. If Stripe is down, your app can’t check who’s a paying customer. Keep a local copy of subscription state and sync it via webhooks. Not testing with multiple tenants. Your app works fine with one test account. Add a second tenant and suddenly data leaks or queries return the wrong results. Running schema migrations directly on production without testing on staging first. One wrong column drop and you’ve lost real customer data permanently. Not indexing tenant_id columns. Without indexes, every query that filters by tenant_id scans the entire table—which gets slow fast as you add customers.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every “no” is something to work on. Does every table that stores customer-specific data include a tenant_id column? Are Row-Level Security policies enabled and configured to enforce tenant isolation at the database layer? Does your database track subscription status locally (not just in Stripe)? Have you tested your app with at least two tenant accounts to verify data isolation? Are schema changes applied via versioned, reversible migrations? Do you have a plan for what happens to customer data after cancellation? Are tenant_id columns indexed for query performance?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+> Review my SaaS application’s database schema and check the following. For each one, tell me pass or fail with a specific example: Tenant isolation: Does every customer-data table include a tenant_id column with Row-Level Security policies enabled? Subscription tracking: Does the database store subscription plan, status, billing period, and trial expiration locally? Usage metering: Are countable events (API calls, storage, seats) tracked with proper timestamps and tenant scope? Indexing: Are tenant_id columns and frequently queried fields properly indexed? Migrations: Are schema changes managed through versioned migration files? Data retention: Is there a policy for handling customer data after cancellation? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What’s Next
+
+Once you can answer “yes” to the self-assessment checklist, you’re ready for the Module 3 exam. The best way to prepare: set up a database with two test tenants. Add data for both. Verify that Tenant A cannot see Tenant B’s data. Try removing the RLS policy and see what happens. Add a subscription status table and track a customer through trial → active → canceled. Every isolation gap you find during testing is exactly what the exam tests.
+
+### Certification Pathway
+
+**Platform Specialist — SaaS Build:** Pass all 7 module exams in this course
+
+**CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+
+**CADE Distinguished:** CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the Multi-Tenant Data Architecture Exam →

@@ -1,0 +1,102 @@
+﻿Module 6: When To Bring In Professionals — Study Guide
+
+Compliance Foundations for Builders
+
+T6 The Vault | Module 6 Study Guide
+
+Direct AI to map which regulations apply to any build before shipping it.
+
+What This Module Covers
+
+Everything in this course so far has trained you to build the map: which regulations exist (M1), which apply to your build (M2), where your data can live (M3), which industries flip the risk switch (M4). This module answers the question that map raises: where does your job end and a lawyer's job begin? You are a builder, not counsel, and pretending otherwise is how builders in The Faction get themselves and their clients into real trouble.
+
+You will learn the signals that mean it is time to bring in a professional, and the skill most builders never develop: briefing a lawyer efficiently, so a one-hour consult produces answers instead of burning the session explaining what an API is. You will also learn the economics: what review costs, what getting it wrong costs, and why building a counsel relationship before you urgently need one is the cheapest insurance a builder can buy.
+
+Why It Matters
+
+Think back to the builder who shipped a scheduling app for dentists without knowing HIPAA existed. The mistake was not ignorance of a statute. It was never asking whether anyone with a license should look at the build before launch. A two-hour consult would have flagged it for a few hundred dollars. Instead: potential breach notification, a furious dental practice, a dead reputation in that niche. Same story for the founder who launched in the EU without GDPR review and the vibebuilder who wired up payments without understanding PCI scope.
+
+Knowing when you are out of your depth is a professional skill, and it is the one clients quietly judge you on. A builder who says "this touches health data, I want counsel to review the data flow before we ship" looks more credible, not less. This module gives you the trigger list, the briefing method, and the cost logic to make that call with confidence.
+
+Certification Goal
+
+Passing this module's exam proves you can recognize the signals that require professional legal counsel, prepare a technical brief that makes a lawyer's time count, and articulate the cost tradeoff between legal review and shipping unreviewed. It certifies boundary judgment, not legal knowledge: you know when to hand off.
+
+What You Need to Know
+
+The Builder's Scope vs the Lawyer's Scope
+
+Your scope is identification and preparation: mapping which regulations plausibly apply, documenting data flows, flagging open questions. The lawyer's scope is interpretation and judgment: what the law requires in your situation, how much risk an approach carries, what goes in your contracts and policies. Never present your regulatory map as a compliance verdict. It tells you where to point counsel, not whether you are compliant.
+
+The Escalation Signals
+
+Seven triggers make professional review automatic: operating in a regulated industry, processing sensitive data categories (biometrics, children's data, precise location), moving data across international borders, contracting with government entities, hosting user-generated content at scale, adding fintech features (payments, lending, stored value, crypto), or touching health data in any form. Hit even one and counsel review moves from optional to necessary before launch.
+
+One Signal Is Enough
+
+Builders often wait for multiple red flags before calling a lawyer, reasoning that "it's just one thing." That logic is backwards. A single trigger, like storing patient appointment notes or processing EU user data, can carry the full weight of a regulatory regime. Severity scales with what the worst signal exposes you to, not how many you count.
+
+The Efficient Brief
+
+Lawyers bill by time, and the most expensive part of any engagement is educating them about your system. Cut that cost by arriving with a technical brief: what the product does, who uses it, a plain-language architecture summary, every data category collected, where each is stored, which third parties receive it, and your open questions. Counsel who gets this in advance spends the hour giving answers instead of asking questions.
+
+The Cost Math
+
+A startup-stage review runs from a few hundred dollars for a scoped consult to a few thousand for a full data-practices review. The other side of the ledger: GDPR fines in the millions, HIPAA penalties per violation, breach notification costs, contract termination, and unbillable weeks rebuilding a product that should have been structured right the first time. Legal review is the cheapest line item in your risk budget.
+
+Relationship Before Emergency
+
+The worst time to find a lawyer is the day you receive a demand letter or discover a breach. Establish a relationship early with an intro call or a small scoped engagement, so when something urgent happens you are an existing client calling someone who knows your product. Existing clients get callbacks in hours. Strangers wait weeks.
+
+Your Toolkit
+
+The Escalation Trigger List: A checklist of the seven signals (regulated industry, sensitive data, cross-border transfers, government contracts, UGC at scale, fintech, health data) run against every build before shipping.
+The Counsel Brief Template: A one-to-two page document covering product purpose, user base, architecture, data inventory, third-party processors, and numbered open questions. Built once, reused every engagement.
+The Cost-of-Wrong Ledger: A two-column comparison: cost of scoped legal review on one side, realistic downside exposure (fines, breach costs, lost contracts, rebuild time) on the other.
+The Counsel Rolodex: At least one vetted tech-savvy attorney contact established before you urgently need one, sourced through founder communities or other builders in The Faction.
+
+Exam Topics
+
+The builder's scope (identify, document, flag) versus the lawyer's scope (interpret, judge, draft)
+The seven escalation signals that indicate legal counsel is needed
+Why a single escalation signal is sufficient to require review
+The components of an efficient technical brief for legal counsel
+What architecture and data flow information a lawyer needs before a consult
+Comparing the cost of legal review against the cost of getting it wrong
+Why establishing a counsel relationship before an emergency changes response time and outcomes
+Why a builder must never present a regulatory map as a compliance determination
+
+Common Pitfalls
+
+Waiting for a problem to find a lawyer: Emergency engagements cost more, move slower, and start with counsel who knows nothing about your system, exactly when speed matters most.
+Walking into a consult unprepared: You pay hourly rates for the lawyer to interview you about your own product. An unprepared hour buys almost no advice.
+Treating your AI-generated map as legal clearance: The map is a research artifact that directs review. Telling a client "we're compliant" based on it exposes you to liability you cannot cover.
+Assuming small scale means low risk: Regulators do not check your MRR. A ten-user app handling health data carries the same categorical obligations as a large one.
+Shopping purely on price: A generalist attorney reviewing your data architecture can be worse than no review, because it produces false confidence. You need technology and privacy experience.
+Hiding the messy parts from counsel: Omitting the sketchy analytics script means the advice does not cover your actual system. Lawyers are bound by confidentiality; give them the real picture.
+
+Self-Assessment Checklist
+
+I can name the seven escalation signals that mean a build needs legal review
+I can explain where my scope ends and a lawyer's scope begins
+I can prepare a brief covering architecture, data flows, user base, and open questions
+I can explain why one escalation signal is enough to trigger review
+I can walk a client through review cost versus the cost of getting it wrong
+I can describe how to establish a counsel relationship before an emergency
+I can explain why I never tell a client "you're compliant" based on my own research
+
+AI Audit Prompt Template
+
+Direct your AI to turn your project context into a counsel-ready brief with this prompt.
+
+You are helping me prepare a technical brief for a legal consultation. I am a builder, not a lawyer, and I need this brief to make a one-hour consult as efficient as possible. Using my project details below, produce a brief with these sections: 1. PRODUCT SUMMARY: What the product does and its business model, in plain language a non-technical reader can follow. 2. USER BASE: Who uses it, where they are located, approximate scale, and whether any users could be minors, patients, or government personnel. 3. ARCHITECTURE OVERVIEW: Hosting provider and regions, major services and third-party APIs, and authentication method. High level, no jargon. 4. DATA INVENTORY: Every category of data collected, where each is stored, retention period, who it is shared with, and which categories may be sensitive (health, financial, biometric, children's, location). 5. DATA FLOW NARRATIVE: Trace one typical user's data from signup to deletion, including every third party that touches it. 6. REGULATORY FLAGS: List the regulations that plausibly apply and why. Label this section "for counsel review, not conclusions." 7. OPEN QUESTIONS FOR COUNSEL: Numbered questions I need answered, ordered by launch-blocking priority. Flag anything incomplete or contradictory before finalizing. Do not offer legal conclusions anywhere in the brief. My project details: [PASTE ARCHITECTURE NOTES, DATA INVENTORY, USER INFO, AND YOUR REGULATORY MAP FROM MODULES 2 THROUGH 4]
+
+What's Next
+
+Module 7 is the capstone: Ship: Compliance Map For Your Product. You will take everything from M1 through M6 and direct your AI to produce a complete compliance map for a real build. That map, with its "bring in counsel here" flags, is your ship deliverable for certification.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent (20 of 25 questions) to earn the Module 6 badge. Pass all seven module exams to earn the Compliance Foundations Specialist badge, certifying you can direct AI to map which regulations apply to any build before shipping it.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

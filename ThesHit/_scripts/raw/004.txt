@@ -1,0 +1,159 @@
+[get_page_text] Title: Module 05: SaaS Deployment Pipelines — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-05-saas-deployment-pipelines-study-guide
+Source element: <body>
+---
+You Learned the Framework. Now Build What Ships.
+Module 1 — Dashboard & Data Layer
+Module 2 — Payments & Billing Engine
+Module 3 — Multi-Tenant Architecture
+Module 4 — Access Control & Permissions
+Module 5 — Deployment & Infrastructure
+Module 6 — Usage Metering & Analytics
+Module 7 — Monitoring & Observability
+Module 07: Production Monitoring for SaaS — Study Guide
+Module 07: Production Monitoring for SaaS — Exam
+Module 1: Data Modeling Fundamentals
+Module 2: Relationships and Normalization Decisions
+Module 3: Indexes and Query Performance
+Module 4: Migrations Without Downtime
+Module 5: Seeding, Backups and Restores
+Module 6: Scaling and Read Replicas
+Module 7: Ship: Production Database
+Module 1: Auth Architecture and Session Models
+Module 2: Email, Password and Magic Links
+Module 3: Social and SSO Logins
+Module 4: Roles, Permissions and Teams
+Module 5: Two-Factor and Account Security
+Module 6: Password Reset and Edge Cases
+Module 7: Ship: Production Auth
+Module 1 — Next.js Architecture and Routing
+Module 2 — Server and Client Components
+Module 3 — Data Fetching and Caching
+Module 4 — API Routes and Server Actions
+Module 5 — SEO Metadata and Performance
+Module 6 — Vercel Deployment and Environments
+Module 7 — Ship: Production Next.js App
+Module 1 — Supabase Architecture and Project Setup
+Module 2 — Postgres Tables and Relationships
+Module 3 — Row-Level Security Policies
+Module 4 — Auth and User Management
+Module 5 — Storage Realtime and Edge Functions
+Module 6 — Backups and Environments
+Module 7 — Ship: Production Backend
+Module 1: Stripe Payment Architecture and Account Setup
+Module 2: One-Time Checkout Flows
+Module 3: Subscriptions and Billing Portal
+Module 4: Webhooks and Payment State
+Module 5: Invoices, Taxes and Receipts
+Module 6: Failed Payments and Dunning
+Module 7: Ship: Live Payment System
+Module 1: API Architecture and Endpoint Design
+Module 2: Auth Keys and Rate Limiting
+Module 3: Documentation and Developer Experience
+Module 4: Usage Metering and Billing
+Module 5: Versioning and Error Design
+Module 6: Monitoring and Uptime
+Module 7: Ship: Live API Product
+Module 05: SaaS Deployment Pipelines — Study Guide
+Module 5: CI/CD & Deployment
+
+Ship and Scale for SaaS Products
+
+This is the study guide. Everything for SaaS Deployment Pipelines is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers CI/CD and deployment workflows as they apply specifically to SaaS applications—the deployment pipelines, feature flags, staged rollouts, and zero-downtime deploy strategies that let you ship new features to paying customers without breaking what they’re already using. You already know CI/CD fundamentals from the CADE program. This goes deeper into SaaS-specific patterns: feature flags that let you ship code without activating it, canary deploys that roll features to 5% of customers before everyone, migration-safe deploys that change database schemas without downtime, and the critical difference between deploying a side project and deploying a product that paying customers rely on.
+
+Why It Matters
+
+When customers pay monthly, downtime costs you real money—not just revenue, but trust. A customer who sees ‘App is temporarily unavailable’ during business hours starts looking at competitors. A customer who loses data during a deploy cancels. SaaS deploys happen constantly. You’re not shipping once and walking away—you’re shipping weekly, sometimes daily. Your deployment pipeline needs to be reliable, reversible, and fast. Feature flags let you separate deployment from release—you can ship code to production without activating it until you’re ready.
+
+Module Certification Goal
+
+You can describe deployment pipelines, feature flag strategies, and rollback procedures to an AI coding tool, evaluate the output for zero-downtime safety and staged rollout capability, and ship updates to a live SaaS product without breaking the experience for paying customers.
+
+What You Need to Know
+
+Zero-downtime deployments: Your app should never go offline during a deploy. Hosting platforms like Vercel and Railway handle this automatically for frontend deploys. Backend and database changes need more care—you can’t drop a database column that live code is still reading.
+
+Feature flags: Feature flags let you ship code to production but only activate it for specific users or a percentage of traffic. You can test new features with internal users, then roll them out to 10%, then 50%, then everyone. If something breaks, you flip the flag off instead of rolling back the entire deploy.
+
+Staged rollouts and canary deploys: A canary deploy sends the new version to a small group first. If metrics stay healthy, it rolls out to everyone. If errors spike, it rolls back automatically. This catches production-only bugs that don’t show up in staging.
+
+Database migration safety: In SaaS, database schema changes must be backward-compatible. You can’t rename a column while live code is still reading the old name. The safe pattern is: add the new column, deploy code that writes to both, migrate data, deploy code that reads from the new column, then remove the old one.
+
+Environment management per tier: SaaS products often need different configurations for different customer tiers. Enterprise customers might have dedicated infrastructure, different rate limits, or region-specific deployments. Your deployment pipeline needs to handle these variations.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your deployment workflows, feature flags, and rollback procedures to it.
+
+Hosting platform with preview deploys: Vercel, Netlify, Railway, or Render. Preview deployments let your team test changes before they go live.
+
+Feature flag service: LaunchDarkly, Flagsmith, PostHog, or a simple database-backed flag system. This lets you control feature visibility without redeploying.
+
+CI/CD pipeline: GitHub Actions, GitLab CI, or your hosting platform’s built-in pipeline. Automated tests should run before every production deploy.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You’ll see a situation and need to identify what’s right, what’s wrong, or what to do next. Here’s what gets tested:
+
+Zero-downtime strategy: Can you evaluate whether a deployment pipeline ensures no downtime during updates?
+
+Feature flag implementation: Can you assess whether feature flags are properly gated by user,
+
+plan tier, or percentage—and whether they can be toggled without redeploying?
+
+Rollback readiness: Can you verify that a failed deploy can be reverted within minutes, and that the rollback procedure has actually been tested?
+
+Database migration safety: Can you identify when a schema change would break live code—like dropping a column that’s still being read?
+
+Staged rollout evaluation: Can you assess whether a canary deploy setup actually catches errors before full rollout?
+
+Environment separation: Can you verify that staging and production use separate databases, API keys, and third-party service credentials?
+
+Deploy monitoring: Can you evaluate whether the team gets notified when a deploy succeeds or fails, and whether post-deploy health checks run automatically?
+
+Pipeline security: Can you identify when secrets are exposed in CI logs, build scripts, or deploy configurations?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they’re easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Deploying database schema changes and code changes in the same step. If the code deploy fails, the schema change is already applied and can’t be easily rolled back. Ship them separately—schema first, code second. Not testing rollbacks. Everyone has a rollback plan. Almost nobody has tested it. When your production deploy fails at 2am, you don’t want to be figuring out rollback for the first time. Shipping features without flags. Once code is live, it’s live for everyone. Feature flags let you control who sees what without redeploying—and if something breaks, you flip a switch instead of panic-deploying a fix. Using the same environment variables for staging and production. One wrong variable and your staging environment is writing to your production database—or your production environment is sending test emails to real customers. No post-deploy health checks. Your deploy succeeded according to the pipeline. But is the app actually working? Automated health checks should verify core functionality immediately after every deploy. Deploying on Fridays. SaaS customers use your product on weekends too. If a Friday deploy breaks something, you won’t know until Monday—unless you have monitoring.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every “no” is something to work on. Can your app be deployed without any downtime for existing users? Do you use feature flags to control new feature visibility without redeploying? Can you roll back to the previous version within minutes if a deploy breaks something? Have you actually tested your rollback procedure—not just documented it? Are your staging and production environments using completely separate credentials? Does your team get notified when deploys succeed or fail? Do automated health checks run after every production deploy?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+Review my SaaS deployment pipeline and check the following. For each one, tell me pass or fail with a specific example: Zero downtime: Can the app be deployed without any interruption to active users? Feature flags: Are new features gated behind flags that can be toggled without redeploying? Rollback: Can the previous version be restored within minutes, and has this been tested? Environment separation: Are staging and production using separate databases, API keys, and third-party credentials? Health checks: Do automated checks verify core functionality after every deploy? Deploy notifications: Does the team get alerted when deploys succeed or fail? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What’s Next
+
+Once you can answer “yes” to the self-assessment checklist, you’re ready for the Module 5 exam. The best way to prepare: set up a real deployment pipeline. Configure preview deploys for pull requests, add a post-deploy health check, implement one feature flag, and test a rollback. Every gap in your pipeline that you discover during setup is exactly what the exam tests.
+
+Certification Pathway
+
+Platform Specialist — SaaS Build: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the SaaS Deployment Pipelines Exam →
+
+Ready to move on to the next Lesson?
+Mark as Complete
+Previous
+Module 5 — Deployment & Infrastructure
+Next
+Module 05: SaaS Deployment Pipelines — Exam
+
+Module 5 — Deployment & Infrastructure
+Module 05: SaaS Deployment Pipelines — Study Guide
+Loading...

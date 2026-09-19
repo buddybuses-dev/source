@@ -1,0 +1,95 @@
+# Module 2: Estimating & Bidding APIs — Study Guide
+
+## Module 2: Estimating & Bidding APIs
+
+APIs & Backend Logic for Construction Technology
+
+This is the study guide. Everything for Estimating & Bidding APIs is on this page — there's nothing to download.
+
+———
+
+## What This Module Covers
+
+This module covers APIs and backend logic as they apply specifically to construction technology—the estimate generation systems, bid submission workflows, subcontractor pricing integrations, material cost lookups, and change order processing that power the financial backbone of every construction project. Construction runs on estimates and bids. A general contractor wins work by submitting competitive bids. Those bids are built from estimates—quantities of materials, labor hours by trade, equipment rental rates, subcontractor quotes, and markup calculations. The accuracy of the estimate determines whether the project makes money or loses it. Your AI coding tool can build APIs quickly. But construction estimating has unique complexity: unit cost databases with regional pricing, quantity takeoff calculations from blueprints, subcontractor bid leveling (comparing quotes from multiple subs for the same scope), change order workflows that require owner approval and contract amendment, and progress billing tied to completed milestones.
+
+## Why It Matters
+
+A 2% estimating error on a $10 million project is $200,000—the difference between profit and loss. Construction companies live and die on estimate accuracy. An API that pulls material costs from a stale database, calculates quantities incorrectly, or loses a subcontractor's bid during the leveling process doesn't just create a bug—it creates a financial catastrophe. The backend of a construction platform handles money at every layer: estimates, bids, contracts, change orders, progress payments, retainage, and final billing. Every calculation must be auditable, every change must be tracked, and every financial flow must reconcile to the penny.
+
+## Module Certification Goal
+
+You can describe construction-specific API workflows to an AI coding tool—estimate generation, bid submission, subcontractor pricing, change order processing, and progress billing—evaluate the output for calculation accuracy and audit trail completeness, and ship a backend that handles construction finances reliably.
+
+## What You Need to Know
+
+**Estimate structure and line items:** A construction estimate is a hierarchical document: divisions (concrete, steel, electrical), subdivisions (foundations, slabs, columns), and line items (120 cubic yards of 4000 PSI concrete at $145/yard). Each line item has quantity, unit, unit cost, and extension (quantity x unit cost). Your API must support this hierarchy with rollup calculations at every level.
+
+**Unit cost databases and regional pricing:** Material and labor costs vary by region. Concrete in Dallas costs different than concrete in Seattle. Construction platforms integrate with cost databases like RSMeans or maintain their own regional pricing tables. Your API must pull current pricing and apply location-based adjustments to every line item.
+
+**Bid leveling and subcontractor comparison:** When a GC receives quotes from 4 electrical subcontractors, they need to compare them on an equal basis—same scope, same exclusions, same qualifications. Bid leveling normalizes these quotes so the GC can make an apples-to-apples comparison. Your API must support scope alignment and side-by-side comparison views.
+
+**Change order workflows:** Change orders modify the original contract—additional work, deleted scope, or material substitutions. Each change order needs cost calculation, owner approval, contract amendment, and budget revision. Your API must track the full lifecycle: request, estimate, approval, execution, and payment adjustment.
+
+**Progress billing and retainage:** Contractors bill monthly based on percentage of work completed. The owner withholds retainage (typically 5-10%) until the project is substantially complete. Your billing API must calculate the current billing amount, apply retainage, track previous payments, and generate AIA G702/G703 pay applications—the standard billing format.
+
+## Your Toolkit
+
+**AI coding tool (pick one):** Cursor, Lovable, Bolt, Claude Code—describe your estimating structure, bid workflows, and billing calculations to it.
+
+**Construction cost database:** RSMeans, Craftsman Book Company, or a custom unit cost table with regional pricing adjustments for materials and labor by trade.
+
+**Financial calculation testing:** A spreadsheet model of your estimate calculations that you can verify API results against. Every extension, subtotal, and markup must match to the penny.
+
+**Document generation library:** PDF generation for pay applications (AIA G702/G703 format), proposals, and change order documents that contractors submit to owners.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+**Estimate hierarchy:** Can you evaluate whether an estimating API correctly structures divisions, subdivisions, and line items with proper rollup calculations?
+
+**Pricing accuracy:** Can you assess whether material and labor costs reflect current regional pricing rather than static or outdated defaults?
+
+**Bid leveling:** Can you evaluate whether a bid comparison tool normalizes subcontractor quotes to enable apples-to-apples scope comparison?
+
+**Change order tracking:** Can you verify that change orders flow through request, estimate, approval, and budget revision with a complete audit trail?
+
+**Progress billing calculations:** Can you assess whether billing correctly calculates completed percentages, applies retainage, and tracks previous payments?
+
+**Financial audit trails:** Can you verify that every cost calculation, approval, and payment is logged with timestamp and user attribution?
+
+**API error handling:** Can you evaluate what happens when a pricing lookup fails, a calculation overflows, or a required approval is missing?
+
+**Document generation:** Can you assess whether pay applications and proposals generate in the standard formats that owners and banks expect?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Using floating-point math for financial calculations. Floating-point produces rounding errors that compound across thousands of line items. Use integer math (cents, not dollars) or a decimal library for all financial calculations. Hardcoding material prices instead of integrating with a live or regularly updated cost database. Lumber prices can change 20% in a month. A static price table makes every estimate inaccurate within weeks. Not tracking change order impact on the overall contract value. Each approved change order modifies the total contract. If your system doesn't recalculate the contract value after each change order, the final billing won't reconcile. Building estimates without an audit trail. When a bid dispute arises six months later, you need to show exactly who entered what numbers, when they were changed, and who approved the final submission. Every edit must be logged. Ignoring retainage in billing calculations. If your progress billing API doesn't withhold retainage, the contractor bills for the full amount and the owner rejects the pay application. Retainage is standard in construction billing. Not supporting the AIA G702/G703 format for pay applications. This is the universal standard for construction billing. Owners, banks, and bonding companies all require it. A pay application in any other format will be rejected.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Does your estimating API support hierarchical line items with division, subdivision, and line-item structure with rollup calculations? Are material and labor costs sourced from a current pricing database with regional adjustments? Can your bid leveling tool normalize subcontractor quotes for apples-to-apples comparison? Do change orders flow through a complete lifecycle from request to budget revision with an audit trail? Does your billing calculation correctly apply retainage and track previous payments? Can your system generate pay applications in AIA G702/G703 format? Are all financial calculations using integer math or a decimal library instead of floating-point?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my construction platform's estimating and billing APIs and check the following. For each one, tell me pass or fail with a specific example: Estimate structure: Does the API support hierarchical line items with rollups? Pricing: Are costs sourced from current regional data? Bid leveling: Can subcontractor quotes be compared on normalized scope? Change orders: Do they flow through full lifecycle with audit trail? Billing: Does progress billing apply retainage and track payments? Math precision: Are financial calculations using decimal, not floating-point? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer yes to the self-assessment checklist, you're ready for the Module 2 exam. The best way to prepare: build an estimate with 50 line items across 5 divisions. Verify every rollup calculation. Submit a change order and check that the contract value updates. Generate a pay application with retainage. Every calculation error you find is exactly what the exam tests.
+
+## Certification Pathway
+
+**Industry Specialist — Construction:** Pass all 7 module exams in this course
+
+**CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+
+**CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Estimating & Bidding APIs Exam →

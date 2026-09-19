@@ -1,0 +1,87 @@
+# Module 1: API Architecture and Endpoint Design — Study Guide
+
+## API Product Build
+
+### T4 The Mastery | Module 1 Study Guide
+
+## Module 1: API Architecture and Endpoint Design
+
+> Direct AI to design endpoints a stranger can guess without reading your docs.
+
+## What This Module Covers
+
+This module covers designing APIs that external developers actually want to use. You will learn REST conventions (resource naming, HTTP methods, status codes, pagination, filtering), the difference between an internal API and a product API, versioning strategy, planning for backwards compatibility from day one, and the mindset shift of treating the API as a product rather than a feature.
+
+## Why It Matters
+
+An API product lives or dies on developer adoption, and adoption is decided in the first ten minutes a developer spends with your endpoints. Internal APIs can be messy because the only people who suffer are on your team; a product API is a public contract that strangers build businesses on top of. Once external developers depend on your endpoints, every design decision you made casually becomes permanent, because breaking their integrations breaks their trust and their revenue. This module is where you learn to make those decisions deliberately, so the API you ship is one developers choose, recommend, and stay on.
+
+## Certification Goal
+
+Passing this exam proves you can design a product-grade REST API: name resources cleanly, use HTTP methods and status codes correctly, handle pagination and filtering, choose a versioning strategy, and plan for backwards compatibility before the first customer integrates.
+
+## What You Need to Know
+
+**1. The API is a product, not a feature.** An internal API serves your own code; a product API serves external developers who are your customers. That reframing changes everything: the endpoints are your user interface, the documentation is your onboarding, the error messages are your support, and every breaking change is a churn event. You direct AI to build with that audience in mind, designing for a developer who has never seen your system and has three competing APIs open in other tabs. The product API's job is to make that developer successful fast.
+
+**2. REST resource naming conventions.** Resources are nouns, not verbs, and they are named consistently: plural collection names (/customers, /invoices), hierarchical nesting for relationships (/customers/{id}/invoices), and lowercase with hyphens or a single consistent style. The URL should read like a path to a thing, not an instruction. A developer who sees /customers/{id}/invoices can guess /customers/{id}/payments without reading the docs, and that guessability is a feature you design for deliberately.
+
+**3. HTTP methods and status codes carry meaning.** GET reads, POST creates, PUT and PATCH update, DELETE removes, and each has semantics developers already know. Status codes are the same contract: 200 for success, 201 for created, 400 for a bad request the client can fix, 401 and 403 for auth, 404 for not found, 429 for rate limited, 500 for a server fault the client cannot fix. Using them correctly means a developer's existing tooling and instincts work without translation. Misusing them, returning 200 with an error body, forces every consumer to write custom handling and signals an amateur API.
+
+**4. Pagination and filtering for real datasets.** No product endpoint returns an unbounded list. You design pagination (cursor-based for large or shifting datasets, offset-based for small stable ones) and expose it consistently across every collection. Filtering, sorting, and field selection follow the same discipline: predictable query parameters that behave the same on every endpoint. The goal is that a developer learns your pagination once and it works everywhere, rather than discovering each endpoint invented its own convention.
+
+**5. Versioning strategy chosen up front.** You decide how versions are expressed before launch, because retrofitting versioning onto a live API is painful. The two main approaches: URL path versioning (/v1/, /v2/), which is explicit, visible, and easy to route, and header versioning, which keeps URLs clean but hides the version from casual inspection. URL versioning is the common product choice for its transparency. What matters is choosing deliberately and committing, so the version is part of the contract from the first request.
+
+**6. Backwards compatibility from day one.** The design rule that protects your future: adding is safe, changing and removing are not. New optional fields, new endpoints, and new optional parameters do not break existing integrations. Renaming a field, changing a type, removing an endpoint, or making an optional parameter required all break someone's production code silently. You design the first version assuming you will have to live with its shape for years, and you build the habit of only ever adding, never quietly changing, once developers depend on it.
+
+## Your Toolkit
+
+- **REST convention checklist**: resource naming, method semantics, and status code mapping applied consistently
+- **Pagination and filtering patterns**: cursor and offset schemes with uniform query parameters across endpoints
+- **Versioning decision**: URL vs header, chosen and documented before the first public request
+- **Backwards-compatibility rules**: the add-only discipline that keeps existing integrations alive
+
+## Exam Topics
+
+1. The product API vs internal API distinction and its consequences
+2. REST resource naming and URL guessability
+3. HTTP methods and correct status code usage
+4. Pagination strategies and consistent filtering
+5. Versioning strategy: URL path vs header
+6. Breaking vs non-breaking changes and backwards compatibility
+7. Designing for a developer who has never seen your system
+8. The endpoints as the product's user interface
+
+## Common Pitfalls
+
+- Naming resources with verbs or inconsistent casing so developers cannot guess the next endpoint
+- Returning 200 with an error body, forcing every consumer to write custom error handling
+- Shipping unbounded list endpoints with no pagination until a dataset grows and breaks
+- Inventing a different pagination or filtering convention on each endpoint
+- Deferring the versioning decision until a breaking change is already needed
+- Renaming or removing fields after developers depend on them, breaking integrations silently
+
+## Self-Assessment Checklist
+
+- Can I design a resource hierarchy a developer can navigate without the docs?
+- Do I map every response to the correct HTTP status code?
+- Is my pagination consistent across every collection endpoint?
+- Have I chosen and documented a versioning strategy before launch?
+- Can I classify any proposed change as breaking or non-breaking?
+- Do I design each version assuming I must support its shape for years?
+
+## AI Audit Prompt Template
+
+> You are reviewing an API design for product-readiness. Check: (1) resource naming: are resources nouns, plural, consistently cased, and hierarchically sensible so a developer can guess adjacent endpoints, (2) methods and status codes: does every endpoint use the correct HTTP method and return the semantically correct status code, including 400, 401, 403, 404, and 429, (3) pagination and filtering: does every collection endpoint paginate, and are query parameters uniform across endpoints, (4) versioning: is a versioning strategy chosen and expressed consistently, (5) compatibility: flag any field, type, or endpoint change that would break existing integrations. Report findings with the specific endpoint and the developer-facing consequence.
+
+## What's Next
+
+Module 2 covers the gate on your product: API key generation, rotation, and revocation, plus per-key rate limiting and usage tiers that turn access into a sellable product.
+
+## Certification Pathway
+
+This is Module 1 of 7 in the API Product Build course, part of T4 The Mastery. Passing all seven module exams earns the API Product Specialist badge. This module is the design foundation every later module builds on.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

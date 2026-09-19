@@ -1,0 +1,95 @@
+Module 7: Project Continuity & Disaster Recovery — Study Guide
+
+Module 7: Project Continuity & Disaster Recovery
+
+Availability & Recovery for Construction Technology
+
+This is the study guide. Everything for Project Continuity & Disaster Recovery is on this page — there's nothing to download.
+
+———
+
+What This Module Covers
+
+This module covers availability and disaster recovery as they apply specifically to construction technology—the weather delay handling, project schedule resilience, multi-year project data backup, regulatory record retention, system availability during critical inspections, and emergency data recovery that keep construction projects running when conditions change. Construction projects span months to years. A commercial building takes 18-24 months. A highway project takes 3-5 years. Your platform must maintain continuous availability and data integrity across these timescales through weather events, crew changes, subcontractor transitions, regulatory inspections, and the technology changes that occur over multi-year project lifespans.
+
+Why It Matters
+
+When a building inspector arrives for a critical structural inspection and your platform is down, the inspection doesn't happen. That delays the concrete pour scheduled for tomorrow. That delays framing by a week. That pushes the entire project completion by a week. One afternoon of downtime during a critical inspection costs the project tens of thousands of dollars in delay damages. Construction downtime costs aren't measured in lost productivity—they're measured in delay damages, liquidated damages in the contract, and extended general conditions costs that compound every day the project runs late.
+
+Module Certification Goal
+
+You can describe construction-specific availability requirements to an AI coding tool—weather-aware scheduling, inspection-period uptime, multi-year data retention, and project lifecycle management—evaluate the output for resilience under construction operating conditions, and ship a platform that stays available when construction projects need it most.
+
+What You Need to Know
+
+Weather delay management: Weather shuts down construction sites regularly. Your platform must handle weather delays by adjusting schedules, tracking weather-related downtime, documenting conditions with photos and timestamps, and recalculating completion dates. Weather delay documentation is critical for contract disputes—proving that delays were weather-related protects the contractor from liquidated damages.
+
+Inspection-period availability: Building inspections are scheduled events that cannot be easily rescheduled. Rough-in inspection, framing inspection, final inspection—each gates the next phase of construction. Your platform must be available during inspection hours with the highest reliability. Inspectors need access to approved plans, submittals, and inspection history.
+
+Multi-year data integrity: Construction projects span years. Your data must remain consistent and accessible across platform updates, database migrations, and technology changes that occur during the project lifecycle. A 3-year highway project that started on Platform Version 1 must still work correctly when the platform reaches Version 5.
+
+Regulatory record retention: Construction records—permits, inspection results, safety documentation, as-built drawings—must be retained for 7-10 years minimum. Some public projects require permanent retention. Your archival strategy must balance storage costs with legal obligations and produce records on demand.
+
+Backup and recovery for active projects: An active construction project cannot tolerate data loss. Today's daily reports, cost entries, and schedule updates must be recoverable. Point-in-time recovery, cross-region replication, and tested restore procedures ensure that no project data is ever permanently lost.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your weather tracking, inspection availability, and retention requirements to it.
+
+Uptime monitoring: Better Stack, Pingdom, or UptimeRobot for external monitoring that alerts you before inspectors discover your platform is down.
+
+Weather API integration: OpenWeather, Weather.gov, or Tomorrow.io for automated weather tracking that documents conditions at job site GPS coordinates.
+
+Backup verification: Automated restore testing that verifies backup completeness and measures recovery time against your objectives.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+Weather delay documentation: Can you evaluate whether weather delays are documented with conditions, photos, timestamps, and schedule impact for contract dispute support?
+
+Inspection availability: Can you assess whether the platform maintains high availability during scheduled inspection periods when downtime blocks construction progress?
+
+Multi-year data integrity: Can you verify that project data remains consistent and accessible across platform updates spanning multi-year project lifespans?
+
+Record retention compliance: Can you evaluate whether construction records are retained per regulatory requirements and producible on demand for audits?
+
+Backup and recovery: Can you assess whether backup procedures support point-in-time recovery with tested restore verification for active projects?
+
+Schedule resilience: Can you verify that the project schedule correctly recalculates completion dates when delays are entered from any source?
+
+Disaster recovery planning: Can you evaluate whether the platform has a documented recovery plan with tested procedures and defined recovery time objectives?
+
+Data migration safety: Can you assess whether platform updates and database migrations preserve existing project data without corruption or loss?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Not documenting weather conditions at the job site level. 'It rained' is not sufficient. GPS-tagged photos, temperature, wind speed, precipitation amounts, and the superintendent's decision to shut down—all documented at the time—are what survive a contract dispute. Scheduling platform maintenance during business hours when inspectors are active. An inspector who can't access your platform during their scheduled inspection will fail the inspection or reschedule—both costly outcomes. Running database migrations on active projects without rollback capability. A migration that corrupts 18 months of project data on a 24-month project is catastrophic. Always test on staging with production-scale data first. Setting a 5-year data retention policy when regulations require 10. Construction regulatory retention varies by project type and jurisdiction. Public projects often require permanent retention. Know the requirements before setting policies. Never testing backup restores. A backup that completes successfully but can't be restored is not a backup. Test restores quarterly against your recovery time objectives. Not planning for technology transitions during multi-year projects. A project that starts on Version 1 of your platform must survive every update, migration, and redesign through project completion. Breaking changes that require data migration must be handled transparently.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Does your platform document weather conditions at job site locations with photos, measurements, and schedule impact? Is the platform available with the highest reliability during scheduled inspection periods? Does project data remain accessible and consistent across platform updates during multi-year projects? Are construction records retained per regulatory requirements (7-10 years minimum)? Do backup procedures support point-in-time recovery for active projects? Have backup restores been tested within the last 90 days? Does the project schedule recalculate completion dates when delays are entered?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my construction platform's availability and recovery posture and check the following. For each one, tell me pass or fail with a specific example: Weather documentation: Are weather delays documented with GPS, photos, and schedule impact? Inspection availability: Is the platform reliable during scheduled inspection windows? Multi-year integrity: Does project data survive platform updates over multi-year lifespans? Retention: Are records retained per regulatory requirements? Backup recovery: Can active project data be restored to any point in time? Restore testing: Have restores been tested in the last 90 days? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you can answer yes to the self-assessment checklist, you're ready for the Module 7 exam. The best way to prepare: check your backup restore procedures. Document today's weather at a job site using your platform. Enter a weather delay and verify the schedule recalculates. Try to retrieve a daily report from 6 months ago. Every resilience gap you find is exactly what the exam tests.
+
+Certification Pathway
+
+Industry Specialist — Construction: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Project Continuity & Disaster Recovery Exam →

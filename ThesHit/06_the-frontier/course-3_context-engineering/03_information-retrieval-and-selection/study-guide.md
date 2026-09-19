@@ -1,0 +1,85 @@
+# Module 3: Information Retrieval and Selection — Study Guide
+
+## Context Engineering
+
+### T8 The Frontier | Module 3 Study Guide
+
+## Information Retrieval and Selection
+
+> "Direct AI to build retrieval that puts the right passages in the window and leaves everything else out."
+
+## Why This Matters
+
+Your architecture from Module 2 allocated space for retrieved content; retrieval decides what fills it. When retrieval works, the model answers from your actual documents. When it fails, the model answers from vibes, and the output looks just as confident. Retrieval quality is the ceiling on answer quality for any knowledge-backed system.
+
+## Core Concepts
+
+**RAG is a context engineering pattern.** Retrieval-augmented generation searches your knowledge base for content relevant to the query and injects it into the window before the model responds. It is not magic and not a separate discipline: it is one pipeline for getting the right information into context at the right moment.
+
+**Embeddings and vector similarity.** An embedding model converts text into a vector that encodes meaning, so "refund policy" and "getting my money back" land near each other even though they share no words. Retrieval embeds the query, compares it against stored chunk vectors, and returns the nearest neighbors. Similarity is about meaning, not keywords, and it is approximate: nearby is not the same as relevant.
+
+**Chunking strategies.** Documents get split into chunks before embedding, and the split shapes everything downstream. Key decisions: chunk size (small chunks are precise but lose surrounding meaning, large chunks carry context but dilute the signal), overlap (repeating some text across neighboring chunks so facts at boundaries are not orphaned), and semantic boundaries (splitting at sections and paragraphs instead of every N characters, so each chunk is a coherent thought).
+
+**Precision versus recall.** Precision asks: of what we retrieved, how much is relevant? Recall asks: of what is relevant, how much did we retrieve? Low precision stuffs the window with noise that buries the signal. Low recall means the answer's source never entered the window at all. Tuning one often costs the other; you need to measure both.
+
+**Re-ranking.** Fast vector search casts a wide net; a re-ranker then scores those candidates against the query more carefully and keeps the best few. Retrieve twenty, re-rank, inject five: precision rises without sacrificing recall.
+
+**Retrieval failure is silent.** The model answers either way. Detection requires deliberate checks: low similarity scores, answers citing nothing, or the model told explicitly to say when the provided content does not cover the question.
+
+## How It Works
+
+The pipeline runs in two phases. Indexing: split documents into chunks at semantic boundaries with modest overlap, embed each chunk, store the vectors. Query time: embed the incoming question, find the nearest chunks, optionally re-rank, take the top few, and inject them into the context with clear delimiters and source labels. Every choice (chunk size, overlap, top-k, score threshold) is testable: build a small set of real questions with known source passages, and measure whether the pipeline retrieves them.
+
+## Directing AI
+
+1. "Direct the pipeline to chunk these documents at heading and paragraph boundaries, around 400 tokens with 50 token overlap, and show me ten sample chunks to sanity-check."
+2. "Build a retrieval test set of 20 real user questions, each mapped to the passage that answers it, and report precision and recall for our current settings."
+3. "Add a re-ranking step: retrieve 20 candidates by vector similarity, re-rank against the query, inject the top 5."
+4. "Log every retrieval: the query, chunks returned, similarity scores, and whether any score fell below our threshold."
+5. "Update the system prompt so the model answers only from the provided passages and says the sources do not cover it when they do not."
+
+## Common Mistakes
+
+1. Chunking by fixed character count through sentence boundaries, producing fragments no query matches well.
+2. Trusting similarity scores as proof of relevance, when nearest merely means least far away.
+3. Cranking up top-k to fix recall and flooding the window until precision collapses.
+4. Never building a test set, so retrieval quality is a feeling instead of a number.
+5. Injecting chunks with no source labels or delimiters, leaving the model to guess where documents begin.
+6. Having no failure path, so the model improvises whenever retrieval comes back empty or irrelevant.
+
+## Real-World Application
+
+A builder ships a policy assistant for an HR consultancy. It nails most questions but whiffs on parental leave, an area the documents cover thoroughly. The builder directs AI to log retrievals and finds the problem at indexing: the leave policy was chunked by character count, and the crucial table split across three fragments, none similar enough to any query to surface. The builder directs AI to re-chunk at section boundaries keeping tables whole, then to build a 25-question test set. Recall on the test set jumps from 60 to 95 percent. The lesson sticks: the failure looked like a model problem, and it was a chunking decision made weeks earlier.
+
+## Decision Framework
+
+- Answers ignore your documents? Check recall first: the right chunk may never enter the window.
+- Answers ramble across irrelevant sources? Precision problem: lower top-k, raise the threshold, add re-ranking.
+- Facts split across chunk boundaries? Increase overlap or re-chunk at semantic boundaries.
+- Precise queries failing on long documents? Chunks are likely too large; the signal is diluted.
+- Wide net needed but window is tight? Retrieve many, re-rank, inject few.
+- No idea how retrieval performs? Stop tuning and build the test set; measure before adjusting.
+
+## Tool and Platform Notes
+
+Vector stores: pgvector if you already run Postgres, Pinecone for managed hosted search, Chroma for lightweight local work. Embedding models: current OpenAI, Cohere, or Voyage offerings; check dimensions and pricing before committing, and re-embed everything if you switch models. Cohere Rerank is the plug-and-play option for re-ranking. Direct AI to wire these together; describe the pipeline, not the code.
+
+## Key Takeaways
+
+- Retrieval quality is the ceiling on answer quality; the model cannot cite what never entered the window.
+- Chunking decisions at indexing time determine what retrieval can find later.
+- Measure precision and recall on a real test set; do not tune blind.
+- Retrieve wide, re-rank, inject narrow.
+- Retrieval failures are silent by default; build detection in deliberately.
+
+## What's Next
+
+Module 4 moves from documents to time: memory and conversation design, or how systems remember what matters across messages and sessions without drowning the window.
+
+## Exam Prep Notes
+
+Expect scenarios asking you to diagnose retrieval failures: is it chunking, precision, recall, or a missing failure path? Know what embeddings do, how chunk size and overlap trade off, what re-ranking adds, and why retrieval failure is silent without deliberate detection.
+
+———
+
+*Matt Murphy AI | The Faction Group LLC | mattmurphy.ai*

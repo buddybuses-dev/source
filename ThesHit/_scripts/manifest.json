@@ -1,0 +1,542 @@
+[
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/01_saas-dashboard-and-data-layer",
+    "title": "Module 01: SaaS Dashboard — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-01-saas-dashboard-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/02_subscription-endpoints-and-webhooks",
+    "title": "Module 02: Subscription Endpoints & Webhooks — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-02-subscription-endpoints-webhooks-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/03_multi-tenant-data-architecture",
+    "title": "Module 03: Multi-Tenant Data Architecture — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-03-multi-tenant-data-architecture-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/04_users-teams-and-rbac",
+    "title": "Module 04: Users, Teams & RBAC — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-04-users-teams-rbac-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/05_saas-deployment-pipelines",
+    "title": "Module 05: SaaS Deployment Pipelines — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-05-saas-deployment-pipelines-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/06_api-throttling-and-usage-metering",
+    "title": "Module 06: API Throttling & Usage Metering — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-06-api-throttling-usage-metering-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-1_platform-mastery-saas/07_production-monitoring-for-saas",
+    "title": "Module 07: Production Monitoring for SaaS — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-07-production-monitoring-for-saas-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/01_data-modeling-fundamentals",
+    "title": "Module 1: Data Modeling Fundamentals — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-data-modeling-fundamentals-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/02_relationships-and-normalization-decisions",
+    "title": "Module 2: Relationships and Normalization Decisions — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-relationships-and-normalization-decisions-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/03_indexes-and-query-performance",
+    "title": "Module 3: Indexes and Query Performance — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-indexes-and-query-performance-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/04_migrations-without-downtime",
+    "title": "Module 4: Migrations Without Downtime — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-migrations-without-downtime-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/05_seeding-backups-and-restores",
+    "title": "Module 5: Seeding, Backups and Restores — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-seeding-backups-and-restores-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/06_scaling-and-read-replicas",
+    "title": "Module 6: Scaling and Read Replicas — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-scaling-and-read-replicas-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-2_databases/07_ship-production-database",
+    "title": "Module 7: Ship: Production Database — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-production-database-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/01_auth-architecture-and-session-models",
+    "title": "Module 1: Auth Architecture and Session Models — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-auth-architecture-and-session-models-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/02_email-password-and-magic-links",
+    "title": "Module 2: Email, Password and Magic Links — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-email-password-and-magic-links-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/03_social-and-sso-logins",
+    "title": "Module 3: Social and SSO Logins — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-social-and-sso-logins-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/04_roles-permissions-and-teams",
+    "title": "Module 4: Roles, Permissions and Teams — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-roles-permissions-and-teams-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/05_two-factor-and-account-security",
+    "title": "Module 5: Two-Factor and Account Security — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-two-factor-and-account-security-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/06_password-reset-and-edge-cases",
+    "title": "Module 6: Password Reset and Edge Cases — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-password-reset-and-edge-cases-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-3_auth/07_ship-production-auth",
+    "title": "Module 7: Ship: Production Auth — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-production-auth-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/01_next-js-architecture-and-routing",
+    "title": "Module 1: Next.js Architecture and Routing — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-nextjs-architecture-and-routing-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/02_server-and-client-components",
+    "title": "Module 2: Server and Client Components — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-server-and-client-components-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/03_data-fetching-and-caching",
+    "title": "Module 3: Data Fetching and Caching — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-data-fetching-and-caching-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/04_api-routes-and-server-actions",
+    "title": "Module 4: API Routes and Server Actions — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-api-routes-and-server-actions-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/05_seo-metadata-and-performance",
+    "title": "Module 5: SEO Metadata and Performance — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-seo-metadata-and-performance-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/06_vercel-deployment-and-environments",
+    "title": "Module 6: Vercel Deployment and Environments — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-vercel-deployment-and-environments-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-4_nextjs/07_ship-production-next-js-app",
+    "title": "Module 7: Ship: Production Next.js App — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-production-nextjs-app-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/01_supabase-architecture-and-project-setup",
+    "title": "Module 1: Supabase Architecture and Project Setup — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-supabase-architecture-and-project-setup-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/02_postgres-tables-and-relationships",
+    "title": "Module 2: Postgres Tables and Relationships — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-postgres-tables-and-relationships-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/03_row-level-security-policies",
+    "title": "Module 3: Row-Level Security Policies — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-row-level-security-policies-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/04_auth-and-user-management",
+    "title": "Module 4: Auth and User Management — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-auth-and-user-management-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/05_storage-realtime-and-edge-functions",
+    "title": "Module 5: Storage Realtime and Edge Functions — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-storage-realtime-and-edge-functions-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/06_backups-and-environments",
+    "title": "Module 6: Backups and Environments — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-backups-and-environments-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-5_supabase/07_ship-production-backend",
+    "title": "Module 7: Ship: Production Backend — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-production-backend-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/01_payments-architecture-and-account-setup",
+    "title": "Module 1: Payments Architecture and Account Setup — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-payments-architecture-and-account-setup-study-guide-106562714",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/02_one-time-checkout-flows",
+    "title": "Module 2: One-Time Checkout Flows — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-one-time-checkout-flows-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/03_subscriptions-and-billing-portal",
+    "title": "Module 3: Subscriptions and Billing Portal — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-subscriptions-and-billing-portal-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/04_webhooks-and-payment-state",
+    "title": "Module 4: Webhooks and Payment State — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-webhooks-and-payment-state-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/05_invoices-taxes-and-receipts",
+    "title": "Module 5: Invoices, Taxes and Receipts — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-invoices-taxes-and-receipts-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/06_failed-payments-and-dunning",
+    "title": "Module 6: Failed Payments and Dunning — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-failed-payments-and-dunning-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-6_payments-stripe/07_ship-live-payment-system",
+    "title": "Module 7: Ship: Live Payment System — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-live-payment-system-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/01_api-architecture-and-endpoint-design",
+    "title": "Module 1: API Architecture and Endpoint Design — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-1-api-architecture-and-endpoint-design-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/02_auth-keys-and-rate-limiting",
+    "title": "Module 2: Auth Keys and Rate Limiting — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-2-auth-keys-and-rate-limiting-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/03_documentation-and-developer-experience",
+    "title": "Module 3: Documentation and Developer Experience — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-3-documentation-and-developer-experience-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/04_usage-metering-and-billing",
+    "title": "Module 4: Usage Metering and Billing — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-4-usage-metering-and-billing-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/05_versioning-and-error-design",
+    "title": "Module 5: Versioning and Error Design — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-5-versioning-and-error-design-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/06_monitoring-and-uptime",
+    "title": "Module 6: Monitoring and Uptime — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-6-monitoring-and-uptime-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "02_the-mastery/course-7_apis-as-products/07_ship-live-api-product",
+    "title": "Module 7: Ship: Live API Product — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-mastery-module-7-ship-live-api-product-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-1_education/04_classroom-roles-and-parent-access",
+    "title": "Module 4: Classroom Roles & Parent Access — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-4-classroom-roles-parent-access-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-1_education/05_student-data-privacy-and-compliance",
+    "title": "Module 5: Student Data Privacy & Compliance — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-5-student-data-privacy-compliance-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-1_education/06_course-content-delivery-and-media",
+    "title": "Module 6: Course Content Delivery & Media — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-6-course-content-delivery-media-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-1_education/07_assessment-resilience-and-academic-continuity",
+    "title": "Module 7: Assessment Resilience & Academic Continuity — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-7-assessment-resilience-academic-continuity-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/01_contractor-and-project-dashboards",
+    "title": "Module 1: Contractor & Project Dashboards — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-1-contractor-project-dashboards-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/02_estimating-and-bidding-apis",
+    "title": "Module 2: Estimating & Bidding APIs — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-2-estimating-bidding-apis-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/03_project-records-and-multi-site-data",
+    "title": "Module 3: Project Records & Multi-Site Data — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-3-project-records-multi-site-data-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/04_crew-roles-and-subcontractor-access",
+    "title": "Module 4: Crew Roles & Subcontractor Access — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-4-crew-roles-subcontractor-access-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/05_job-site-safety-and-compliance-data",
+    "title": "Module 5: Job Site Safety & Compliance Data — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-5-job-site-safety-compliance-data-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/06_blueprint-and-document-delivery",
+    "title": "Module 6: Blueprint & Document Delivery — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-6-blueprint-document-delivery-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-2_construction/07_project-continuity-and-disaster-recovery",
+    "title": "Module 7: Project Continuity & Disaster Recovery — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-7-project-continuity-disaster-recovery-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/01_the-clinical-practice-workflow-map",
+    "title": "Module 1: The Clinical Practice Workflow Map — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-1-the-clinical-practice-workflow-map-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/02_patient-intake-and-forms",
+    "title": "Module 2: Patient Intake and Forms — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-2-patient-intake-and-forms-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/03_scheduling-and-reminder-systems",
+    "title": "Module 3: Scheduling and Reminder Systems — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-3-scheduling-and-reminder-systems-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/04_hipaa-boundaries-for-builders",
+    "title": "Module 4: HIPAA Boundaries For Builders — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-4-hipaa-boundaries-for-builders-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/05_billing-and-insurance-admin-tools",
+    "title": "Module 5: Billing and Insurance Admin Tools — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-5-billing-and-insurance-admin-tools-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/06_patient-communication-systems",
+    "title": "Module 6: Patient Communication Systems — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-6-patient-communication-systems-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "03_the-industry/vertical-3_healthcare/07_ship-practice-admin-toolkit",
+    "title": "Module 7: Ship: Practice Admin Toolkit — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-industry-module-7-ship-practice-admin-toolkit-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/02_the-13-layer-audit-framework",
+    "title": "Module 2: The 13-Layer Audit Framework — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-2-the-13-layer-audit-framework-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/03_automated-scanning-direction",
+    "title": "Module 3: Automated Scanning Direction — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-3-automated-scanning-direction-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/04_manual-review-hotspots",
+    "title": "Module 4: Manual Review Hotspots — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-4-manual-review-hotspots-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/05_findings-severity-and-reporting",
+    "title": "Module 5: Findings, Severity and Reporting — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-5-findings-severity-and-reporting-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/06_remediation-sprints",
+    "title": "Module 6: Remediation Sprints — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-6-remediation-sprints-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "04_the-vault/course-3_ai-code-auditing/07_ship-complete-codebase-audit",
+    "title": "Module 7: Ship: Complete Codebase Audit — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-vault-module-7-ship-complete-codebase-audit-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-2_idea-validation/07_ship-your-validated-idea-brief",
+    "title": "Module 7: Ship: Your Validated Idea Brief — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-7-ship-your-validated-idea-brief-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/01_why-positioning-beats-marketing",
+    "title": "Module 1: Why Positioning Beats Marketing — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-1-why-positioning-beats-marketing-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/02_finding-your-positioning-sweet-spot",
+    "title": "Module 2: Finding Your Positioning Sweet Spot — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-2-finding-your-positioning-sweet-spot-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/03_designing-your-offer",
+    "title": "Module 3: Designing Your Offer — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-3-designing-your-offer-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/04_articulating-your-value-proposition",
+    "title": "Module 4: Articulating Your Value Proposition — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-4-articulating-your-value-proposition-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/05_competitive-differentiation",
+    "title": "Module 5: Competitive Differentiation — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-5-competitive-differentiation-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/06_testing-and-refining-your-position",
+    "title": "Module 6: Testing and Refining Your Position — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-6-testing-and-refining-your-position-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "05_the-launchpad/course-3_positioning-and-offers/07_ship-your-positioning-package",
+    "title": "Module 7: Ship: Your Positioning Package — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-launchpad-module-7-ship-your-positioning-package-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-2_prompt-engineering/06_production-prompt-patterns",
+    "title": "Module 6: Production Prompt Patterns — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-6-production-prompt-patterns-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-2_prompt-engineering/07_ship-professional-prompt-architecture",
+    "title": "Module 7: Ship: Professional Prompt Architecture — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-7-ship-professional-prompt-architecture-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/01_what-context-engineering-is",
+    "title": "Module 1: What Context Engineering Is — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-1-what-context-engineering-is-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/02_context-window-architecture",
+    "title": "Module 2: Context Window Architecture — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-2-context-window-architecture-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/03_information-retrieval-and-selection",
+    "title": "Module 3: Information Retrieval and Selection — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-3-information-retrieval-and-selection-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/04_memory-and-conversation-design",
+    "title": "Module 4: Memory and Conversation Design — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-4-memory-and-conversation-design-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/05_dynamic-context-assembly",
+    "title": "Module 5: Dynamic Context Assembly — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-5-dynamic-context-assembly-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/06_context-quality-and-debugging",
+    "title": "Module 6: Context Quality and Debugging — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-6-context-quality-and-debugging-study-guide",
+    "status": "pending"
+  },
+  {
+    "dir": "06_the-frontier/course-3_context-engineering/07_ship-production-context-system",
+    "title": "Module 7: Ship: Production Context System — Study Guide",
+    "url": "https://the-faction.mn.co/posts/the-frontier-module-7-ship-production-context-system-study-guide",
+    "status": "pending"
+  }
+]

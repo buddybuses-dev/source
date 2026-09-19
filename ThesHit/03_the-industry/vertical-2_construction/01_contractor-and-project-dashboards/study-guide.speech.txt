@@ -1,0 +1,97 @@
+Module 1: Contractor & Project Dashboards — Study Guide
+
+Module 1: Contractor & Project Dashboards
+
+Frontend Foundations for Construction Technology
+
+This is the study guide. Everything for Contractor & Project Dashboards is on this page — there's nothing to download.
+
+———
+
+What This Module Covers
+
+This module covers frontend foundations as they apply specifically to construction technology—the contractor dashboards, project manager portals, field worker interfaces, and job site views that make a construction platform usable in the real conditions where building happens. Construction frontends face constraints that most web applications never encounter. Field workers access dashboards from phones and tablets on active job sites with intermittent cellular connectivity. Screens are viewed in direct sunlight with dirty hands wearing work gloves. Data entry happens standing in a half-built structure with no desk and no keyboard. The interface must work in these conditions or it won't be used. Your AI coding tool can build a project dashboard quickly. But if the superintendent can't read it in sunlight, if the foreman can't tap buttons with gloves on, if the dashboard crashes when the cell signal drops, or if the project timeline doesn't show the critical path—your construction tech product fails the people who need it most on the day they need it most.
+
+Why It Matters
+
+Construction is a $1.8 trillion industry in the United States alone. It runs on thin margins, tight deadlines, and coordination between dozens of trades. A general contractor managing 15 subcontractors across 3 active job sites needs visibility into schedules, costs, RFIs, change orders, and daily reports—all from their truck between site visits. The adoption barrier for construction technology is brutally simple: if it doesn't work on a phone at a job site, nobody will use it. Field workers won't switch from paper and text messages to an app that requires WiFi and a laptop. Your frontend must be mobile-first, offline-capable, and designed for the physical conditions of a construction environment.
+
+Module Certification Goal
+
+You can describe construction-specific dashboards to an AI coding tool—contractor portals, field worker interfaces, project timeline views, and mobile-first layouts for job site conditions—evaluate the output for offline capability, sunlight readability, and glove-friendly interaction, and ship a frontend that works where construction actually happens.
+
+What You Need to Know
+
+Role-based construction views: Construction platforms serve multiple user types with different needs: general contractors need portfolio-level visibility across all projects, project managers need deep single-project control, superintendents need daily scheduling and crew management, subcontractors need their scope and payment status, and owners need progress and budget tracking. Each role sees a different dashboard.
+
+Mobile-first for field conditions: Field workers access your platform from phones on job sites. Screens must be readable in direct sunlight (high contrast, large text). Touch targets must be large enough for gloved fingers (minimum 48px, ideally 60px+). Forms must be minimal—photo capture and dropdown selects over text entry. Every tap saved is a minute saved on an active job site.
+
+Offline-capable architecture: Job sites frequently have no WiFi and weak cellular signal. Your platform must work offline for core functions: daily reports, photo capture, timecard entry, safety checklists. Data syncs when connectivity returns. Service workers and local storage enable offline-first progressive web apps.
+
+Project timeline and critical path: Construction schedules are sequential and interdependent. Framing can't start until foundations cure. Electrical rough-in can't happen until framing is complete. Your timeline view must show the critical path—the sequence of tasks where any delay pushes the entire project completion date. Gantt charts and milestone tracking are the standard visual patterns.
+
+Daily reports and field documentation: The daily report is the most important document on a construction project. It records weather conditions, crew counts, work performed, materials delivered, safety incidents, and progress photos. Your interface must make daily report creation fast—under 5 minutes with photo capture, pre-populated fields, and dropdown selections instead of free text.
+
+Cost tracking and budget views: Construction projects live and die on budget. Your dashboard must show committed costs vs. actual costs vs. budget in real time. Change orders, material price fluctuations, and labor overruns must surface immediately—not at the end of the month when the project is already over budget.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your contractor dashboards, field worker interfaces, and offline requirements to it.
+
+PWA framework: Next.js with next-pwa, or a Vite-based PWA setup for service worker management and offline caching of field reports and daily logs.
+
+Mobile testing on real devices: Test on actual phones in outdoor lighting. Chrome DevTools device mode doesn't simulate sunlight readability or glove interactions.
+
+Gantt chart library: DHTMLX Gantt, Bryntum, or a custom timeline component for project scheduling with critical path highlighting and dependency visualization.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+Role-based view design: Can you evaluate whether a construction platform shows appropriate dashboards for GCs, project managers, superintendents, subcontractors, and owners?
+
+Mobile-first field design: Can you assess whether an interface works on a phone in direct sunlight with touch targets sized for gloved fingers?
+
+Offline capability: Can you verify that core field functions work without internet connectivity and sync properly when the connection returns?
+
+Project timeline accuracy: Can you evaluate whether a schedule view shows the critical path and correctly reflects task dependencies?
+
+Daily report efficiency: Can you assess whether the daily report interface can be completed in under 5 minutes with minimal text entry?
+
+Cost tracking visibility: Can you verify that budget dashboards show real-time committed, actual, and projected costs with change order impact?
+
+Photo and document capture: Can you evaluate whether field photo capture includes automatic metadata like timestamp, GPS location, and project association?
+
+Navigation efficiency: Can you verify that a field worker can reach their most-used daily functions within two taps from the home screen?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Designing for desktop first and adding mobile as an afterthought. In construction, mobile IS the primary device. 80% of field usage happens on phones. Design for the phone first, then scale up to desktop for office users. Requiring WiFi for core job site functions. If your daily report can't be submitted without internet, the superintendent will go back to paper. Offline-first with background sync is the only pattern that works for field conditions. Using small touch targets that require precise tapping. A superintendent in winter gloves cannot tap a 24px button. Minimum 48px, ideally 60px+, with generous spacing between interactive elements. Building a flat timeline without dependency tracking. Construction schedules are sequential. If the foundation is delayed, everything after it shifts. A timeline that doesn't show these dependencies is misleading. Requiring text entry for field data. Field workers are standing, often in weather, holding a phone with one hand. Photo capture, dropdowns, toggles, and pre-populated fields are faster and more accurate than typing. Not showing cost impact of change orders in real time. A change order approved today affects the budget immediately. If the dashboard updates budget numbers monthly, the project can be $50K over budget before anyone notices.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Does your platform show different dashboard views for GCs, PMs, superintendents, subcontractors, and owners? Is the mobile interface readable in direct sunlight with high-contrast text and touch targets sized for gloved fingers? Can field workers complete daily reports and submit photos without internet? Does your project timeline show the critical path with task dependencies? Can a daily report be completed in under 5 minutes with minimal text entry? Does the budget dashboard show real-time cost tracking with change order impact? Can a superintendent reach daily reports, timecards, and safety checklists within two taps from the home screen?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my construction platform's frontend and check the following. For each one, tell me pass or fail with a specific example: Role views: Does the platform show appropriate dashboards for each construction role? Mobile field use: Is the interface readable in sunlight with glove-friendly touch targets? Offline: Can core field functions work without internet and sync when reconnected? Timeline: Does the schedule show the critical path with dependencies? Daily reports: Can a report be completed in under 5 minutes? Cost tracking: Does the budget show real-time actuals with change order impact? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you can answer yes to the self-assessment checklist, you're ready for the Module 1 exam. The best way to prepare: build a project dashboard and test it on your phone outside in sunlight. Try to complete a daily report in under 5 minutes. Turn on airplane mode and see what still works. Every usability gap you find in field conditions is exactly what the exam tests.
+
+Certification Pathway
+
+Industry Specialist — Construction: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Contractor & Project Dashboards Exam →

@@ -1,0 +1,94 @@
+Module 5: Billing and Insurance Admin Tools — Study Guide
+
+T5 The Industry | Healthcare Practice AI Engineering
+
+This is the study guide. Everything for Billing and Insurance Admin Tools is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module teaches you to direct AI to build tools that support a practice's revenue cycle: superbill generation, claim status tracking, patient balance management, payment collection, and eligibility verification workflows. You are building admin leverage for the billing team, not becoming a certified medical biller, and the line between those two is part of the curriculum.
+
+Why It Matters
+
+The back office is where practices quietly lose the most money, and it is the least glamorous, least automated part of the operation. Claims get denied for reasons intake could have prevented. Denied claims sit unworked because nobody has time to chase them. Patient balances age into uncollectible territory because statements go out late and paying is inconvenient. Industry surveys put denial rates around ten to fifteen percent of claims, and a meaningful share are never reworked at all. That is finished work the practice never gets paid for. Here is the builder's opening: most of this pain is not billing expertise pain, it is workflow pain. The biller knows exactly what to do with a denial; she just has no system telling her which claims need attention today. The front desk would collect at checkout if a clean balance summary existed. A builder who gives the billing team visibility, task queues, and clean handoffs is worth real money without ever touching a coding decision. Know the lane, own the lane.
+
+Certification Goal
+
+Passing the Module 5 exam proves you understand the claim lifecycle well enough to build around it: what a superbill carries, where claims stall, how eligibility verification prevents denials, how patient balances should be communicated and collected, and exactly where builder scope ends and certified biller judgment begins.
+
+What You Need to Know
+
+The claim lifecycle. Visit, charge capture, claim creation, submission through a clearinghouse, payer adjudication, then payment, denial, or rejection, followed by posting and patient billing. Every billing tool you build lives at a stage of this pipeline. You cannot build a useful status tracker for a pipeline you cannot draw.
+
+The superbill. The itemized record of a visit: provider and practice identifiers, patient details, diagnosis codes (ICD-10), procedure codes (CPT), and charges. Practices use them for claim creation and give them to self-pay patients for reimbursement. Your tools can generate, format, and deliver superbills from visit data. Choosing the codes is clinical and biller territory, never yours.
+
+Eligibility verification workflows. Checking a patient's coverage, copay, deductible status, and plan rules before the visit. Done consistently, it prevents the largest class of preventable denials. The builder's job is the workflow: batch checks ahead of the schedule, flags on failures, and a clean worklist for staff, using the verification services practices already have access to.
+
+Denial and rejection handling, builder scope. A rejection bounces before processing, usually for data errors. A denial is processed and refused, requiring rework or appeal. Your lane: tracking dashboards, aging alerts, work queues sorted by dollar value, and templated status displays. The biller's lane: deciding how to fix, appeal, or write off. Build the queue, not the judgment.
+
+Patient balance communication and collection. Patients pay faster when they understand the bill and paying is trivial. Clear statements that show insurance paid versus patient owed, digital payment links, card-on-file where the practice allows it, and respectful reminder sequences for aging balances. Collections conversations and hardship decisions stay with the practice.
+
+Scope discipline. Certified medical billers and coders carry credentials for a reason: code selection, modifier decisions, and appeal arguments have compliance consequences. Your tools organize, surface, track, and communicate. The moment a tool starts choosing codes or auto-arguing appeals, you have left the builder lane and taken on liability you are not licensed to hold.
+
+Your Toolkit
+
+Superbill generators. AI-directed templates that assemble visit data, practice identifiers, and staff-provided codes into clean, deliverable superbills for claims or self-pay patients.
+Clearinghouse status feeds. Claim status data from clearinghouses like Availity or the PMS's own reporting exports, which your dashboards turn into work queues instead of spreadsheets nobody opens.
+Eligibility verification services. Payer portals and verification APIs the practice already licenses. Your build schedules the checks and routes the failures; the service supplies the answers.
+Payment collection platforms. Healthcare-friendly payment processors with payment links, plans, and card-on-file, wired into balance dashboards so collection is one click for staff and one tap for patients.
+
+Exam Topics
+
+The Module 5 exam will test you on:
+
+The claim lifecycle from charge capture through posting
+Superbill components and who supplies each piece
+Rejection versus denial and what each means for workflow
+Eligibility verification timing and worklist design
+Denial tracking dashboards, aging, and dollar-value prioritization
+Patient balance statements, payment friction, and reminder sequences
+Builder scope versus certified biller and coder scope
+Where billing tools depend on clean intake and scheduling data from earlier modules
+
+Common Pitfalls
+
+Building code-picking features. A tool that suggests CPT or ICD-10 codes puts you in clinical-compliance territory without a license. Surface the staff's codes; never choose them.
+Dashboards without work queues. A chart showing 200 unworked denials is a guilt trip. A queue sorted by dollar value and deadline is a tool.
+Ignoring the clearinghouse layer. Builders who think claims go straight to payers design status tracking that cannot explain where a claim actually is.
+Verifying eligibility at check-in. By then the patient is standing there and the visit happens regardless. Verification pays off days before the appointment, batched against the schedule.
+Statements that read like ransom notes. A wall of codes with no plain-language summary trains patients to ignore bills. Show what insurance paid and what is owed, then a payment link.
+Forgetting where denials are born. Many denials trace to intake typos and skipped verification. If your Module 2 and Module 5 builds do not talk to each other, you are mopping with the tap running.
+
+Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+[ ] Can I draw the claim lifecycle and mark where rejections, denials, and payments occur?
+[ ] Can I list what appears on a superbill and who is responsible for each element?
+[ ] Can I explain the difference between a rejection and a denial to a front desk hire?
+[ ] Can I design an eligibility verification workflow keyed to the appointment schedule?
+[ ] Can I describe a denial work queue that a biller would actually use daily?
+[ ] Can I write a patient balance statement flow that reduces payment friction?
+[ ] Can I name three feature requests I would refuse as outside builder scope?
+
+AI Audit Prompt Template
+
+Use this prompt to audit your billing support build:
+
+"You are a revenue cycle consultant reviewing a builder's billing support tools for a [specialty] practice. Here is my design: [paste spec]. Audit it for: any feature that crosses from workflow support into coding or billing judgment, stages of the claim lifecycle with no visibility, eligibility checks timed too late to prevent denials, work queues missing prioritization by dollars or deadlines, patient statements that fail plain-language and payment-friction tests, and dependencies on intake or scheduling data quality I have not accounted for. Rank findings by revenue impact and flag anything that carries compliance risk."
+
+What's Next
+
+Module 6 turns to the patient-facing voice of the practice: communication systems. Confirmations, recalls, portals, secure messaging, and review generation, all built inside the HIPAA boundaries from Module 4. The billing reminders you designed here become one thread in a complete communication architecture.
+
+Certification Pathway
+
+This is the fifth of seven modules in Healthcare Practice AI Engineering, part of T5 The Industry. Pass all seven module exams to earn the Healthcare AI Specialist badge. Billing support is the third major component of the Practice Admin Toolkit you will ship in Module 7.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the Billing and Insurance Admin Tools Exam →

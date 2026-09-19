@@ -1,0 +1,87 @@
+Module 4: Manual Review Hotspots — Study Guide
+
+Vibecoder Security Audit Method
+
+T6 The Vault | Module 4 Study Guide
+
+Module 4: Manual Review Hotspots
+
+Direct AI toward the places scanners cannot reach, then judge those findings yourself.
+
+What This Module Covers
+
+This module covers what automated scanning structurally cannot find: business logic flaws, auth boundary violations, hidden endpoints, client-side trust assumptions, and configuration gaps. You will learn the attacker's mindset, what would I try if I were attacking this, and where to point it.
+
+Why It Matters
+
+Scanners find patterns; they do not understand your business. A scanner cannot know that your checkout accepts a negative quantity, that user A can load user B's invoice by changing a number in the URL, or that an undocumented admin endpoint ships with no auth. These are the findings that end up on the front page, and they are invisible to every tool because they require understanding intent. The manual pass is where an auditor earns the title. It is also where the highest-severity findings in vibebuilt apps consistently live, because AI builds the requested feature and never asks what an adversary would do with it.
+
+Certification Goal
+
+Passing this exam proves you can find the flaw classes automation misses: business logic manipulation, broken auth boundaries, endpoint enumeration, misplaced client-side trust, and dangerous configuration, using a structured attacker mindset rather than luck.
+
+What You Need to Know
+
+Business logic flaws. These are operations that are individually valid but combine into an exploit. Price manipulation: a quantity or amount the client controls that the server trusts. Privilege escalation through workflow: a multi-step process where step three does not re-check what step one authorized. Race conditions: two requests that, fired together, both pass a check that should have allowed one, the classic double-spend of a coupon, a balance, or an inventory unit. None of these is a code smell a scanner flags; each requires modeling the business rule and then trying to break it.
+
+Auth boundary testing: can user A reach user B's data? This is the single highest-yield manual test in vibebuilt apps. AI builds the authenticated route and frequently checks that you are logged in without checking that the specific resource is yours. The test is direct: as user A, request user B's records by their identifier. If A gets B's data, that is a Critical, and because of pattern replication, it is almost never a single endpoint. You direct the check across every resource-fetching route, not one.
+
+API endpoint enumeration. The documented API is a subset of the real one. Debug routes, admin panels, internal tools, and old versions ship in the bundle and route table. You direct discovery, examine the frontend bundle for referenced paths, review the route definitions, probe common admin and debug conventions, and then test each undocumented endpoint for auth. An unlisted endpoint that returns data without authentication is a finding no scanner will hand you.
+
+Client-side trust assumptions. The browser is attacker-controlled territory. Any authorization decision, price calculation, validation, or feature gate that lives only in frontend code is not a control; it is a suggestion. The manual review reads the frontend asking one question per protection: is this also enforced server-side? Hidden UI elements that still work when called directly, disabled buttons whose endpoints accept the request, and client-computed totals are the recurring vibebuilt instances.
+
+Configuration review. Environment and deployment settings carry findings that code review misses. Debug mode enabled in production, which turns every error into an information leak. Verbose error responses exposing stack traces and queries. Environment variables printed to logs or exposed to the client bundle. Default credentials on admin tooling. Permissive CORS accepting any origin. These are quick to check and routinely RED when found.
+
+The attacker mindset as method. The organizing question is: if I wanted to steal data, money, or access from this system, what would I try first? You walk the app as an adversary, not a user, at every input asking what happens if I send something unexpected, at every boundary asking who checks this, at every trust point asking what if I lie. This mindset is directable, you prompt AI to enumerate attack scenarios per feature, but it must be applied deliberately, because the whole point is to think about what the builder did not.
+
+Your Toolkit
+
+Multi-account boundary testing: two test users and a systematic cross-access probe of every resource route
+Frontend bundle and route inspection: enumerating the real endpoint surface, documented or not
+Request replay and tampering (proxy tools): sending the unexpected value the UI would never send
+Attack-scenario enumeration prompts: directing AI to list what an adversary would attempt per feature
+
+Exam Topics
+
+Business logic flaws: price manipulation, workflow escalation, race conditions
+Auth boundary testing and the A-reaches-B Critical
+Endpoint enumeration beyond the documented API
+Client-side trust and the server-side enforcement question
+Configuration findings: debug mode, verbose errors, exposed env, default creds, open CORS
+The attacker mindset applied deliberately per feature
+Why these classes are invisible to automated scanning
+Directing AI to enumerate attack scenarios without losing auditor judgment
+
+Common Pitfalls
+
+Confirming a user can see their own data and never testing whether they can see someone else's
+Auditing only documented endpoints and missing the debug and admin routes in the bundle
+Accepting client-side validation or gating as a real control
+Assuming one tested boundary is safe when replication means the others likely are not
+Missing race conditions because each request individually passes review
+Leaving production debug mode and verbose errors unflagged because the code looks fine
+
+Self-Assessment Checklist
+
+Do I test cross-user access on every resource route, not just one?
+Can I model a business rule and then design the request that breaks it?
+Have I enumerated the real endpoint surface, including undocumented routes?
+For each client-side protection, have I confirmed server-side enforcement?
+Do I check deployment configuration, not just application code?
+Can I walk a feature as an attacker and list what I would try first?
+
+AI Audit Prompt Template
+
+You are running the manual-review pass that automated scanning cannot cover. For this application: (1) business logic: for each money or permission operation, describe how a client could manipulate quantity, price, ordering, or timing (including race conditions) and whether the server independently validates, (2) auth boundaries: enumerate every resource-fetching endpoint and test whether one user can access another user's resources by identifier, (3) endpoint surface: extract all referenced routes from the frontend bundle and route definitions, list undocumented or admin or debug endpoints, and check each for authentication, (4) client-side trust: list every authorization, validation, or pricing decision made in frontend code and flag any not enforced server-side, (5) configuration: check for production debug mode, verbose errors, exposed environment variables, default credentials, and permissive CORS. Output findings with reproduction steps and severity.
+
+What's Next
+
+Module 5 turns raw findings into communication: severity classification and reports that non-technical stakeholders can act on without panic.
+
+Certification Pathway
+
+This is Module 4 of 7 in the Vibecoder Security Audit Method course, part of T6 The Vault. Passing all seven module exams earns the Code Audit Specialist badge. This module is where the highest-severity findings are made.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

@@ -1,0 +1,95 @@
+# Module 6: Course Content Delivery & Media — Study Guide
+
+## Module 6: Course Content Delivery & Media
+
+Caching & CDN for Education Technology
+
+This is the study guide. Everything for Course Content Delivery & Media is on this page — there's nothing to download.
+
+———
+
+## What This Module Covers
+
+This module covers caching and content delivery as they apply specifically to education technology—the video lesson delivery, media asset optimization, offline-capable content packaging, and bandwidth-efficient distribution that let your EdTech platform serve interactive learning content to thousands of students simultaneously without buffering, timeouts, or quality degradation. You already know caching fundamentals from the CADE program. This goes deeper into EdTech-specific patterns: adaptive bitrate streaming for video lessons that adjusts quality to each student's connection speed, content preloading that downloads the next lesson while the current one plays, offline-capable packaging for schools with unreliable internet, and CDN strategies that put content close to schools clustered in specific geographic regions.
+
+## Why It Matters
+
+A video lesson that buffers every 10 seconds is worse than no video at all. Students disengage. Teachers abandon the platform. And the IT department gets 30 support tickets before lunch. EdTech content delivery has unique constraints. Schools often share a single internet connection across hundreds of devices. When 30 students in the same classroom hit play on the same video at the same time, that's 30 concurrent streams competing for limited bandwidth. Without smart delivery strategies—caching at the school level, adaptive bitrate encoding, progressive download—the network collapses and nobody learns anything. Rural and under-resourced schools face even tougher conditions. Some have bandwidth measured in single-digit Mbps. Your platform must work there too.
+
+## Module Certification Goal
+
+You can describe video delivery optimization, adaptive streaming, content caching, and offline-capable packaging to an AI coding tool, evaluate the output for bandwidth-constrained performance, and ship a content delivery system that works reliably in real school environments where 30 students share one network connection.
+
+## What You Need to Know
+
+**Adaptive bitrate streaming for education:** Video lessons should adapt their quality to each student's available bandwidth. A student on fast home WiFi gets 1080p. A student on a school Chromebook with shared bandwidth gets 480p. The video doesn't buffer—it adjusts. HLS (HTTP Live Streaming) and DASH are the standard protocols for this.
+
+**Classroom burst traffic management:** When a teacher says 'everyone open Lesson 3,' 30 students request the same content simultaneously. Without edge caching, that's 30 separate requests to your origin server through the school's single connection. CDN edge nodes and local caching reduce this to one fetch with 29 cache hits.
+
+**Offline and low-connectivity content:** Some schools have intermittent internet. Content packages that can be downloaded in advance (as PWAs or downloadable modules) let students continue learning when the connection drops. Service workers can cache lesson content locally.
+
+**Media optimization for education:** Education content includes videos, images, interactive simulations, and PDFs. Each format needs optimization: video transcoding for multiple bitrates, image compression with lazy loading, PDF rendering that doesn't download the entire file before showing the first page.
+
+**Content versioning and updates:** Course content changes over time. When a teacher updates a lesson, students who cached the old version need to get the new one. Your caching strategy needs versioned URLs or cache-busting headers so students always see current content without manually clearing their browser cache.
+
+## Your Toolkit
+
+**AI coding tool (pick one):** Cursor, Lovable, Bolt, Claude Code—describe your content delivery strategy, caching layers, and offline capability to it.
+
+**Video hosting and encoding:** Mux, Cloudflare Stream, or AWS MediaConvert for video transcoding and adaptive bitrate delivery. These handle the complexity of HLS/DASH encoding.
+
+**CDN for static assets:** Cloudflare, AWS CloudFront, or Bunny CDN for caching images, PDFs, and other static learning materials close to school networks.
+
+**Network throttling tools:** Chrome DevTools network throttling to simulate school bandwidth conditions (3G, slow 4G) and verify your content loads acceptably under constraints.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+**Adaptive streaming configuration:** Can you evaluate whether video content streams at appropriate quality levels for different bandwidth conditions?
+
+**Burst traffic handling:** Can you assess whether the platform handles 30 students requesting the same content simultaneously without degradation?
+
+**Offline capability:** Can you verify that critical learning content is available when the internet connection drops or is intermittent?
+
+**Media optimization:** Can you identify when images, videos, or PDFs are unoptimized and causing slow page loads on student devices?
+
+**Cache invalidation:** Can you evaluate whether updated content reaches students without requiring manual cache clearing?
+
+**CDN configuration:** Can you assess whether content is being served from edge nodes close to school locations rather than from a distant origin server?
+
+**Bandwidth-constrained testing:** Can you diagnose content delivery issues under realistic school bandwidth conditions using network throttling?
+
+**Content accessibility:** Can you verify that video lessons include captions and that all media formats are accessible to students with disabilities?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Hosting videos as raw MP4 files without adaptive bitrate encoding. A 1080p MP4 will buffer on every school network. Adaptive bitrate streaming (HLS/DASH) adjusts quality to available bandwidth automatically. Not testing what happens when 30 students load the same page simultaneously. Your platform works perfectly for one student on fast WiFi. Does it work when an entire classroom hits it at once on a shared school connection? Assuming all schools have reliable internet. Rural schools, under-resourced urban schools, and schools in developing countries may have single-digit Mbps connections. If your platform requires broadband, you've excluded a significant portion of students. Not adding captions to video lessons. Video captions aren't just an accessibility feature—they're legally required for educational content under ADA and Section 508. They also help students in noisy environments or those learning in a second language. Loading all course content on the course page instead of progressive loading. A course with 30 lessons shouldn't download all 30 when the student opens Module 1. Load the current lesson, preload the next, lazy-load everything else. Not versioning cached content. When a teacher updates a lesson, students see the old cached version until their browser cache expires. Versioned URLs or cache-busting headers ensure students always see the latest content.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Do your video lessons stream at adaptive quality levels based on student bandwidth? Have you tested your platform with 30 concurrent users on a bandwidth-limited network? Can students access critical learning content when the internet connection drops? Are all video lessons captioned for accessibility compliance? Does your course page load the current lesson progressively instead of loading all content at once? When a teacher updates content, do students see the new version without clearing their cache? Is your content served from CDN edge nodes close to school geographic clusters?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my EdTech platform's content delivery system and check the following. For each one, tell me pass or fail with a specific example: Adaptive streaming: Do videos adjust quality to available bandwidth automatically? Burst traffic: Can 30 concurrent users load the same content without degradation? Offline access: Can students continue learning when the internet drops? **Captions: Are all video lessons captioned for accessibility? Progressive loading:** Does the course page load only the current lesson initially? Cache freshness: Do content updates reach students without manual cache clearing? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 6 exam. The best way to prepare: set up video hosting with adaptive bitrate. Use Chrome DevTools to throttle your network to 3G and watch a lesson. Open the same lesson in 5 tabs simultaneously. Every buffering moment or timeout you encounter is exactly what the exam tests.
+
+## Certification Pathway
+
+**Industry Specialist — Education/EdTech:** Pass all 7 module exams in this course
+
+**CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+
+**CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Course Content Delivery & Media Exam →

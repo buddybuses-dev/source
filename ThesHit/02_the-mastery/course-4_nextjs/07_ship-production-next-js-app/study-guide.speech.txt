@@ -1,0 +1,108 @@
+Module 7: Ship: Production Next.js App — Study Guide
+
+Next.js Application Build
+
+T4 The Mastery | Module 7 Study Guide
+
+Module 7: Ship: Production Next.js App
+
+Direct AI to build fast, SEO-ready web applications on Next.js and Vercel.
+
+What This Module Covers
+
+This is the capstone. Everything you have directed your AI to build across the first six modules, the routing from M1, the component split from M2, the caching from M3, the Server Actions from M4, the SEO and performance work from M5, and the Vercel pipeline from M6, converges into one deliverable: a production Next.js application real users can hit right now.
+
+You will run the complete build-to-deploy arc: a full pre-launch audit covering performance, SEO verification, security headers, error monitoring, and analytics, followed by production hardening with rate limiting, bot protection, and error boundaries that fail gracefully instead of dumping stack traces in front of users.
+
+Finally, you learn to treat the shipped app as living infrastructure: monitoring build times, function execution, and bandwidth, and developing the judgment to know when a problem is worth optimizing and when the right move is to ship and watch.
+
+Why It Matters
+
+A demo on your laptop and a production app serving 10K daily users are different animals. Production forgives nothing: a missing security header becomes a vulnerability report, an unhandled error becomes a blank screen for a paying customer, and an unprotected API route becomes a five-figure bandwidth bill when a bot farm finds it. The gap between "it works" and "it ships" is what this module closes.
+
+This is also where your value as a builder gets proven. Anyone can prompt an AI into a landing page. The builder who directs a disciplined pre-launch audit, catches the stack trace leaking into an error page, and reads the monitoring dashboard the morning after launch is the one whose SaaS dashboard stays up and whose content site keeps ranking. That is the Next.js Specialist standard.
+
+Certification Goal
+
+Passing the Module 7 exam proves you can take a Next.js application from working build to hardened production deployment: you can direct a complete pre-launch audit, verify security and error handling, configure monitoring, and make defensible ship-versus-optimize decisions under real constraints.
+
+What You Need to Know
+
+The Pre-Launch Checklist
+
+Before any launch, direct your AI through five gates: performance audit (Core Web Vitals), SEO verification (metadata, sitemap, robots.txt from M5), security headers, error monitoring, and analytics. Treat it as a literal checklist you run every time. If your content site launches without a sitemap or your dashboard launches without error tracking, you find out from Google or angry users instead of your own tooling.
+
+Security Headers
+
+Production apps ship headers that browsers enforce: Content-Security-Policy, Strict-Transport-Security, X-Frame-Options, X-Content-Type-Options, and Referrer-Policy. In Next.js these live in next.config headers or middleware, and your AI can generate them in minutes. Your job is to verify they actually appear in the live response with a scanner, because a header defined but never served protects nobody.
+
+Rate Limiting and Bot Protection
+
+Any public API route or Server Action will be found and hammered. Direct your AI to add rate limiting (Upstash Redis or Vercel WAF rules are common patterns) on auth endpoints, form submissions, and anything touching the database. Bot protection matters double on Vercel because you pay for bandwidth and function execution: scrapers are a security problem and a billing problem at once.
+
+Error Boundaries That Fail Gracefully
+
+Next.js gives you error.tsx, global-error.tsx, and not-found.tsx per route segment. In production these must show a friendly recovery UI and log the real error to your monitoring tool, never render a stack trace to the user. A leaked stack trace kills trust and hands attackers reconnaissance, so reviewing every error boundary your AI wrote is non-negotiable.
+
+Monitoring the Three Meters
+
+After launch, watch three things on Vercel: build times (creep means dependency bloat or unbounded static generation), function execution (slow functions cost money and signal missing caching from M3), and bandwidth (spikes mean growth or bots, and you need to know which within hours). Pair these with an error tracker like Sentry so failures reach you before user screenshots do.
+
+Ship Versus Optimize
+
+Every week spent polishing is a week without user feedback. The working rule: fix anything that breaks correctness, security, or Core Web Vitals thresholds before launch; defer everything merely "could be faster" until real traffic says it matters. The production app is living infrastructure you improve continuously, not a final exam you submit once.
+
+Your Toolkit
+
+Lighthouse / Vercel Speed Insights: Your performance audit engine. Run it against the production URL, not localhost, and hold the line on Core Web Vitals.
+Vercel Observability Dashboard: Build times, function execution, and bandwidth in one place. Check daily for two weeks after launch, then weekly.
+Sentry (or equivalent error tracking): Captures production exceptions server side where they belong, and alerts you before users report the blank screen.
+Security Header Scanner: Tools like securityheaders.com verify the CSP, HSTS, and frame protections your AI configured are actually served in production.
+
+Exam Topics
+
+The five components of the pre-launch checklist: performance, SEO, security headers, error monitoring, analytics
+Which security headers a production Next.js app should serve and where they are configured (next.config headers versus middleware)
+Where rate limiting belongs and why unprotected API routes create both security and billing risk on Vercel
+The role of error.tsx, global-error.tsx, and not-found.tsx, and why production error UIs must never expose stack traces
+The three monitoring meters on Vercel: build times, function execution, bandwidth, and what a spike in each one signals
+Applying the ship-versus-optimize rule: what must be fixed pre-launch versus what waits for real traffic data
+How error tracking tools like Sentry fit alongside Vercel's built-in observability
+Why a shipped production app is treated as living infrastructure with an ongoing audit cadence
+
+Common Pitfalls
+
+Launching on localhost numbers: A perfect dev Lighthouse score means little. Cold starts, real latency, and production data change everything, so audit the deployed URL.
+Defining security headers that never ship: Headers in the wrong config location, or overridden by middleware, silently protect nothing. Verify with an external scanner.
+Leaving API routes unlimited: One unprotected endpoint plus one bot swarm equals a surprise Vercel bill and a degraded app at the same time.
+Error pages that leak internals: AI-generated error handling often prints raw messages. Stack traces belong in Sentry, never in the browser.
+Skipping monitoring because launch went fine: Day one is the easiest day. Bandwidth spikes and creeping builds show up in week two, and only if you are watching.
+Polishing instead of shipping: Endless optimization of an app with zero users is procrastination in an engineering costume. Ship at the quality gate, then let traffic set priorities.
+
+Self-Assessment Checklist
+
+I can direct my AI through the full five-gate pre-launch checklist and verify each result myself
+I can confirm that security headers are configured in Next.js and actually served in production responses
+I can add rate limiting and bot protection to API routes and Server Actions and explain the billing stakes
+I can review error boundaries to confirm users see recovery UIs while real errors flow to monitoring
+I can read Vercel dashboards for build times, function execution, and bandwidth, and diagnose a spike
+I can make and defend a ship-versus-optimize decision using correctness, security, and Core Web Vitals as the gate
+I can describe the post-launch cadence that treats the app as living infrastructure
+
+AI Audit Prompt Template
+
+Give your AI this prompt against your deployed app to run the full pre-launch audit.
+
+Act as my production readiness auditor for a Next.js app deployed on Vercel at [PRODUCTION_URL]. Report findings in five sections, each with a pass/fail verdict and specific fixes: 1. PERFORMANCE: Audit Core Web Vitals (LCP, CLS, INP) on the production URL. Flag oversized images, missing next/image usage, blocking scripts, and routes that should be static or cached but render dynamically. 2. SEO: Verify metadata on every route (title, description, Open Graph), confirm sitemap.xml and robots.txt are correct, check canonical URLs, and flag any page unintentionally blocked from indexing. 3. SECURITY: Check live response headers for Content-Security-Policy, Strict-Transport-Security, X-Frame-Options, X-Content-Type-Options, and Referrer-Policy. Show served versus missing, and generate the next.config or middleware fixes. Audit API routes and Server Actions for missing rate limiting and input validation. 4. ERROR HANDLING: Review every error.tsx, global-error.tsx, and not-found.tsx. Confirm no stack traces or internal details can reach the user, and that all caught errors are logged to our monitoring tool. 5. MONITORING AND ANALYTICS: Confirm error tracking (Sentry or equivalent) is wired on server and client, analytics fires on key pages and conversions, and tell me which Vercel metrics (build time, function execution, bandwidth) to watch in week one with thresholds that should trigger action. End with a prioritized fix list in two groups: MUST FIX BEFORE LAUNCH and SAFE TO DEFER, with a one-line justification each.
+
+What's Next
+
+Ship the capstone, pass the exam, and claim your Next.js Specialist badge. Then carry this module forward: the build-to-deploy discipline you just proved is the delivery layer underneath most web-based T4 Mastery builds. Whatever you direct AI to build next in your other Mastery courses, this is how it reaches users fast, ranked, and hardened.
+
+Certification Pathway
+
+Pass this module's exam at 80% or higher, 20 of 25 questions, to earn the Module 7 badge. Pass all seven module exams to earn the Next.js Specialist badge and complete the Next.js Application Build certification.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

@@ -1,0 +1,106 @@
+# Module 1: The Regulatory Landscape Map — Study Guide
+
+## Compliance Foundations for Builders
+
+T6 The Vault | Module 1 Study Guide
+
+Direct AI to map which regulations apply to any build before shipping it.
+
+## What This Module Covers
+
+You can direct AI to build almost anything now. What AI will not do automatically is tell you that your dentist scheduling app just walked into HIPAA territory, or that your EU signups just made GDPR your problem. This module gives you the map: the categories of regulation that touch software, and how to recognize when your build crosses into one.
+
+You will learn the six regulatory categories that affect software: data privacy, industry-specific rules, consumer protection, communications law, financial regulations, and accessibility. You will also learn the distinction this course rests on: compliance awareness is not legal advice. By the end, you will be able to look at any build and name which categories it touches before a single user signs up.
+
+## Why It Matters
+
+Real scenarios from The Faction: a builder ships a scheduling app for a dental practice, patient names and treatment notes in the booking fields. Nobody told him HIPAA existed, so nobody signed a Business Associate Agreement, and now his client is exposed and so is he. Another builder discovers GDPR when the first EU deletion request lands. A third collects card numbers in a custom form and pulls full PCI DSS weight onto a hobby-grade stack. They were not careless. They shipped without a map.
+
+Regulatory problems kill client relationships, trigger fines, and can force you to rebuild or shut down something that took months to grow. The awareness that prevents most of this takes hours to build, not years. Saying "this build touches health data, payments, and EU users, so here are three flags to resolve before launch" puts you ahead of most people shipping software.
+
+## Certification Goal
+
+Passing this exam proves you can identify the six regulatory categories that affect software, explain what triggers each one, distinguish compliance mapping from legal advice, and describe a repeatable process for surveying regulatory exposure on any build before it ships.
+
+## What You Need to Know
+
+### Compliance Is a Builder Problem, Not Just a Lawyer Problem
+
+Regulations attach to what your software does, not to who wrote it or how. If your build stores health data or processes payments, the rules apply whether you hand-coded it or directed AI to build it in a weekend. Fast shipping means you can reach regulated territory without noticing you crossed the line.
+
+### Data Privacy Touches Almost Everything
+
+If your build collects names, emails, locations, or behavior, data privacy law is in play. GDPR in the EU, CCPA and its cousins in US states, and similar frameworks worldwide govern what you collect, how long you keep it, and what users can demand back. Nearly every signup form touches this category.
+
+### Industry-Specific Rules Are Triggered by Users and Data, Not Intent
+
+HIPAA for health information, FERPA for student records, GLBA for financial data, COPPA for kids under 13. A generic scheduling tool becomes a HIPAA concern the moment a dental office puts patient information into it. The client and the data pull the trigger.
+
+### Consumer Protection and Communications Law Cover Selling and Messaging
+
+Consumer protection rules, FTC territory in the US, govern claims, pricing, subscriptions, cancellations, and dark patterns. Communications laws like CAN-SPAM and TCPA govern the emails and texts your build sends. Market, message, or bill people automatically and both categories are live.
+
+### Financial Regulations and PCI Scope Follow the Money
+
+Touch payments, lending, or wallets and you enter financial regulation territory. PCI DSS scope is the classic trap: use a hosted provider like Stripe Checkout and most of the burden stays with the provider; collect card data on your own forms or servers and the burden becomes yours.
+
+### Accessibility Is a Legal Requirement, Not a Nice-to-Have
+
+The ADA in the US and similar laws elsewhere apply to websites and apps, with WCAG as the practical standard. Lawsuits against small sites are common and cheap to file, and building to standards from day one beats retrofitting after a demand letter.
+
+### The Map Is Not Legal Advice
+
+This course teaches you to identify which regulations touch a build and when to escalate. It does not qualify you to declare anything compliant, for yourself or a client. Build the map, flag the exposures, bring in licensed professionals for the territory.
+
+## Your Toolkit
+
+- **The Six-Category Sweep:** A scan you run on every build: data privacy, industry rules, consumer protection, communications, financial, accessibility. Write down every yes or maybe.
+- **The Trigger Question List:** Five questions that surface exposure fast: Who are the users? What data flows through? Where do users live? Does money move? Does it send messages?
+- **AI Regulatory Survey Prompts:** Structured prompts, like the template below, that direct your AI to enumerate the categories touching your build. AI supplies breadth; you supply judgment.
+- **The Escalation Threshold:** A written rule for when awareness ends and professional help begins: health data, payments beyond hosted providers, children's data, or financial products all mean a real professional.
+
+## Exam Topics
+
+- The six regulatory categories that affect software builds and one example law in each
+- What triggers HIPAA exposure for a builder who is not a healthcare provider
+- Why GDPR can apply to a US-based builder with no EU office
+- The PCI scope difference between hosted payment providers and collecting card data yourself
+- The distinction between compliance mapping and legal advice, and what a builder can and cannot claim
+- Which laws govern automated emails and text messages sent by a product
+- Why accessibility is a regulatory category, and the standard commonly referenced
+- The trigger questions used to survey a new build's regulatory exposure before launch
+
+## Common Pitfalls
+
+- **Assuming small means invisible:** Regulators and plaintiffs do not check your MRR before acting. Small builds get letters too.
+- **Thinking the vendor's compliance covers your build:** A HIPAA-eligible host or PCI certified provider does not make your application compliant. Configuration, agreements, and your own code all matter.
+- **Discovering regulations after launch:** Retrofitting consent flows, deletion capabilities, or payment architecture costs ten times what designing for them costs. Map first, ship second.
+- **Playing lawyer for clients:** Telling a client "this is compliant" is a claim you are not qualified to make and a liability you do not want. Present the map, flag exposures, recommend professionals.
+- **Paralysis in the other direction:** Regulatory risk is managed, not eliminated. Most builds need a handful of concrete actions, not a legal department, so keep shipping.
+- **Ignoring where users actually live:** Your users' locations matter more than yours. An EU visitor at your signup form can pull your build into GDPR regardless of where you sleep.
+
+## Self-Assessment Checklist
+
+- I can name the six regulatory categories that affect software builds and give an example of each
+- I can explain why directing AI to build software carries the same regulatory exposure as hand-coding it
+- I can identify what makes a scheduling app for dentists different, legally, from one for barbers
+- I can explain the PCI scope difference between hosted checkout and collecting card data myself
+- I can describe the boundary between compliance mapping and legal advice, and state what I will never claim
+- I can run a trigger-question survey on any build and list the regulatory categories it touches
+- I can name three situations where my next step is a licensed professional, not another prompt
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI, fill in the brackets, and treat the output as the first draft of your regulatory map, never as a final answer.
+
+> Survey the regulatory exposure of my software build. I am not asking for legal advice, only a map of categories to investigate further. My build: [describe the product in 2-3 sentences] Users: [who uses it, including their industry] Data collected: [every type of data stored or processed] User locations: [countries and US states] Money: [payments and how: hosted provider, custom forms, subscriptions] Messaging: [emails, texts, or notifications sent] Special populations: [children under 13, patients, students, financial customers] For each of these six categories, state whether my build likely touches it, why, and which law to read about first: 1) data privacy, 2) industry-specific rules, 3) consumer protection, 4) communications law, 5) financial regulations, 6) accessibility. List the top three exposures by severity, flag anything needing a licensed professional before launch, and format the output as a table I can save as my regulatory map.
+
+## What's Next
+
+You now have the map of the whole landscape. Module 2: Which Laws Apply To Your Build narrows the lens from categories to your specific product, turning this module's survey skills into a concrete list of the actual laws in play. Bring a real project, because Module 2 works best against something you actually plan to ship.
+
+## Certification Pathway
+
+Pass this module's exam at 80 percent, 20 of 25 questions, to earn the Module 1 badge. Pass all 7 module exams to earn the Compliance Foundations Specialist badge.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

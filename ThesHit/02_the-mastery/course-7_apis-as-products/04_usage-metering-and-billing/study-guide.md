@@ -1,0 +1,87 @@
+# Module 4: Usage Metering and Billing — Study Guide
+
+## API Product Build
+
+### T4 The Mastery | Module 4 Study Guide
+
+## Module 4: Usage Metering and Billing
+
+> Direct AI to meter every call accurately enough that you can bill on it.
+
+## What This Module Covers
+
+This module covers turning API usage into revenue: tracking usage per key, per endpoint, and per time period; metering architectures (synchronous counting vs async log aggregation); usage dashboards for customers; billing integration with Stripe metered subscriptions and usage-based pricing; overage charges; invoice line items that match the dashboard; and credit and prepaid systems.
+
+## Why It Matters
+
+Metering is the machinery that connects what customers do to what they pay. For a usage-based API product, this is the revenue engine, and it has to be exactly right, because metering errors are billing errors, and billing errors destroy trust faster than almost any bug. Under-count and you leak revenue; over-count and you overcharge customers and invite disputes and churn. The numbers a customer sees in their dashboard must match the numbers on their invoice, or they stop believing either. This module is where you build the counting and billing infrastructure that a real API business runs on.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI to build accurate usage metering, choose the right metering architecture, expose usage to customers, wire metered billing through Stripe, and keep dashboard usage and invoice line items in agreement.
+
+## What You Need to Know
+
+**1. What to meter: key, endpoint, time period.** Usage is tracked along the dimensions that pricing and product decisions depend on: per key (which customer), per endpoint (which operations, since a heavy endpoint may cost more), and per time period (the billing window). You direct AI to record usage with enough granularity to answer both the billing question (what does this customer owe) and the product question (which endpoints drive load and value). Metering too coarsely means you cannot price by value; metering too finely wastes storage without insight. You capture the dimensions your pricing model actually uses.
+
+**2. Metering architectures: synchronous vs async.** Synchronous counting increments a counter in the request path, giving real-time accuracy at the cost of adding work and a potential failure point to every call. Async log aggregation records each call to a log and tallies usage in a separate pipeline, keeping the request path fast and resilient at the cost of some delay before usage is final. The tradeoff is real-time accuracy vs request-path performance and reliability. Most API products at scale lean async for the hot path and reconcile, but the right choice depends on whether decisions (like enforcing a hard cap) must happen in real time.
+
+**3. Usage dashboards for customers.** Customers need to see their own usage, in near real time, broken down the way their bill will be. A usage dashboard is both a trust feature and a support-load reducer: a customer who can see they are approaching their limit does not open a ticket asking why, and a customer who can reconcile their own usage does not dispute the invoice. You direct AI to expose the same usage data that drives billing, so the customer's view and the billing system's view come from one source.
+
+**4. Stripe metered billing.** Stripe metered subscriptions are built for usage-based pricing: you report usage to Stripe against a subscription item, and Stripe computes the charge from the price model. This covers per-unit pricing, tiered pricing (cheaper per unit as volume grows), and overages (a base allowance plus per-unit charges beyond it). You direct AI to report metered usage to Stripe accurately and on the billing cycle, so the platform that already handles payments and invoices also handles the usage math, rather than reimplementing billing yourself.
+
+**5. Invoice line items that match the dashboard.** This is the trust-critical requirement: what the customer sees in their usage dashboard must reconcile to what appears on their Stripe invoice. If the dashboard says 12,000 calls and the invoice bills for 12,400, the customer trusts neither number. You design the metering so the dashboard and the invoice draw from the same usage records and the same period boundaries. Line items should be legible: the customer should be able to read the invoice and map each charge back to usage they can see.
+
+**6. Credits and prepaid usage.** Beyond pay-as-you-go, many API products sell prepaid credit: a customer buys a balance and usage draws it down. This changes the metering job from billing after the fact to decrementing a balance in real time and cutting off or warning when it runs low. Credit systems also support promotions, free-tier allowances, and enterprise commitments. You direct AI to track the balance accurately, surface it in the dashboard, and handle the edge cases (what happens at zero, whether overage is allowed, how top-ups apply), because a prepaid balance a customer cannot trust is worse than no balance at all.
+
+## Your Toolkit
+
+- **Usage recorder**: per-key, per-endpoint, per-period tracking at the granularity your pricing uses
+- **Metering architecture**: synchronous for real-time enforcement, async aggregation for hot-path performance
+- **Customer usage dashboard**: the same records that drive billing, shown to the customer in near real time
+- **Stripe metered billing**: usage reported to metered subscriptions, with line items that reconcile to the dashboard
+
+## Exam Topics
+
+1. Metering dimensions: per key, per endpoint, per time period
+2. Synchronous counting vs async log aggregation tradeoffs
+3. Customer usage dashboards as a trust and support feature
+4. Stripe metered subscriptions and usage-based pricing
+5. Overage charges and tiered pricing models
+6. Reconciling dashboard usage with invoice line items
+7. Credit and prepaid balance systems
+8. Why metering errors are trust-destroying billing errors
+
+## Common Pitfalls
+
+- Metering too coarsely to price by value, or too finely to gain any insight
+- Putting all counting in the synchronous request path and slowing every call
+- Showing customers a usage dashboard that does not match their invoice
+- Reimplementing billing math instead of reporting usage to Stripe metered subscriptions
+- Drawing the dashboard and the invoice from different records or different period boundaries
+- Building a prepaid balance that behaves unpredictably at zero or on top-up
+
+## Self-Assessment Checklist
+
+- Am I metering along the dimensions my pricing model actually uses?
+- Have I chosen synchronous or async metering based on whether real-time enforcement is needed?
+- Can a customer see their usage in near real time, broken down as their bill will be?
+- Am I reporting usage to Stripe metered subscriptions rather than computing charges myself?
+- Do my dashboard usage and invoice line items reconcile from the same source?
+- Does my prepaid balance behave correctly at zero, on overage, and on top-up?
+
+## AI Audit Prompt Template
+
+> You are auditing an API's metering and billing. Check: (1) granularity: is usage tracked per key, per endpoint, and per period at the resolution the pricing model requires, (2) architecture: is the synchronous vs async metering choice appropriate for whether real-time enforcement is needed, (3) customer visibility: does a usage dashboard show near-real-time usage from the same records that drive billing, (4) billing integration: is usage reported to Stripe metered subscriptions rather than hand-computed, (5) reconciliation: do dashboard usage and invoice line items derive from the same records and period boundaries, (6) prepaid: if credits exist, does the balance behave correctly at zero, on overage, and on top-up. Report each finding with its revenue or trust consequence.
+
+## What's Next
+
+Module 5 covers evolving the API without breaking customers: versioning strategies and error response design.
+
+## Certification Pathway
+
+This is Module 4 of 7 in the API Product Build course, part of T4 The Mastery. Passing all seven module exams earns the API Product Specialist badge. This module is the product's revenue engine.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

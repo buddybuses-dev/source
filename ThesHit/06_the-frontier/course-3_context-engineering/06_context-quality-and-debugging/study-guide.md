@@ -1,0 +1,85 @@
+# Module 6: Context Quality and Debugging — Study Guide
+
+## Context Engineering
+
+### T8 The Frontier | Module 6 Study Guide
+
+## Context Quality and Debugging
+
+> "Direct AI to show you exactly what the model saw, because context failures produce answers that look right."
+
+## Why This Matters
+
+Code failures crash; context failures compose. A window carrying stale data or contradictory instructions still produces fluent, confident, plausible output, and nobody notices until a client does. The builders who thrive at this tier are the ones who can diagnose a context problem in minutes because they built the visibility to see it.
+
+## Core Concepts
+
+**Wrong in ways that look right.** The defining trait of context failure is fluency. The model does its job perfectly on the window it was given; the window was the problem. This is why "the model hallucinated" is usually the wrong diagnosis and always the wrong place to stop.
+
+**The four failure families.** Stale information: the window carries facts that were true once, like an old price or a cancelled plan. Contradictory instructions: the system prompt says one thing, an injected document or memory says another, and the model resolves the conflict silently. Displacement: relevant content pushed out or buried by irrelevant content that outcompeted it for space. Retrieval misses: the needed passage never entered the window, so the model filled the gap from its training.
+
+**Log what actually went in.** The foundational debugging tool is a complete record of every assembled window: every layer, labeled, with token counts, stored per call. Without it you are debugging from imagination. With it, most mysteries resolve by reading.
+
+**Compare across runs.** When the same query worked Tuesday and failed Thursday, diff the two windows. The prompt rarely changed; the retrieved chunks, the memory, or the history depth did. Input diffing turns "the model is flaky" into "this chunk replaced that one."
+
+**Measure retrieval quality continuously.** The Module 3 test set is not a one-time gate. Documents change, embeddings drift after re-indexing, and thresholds rot. Re-run retrieval metrics on a schedule so quality decay shows up in a report before it shows up in a client call.
+
+**The context audit.** A systematic review comparing what the model sees against what it should see for a sample of real queries. Walk each layer: is it present, correct, current, labeled, and worth its tokens? Audits catch the slow rot that per-bug debugging misses.
+
+## How It Works
+
+Debugging follows a fixed ladder. Reproduce the failure and pull the logged window for that exact call. Read it asking four questions in order: is anything stale, does anything contradict, was the needed content present but buried, or absent entirely? If absent, drop to the retrieval logs and find where the pipeline lost it: chunking, similarity, threshold, or re-ranking. If present, check position and what surrounded it. Fix the layer at fault, add the case to your test set, and re-run. The prompt gets edited last, if at all.
+
+## Directing AI
+
+1. "Direct the logger to store every assembled window with per-layer labels and token counts, keyed by request ID, so any output can be traced to its exact input."
+2. "Here is a bad output and its request ID. Pull the logged window and walk the four failure families: stale, contradictory, displaced, or missing."
+3. "Diff the assembled contexts for these two request IDs, same query, different quality, and summarize every difference by layer."
+4. "Scan this system prompt against our injected document templates and memory formats, and list every place they can contradict each other."
+5. "Run a context audit on 20 random production requests: for each, report what the window contained versus what our recipe says it should contain."
+
+## Common Mistakes
+
+1. Blaming the model and re-rolling until the output looks better, learning nothing about the cause.
+2. Prompt-tweaking around a context bug, which adds instruction clutter and often new contradictions.
+3. Logging only the user message and the output, leaving the actual model input a mystery.
+4. Fixing individual bugs while skipping audits, so systemic rot accumulates underneath the patches.
+5. Treating retrieval metrics as a launch gate instead of a scheduled, ongoing check.
+6. Ignoring contradiction bugs because output stays fluent while the model quietly picks a side.
+
+## Real-World Application
+
+A builder gets a tense email: the proposal assistant quoted a client a discount that ended last quarter. The old builder instinct says tighten the prompt, add "never quote outdated discounts." Instead the builder pulls the logged window by request ID and reads it. The retrieval layer contains two pricing chunks: the current sheet and last year's, both indexed, both similar to the query. The stale chunk sat higher. The fix has nothing to do with prompts: purge superseded documents from the index, add a currency field to chunk metadata, filter retrieval to current documents only, and add this query to the regression set. Fifteen minutes, root cause, permanent fix, and a new audit item: check the index for superseded content monthly.
+
+## Decision Framework
+
+- Output cites facts that used to be true? Hunt stale content in retrieval, memory, and profiles.
+- Model inconsistently follows an instruction? Search the window for a competing instruction.
+- Facts are indexed but answers miss them? Check displacement first, then retrieval logs.
+- Same query, different days, different quality? Diff the two logged windows layer by layer.
+- Bug found and fixed? Add the case to the regression set before moving on.
+- No specific bug but quality feels off? Run the audit; sample real windows against the recipe.
+
+## Tool and Platform Notes
+
+Purpose-built tracing tools like LangSmith, Langfuse, and Braintrust record full model inputs per call and support diffing; Langfuse can be self-hosted. A plain JSONL log of assembled windows delivers most of the value with none of the setup. Whatever the tool, the requirement is identical: full input capture per call, keyed to a request ID you can find from a complaint.
+
+## Key Takeaways
+
+- Context failures produce fluent, confident, wrong output; fluency is not evidence of correct input.
+- Four failure families cover most bugs: stale, contradictory, displaced, missing.
+- Full input logging turns debugging from guesswork into reading.
+- Diff windows across runs; the input changed even when the prompt did not.
+- Audit on a schedule; per-bug fixes cannot catch systemic rot.
+
+## What's Next
+
+Module 7 is the capstone: assembling retrieval, memory, dynamic assembly, and this module's quality practices into one production context system, tested and monitored like real infrastructure.
+
+## Exam Prep Notes
+
+Expect bad-output scenarios where you name the failure family and pick the right first diagnostic step. Know why context failures look right, what complete input logging captures, when to diff versus audit, and why prompt edits come last in the debugging ladder.
+
+———
+
+*Matt Murphy AI | The Faction Group LLC | mattmurphy.ai*

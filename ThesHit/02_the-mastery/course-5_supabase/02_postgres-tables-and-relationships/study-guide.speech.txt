@@ -1,0 +1,106 @@
+Module 2: Postgres Tables and Relationships — Study Guide
+
+Supabase Backend Build
+
+T4 The Mastery | Module 2 Study Guide
+
+Module 2: Postgres Tables and Relationships
+
+Direct AI to build production backends on Supabase with security policies that hold.
+
+What This Module Covers
+
+Module 2 is where your Supabase project stops being an empty shell and becomes a real data model. You will direct AI to design Postgres tables with the right data types, primary keys, foreign keys, and constraints, then wire them together with one-to-many and many-to-many relationships. You already completed Database Design and Migration, so the theory is not new. What is new is applying it inside Supabase, where every schema decision becomes the foundation that Row-Level Security, Auth, and Storage sit on.
+
+You will also learn the two ways schema changes happen in Supabase, the visual table editor and SQL migrations, and when each is appropriate. Most importantly, this module teaches you to direct AI toward a data model that supports your app's real queries, not just a clean entity diagram. Your job as the builder is to hand AI the actual access patterns, then verify the schema it produces can serve them.
+
+Why It Matters
+
+Schema mistakes are the most expensive mistakes in your stack because everything else depends on them. Picture your SaaS app with 50 tenants. If AI builds an invoices table without a tenant_id foreign key, there is nothing for Module 3's security policies to filter on. You cannot write a policy that says "only show rows belonging to this tenant" when the column does not exist. Every table missing that link is a data leak waiting for its first curious user.
+
+Constraints matter just as much. A marketplace where listings.seller_id is a nullable text field instead of a NOT NULL foreign key will happily accept orphaned listings and broken data. AI generates plausible schemas by default, not correct ones, and your review is the quality gate. Fixing a schema after real users have written real data means migrations under pressure and backfill scripts. Fixing it now costs one prompt.
+
+Certification Goal
+
+Passing the Module 2 exam proves you can review an AI-generated Supabase schema and catch what production would punish: wrong data types, missing foreign keys, absent constraints, missing junction tables, and denormalization in the wrong places. It certifies you ship data models that hold up under real queries, not just diagrams that look complete.
+
+What You Need to Know
+
+Data Types That Match Reality
+
+Demand precise types from your AI: uuid for identifiers, timestamptz for time, numeric for money, jsonb for flexible metadata, boolean for flags. When AI reaches for text everywhere or stores prices as floats, push back. The wrong type invites bad data and blocks the queries and indexes you will need later.
+
+Primary Keys and Foreign Keys
+
+Every table needs a primary key, and in Supabase the standard is a uuid default of gen_random_uuid() so keys are unguessable. Foreign keys are enforcement, not documentation: orders.customer_id references customers(id) means Postgres refuses an order pointing at a customer that does not exist. Always choose the delete behavior, on delete cascade or on delete restrict, deliberately instead of accepting AI's default.
+
+Constraints as Your First Security Layer
+
+NOT NULL, UNIQUE, and CHECK constraints reject bad data before it lands. A client portal's memberships table should carry unique (user_id, client_id) and a check (role in ('admin', 'member', 'viewer')) so invented roles cannot sneak in. Constraints run inside the database, so they hold even when AI-generated app code has bugs.
+
+One-to-Many and Many-to-Many
+
+One-to-many is a foreign key on the "many" side: one tenant has many projects, so projects.tenant_id points at tenants.id. Many-to-many requires a junction table: listings and categories connect through listing_categories (listing_id, category_id) with a composite unique constraint. When AI models a many-to-many as an array column, that is a red flag you now know how to catch.
+
+Normalize First, Denormalize Deliberately
+
+Normalized tables keep every fact in one place, which prevents update anomalies. Denormalize only when a real query pattern demands it: caching review_count on listings beats joining thousands of reviews on every marketplace search. Direct AI to start normalized, then denormalize specific hot paths and document why, never the reverse.
+
+Table Editor vs SQL Migrations
+
+The table editor is great for prototyping, but its changes live only in that one project's database. SQL migration files are versioned, reviewable, and repeatable across staging and production, which Module 6 depends on. Every schema change that matters ships as a migration file your AI writes and you review.
+
+Your Toolkit
+
+Supabase Table Editor: The dashboard's visual schema browser. Use it to inspect what actually exists and sanity-check AI's work, not as your system of record for schema changes.
+SQL Editor and Migration Files: Run AI-generated DDL in the SQL editor, then persist it as migration files with the Supabase CLI (supabase migration new, supabase db push). This is how your schema becomes reproducible.
+Schema Visualizer: Supabase's built-in relationship diagram. Pull it up after every AI schema change and verify the foreign key lines match your app's relationships. A missing line is a missing constraint.
+Query-First Review Practice: Before approving any AI-generated schema, list your app's five most common queries and walk each through the tables. If a query needs a missing join path or filter column, the model fails review.
+
+Exam Topics
+
+Choosing correct Postgres data types for identifiers, timestamps, money, and metadata, and spotting wrong choices in AI output
+Defining uuid primary keys and why sequential integer IDs are risky for client-facing resources
+Reading foreign key definitions, including when on delete cascade vs on delete restrict is appropriate
+Applying NOT NULL, UNIQUE, and CHECK constraints to enforce business rules at the database layer
+Modeling one-to-many relationships and identifying which table carries the foreign key
+Building many-to-many relationships with junction tables and composite unique constraints
+Deciding when to normalize vs denormalize, defended with a real query pattern
+When to use the table editor vs SQL migrations, and why production changes must be migration files
+
+Common Pitfalls
+
+Accepting AI's entity diagram as the data model: A diagram shows what exists, not what gets queried. A schema that cannot efficiently answer "show this tenant's unpaid invoices" fails in production no matter how clean it looks.
+Missing tenant or owner foreign keys: If a table in your 50-tenant SaaS lacks tenant_id, Module 3's RLS policies have nothing to filter on. This is the most dangerous omission in a multi-tenant schema.
+Text columns doing a constraint's job: Roles and statuses stored as free text with no CHECK means the database accepts anything. Six months in, you will find Admin, admin, and ADMIN in the same column.
+Modeling many-to-many with array columns: Arrays skip referential integrity and break the indexing and RLS patterns you need later. If two entities relate in both directions, demand a junction table.
+Clicking schema changes into production via the table editor: Untracked dashboard changes cannot be reviewed, replayed on staging, or rolled back cleanly. When environments drift, debugging becomes guesswork.
+Premature denormalization: Duplicating data before any query is slow trades real integrity for imagined performance, and every duplicate copy is a future inconsistency to reconcile.
+
+Self-Assessment Checklist
+
+I can direct AI to create a table with correct data types, a uuid primary key, and sane defaults
+I can decide whether cascade or restrict is the right delete behavior for a foreign key
+I can add NOT NULL, UNIQUE, and CHECK constraints that encode my app's business rules
+I can model a many-to-many with a junction table and explain why an array column fails
+I can identify where a normalized schema needs denormalization and justify it with a query
+I can capture every schema change as a migration file instead of untracked editor clicks
+I can walk my app's top queries through a proposed schema and catch missing columns or join paths
+
+AI Audit Prompt Template
+
+Paste this into your AI with your schema and your app's real screens to force a query-first audit of the data model.
+
+You are auditing the Postgres data model for my Supabase project before we build on top of it. Here is my current schema (all CREATE TABLE statements): [PASTE SCHEMA] Here are the app's real screens and the queries behind them: [LIST EACH SCREEN AND WHAT DATA IT LOADS] Audit the schema against these access patterns and report: 1. Any query that cannot be served: missing columns, foreign keys, or join paths. 2. Every table missing a tenant_id or owner user_id column that row-level security will need to filter on. 3. Data type problems: money not numeric, timestamps not timestamptz, IDs not uuid, enums as unconstrained text. 4. Missing NOT NULL, UNIQUE, or CHECK constraints that business rules require. 5. Relationship problems: many-to-many without a junction table, foreign keys without explicit on delete behavior. 6. Denormalization: duplicated data with no hot query justifying it, or a join-heavy hot path that deserves a cached column. For each finding, give severity (blocker, warning, note) and the exact ALTER or CREATE statement to fix it as a migration. Do not apply anything. I will review each fix before it ships.
+
+What's Next
+
+Your tables now have the structure and tenant-linking columns that security depends on. Module 3: Row-Level Security Policies is where that pays off. You will direct AI to write the Postgres policies that guarantee tenant 12 can never read tenant 31's rows, and you will test those policies before real users get the chance to.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent, 20 of 25 questions, to earn the Module 2 badge. Pass all 7 module exams to earn the Supabase Specialist badge and certify that you can direct AI to build production backends on Supabase with security policies that hold.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

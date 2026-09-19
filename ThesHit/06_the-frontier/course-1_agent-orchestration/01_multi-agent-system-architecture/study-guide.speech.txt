@@ -1,0 +1,95 @@
+﻿Module 1: Multi-Agent System Architecture — Study Guide
+
+Orchestrator Patterns, Handoffs, and Coordination That Actually Works
+
+What This Module Covers
+
+This module covers the architecture of systems where multiple AI agents work together: when a multi-agent design genuinely beats a single capable agent, the orchestrator pattern, clean handoff protocols, shared context management, and the coordination discipline that separates working systems from expensive chaos.
+
+Here's your real situation: you've completed the core CADE program, you can direct a single agent through serious builds, and the frontier is pulling everything toward orchestration. The temptation at this level is agent maximalism: a swarm for every task, a persona for every role. The truth is less glamorous and more profitable. Multi-agent architecture is a tool with a specific job, coordination is where all the difficulty lives, and the best systems use the fewest agents that cleanly cover the needed roles.
+
+This is the tier where you stop directing an agent and start directing a system. You design the workflow, define the roles, specify the handoffs, and build the observability that tells you where quality drops. The agents do the work. The architecture, and every decision inside it, is yours.
+
+Why It Matters
+
+Multi-agent systems fail expensively and quietly. A single agent that fails tells you immediately. A five-agent pipeline that fails hands you a polished deliverable assembled from one stage's garbage, and you find out when the client does. Every agent you add multiplies coordination cost, handoff risk, and the surface area where context gets lost. The most common failure mode at this level isn't underpowered architecture. It's overengineering: building agent swarms for tasks a single well-directed agent handles better.
+
+The payoff for getting it right is just as real. Work that benefits from parallelism, specialization, or isolation genuinely exceeds what one context can hold well. A builder who can architect that: decompose the goal, assign specialized roles, verify the integration, and prove where quality drops, is operating at a level most of the market can't touch yet. This module teaches you the judgment: when to split, where to verify, and how to keep the whole system observable.
+
+Module Certification Goal
+
+You can determine when a multi-agent architecture genuinely beats a single agent, design orchestrated workflows with specialized roles, clean handoffs, and a single source of truth for state, and instrument the pipeline so you can prove where quality drops and fix it.
+
+What You Need to Know
+
+Split only at proven seams: A multi-agent architecture beats a single capable agent when work benefits from parallelism, specialization, or isolation that one context can't hold well. The disciplined path there: start with one agent, find where it genuinely strains, and split only at those proven seams. The right agent count is the fewest that cleanly cover the needed roles, because every added agent adds coordination cost. Design the workflow first: the stages, decisions, and quality gates the work must move through. Agent names and personas come last, if at all.
+The orchestrator decomposes, assigns, and integrates: In the orchestrator pattern, one agent decomposes the goal, assigns work to specialized agents, and integrates results into one outcome. Specialization earns its cost: a researcher, a builder, and a reviewer with focused roles and tight instructions each do their job better, and the reviewer isn't grading its own work. That separation matters structurally: a fresh context evaluates against the standard instead of defending its own prior choices. Run agents in parallel when subtasks are independent of each other; chain them when one genuinely needs another's output.
+Handoffs are contracts, not vibes: A clean handoff includes the task, the relevant context, the expected output format, and any constraints that apply. Pass summaries between agents, not full transcripts: context is finite and costly, and passing only what the next stage needs keeps each stage sharp. Define structured output formats for every agent so downstream stages can rely on predictable shape. When Agent B keeps misunderstanding Agent A, look at the handoff first: is the context complete, the format defined, the expectation explicit? It's almost never the agent. It's almost always the contract.
+State lives in one governed place: Shared context is one of the hardest problems in multi-agent systems because each agent sees only what it's given: state must be deliberately passed or stored in reach. When agents overwrite each other, the fix is architectural: a single source of truth with controlled writes, so state changes flow through one governed path. For long-running systems, an external memory store holds durable state agents can read and write, surviving context resets across sessions. No agent's conversation memory is the system of record. Ever.
+Contain failures between stages: One agent producing garbage shouldn't poison the pipeline. Validation between stages catches bad output before it flows downstream. When an agent hits a situation outside its instructions, the architecture should make it escalate: flag to the orchestrator or human instead of guessing past its mandate. And integration is a real stage, not an afterthought: merging, reconciling conflicts, and verifying the pieces work as one whole is the step inexperienced builders skip most.
+Instrument it, test it, price the checks: If you can't tell which stage degrades quality, you're missing observability: logging each stage's inputs and outputs so you can see where quality drops. Test at both levels: each stage against its own contract, and the whole pipeline against end goals. Not every connection needs an agent: when a step is mechanical, like moving, formatting, or routing, plain automation beats reasoning on reliability and cost. And place expensive checks where errors are costly, not everywhere: a review agent at every stage that triples quality slightly while quintupling cost and latency is a trade-off lesson, not a victory. You sit at the top of all of it: defining goals, standards, and checkpoints, directing the system rather than every message in it.
+
+Your Toolkit
+
+Claude Code: Your orchestration workbench. Subagents, structured workflows, and the place you prototype a pipeline before committing to architecture.
+MCP servers: The standard connective tissue giving your agents governed access to tools, data sources, and each other's outputs.
+LangGraph or a comparable agent framework: For production pipelines that need explicit state machines, retries, and branching beyond what a single tool provides.
+An external state store (a database, files, or Notion): The single source of truth your agents read from and write to through one governed path.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+Can you determine when multi-agent architecture genuinely beats a single agent, and identify the most common failure mode when builders first adopt it?
+Can you define the orchestrator's job, decide how many agents a system should have, and choose what to design first?
+Can you specify a clean handoff, explain why summaries beat full transcripts between agents, and diagnose a failing handoff?
+Can you identify why shared context is hard, fix agents overwriting each other's state, and place an external memory store correctly?
+Can you justify specialized roles, explain why the reviewer must be separate from the producer, and decide when parallel beats sequential?
+Can you contain a bad stage's output, route an out-of-mandate situation to escalation, and name the integration step builders skip?
+Can you diagnose a pipeline with no observability, test at both stage and pipeline level, and evaluate the review-agent cost trade-off?
+Can you place the human correctly in a well-designed system, and identify when plain automation should replace an agent between stages?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often at this stage. No judgment, they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam.
+
+You build the swarm before you've strained the single agent. Ten agents with personas and a org chart, for a task one well-directed agent handles better. Overengineering is the number one failure at this level. Start with one, find the real seams, split only there.
+You design personas instead of workflows. Naming agents is fun and free. The system's performance comes from the stages, decisions, and quality gates the work moves through. Design the workflow first, and let roles fall out of it.
+You pass full transcripts between agents. It feels safer to hand everything over, and it floods the next stage's context with noise while burning tokens. The handoff is a contract: task, relevant context, expected format, constraints. Nothing else.
+You let state live in an agent's memory. It worked in the demo, then a session reset ate three days of project state. The system of record lives outside the conversation, in one governed store, with controlled writes. Agents read from it. They are never it.
+You skip validation between stages. One stage's garbage flows downstream, gets polished by the next agents, and ships looking finished. Contain failures where they happen: validate at every seam, and make out-of-mandate situations escalate instead of improvise.
+You review everything, everywhere, always. A checker agent at every stage sounded rigorous, until cost and latency quintupled for a marginal quality gain. Architecture is trade-offs. Put expensive checks where errors are costly, and let cheap validation handle the rest.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+Can you name the specific strain in a single-agent setup that justifies each split in your architecture?
+Is your workflow designed as stages, decisions, and quality gates before any agent roles are assigned?
+Does every handoff in your system specify task, context, expected format, and constraints?
+Does your system's authoritative state live in one external store with controlled writes?
+Is your reviewer a separate agent from your producer, with a fresh context?
+Is there validation between every stage, and an escalation path for out-of-mandate situations?
+Can you point to the logs that would tell you which stage degraded quality last week?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to get a quick health check on your multi-agent architecture. It checks the same things the certification exam covers.
+
+Review my multi-agent system design and check the following. For each one, tell me pass or fail with a specific example: Justification: Here is my architecture [describe the agents and their roles]. For each agent, what single-agent strain justifies its existence, and which agents should be merged or replaced with plain automation? Workflow: Are the stages, decisions, and quality gates defined independently of the agent roles? Handoffs: Here is a sample handoff between two of my agents [paste it]. Does it specify task, relevant context, expected output format, and constraints, and is it a summary rather than a transcript? State: Where does authoritative project state live, and do all writes flow through one governed path? Containment: Is there validation between stages, and do agents escalate rather than improvise when they hit situations outside their instructions? Observability: If quality dropped last week, could I identify the failing stage from logs of each stage's inputs and outputs? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 1 exam. The best way to prepare: take a real workload you currently run through one agent, find where it genuinely strains, and split it into a two-agent pipeline with a defined handoff, external state, and stage validation. Measure whether the split actually improved the outcome. That honest measurement is exactly what the exam tests.
+
+Certification Pathway
+
+Frontier Specialist — Agent Orchestration: Pass all 7 module exams in this course
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+CADE Distinguished: CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush, take the time to build something real first.
+
+---
+
+Ready? Take the Multi-Agent System Architecture Exam →

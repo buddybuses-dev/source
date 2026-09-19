@@ -1,0 +1,157 @@
+[get_page_text] Title: Module 07: Production Monitoring for SaaS — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-07-production-monitoring-for-saas-study-guide
+Source element: <body>
+---
+You Learned the Framework. Now Build What Ships.
+Module 1 — Dashboard & Data Layer
+Module 2 — Payments & Billing Engine
+Module 3 — Multi-Tenant Architecture
+Module 4 — Access Control & Permissions
+Module 5 — Deployment & Infrastructure
+Module 6 — Usage Metering & Analytics
+Module 7 — Monitoring & Observability
+Module 1: Data Modeling Fundamentals
+Module 2: Relationships and Normalization Decisions
+Module 3: Indexes and Query Performance
+Module 4: Migrations Without Downtime
+Module 5: Seeding, Backups and Restores
+Module 6: Scaling and Read Replicas
+Module 7: Ship: Production Database
+Module 1: Auth Architecture and Session Models
+Module 2: Email, Password and Magic Links
+Module 3: Social and SSO Logins
+Module 4: Roles, Permissions and Teams
+Module 5: Two-Factor and Account Security
+Module 6: Password Reset and Edge Cases
+Module 7: Ship: Production Auth
+Module 1 — Next.js Architecture and Routing
+Module 2 — Server and Client Components
+Module 3 — Data Fetching and Caching
+Module 4 — API Routes and Server Actions
+Module 5 — SEO Metadata and Performance
+Module 6 — Vercel Deployment and Environments
+Module 7 — Ship: Production Next.js App
+Module 1 — Supabase Architecture and Project Setup
+Module 2 — Postgres Tables and Relationships
+Module 3 — Row-Level Security Policies
+Module 4 — Auth and User Management
+Module 5 — Storage Realtime and Edge Functions
+Module 6 — Backups and Environments
+Module 7 — Ship: Production Backend
+Module 1: Stripe Payment Architecture and Account Setup
+Module 2: One-Time Checkout Flows
+Module 3: Subscriptions and Billing Portal
+Module 4: Webhooks and Payment State
+Module 5: Invoices, Taxes and Receipts
+Module 6: Failed Payments and Dunning
+Module 7: Ship: Live Payment System
+Module 1: API Architecture and Endpoint Design
+Module 2: Auth Keys and Rate Limiting
+Module 3: Documentation and Developer Experience
+Module 4: Usage Metering and Billing
+Module 5: Versioning and Error Design
+Module 6: Monitoring and Uptime
+Module 7: Ship: Live API Product
+Module 07: Production Monitoring for SaaS — Study Guide
+Module 7: Error Tracking, Monitoring & Observability
+
+Production Reliability for SaaS Products
+
+This is the study guide. Everything for Production Monitoring for SaaS is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers error tracking, logging, and production monitoring as they apply specifically to SaaS applications—the billing failure alerts, multi-tenant log isolation, SLA monitoring, and customer-impacting incident detection that keep a subscription product running reliably for paying customers. You already know error tracking fundamentals from the
+
+CADE program. This goes deeper into SaaS-specific patterns: monitoring that distinguishes between a bug affecting one customer and a bug affecting all customers, billing-specific alerts that fire when payment webhooks stop arriving, log architecture that keeps Tenant A’s errors separate from Tenant B’s, and SLA monitoring that tracks whether you’re meeting your uptime commitments.
+
+Why It Matters
+
+When a SaaS product has an outage, the clock starts immediately. Paying customers expect reliability. If your app is down for an hour and you didn’t even know, you’ve lost trust that takes months to rebuild. If a billing integration silently fails and you stop collecting payments for two days, you’ve lost real revenue. SaaS monitoring isn’t just ‘is the server up?’ It’s ‘is every customer’s experience healthy?’ A bug that affects only one tenant might not trigger a server-level alert, but that one tenant is paying you money. Tenant-aware monitoring catches issues that generic monitoring misses.
+
+Module Certification Goal
+
+You can describe SaaS-specific monitoring, alerting, and log architecture to an AI coding tool, evaluate the output for tenant-aware error tracking, billing failure detection, and SLA compliance monitoring, and ship a monitoring system that catches customer-impacting issues before customers report them.
+
+What You Need to Know
+
+Tenant-aware error tracking: In multi-tenant SaaS, errors need context: which tenant was affected, which plan they’re on, and how many users in that tenant are impacted. A generic error count doesn’t tell you whether one enterprise customer is completely down.
+
+Billing failure alerting: Payment webhook failures, Stripe API errors, and subscription state mismatches should trigger dedicated alerts. If your billing pipeline stops working, you stop collecting revenue—and you might not notice for days without billing-specific monitoring.
+
+Multi-tenant log isolation: Logs should include tenant_id so you can filter by customer when debugging. When Enterprise Customer X reports an issue, you need to see only their logs—not wade through logs from all 500 tenants.
+
+SLA monitoring and uptime tracking: If you promise 99.9% uptime in your SLA, you need to track it. External uptime monitoring (pinging your app from outside your infrastructure) is more reliable than internal health checks because it catches network and DNS issues your server can’t see.
+
+Customer health scoring: Aggregate error rates, response times, and feature usage per tenant into a health score. A tenant with rising error rates and declining usage is probably about to churn. Proactive monitoring lets you intervene before they cancel.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your monitoring setup, alert rules, and log architecture to it.
+
+Error tracking service: Sentry, LogRocket, or Bugsnag. These capture errors with context (stack traces, user info, request data) and group them by type.
+
+Log aggregation: Axiom, Datadog, LogTail, or Papertrail. Centralize logs from all services with tenant_id tags for per-customer filtering.
+
+Uptime monitoring: Better Stack, UptimeRobot, or Pingdom. External synthetic checks that verify your app is responding from the outside.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You’ll see a situation and need to identify what’s right, what’s wrong, or what to do next. Here’s what gets tested:
+
+Tenant-aware monitoring: Can you evaluate whether error tracking includes tenant context so you can identify which customers are affected by an issue?
+
+Billing failure detection: Can you verify that payment processing failures trigger dedicated alerts separate from general application errors?
+
+Log architecture: Can you assess whether logs include tenant_id and can be filtered per customer for debugging?
+
+SLA tracking: Can you evaluate whether uptime is monitored externally and tracked against SLA commitments?
+
+Alert configuration: Can you identify when alerting is misconfigured—too noisy (alert fatigue) or too quiet (missing real incidents)?
+
+Incident response: Can you evaluate whether the team has a documented process for responding to production incidents, including customer communication?
+
+Proactive monitoring: Can you assess whether monitoring catches issues before customers report them?
+
+Error prioritization: Can you evaluate whether errors are prioritized by customer impact—enterprise customer issues first, free tier issues queued?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they’re easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Only monitoring server uptime without checking application health. Your server can be running while your app is broken. Health check endpoints should test actual functionality—database connectivity, API responsiveness, auth flow.. Not including tenant_id in logs. When a customer reports a bug, you need to filter logs by their tenant. Without tenant context, you’re searching through every customer’s logs for one needle. No separate alerts for billing failures. If your Stripe webhook handler crashes, you stop collecting revenue. This deserves its own alert—not buried in general error noise. Alert fatigue from noisy alerts. If your team gets 50 alerts a day, they stop reading them. Then the real one fires and nobody notices. Tune your thresholds. Not monitoring from outside your infrastructure. Internal health checks can’t catch DNS issues, CDN outages, or network problems between your users and your servers. No incident response playbook. When production is down at 2am, that’s not the time to figure out who to call, what to check, or how to communicate with customers. Have a documented process before you need it.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every “no” is something to work on. Does your error tracking include tenant context so you know which customers are affected? Do billing and payment failures trigger their own dedicated alerts? Can you filter logs by tenant_id to debug a specific customer’s issue? Is your uptime monitored externally (from outside your infrastructure)? Are your alerts tuned to minimize noise while catching real incidents? Does your team have a documented incident response process? Can you identify a customer-impacting issue before they report it?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+Review my SaaS monitoring and error tracking setup and check the following. For each one, tell me pass or fail with a specific example: Tenant context: Do errors and logs include tenant_id for per-customer filtering? Billing alerts: Do payment and webhook failures trigger dedicated alerts separate from general errors? External monitoring: Is uptime checked from outside your infrastructure? Alert tuning: Are alerts actionable without excessive noise that causes fatigue? Health checks: Do health endpoints test actual functionality, not just server status? Incident process: Does the team have a documented response process for outages? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What’s Next
+
+Once you can answer “yes” to the self-assessment checklist, you’re ready for the Module 7 exam. The best way to prepare: set up monitoring on a live app. Configure Sentry with tenant context. Set up an external uptime check. Create a billing-specific alert. Simulate an outage and see whether your monitoring catches it. Every blind spot you find is exactly what the exam tests.
+
+Certification Pathway
+
+Platform Specialist — SaaS Build: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the Production Monitoring for SaaS Exam →
+
+Ready to move on to the next Lesson?
+Mark as Complete
+Previous
+Module 7 — Monitoring & Observability
+Next
+Module 07: Production Monitoring for SaaS — Exam
+
+Module 7 — Monitoring & Observability
+Module 07: Production Monitoring for SaaS — Study Guide
+Loading...

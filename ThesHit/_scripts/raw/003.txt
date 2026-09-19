@@ -1,0 +1,157 @@
+[get_page_text] Title: Module 04: Users, Teams & RBAC — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-04-users-teams-rbac-study-guide
+Source element: <body>
+---
+You Learned the Framework. Now Build What Ships.
+Module 1 — Dashboard & Data Layer
+Module 2 — Payments & Billing Engine
+Module 3 — Multi-Tenant Architecture
+Module 4 — Access Control & Permissions
+Module 5 — Deployment & Infrastructure
+Module 6 — Usage Metering & Analytics
+Module 7 — Monitoring & Observability
+Module 07: Production Monitoring for SaaS — Study Guide
+Module 07: Production Monitoring for SaaS — Exam
+Module 1: Data Modeling Fundamentals
+Module 2: Relationships and Normalization Decisions
+Module 3: Indexes and Query Performance
+Module 4: Migrations Without Downtime
+Module 5: Seeding, Backups and Restores
+Module 6: Scaling and Read Replicas
+Module 7: Ship: Production Database
+Module 1: Auth Architecture and Session Models
+Module 2: Email, Password and Magic Links
+Module 3: Social and SSO Logins
+Module 4: Roles, Permissions and Teams
+Module 5: Two-Factor and Account Security
+Module 6: Password Reset and Edge Cases
+Module 7: Ship: Production Auth
+Module 1 — Next.js Architecture and Routing
+Module 2 — Server and Client Components
+Module 3 — Data Fetching and Caching
+Module 4 — API Routes and Server Actions
+Module 5 — SEO Metadata and Performance
+Module 6 — Vercel Deployment and Environments
+Module 7 — Ship: Production Next.js App
+Module 1 — Supabase Architecture and Project Setup
+Module 2 — Postgres Tables and Relationships
+Module 3 — Row-Level Security Policies
+Module 4 — Auth and User Management
+Module 5 — Storage Realtime and Edge Functions
+Module 6 — Backups and Environments
+Module 7 — Ship: Production Backend
+Module 1: Stripe Payment Architecture and Account Setup
+Module 2: One-Time Checkout Flows
+Module 3: Subscriptions and Billing Portal
+Module 4: Webhooks and Payment State
+Module 5: Invoices, Taxes and Receipts
+Module 6: Failed Payments and Dunning
+Module 7: Ship: Live Payment System
+Module 1: API Architecture and Endpoint Design
+Module 2: Auth Keys and Rate Limiting
+Module 3: Documentation and Developer Experience
+Module 4: Usage Metering and Billing
+Module 5: Versioning and Error Design
+Module 6: Monitoring and Uptime
+Module 7: Ship: Live API Product
+Module 04: Users, Teams & RBAC — Study Guide
+Module 4: Authentication, Teams & Permissions
+
+Identity and Access for SaaS Products
+
+This is the study guide. Everything for Users, Teams & RBAC is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers auth and identity as it applies specifically to SaaS applications—the organization-level accounts, team invitation flows, role hierarchies, and permission systems that let multiple people inside a customer’s company use your product without stepping on each other. You already know auth fundamentals from the CADE program. This goes deeper into SaaS-specific patterns: org-level accounts where the billing owner isn’t always the daily user, invitation flows that let admins add teammates, role-based access that restricts what each role can see and do, and onboarding flows that handle the difference between the first user (who sets up everything) and invited users (who just need to start working).
+
+Why It Matters
+
+SaaS products are team products. Your customer isn’t one person—it’s a company with an admin who pays, managers who configure, and team members who use it daily. If your auth system only handles individual accounts, you can’t sell to teams. If your role system is too simple (just admin and user), you can’t serve companies that need managers, viewers, and billing contacts as separate roles. AI coding tools build individual auth well—login, signup, password reset. They’re weak at org-level auth because it requires business logic: who can invite, who can remove, who can change the plan, who can see billing, who can export data. Those decisions are yours.
+
+Module Certification Goal
+
+You can describe an organization-level auth system with team invitations, role hierarchies, and permission boundaries to an AI coding tool, evaluate the output for proper access control enforcement, and ship an identity system that lets teams use your SaaS product with appropriate separation of privileges.
+
+What You Need to Know
+
+Organization-level accounts: In SaaS, the paying entity is usually an organization, not a person. One org has one subscription, one billing contact, and multiple users. Your auth system needs a layer between ‘user’ and ‘subscription’ that represents the organization.
+
+Team invitation flows: Admins invite teammates by email. The invitation creates a pending record, sends an email with a signup link, and needs to handle expiration, re-sends, and the edge case where the invited person already has an account on a different org.
+
+Role-based access control (RBAC): Roles define what each user type can do. A common SaaS pattern: Owner (billing + admin), Admin (settings + team management), Member (full product access), Viewer (read-only). Each API endpoint and UI element should check the user’s role before allowing access.
+
+Session management for teams: When a user belongs to multiple organizations, they need to switch between them. Sessions should track which org is active. Permissions should be evaluated per-org, not globally—a user can be an admin in one org and a viewer in another.
+
+Onboarding for invited users vs. founding users: The founding user (first person to sign up) goes through full onboarding: create org, set plan, configure settings. Invited users should skip all of that and land directly in the product, ready to work.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your org structure, invitation flows, and role permissions to it.
+
+An auth provider: Clerk, Auth0, Supabase Auth, or Firebase Auth. These handle individual user auth. You’ll still need to build the org and role layer on top.
+
+Email delivery service: Resend, SendGrid, or Postmark for sending invitation emails. Your auth provider may handle this, but you need to customize the invitation email template.
+
+Permission testing: Create test accounts for each role (owner, admin, member, viewer) and verify that each role can only access what it should. Try accessing admin pages as a viewer.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You’ll see a situation and need to identify what’s right, what’s wrong, or what to do next. Here’s what gets tested:
+
+Org-level architecture: Can you evaluate whether auth is structured around organizations with proper user-to-org-to-subscription relationships?
+
+Invitation flow completeness: Can you assess whether team invitations handle pending states, expiration, re-sends, and existing account conflicts?
+
+Role enforcement: Can you identify when role checks are missing on API endpoints or UI elements, allowing members to perform admin-only actions?
+
+Permission boundaries: Can you verify that a viewer can’t modify data, a member can’t manage team settings, and only the owner can change billing?
+
+Multi-org support: Can you evaluate whether users who belong to multiple organizations can switch contexts with proper permission isolation per org?
+
+Onboarding differentiation: Can you assess whether the app handles founding users and invited users with appropriate onboarding flows for each?
+
+Session security: Can you spot session management issues—stale org context, missing logout on role change, or tokens that don’t expire?
+
+Access control testing: Can you evaluate whether the team has tested access from every role to verify that unauthorized actions are properly blocked?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they’re easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Building individual user auth without an org layer. You’ll get to your fifth customer and realize they all need teams—and you have to retrofit the entire auth system. Checking roles only in the frontend. If your API endpoints don’t verify the user’s role, anyone with the endpoint URL can perform admin actions. Role enforcement must happen on the backend. Not handling the ‘invited user already has an account’ edge case. If someone is invited to Org B but already has an account on Org A, your system needs to link them to both orgs—not create a duplicate account or crash. Giving the founding user’s onboarding to every invited user. The invited user doesn’t need to set up billing, create the org, or configure settings. They just need to join and start working. Not revoking access when a team member is removed. If a removed user’s session token is still valid, they can continue using the product until the token expires. Making every user an admin by default. New team members should start with the least privilege necessary. Admins can always escalate later.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every “no” is something to work on. Does your auth system have an organization layer between users and subscriptions? Can an admin invite teammates by email with proper pending/accepted/expired states? Are role permissions enforced on both the frontend (UI visibility) and backend (API access)? If a user belongs to two organizations, can they switch between them with separate permissions? Does a removed team member immediately lose access, including active sessions? Do invited users get a streamlined onboarding that skips org setup and billing? Have you tested every role (owner, admin, member, viewer) to confirm proper access boundaries?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+Review my SaaS application’s auth and team management system and check the following. For each one, tell me pass or fail with a specific example: Org structure: Is auth built around organizations with proper user-to-org relationships? Invitation flow: Can admins invite users by email with pending, accepted, and expired states? Role enforcement: Are role checks applied on both frontend components and backend API endpoints? Permission boundaries: Can a viewer only read? Can a member not access admin settings? Session handling: Does removing a team member revoke their active sessions immediately? Onboarding paths: Do founding users and invited users get different onboarding experiences? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What’s Next
+
+Once you can answer “yes” to the self-assessment checklist, you’re ready for the Module 4 exam. The best way to prepare: build a team system. Create an org, invite a second user, assign them a restricted role, and verify they can’t access admin features. Try removing them and checking whether their session still works. Every permission gap you find during testing is exactly what the exam tests.
+
+Certification Pathway
+
+Platform Specialist — SaaS Build: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the Users, Teams & RBAC Exam →
+
+Ready to move on to the next Lesson?
+Mark as Complete
+Previous
+Module 4 — Access Control & Permissions
+Next
+Module 04: Users, Teams & RBAC — Exam
+
+Module 4 — Access Control & Permissions
+Module 04: Users, Teams & RBAC — Study Guide
+Loading...

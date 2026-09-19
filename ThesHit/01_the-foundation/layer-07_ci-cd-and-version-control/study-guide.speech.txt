@@ -1,0 +1,98 @@
+﻿Layer 7: CI/CD & Version Control — Study Guide
+
+Shipping Code Without Breaking What Already Works
+
+This is the study guide. Everything for CI/CD & Version Control is on this page — there's nothing to download.
+
+Layer 7 Recap
+
+Certification Goal
+
+You can manage team workflows using branches, pull requests, and code reviews. You can set up automated tests that run on every change, and catch problems before they reach your live users.
+
+What You Need to Know
+
+You're not the only person working on the project. Multiple people (or you working on multiple features) need a system for working on different things at the same time without breaking each other's work.
+
+Branches (working on features separately): A branch is a copy of your project where you can make changes without affecting the main version. Think of it as making a photocopy of a document to mark it up — you can experiment, make mistakes, and throw it away without touching the original. When your feature is ready, you merge the branch back into the main version.
+Pull requests (team review before merging): A pull request (PR) is a formal request to merge your branch into the main project. It shows everyone exactly what you changed, lets teammates review and comment, and provides a record of every decision. Nothing goes into the main project without being reviewed first. This is your quality gate.
+Automated testing (CI - Continuous Integration): Every time you push code or open a pull request, automated tests run to check if anything is broken. These tests might verify that pages load correctly, forms submit properly, and APIs return the right data. If tests fail, the merge is blocked. Think of it as a bouncer at the door — no untested code gets into the main project.
+Merge conflicts (when two people edit the same thing): If two people change the same file at the same time, Git doesn't know which version to keep. This is a merge conflict. It sounds scary, but it's normal and fixable — Git shows you both versions side by side, and you pick which changes to keep. Your AI tool can often resolve these for you.
+Continuous Deployment (CD - automatic shipping): CD means that when code is merged into the main branch and all tests pass, it automatically deploys to your live site. No manual deploy step, no forgetting to push the button. The pipeline handles it: commit → tests → deploy. You focus on building; the system handles shipping.
+
+Your Toolkit
+
+GitHub Pull Requests: The review and approval interface where teammates comment on changes, request modifications, and approve merges. This is where code quality happens.
+GitHub Actions: GitHub's built-in automation system. You define workflows (run tests, check formatting, build the app) that trigger automatically on every push or pull request.
+Automated test frameworks (Vitest, Playwright): Tools that run your tests automatically. Vitest handles unit tests (testing individual pieces). Playwright handles end-to-end tests (testing the whole app like a real user would).
+Branch protection rules: GitHub settings that prevent anyone from pushing directly to the main branch. All changes must go through a pull request with passing tests and at least one review.
+
+Certification Exam Topics
+
+Tier 2 tests whether you can manage team workflows and automated quality checks. You'll see scenarios about collaboration, testing, and deployment pipelines.
+
+Branch strategy: Your team of three is building different features. One person is on the checkout flow, another on user profiles, and you're on the dashboard. How do you structure branches so nobody blocks anyone else?
+Pull request review: You open a PR and the automated tests pass, but a teammate comments that the new page doesn't match the design. Should you merge? What's the right process?
+CI pipeline failure: Your automated tests were passing yesterday, but today they fail on a PR that only changed the footer. What could cause this, and how do you debug it?
+Merge conflicts: Two teammates edited the same component file. Git shows a merge conflict. One version adds a new button; the other changes the button color. How do you resolve this?
+Test coverage decisions: Your AI tool built a new feature but no tests. You're in a rush to ship. Should you merge without tests? What's the risk?
+CD pipeline: You merged a PR and the automated deploy failed. Your previous version is still live. What steps do you take?
+Branch protection: A junior developer pushed directly to the main branch and broke the live site. What branch protection rules would have prevented this?
+Workflow optimization: Your CI pipeline takes 12 minutes to run, and your team makes 15 PRs per day. The team is frustrated by the wait. How do you speed things up?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often with version control and CI/CD. No judgment — they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam.
+
+Never committing until the feature is "done." If you work for three days without committing and then break something, you've lost three days of work. Commit early, commit often — small checkpoints, not giant milestones.
+Writing commit messages like 'fix', 'update', or 'stuff.' Six months from now, these tell you nothing. Take five seconds to write what actually changed: 'Fix checkout form validation on mobile' saves future-you hours of detective work.
+Working directly on the main branch instead of using feature branches. One bad commit goes straight to production. Feature branches give you a safe sandbox to experiment without risking your live app.
+Skipping pull request reviews because you're "in a hurry." The bug you ship in a hurry takes ten times longer to fix after users find it. The review process exists because it works.
+Not setting up any automated tests, then being afraid to change anything because you might break something. Even basic tests — does the page load, does the form submit — give you the confidence to keep building.
+Ignoring merge conflicts by randomly accepting one version. Merge conflicts mean two people changed the same thing. If you don't understand what both changes do, you'll lose someone's work or create a bug.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+Can you commit your work and push it to GitHub so it's backed up and triggers a deploy?
+Do your commit messages describe what changed and why, not just 'fix' or 'update'?
+Could you revert to last week's version of your app if today's changes broke something critical?
+If you're working with anyone else (or working on multiple features at once), are you using branches?
+Is there at least one automated check (a test, a linter, a build verification) that runs before code reaches your live app?
+Do you know how to open a pull request and what the review process looks like?
+If your deploy failed right now, would you know how to read the error log and figure out what went wrong?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check on your version control and CI/CD setup. It checks the same things the certification exam covers.
+
+Review my project's version control and CI/CD setup and check the following. For each one, tell me pass or fail with a specific example:
+
+Commit hygiene: Are commits small, frequent, and descriptively messaged — or are they large, infrequent dumps with vague labels?
+
+Branch strategy: Is the project using feature branches and pull requests, or is everything committed directly to the main branch?
+
+Automated checks: Are there any automated tests, linting, or build verifications running on pull requests or pushes?
+
+Deployment pipeline: Is the deploy connected to the repository with automatic deployment on merge, and is there a clear path from commit to production?
+
+Security: Are there any secrets, API keys, or credentials committed in the codebase or Git history?
+
+Recovery readiness: Can the project be reverted to a previous version quickly, and has this been tested?
+
+Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you've gone through this study guide and can answer "yes" to the self-assessment checklist, you're ready for the Layer 7 certification exam at your target tier.
+
+The best way to prepare: use version control on a real project. Start a feature branch, make some changes, commit with descriptive messages, open a pull request, and merge it. Break something on purpose, then revert. Set up one automated test — even just "does the app build without errors?" The exam tests whether you've actually done these things, not whether you can recite definitions.
+
+Certification Pathway
+
+Associate Builder: Pass all 13 layers at Tier 1 Certified Builder: Pass all 13 layers at Tier 1 + Tier 2 MADE Certified: Pass all 39 tier exams + capstone project Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush — take the time to build something real first.
+
+———
+
+Ready? Take the CI/CD & Version Control Exam →

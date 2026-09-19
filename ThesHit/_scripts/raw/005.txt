@@ -1,0 +1,155 @@
+[get_page_text] Title: Module 06: API Throttling & Usage Metering — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-06-api-throttling-usage-metering-study-guide
+Source element: <body>
+---
+You Learned the Framework. Now Build What Ships.
+Module 1 — Dashboard & Data Layer
+Module 2 — Payments & Billing Engine
+Module 3 — Multi-Tenant Architecture
+Module 4 — Access Control & Permissions
+Module 5 — Deployment & Infrastructure
+Module 6 — Usage Metering & Analytics
+Module 7 — Monitoring & Observability
+Module 1: Data Modeling Fundamentals
+Module 2: Relationships and Normalization Decisions
+Module 3: Indexes and Query Performance
+Module 4: Migrations Without Downtime
+Module 5: Seeding, Backups and Restores
+Module 6: Scaling and Read Replicas
+Module 7: Ship: Production Database
+Module 1: Auth Architecture and Session Models
+Module 2: Email, Password and Magic Links
+Module 3: Social and SSO Logins
+Module 4: Roles, Permissions and Teams
+Module 5: Two-Factor and Account Security
+Module 6: Password Reset and Edge Cases
+Module 7: Ship: Production Auth
+Module 1 — Next.js Architecture and Routing
+Module 2 — Server and Client Components
+Module 3 — Data Fetching and Caching
+Module 4 — API Routes and Server Actions
+Module 5 — SEO Metadata and Performance
+Module 6 — Vercel Deployment and Environments
+Module 7 — Ship: Production Next.js App
+Module 1 — Supabase Architecture and Project Setup
+Module 2 — Postgres Tables and Relationships
+Module 3 — Row-Level Security Policies
+Module 4 — Auth and User Management
+Module 5 — Storage Realtime and Edge Functions
+Module 6 — Backups and Environments
+Module 7 — Ship: Production Backend
+Module 1: Stripe Payment Architecture and Account Setup
+Module 2: One-Time Checkout Flows
+Module 3: Subscriptions and Billing Portal
+Module 4: Webhooks and Payment State
+Module 5: Invoices, Taxes and Receipts
+Module 6: Failed Payments and Dunning
+Module 7: Ship: Live Payment System
+Module 1: API Architecture and Endpoint Design
+Module 2: Auth Keys and Rate Limiting
+Module 3: Documentation and Developer Experience
+Module 4: Usage Metering and Billing
+Module 5: Versioning and Error Design
+Module 6: Monitoring and Uptime
+Module 7: Ship: Live API Product
+Module 06: API Throttling & Usage Metering — Study Guide
+Module 6: Rate Limiting, Usage Metering & Billing
+
+Monetization Infrastructure for SaaS Products
+
+This is the study guide. Everything for API Throttling & Usage Metering is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers rate limiting and usage metering as they apply specifically to SaaS applications—the plan-based API limits, usage tracking, overage handling, and abuse prevention that protect your product from both intentional attacks and unintentional overuse by customers who don’t realize they’re hammering your API. You already know rate limiting fundamentals from the CADE program. This goes deeper into SaaS-specific patterns: different rate limits per plan tier, usage dashboards that show customers how close they are to their limits, grace periods for occasional spikes, and the billing integration that charges customers for overages or prompts them to upgrade.
+
+Why It Matters
+
+In SaaS, rate limiting isn’t just about protecting your server—it’s about monetization. Your Free plan gets 100 API calls per day. Your Pro plan gets 10,000. Your Enterprise plan gets 100,000. Rate limiting IS your pricing model. If your rate limiter doesn’t work, free users consume as much as paying users and you have no reason to upgrade. Usage metering feeds your billing system. If you charge per API call, per active user, or per GB of storage, your metering must be accurate. Undercounting means lost revenue. Overcounting means angry customers and disputes.
+
+Module Certification Goal
+
+You can describe plan-based rate limiting, usage metering, and overage handling to an AI coding tool, evaluate the output for accurate counting, proper tier enforcement, and customer-friendly limit communication, and ship a throttling system that protects your product while driving upgrade revenue.
+
+What You Need to Know
+
+Plan-based rate limits: Different subscription plans get different limits. Your rate limiter needs to know which plan the requesting user is on and apply the correct threshold. This means your rate limiting layer must integrate with your subscription data.
+
+Usage metering and counting: Every billable event must be counted accurately. This means atomic counters that don’t lose events under load, timestamped records for billing period accuracy, and real-time dashboards so customers can see their usage.
+
+Overage handling strategies: When a customer hits their limit, you have options: hard block (stop working), soft limit (allow with warning), overage billing (charge per additional unit), or upgrade prompt (suggest the next plan). The right choice depends on your business model.
+
+Abuse prevention vs. legitimate spikes: A customer who sends 10x their normal traffic for 5 minutes might be running a legitimate batch job—not attacking your system. Your rate limiter should distinguish between sustained abuse and temporary spikes, with grace periods for the latter.
+
+Customer-facing usage dashboards: Customers need to see how much of their allocation they’ve used. A usage dashboard with current period consumption, historical trends, and approaching-limit warnings reduces support tickets and drives upgrades.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code—describe your rate limiting logic, usage tracking, and overage handling to it.
+
+Rate limiting middleware: Upstash, Redis-based limiters, or built-in framework middleware. These handle the counting and enforcement at the request level.
+
+Usage tracking database: A dedicated table or time-series database for recording usage events. This feeds both your customer dashboard and your billing integration.
+
+Load testing tool: k6, Artillery, or simple curl scripts to simulate high traffic and verify your rate limiter actually blocks requests at the configured threshold.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You’ll see a situation and need to identify what’s right, what’s wrong, or what to do next. Here’s what gets tested:
+
+Plan-tier enforcement: Can you evaluate whether rate limits are correctly applied per subscription plan?
+
+Metering accuracy: Can you verify that usage counters are accurate under load and don’t miss or double-count events?
+
+Overage handling: Can you assess whether the system handles limit breaches appropriately—hard block, soft limit, or overage billing?
+
+Abuse detection: Can you distinguish between a customer running a legitimate batch job and an attacker trying to overwhelm your API?
+
+Usage visibility: Can you evaluate whether customers have real-time visibility into their usage and approaching limits?
+
+Billing integration: Can you verify that usage data feeds accurately into the billing system for metered pricing?
+
+Rate limit headers: Can you check whether API responses include rate limit headers so clients know their remaining quota?
+
+Grace period logic: Can you assess whether temporary spikes are handled with grace periods instead of immediate hard blocks?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they’re easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Applying the same rate limit to all plans. Your free and paid customers should not have the same API limits. Rate limiting IS your pricing differentiation. Not showing customers their usage. If a customer doesn’t know they’re at 80% of their limit, they can’t plan ahead. They’ll hit the wall unexpectedly and blame you. Hard-blocking paying customers without warning. A paying customer who hits their limit should get a warning and a grace period—not an immediate 429 error. Reserve hard blocks for abuse and free tier enforcement. Counting usage at the wrong layer. If you count API calls at the gateway but your metered billing counts at the application layer, the numbers won’t match and customers will dispute their bills. Not including rate limit headers in API responses. Clients need X-RateLimit-Remaining and X-RateLimit-Reset so they can throttle themselves before hitting the wall. Testing rate limits with one request at a time. Your rate limiter works at low traffic. Does it work when 50 concurrent requests arrive in the same second?
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every “no” is something to work on. Do different subscription plans have different rate limits enforced at the API level? Can customers see their current usage and remaining allocation in real time? Does hitting a limit produce a clear error message with upgrade guidance—not a generic server error? Are usage counters accurate under concurrent load? Do API responses include rate limit headers (remaining quota, reset time)? Is there a grace period for temporary spikes before hard-blocking a paying customer? Does usage data feed accurately into your billing system for metered pricing?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+Review my SaaS API rate limiting and usage tracking system and check the following. For each one, tell me pass or fail with a specific example: Plan-based limits: Are different rate limits applied based on the user’s subscription plan? Usage visibility: Can customers see their current usage and remaining allocation? Limit messaging: Do limit breaches return clear error messages with remaining quota info? Counter accuracy: Are usage counters reliable under concurrent load? Rate limit headers: Do API responses include X-RateLimit-Remaining and Reset headers? Billing accuracy: Does metered usage data match what the billing system charges? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What’s Next
+
+Once you can answer “yes” to the self-assessment checklist, you’re ready for the Module 6 exam. The best way to prepare: implement plan-based rate limiting on one API endpoint. Set different limits for free and paid plans. Build a usage counter. Load-test it. Check whether the counter stays accurate under concurrent traffic. Every gap you find is exactly what the exam tests.
+
+Certification Pathway
+
+Platform Specialist — SaaS Build: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the API Throttling & Usage Metering Exam →
+
+Ready to move on to the next Lesson?
+Mark as Complete
+Previous
+Module 6 — Usage Metering & Analytics
+Next
+Module 06: API Throttling & Usage Metering — Exam
+
+Module 6 — Usage Metering & Analytics
+Module 06: API Throttling & Usage Metering — Study Guide
+Loading...

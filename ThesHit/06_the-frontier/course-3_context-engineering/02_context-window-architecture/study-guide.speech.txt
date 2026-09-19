@@ -1,0 +1,83 @@
+Module 2: Context Window Architecture — Study Guide
+
+Context Engineering
+
+T8 The Frontier | Module 2 Study Guide
+
+Context Window Architecture
+
+"Direct AI to allocate the context window like a budget, where every token has a job and a priority."
+
+Why This Matters
+
+A context window is not a bucket you pour text into; it is a floor plan. Systems that treat it as a bucket work in demos and collapse in production when real conversations and real documents fill the space. Builders who design explicit allocation and priority ship systems that degrade gracefully instead of failing mysteriously.
+
+Core Concepts
+
+Token budgets and allocation. Every window has a hard token limit shared by instructions, long-lived context, retrieved content, conversation history, and the space reserved for the response. A working layout assigns each layer a budget: for example, a slice for the system prompt, a larger slice for retrieved documents, a bounded slice for history, and a protected reserve for output. Unbudgeted layouts let one layer silently starve the others.
+
+Priority hierarchies. When the window fills, something must go, and the system should already know what. A priority hierarchy ranks layers: standing instructions and the current user message are usually untouchable, retrieved content ranks by relevance, and old small talk goes first. Without an explicit hierarchy, whatever code assembles the context makes this choice for you, badly.
+
+Truncation that preserves meaning. Naive truncation chops the oldest tokens, which can decapitate a document mid-sentence or delete the message that defined the whole task. Better strategies drop whole low-priority items, summarize before discarding, and never split a delimited document in half. The test: after truncation, does the window still tell a coherent story?
+
+The cost-quality tradeoff. Bigger windows cost more per call and miss less; smaller windows are cheap and fast but risk omitting what matters. Filling a huge window with marginal content also degrades attention. The goal is the smallest window that reliably contains everything the task needs.
+
+Robustness to size changes. Models change, tiers change, budgets change. A layout defined in percentages and priorities survives a window size change; a layout defined in hardcoded token counts breaks.
+
+How It Works
+
+Design the layout before writing anything: list the layers, assign each a budget and a priority rank, and define the overflow rule per layer (drop, summarize, or refuse to drop). Then direct AI to implement an assembly function that fills the window in priority order, counts tokens as it goes, applies each layer's overflow rule when the budget is exceeded, and always protects the response reserve. Log the final allocation per call. When outputs degrade, the log tells you which layer got squeezed.
+
+Directing AI
+
+"Design a context layout for this app with a token budget and priority rank per layer: system prompt, user profile, retrieved docs, history, current message, response reserve."
+"Direct the assembly code to enforce these budgets, and when history exceeds its slice, drop whole oldest messages rather than cutting any message in half."
+"Implement a truncation rule that never splits a delimited document: include a chunk whole or exclude it, and log every exclusion."
+"Add per-call logging that reports tokens used by each layer and flags any call where the response reserve was invaded."
+"Convert this layout from fixed token counts to percentages of the model's window so it survives a model upgrade without edits."
+
+Common Mistakes
+
+Reserving no space for the response, so long outputs get cut off at the exact moment they matter.
+Truncating from the top of the window and deleting the system prompt that held the standing rules.
+Cutting documents mid-sentence, leaving fragments the model confidently misreads.
+Buying a bigger window instead of fixing allocation, which raises costs and hides the design flaw.
+Letting conversation history grow without a cap until it crowds out retrieved content.
+Hardcoding token counts that silently break when the model or tier changes.
+
+Real-World Application
+
+A builder runs a document review assistant on a large window and assumes space will never run out. A client uploads a 200-page contract, and the assistant starts missing clauses that are plainly in the file. The builder directs AI to log per-layer allocation and sees the contract consuming nearly the whole window, forcing silent truncation of its final third: exactly where the indemnification clauses live. The fix is architectural, not verbal: budget the document layer, chunk the contract, include only sections relevant to the current question, and protect the response reserve. Accuracy returns, and per-call cost drops by half because the window stopped hauling dead weight.
+
+Decision Framework
+
+Outputs cut off mid-answer? Your response reserve is missing or being invaded; protect it first.
+Model missing facts from long documents? Check whether truncation is silently dropping content.
+Costs climbing with quality flat? Shrink low-value layers; you are paying to haul dead weight.
+History versus retrieval fighting for space? Rank them by priority for this task type and cap the loser.
+Choosing a truncation strategy? Prefer summarize, then drop whole items; never split delimited content.
+Planning for a model upgrade? Define the layout in percentages and priorities, not fixed counts.
+
+Tool and Platform Notes
+
+Know your models' window sizes and per-token pricing; both change often, so check current documentation. Use each provider's official token counting rather than estimating by characters: tiktoken for OpenAI models, the count-tokens endpoint for Claude. Framework defaults for history management are generic; replace them with your own budgets once you have a layout.
+
+Key Takeaways
+
+Allocate the window like a budget: every layer gets a slice, and the response reserve is protected.
+Priority hierarchies decide in advance what survives when space runs out.
+Truncate by dropping or summarizing whole items, never by splitting meaning in half.
+The right window is the smallest one that reliably holds what the task needs.
+Layouts built on percentages and priorities survive model and tier changes.
+
+What's Next
+
+Module 3 turns to the supply side: retrieval and selection, or how to find and choose the content that deserves the space your architecture just allocated.
+
+Exam Prep Notes
+
+Focus on diagnosing allocation failures from symptoms: truncated answers, missing document facts, runaway costs. Know the layers of a window, what a priority hierarchy decides, which truncation strategies preserve meaning, and how the cost-quality tradeoff shapes window size choices.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

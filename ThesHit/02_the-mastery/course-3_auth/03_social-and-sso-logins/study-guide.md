@@ -1,0 +1,94 @@
+# Module 3: Social and SSO Logins — Study Guide
+
+## T4 The Mastery | Authentication Systems Build
+
+This is the study guide. Everything for Social and SSO Logins is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module covers borrowed identity: letting Google, Apple, or a company's identity provider prove who your user is. You will learn what actually happens behind a "Sign in with Google" button, what your app receives and never receives, how to link multiple providers to one account safely, what scopes and secrets and redirect URIs protect, and why enterprise SSO is the feature that unlocks business deals and clean offboarding.
+
+## Why It Matters
+
+Social login is a trade, and most builders only see one side of it. The visible side: less signup friction and no password of yours to protect. The invisible side: your access to your own users now depends on another company's uptime, policies, and pricing. Both sides are real, and the builder who designs for both ships apps that survive a provider outage, a deleted Google account, and an OAuth flow that an attacker tries to bend. This module also carries the biggest revenue lesson in the course: enterprise SSO. What SSO buys the enterprise is central control: one directory grants access, one action at departure revokes it all. It is why SSO sits in the enterprise pricing tier and why builders who can wire it up close deals that password-only apps never see. Your AI can generate every line of the OAuth flow. It cannot decide which providers your users actually need, how account linking should resolve, or what happens when the provider goes down. Those are your calls.
+
+## Certification Goal
+
+Passing the Module 3 exam proves you can direct an AI to implement OAuth flows that delegate identity checks safely, request minimal scopes, protect secrets and redirect URIs, link multiple providers to one account without hijack paths, and deliver the enterprise SSO story that buyers require: group-to-role mapping and automatic offboarding.
+
+## What You Need to Know
+
+**What OAuth actually does.** When a user clicks "Sign in with Google," your app delegates the identity check to Google and receives verified claims about the user: a stable ID, an email, profile details. It never receives the password. Your session and the provider's session are separate: when a user logs out of your app, they are not logged out of Google, and your logout must fully kill your own session. On mobile, flows use the system browser or native SDKs, never the embedded webviews providers block.
+
+**The security anatomy of the flow.** The redirect URI is strictly whitelisted, or the login result can be sent to an attacker's address instead of your app. The state parameter ties the provider's callback to the request you began, blocking forged or replayed callbacks. The client secret lives server-side only: anything shipped to browsers is public, and a secret found in a frontend bundle gets moved and rotated immediately. The email_verified flag matters: trusting an unverified email for account linking lets an attacker claim someone else's account.
+
+**Scopes and data minimalism.** Request the minimum scopes your features need. Excess scopes scare users at the consent screen and hand you data you now must protect. Same discipline for storage: keep the minimum profile data your features actually use, because every stored field is a liability held. Provider tokens you do store get guarded like credentials, because they are.
+
+**Account linking.** One person, several providers, one account. The data model holds one account with multiple linked identities, so any of their providers reaches their data. When a password user clicks "Sign in with Google" with the same email, the design must decide how to link safely, without email overlap alone hijacking access. And when a provider account disappears, a recovery path that does not depend on the provider keeps your user from vanishing with it.
+
+**Provider risk.** Making social login the only way in is a strategic bet on another company's uptime, policies, and pricing. Resilient design keeps an alternative way in, like email login, so one company's outage does not lock out your users. Choose providers by matching who your users already are: their platforms, devices, and work context. Test flows with provider sandboxes, never real personal accounts.
+
+**Enterprise SSO as product and pricing.** SSO is centralized company login: buyers require it to manage access and offboarding. Group claims like "engineering" map to your app's roles, so access assigns itself from the customer's directory. When an employee leaves, their access dies when the company disables them centrally, with no work on your side. SSO belongs in the enterprise tier: the buyers who require it have budget, and it carries real setup cost.
+
+## Your Toolkit
+
+- **OAuth via your auth provider or a proven library.** Managed providers ship prebuilt social login for the major platforms. Direct your AI to configure, not reinvent, the flow.
+- **Provider developer consoles.** Google, Apple, GitHub, and Microsoft each have a console where you register your app, whitelist redirect URIs, and manage the client secret. This configuration is part of your security surface.
+- **Sandbox test credentials.** Every major provider offers test apps and sandbox accounts. Your OAuth testing touches these, never a founder's real account.
+- **An identity linking table.** The data model piece that holds one account with many linked provider identities, plus the email login fallback that keeps you provider-independent.
+
+## Exam Topics
+
+The Module 3 exam will test you on:
+
+1. What OAuth delegates, what your app receives, and what it never receives
+2. Redirect URI whitelisting, the state parameter, and keeping the client secret server-side
+3. Minimal scopes, minimal stored profile data, and guarding provider tokens
+4. Account linking: one account, many providers, and the email_verified trap
+5. Provider risk: outages, deleted provider accounts, and the fallback login path
+6. Enterprise SSO: what it buys the buyer, group-to-role mapping, and automatic offboarding
+7. Logout separation between your session and the provider's
+8. Mobile flow requirements, sandbox testing, and where SSO sits in pricing
+
+## Common Pitfalls
+
+- **Secrets in the frontend bundle.** A client secret shipped to browsers is public. Move it server-side and rotate it, because someone has already read it.
+- **Scope greed.** Requesting contacts and calendar for a simple login scares users at consent and stacks liability you never needed.
+- **Linking on unverified email.** If the provider says the email is unverified and you link anyway, an attacker with a matching address claims the account.
+- **Social-only lock-in.** No email fallback means a provider outage is your outage, and a deleted Google account is a lost customer.
+- **Testing with real accounts.** Founders' personal Google accounts are not test infrastructure. Use provider sandboxes.
+- **Treating SSO as a checkbox.** Enterprise buyers probe group mapping and offboarding in procurement. A logo on the login page without working deprovisioning fails the security review.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I narrate what happens between the button click and the logged-in state?
+- [ ] Can I explain what the redirect URI whitelist and state parameter each protect against?
+- [ ] Can I state the scope rule and the storage rule for provider data?
+- [ ] Can I design account linking that an email collision cannot hijack?
+- [ ] Can I explain what SSO buys an enterprise buyer in one sentence?
+- [ ] Do I know what happens in my app when an SSO customer disables an employee?
+- [ ] Can I defend where SSO sits in a SaaS pricing model?
+
+## AI Audit Prompt Template
+
+Use this prompt to audit your social and SSO implementation:
+
+> "You are an OAuth security reviewer. Here is my app's social login and SSO setup: [paste providers, scopes, linking logic, and configuration]. Verify redirect URIs are strictly whitelisted, the state parameter is enforced, the client secret never reaches the browser, scopes are minimal, email_verified gates account linking, one account can hold multiple provider identities, an email fallback exists, and logout kills my session independently of the provider. For SSO, confirm group claims map to roles and disabling a user upstream revokes access here. Rank the gaps and give me the direction for each."
+
+## What's Next
+
+Module 4 turns from who the user is to what they may do: roles, permissions, teams, and the server-side enforcement that makes authorization real. The group claims you just learned to receive from SSO are about to have somewhere to land.
+
+## Certification Pathway
+
+This module is the third step in the Authentication Systems Build course, a paid T4 The Mastery course inside Builder Access, alongside the SaaS Build and Database Design courses. Pass all seven module exams to earn the Auth Build Specialist badge and stand out in The Faction as a builder whose apps are ready for enterprise buyers.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the Social and SSO Logins Exam →

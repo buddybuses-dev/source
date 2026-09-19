@@ -1,0 +1,108 @@
+Module 4: API Routes and Server Actions — Study Guide
+
+Next.js Application Build
+
+T4 The Mastery | Module 4 Study Guide
+
+Module 4: API Routes and Server Actions
+
+Direct AI to build fast, SEO-ready web applications on Next.js and Vercel.
+
+What This Module Covers
+
+Every serious application needs a backend: somewhere to accept form submissions, mutate the database, check who is asking, and reject requests that should not get through. In Next.js, that backend lives inside the same project as your frontend in two flavors: Route Handlers (API routes) and Server Actions. This module teaches you what each one is, when to direct your AI toward one or the other, and how to review what it produces.
+
+You will learn how Route Handlers expose HTTP endpoints for webhooks and external clients, and how Server Actions handle forms and mutations without a single fetch call. You will cover input validation, error handling, authentication checks, rate limiting, and middleware.
+
+Most importantly, you will learn to direct AI to build an API layer that is secure by default. AI will happily generate an endpoint that works. Whether it also validates input, checks auth, and refuses abuse depends on your instructions and your review. This module makes you good at both.
+
+Why It Matters
+
+The API layer is where your app touches the real world, and the real world is hostile. Your SaaS dashboard's frontend can be flawless, but if the endpoint behind it accepts any payload from anyone, a stranger with a terminal can read or wipe your customers' data. Frontend bugs embarrass you. API bugs end you. Faction builders ship apps handling payments, user data, and 10K daily users, and every one of those apps lives or dies on whether its endpoints validate, authenticate, and rate limit correctly.
+
+This is also where AI-directed building carries the most risk. Models are trained on tutorial code, and tutorials skip auth checks for brevity. Prompt "build me an endpoint to update a user profile" and you may get exactly that: an endpoint that updates any user's profile for anyone who calls it. The builders who thrive know what secure looks like, demand it in their prompts, and catch the gaps in review.
+
+Certification Goal
+
+Passing the Module 4 exam proves you can direct AI to build a complete backend layer in Next.js: choosing correctly between Route Handlers and Server Actions, and verifying that every endpoint validates input, checks authentication, handles errors cleanly, and resists abuse before it ships.
+
+What You Need to Know
+
+Route Handlers
+
+Route Handlers are files named route.ts inside your app directory that export functions named after HTTP methods: GET, POST, PUT, DELETE. A file at app/api/invoices/route.ts becomes an endpoint at /api/invoices. Use them when something outside your app needs to call you: Stripe webhooks, a mobile client, or a partner integration.
+
+Server Actions
+
+Server Actions are functions marked with the "use server" directive that run on the server but get called like regular functions from your components. They are the default choice for forms and mutations triggered by your own UI: no endpoint URL, no fetch boilerplate. Critical review point: every Server Action is still a public endpoint under the hood, so it needs auth checks exactly like an API route.
+
+Choosing Between Them
+
+The decision rule is about who calls the code. Your own app's forms and buttons: Server Actions. External callers, webhooks, or anything needing a stable URL and standard HTTP semantics: Route Handlers. When AI builds API routes for simple form submissions, redirect it to Server Actions and cut the boilerplate in half.
+
+Input Validation
+
+Never trust anything that arrives from a client, because attackers do not use your frontend. Every handler and action should parse its input through a schema library like Zod before touching the database, rejecting bad shapes with a clear 400 response. Direct your AI to define the schema first, then build the handler around it.
+
+Authentication and Authorization
+
+Authentication asks "who are you," authorization asks "are you allowed to do this," and every mutation needs both. The session check must happen inside the handler or action itself, not just in the UI that hides the button. A classic AI-generated bug: accepting a userId from the request body instead of the verified session, which lets any user act as any other user.
+
+Middleware and Rate Limiting
+
+Middleware runs before requests reach your routes, making it the right place for cross-cutting concerns: redirecting unauthenticated users, setting security headers, and gatekeeping path patterns. Rate limiting protects against abuse and runaway costs; on Vercel that usually means a limiter backed by a store like Upstash Redis, applied to auth endpoints, expensive queries, and anything that sends email.
+
+Your Toolkit
+
+Zod: The validation library your AI should reach for on every endpoint. One schema defines the input shape and doubles as TypeScript types.
+Auth.js (NextAuth) or Clerk: Session management you direct AI to integrate rather than build from scratch. Both give you a server-side helper to verify the caller inside every action and route.
+Upstash Ratelimit: A serverless-friendly rate limiter built for Vercel. A few lines in middleware or a handler stops brute force and abuse cold.
+The endpoint review pass: A fixed habit, not a tool: after AI generates any handler or action, check four things in order: validation, auth, error handling, rate limits. Never skip it.
+
+Exam Topics
+
+The file convention for Route Handlers (route.ts) and the exported HTTP method functions
+When to choose a Server Action versus a Route Handler for a given scenario
+The "use server" directive and how Server Actions bind to forms via the action prop
+Why Server Actions require auth checks despite not having a visible URL
+Validating request bodies with a schema and returning correct status codes (400, 401, 403, 429)
+Reading identity from the server-side session instead of trusting client-supplied IDs
+What belongs in middleware versus inside individual handlers
+Rate limiting strategies for auth, email, and expensive endpoints on Vercel
+
+Common Pitfalls
+
+Trusting the client's userId: If the handler reads the acting user from the request body, any caller can impersonate any user. Identity comes from the verified session, always.
+Treating Server Actions as private: They feel like internal function calls, but Next.js exposes them as POST endpoints. Skipping the auth check inside the action is an open door.
+Validating only in the UI: Frontend validation is a courtesy, not a defense. Attackers call your endpoints directly, so the server must re-validate everything.
+Leaking internals in error responses: Raw database errors and stack traces hand attackers a map of your system. Log details server-side, return a generic message.
+No rate limits on auth and email endpoints: Login routes get brute forced and contact forms get scripted within days of launch, and unthrottled endpoints inflate your Vercel bill.
+Accepting AI's first draft: Tutorial-trained models omit auth and validation by default. An endpoint that works in testing is not an endpoint that is safe in production.
+
+Self-Assessment Checklist
+
+I can explain when to use a Route Handler versus a Server Action and justify the choice
+I can direct AI to build a Server Action that handles a form with validation and error states
+I can spot a missing auth check in an AI-generated handler before it ships
+I can verify that identity comes from the session, not from client-supplied data
+I can direct AI to add schema validation with correct status codes for failures
+I can decide which concerns belong in middleware and which belong in the handler
+I can direct AI to add rate limiting to the endpoints that attract abuse
+
+AI Audit Prompt Template
+
+Run this prompt against your codebase after AI builds or modifies your API layer, and before every deploy.
+
+Audit the API layer of this Next.js app: every Route Handler (route.ts) and every Server Action ("use server"). For each endpoint and action, report: 1. VALIDATION: Is all input parsed through a schema (Zod or similar) before use? Flag any handler that reads body, params, or FormData unvalidated. 2. AUTH: Is there an authentication check inside the handler or action itself? Flag any that rely only on UI-level protection, and any Server Action with no session check. 3. AUTHORIZATION: Does the code verify the caller may touch this specific resource? Flag any place a userId, orgId, or resource ID comes from the client instead of the verified session. 4. ERROR HANDLING: Are errors caught and returned as safe, generic responses with correct status codes? Flag any raw errors or stack traces sent to the client. 5. RATE LIMITING: Which endpoints handle auth, email, payments, or expensive queries, and are they rate limited? Flag unprotected ones. Output a table: endpoint, issue, severity (critical/high/medium), exact fix. Then implement the critical fixes and show me the diff for review. Do not change any business logic.
+
+What's Next
+
+Your app now has a real backend that validates, authenticates, and holds up under pressure. Module 5: SEO, Metadata and Performance makes sure the app you built gets found and feels fast: you will direct AI to wire up metadata, sitemaps, Open Graph images, and Core Web Vitals optimizations so your content site ranks and your dashboard flies.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent, 20 of 25 questions, to earn the Module 4 badge. Pass all seven module exams to earn the Next.js Specialist badge, certifying you can direct AI to build and ship production Next.js applications end to end.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

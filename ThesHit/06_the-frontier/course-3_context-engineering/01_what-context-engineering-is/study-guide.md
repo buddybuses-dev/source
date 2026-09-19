@@ -1,0 +1,85 @@
+# Module 1: What Context Engineering Is — Study Guide
+
+## Context Engineering
+
+### T8 The Frontier | Module 1 Study Guide
+
+## What Context Engineering Is
+
+> "Direct AI to treat every input as part of one designed information environment, not a pile of text."
+
+## Why This Matters
+
+Two builders can send the identical prompt to the identical model and get wildly different results, because the model never sees a prompt in isolation. It sees a context window: system prompt, history, documents, tool outputs, all of it. If you control what fills that window, you control the quality of everything your AI systems produce.
+
+## Core Concepts
+
+**Prompts are instructions; context is reality.** A prompt tells the model what to do. Context is everything the model can see while doing it: the system prompt, the conversation so far, retrieved documents, tool outputs, user data, and its own previous responses. The model has no knowledge of your app, your client, or your intent beyond what appears in that window.
+
+**The context window is the model's entire reality.** The model cannot check a database, remember last week, or notice what you left out. If a fact is not in the window, it does not exist for this call. If a wrong fact is in the window, it is true for this call. Every failure you will debug in this course traces back to this principle.
+
+**Context engineering is a design discipline.** It is deciding what goes into the window, in what order, and with what priority. Prompt engineering asks "how do I phrase the instruction?" Context engineering asks "what information environment should this instruction operate inside?" The two are companions; neither replaces the other.
+
+**Same prompt, different context, different output.** When results vary across runs, builders often blame the model or rewrite the prompt. Usually the context changed: history grew, a different document was retrieved, a tool returned something new. Diagnosing output changes starts with diffing context, not rewording instructions.
+
+**Everything competes for space.** The window is finite. Instructions, history, documents, and the response all share one token budget. Adding more of one thing crowds out another. Choosing what to include always means choosing what to exclude.
+
+## How It Works
+
+When your application calls a model, an assembly step happens first, whether you designed it or not. The pieces stack in a typical order: system prompt sets standing rules, then long-lived context like user profiles or project data, then retrieved documents, then conversation history, then the current user message. The model reads the whole stack and produces a response. Your job is to make that assembly deliberate: decide each layer's source, size, and position, and know what the model actually saw on any given call. Step one of every context system is simply logging the final assembled window so you can inspect it.
+
+## Directing AI
+
+Use prompts like these to have AI build and analyze context rather than writing the plumbing yourself:
+
+1. "List every source of text that reaches the model in this app: system prompt, history, retrieved docs, tool outputs. Build me a diagram of the assembled context window."
+2. "Direct the app to log the complete assembled context for every model call, with a label and token count for each layer."
+3. "Here are two runs with different outputs from the same prompt. Diff the two assembled contexts and identify what changed."
+4. "Restructure this context so standing instructions come first, retrieved documents are clearly delimited, and the user question appears last."
+5. "Audit this system prompt for statements that conflict with the retrieved documents we typically inject, and flag every contradiction."
+
+## Common Mistakes
+
+1. Rewriting the prompt when the context is the problem, then concluding the model is unreliable.
+2. Assuming the model knows things about your app or user that were never placed in the window.
+3. Letting frameworks assemble context invisibly and never logging what the model actually received.
+4. Stuffing everything available into the window on the theory that more information always helps.
+5. Ignoring ordering, so critical instructions sit buried under pages of retrieved text.
+6. Treating context engineering and prompt engineering as rivals instead of designing them together.
+
+## Real-World Application
+
+A builder ships a support assistant for a property management client. In testing it answers perfectly; in production it starts inventing lease terms. The builder directs AI to log every assembled context window and finds the cause in an afternoon: production conversations run long, and by message twenty the retrieved lease excerpts are competing with pages of chit-chat, so the model improvises. Nothing was wrong with the prompt. The builder directs AI to cap history, keep lease excerpts pinned near the top, and re-test. The inventions stop. The client never knew; the builder now checks context before prompts on every project.
+
+## Decision Framework
+
+- Output is wrong and the prompt seems fine? Inspect the assembled context before touching the instruction.
+- Results differ between runs of the same prompt? Diff the two context windows; something in them changed.
+- Model ignores an instruction? Check where it sits in the window and what surrounds or contradicts it.
+- Tempted to add more documents? Ask what each addition displaces and whether it earns the space.
+- Model states facts you never gave it? It is filling gaps; supply the missing context explicitly.
+- Deciding where to invest effort? Fix what the model sees first, then refine how you phrase requests.
+
+## Tool and Platform Notes
+
+Claude, GPT, and Gemini all operate on the same principle: one finite window holds everything. The Anthropic and OpenAI consoles show raw message arrays, which makes them good inspection tools. Frameworks like LangChain assemble context for you; treat their convenience with suspicion until you have logged their output. A plain text log file of assembled windows is the single highest-value tool in this course.
+
+## Key Takeaways
+
+- The context window is the model's entire reality; anything outside it does not exist for that call.
+- Prompts are instructions, context is the environment they operate in, and both need deliberate design.
+- The same prompt produces different results when the surrounding context differs.
+- Every element in the window competes for finite space; inclusion always costs exclusion.
+- Logging the assembled window is the foundation of every technique in this course.
+
+## What's Next
+
+Module 2 goes inside the window itself: token budgets, allocation across layers, priority hierarchies, and truncation strategies that fail gracefully instead of silently.
+
+## Exam Prep Notes
+
+Be ready to diagnose scenarios where identical prompts produce different outputs and identify context as the variable. Know the distinction between prompt engineering and context engineering, what counts as context beyond the prompt, and why logging the assembled window comes before any other fix.
+
+———
+
+*Matt Murphy AI | The Faction Group LLC | mattmurphy.ai*

@@ -1,0 +1,95 @@
+# Module 6: Self-Hosted and VPC Deployments — Study Guide
+
+## Running AI Inside the Boundary, and Knowing When You Actually Should
+
+## What This Module Covers
+
+This module covers running AI on infrastructure you or your client controls: what self-hosting actually means, VPC and hybrid deployments, open-weight models and their licenses, the hardware and operations reality, and the economics that decide when owning inference beats renting it.
+
+Here's your real situation: as your clients get bigger and more regulated, one requirement starts appearing in every conversation: our data can't leave our infrastructure. Hospitals, financial firms, and government-adjacent organizations will hand you exactly this constraint, and the builder who can architect for it honestly, including talking a client out of it when a cheaper option satisfies the real requirement, wins engagements the API-only crowd can't touch.
+
+You're the advisor and the architect here. You probe what the requirement actually is, weigh the real trade of control against capability, cost, and burden, and design the deployment that fits the constraint instead of the romance. The infrastructure choices are the deliverable. The judgment behind them is what the client is paying for.
+
+## Why It Matters
+
+Self-hosting is the most expensive decision in AI architecture to get wrong in either direction. Recommend it when a VPC option or API data controls would satisfy the real constraint, and the client buys GPUs, hires nobody to run them, and inherits an aging model plus a security burden they never understood. Refuse to engage with it when the requirement is genuine, and you lose the regulated clients where the biggest engagements live.
+
+The trap is that self-hosting sells itself on fantasy: own the model, control everything, pay once. The reality is a capability trade, an operations bill that never stops, and a model that ages while the frontier moves on. Every cost in this module is one that arrives after the purchase order, which is exactly why clients need a builder who names them before it. This module teaches you to be that builder.
+
+## Module Certification Goal
+
+You can determine when a data-control requirement genuinely demands self-hosted or VPC inference versus cheaper alternatives, architect the deployment across hardware fit, model licensing, serving, and security responsibility, and advise clients honestly on the economics, operations capacity, and maintenance reality they're signing up for.
+
+## What You Need to Know
+
+- **What the words actually mean:** Self-hosting means running the model on infrastructure you control, so inference happens inside your boundary. A VPC deployment runs the model inside your private cloud boundary, so data stays within your network perimeter. The primary legitimate driver for either is data control: privacy, compliance, or residency rules that require inference inside the boundary. Not prestige, not setup speed, not quality. For most builders and most workloads, the API route wins: frontier capability with zero infrastructure burden, no GPUs, patching, or serving to run.
+- **Probe the requirement before architecting for it:** When a client demands full self-hosting, the professional first move is probing the actual requirement: often a VPC option or API data controls satisfy the real constraint cheaper. A hospital requiring that patient data never leave their infrastructure drives an architecture where inference happens inside their boundary for that data. Note the phrasing: for that data. That's the door to hybrid architecture: sensitive workloads run inside the boundary while general work uses frontier APIs. Most "we must self-host everything" conversations end in a hybrid, and the client saves a fortune.
+- **The capability and hardware reality:** Hostable models typically trail the frontier, so you trade some capability for control. The fundamental hardware constraint: the model must fit in your GPU memory, which determines what size you can actually run. Open-weight models, whose weights are published for download so you can run them on your own hardware, are the raw material, and before any commercial deployment you check the license terms: what commercial use, modification, and redistribution it actually permits. When the chosen model won't fit, a compressed variant fits and runs cheaper, with some quality loss you must measure against your bar. That measurement is Module 5's evaluation suite doing its job in a new setting.
+- **Serving, security, and the six-month reality:** A downloaded model does nothing. Model serving is the infrastructure that loads it, exposes an endpoint, handles requests, and scales under load, and it gets sized against latency per request and throughput under concurrent load at the traffic you actually expect. Security responsibility lands on you: patching, access control, and monitoring become your operational burden. You monitor usage, performance, errors, and abuse patterns, because you are now the provider, with a provider's duties. And six months in, the maintenance reality has set in: the model is aging while the frontier moved on, and updates, security patches, and upgrades are on you. The core promise a properly designed private deployment makes is narrow and real: prompts and data are processed inside the controlled boundary and never leave it. Not perfect accuracy, not zero cost, not infinite scale.
+- **The costs live in operations, the economics live in utilization:** Beyond the hardware bill, self-hosting costs accumulate in operations: serving, scaling, patching, monitoring, and the engineering time all of it consumes. The economics genuinely favor self-hosting at high, steady, predictable volume, where utilized hardware beats per-token pricing. Spiky or low volume keeps the API ahead. Before a client buys GPUs, run a pilot on rented capacity: prove the model meets the need before hardware money is committed. And check the organizational prerequisite: real operations capacity, people who can run, monitor, and fix infrastructure under pressure. A 2 AM server failure is exactly as bad as the failover, backups, and on-call path you planned, or the absence of all three.
+- **Advise for the requirement, not the romance:** Honest advising lays out the real trade, control and residency versus capability, cost, and burden, against the client's actual need. Not always-API because it protects you from support burden. Not always-self-host because bigger infrastructure means bigger engagements. Control has real costs, so the client pays them only when the data demands it. Getting this recommendation right is worth more to your reputation than either deployment.
+
+## Your Toolkit
+
+- **Claude Code:** Where deployment architecture gets designed and the evaluation suites from Module 5 get run against candidate models at their real quality bar.
+- **Rented GPU capacity (cloud GPU instances for pilots):** The proving ground where a model demonstrates it meets the need before any hardware money commits.
+- **An inference serving stack (vLLM or your platform's serving layer):** The machinery that loads the model, exposes the endpoint, and holds up under concurrent load.
+- **Monitoring and on-call infrastructure (dashboards, alerts, and a failover plan):** The provider's duties you now carry: usage, performance, errors, abuse patterns, and the 2 AM path.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+- Can you define self-hosting and VPC deployment, and identify the primary legitimate driver for choosing them over a frontier API?
+- Can you explain why the API route wins for most builders and workloads, and what capability trade-off self-hosting usually carries?
+- Can you probe a client's self-hosting demand for the real requirement, and design a hybrid architecture around sensitive data?
+- Can you apply the hardware constraint, evaluate a compressed variant's trade, and check an open-weight license before commercial deployment?
+- Can you define model serving, size it against latency and throughput, and state the core promise a private deployment actually makes?
+- Can you identify where security responsibility lands, what gets monitored, and what the six-month maintenance reality looks like?
+- Can you evaluate when the economics genuinely favor self-hosting, why a pilot on rented capacity precedes GPU purchases, and what organizational capacity must exist?
+- Can you advise a client honestly on the self-host decision, and recognize what planning determines how bad a 2 AM outage is?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often at this stage. No judgment, they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam.
+
+- You architect the stated requirement instead of the real one. The client said full self-hosting, so you designed full self-hosting, and a VPC option would have satisfied the actual constraint at a fraction of the cost. Probe first. The requirement behind the requirement is usually smaller.
+- You sell the hardware and forget the operations. The GPU quote looked complete, and the serving, scaling, patching, monitoring, and engineering time never made it into the conversation. The recurring costs are the real costs. Name them before the purchase order, not after.
+- You let the client buy GPUs before the pilot. Hardware felt like commitment and commitment felt like progress. A pilot on rented capacity proves the model meets the need first. Committed hardware running an unproven model is the most expensive way to discover a mismatch.
+- You skip the license check because the weights were downloadable. Downloadable is not deployable. Open-weight licenses vary on commercial use, modification, and redistribution, and finding out after the client's launch is a legal problem wearing a technical costume.
+- You treat deployment as done at launch. The model runs, so the project closed, and six months later it's aging, unpatched, and behind the frontier with nobody assigned to it. You became the provider. Updates, security, and upgrades are duties now, staffed and scheduled.
+- You assume control means safety. It's on our hardware, so it's secure, right? Backwards. Security responsibility just transferred to you: patching, access control, and monitoring are now your burden, and the 2 AM outage is exactly as bad as the failover plan you did or didn't build.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+- Can you state the one legitimate primary driver for self-hosting, and the cheaper options to check first?
+- Can you sketch a hybrid architecture that keeps sensitive data inside the boundary while general work uses frontier APIs?
+- Do you know how to determine whether a model fits available GPU memory, and what a compressed variant trades?
+- Would you check an open-weight model's license terms before any commercial deployment?
+- Can you name what model serving must be sized against, and the duties that transfer to you as the provider?
+- Can you describe when the economics genuinely favor self-hosting, and what gets proven on rented capacity first?
+- Could you brief a client on the full trade: control and residency versus capability, cost, and burden?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to get a quick health check on a self-hosted or VPC deployment decision. It checks the same things the certification exam covers.
+
+> Review this deployment decision and check the following. For each one, tell me pass or fail with a specific example: Requirement: Here is the client's stated constraint [describe it]. What is the real data-control requirement, and would a VPC option or API data controls satisfy it cheaper than full self-hosting? Architecture: If some data genuinely must stay inside the boundary, what would a hybrid design look like, with sensitive workloads private and general work on frontier APIs? Model fit: For the candidate model [name it], does it fit the available GPU memory, what does a compressed variant trade, and what do its license terms permit commercially? Operations: Who runs serving, patching, monitoring, and the on-call path, and what does the six-month maintenance plan look like? Economics: Based on expected volume [estimate it], does utilized hardware actually beat per-token pricing, and has a pilot on rented capacity proven the model meets the need? Honest advice: Given all of the above, what recommendation serves the client's requirement rather than the romance? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 6 exam. The best way to prepare: run the decision for real. Take a hypothetical regulated client, probe the requirement, spec the hybrid, check one open-weight license, price the operations, and write the one-page recommendation. The judgment in that page is exactly what the exam tests.
+
+## Certification Pathway
+
+- **Frontier Specialist — Agent Orchestration:** Pass all 7 module exams in this course
+- **CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+- **CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush, take the time to build something real first.
+
+---
+
+Ready? Take the Self-Hosted and VPC Deployments Exam →

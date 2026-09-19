@@ -1,0 +1,97 @@
+Title: Module 02: Subscription Endpoints & Webhooks — Study Guide | The Mastery
+URL: https://the-faction.mn.co/posts/the-mastery-module-02-subscription-endpoints-webhooks-study-guide
+---
+Module 02: Subscription Endpoints & Webhooks — Study Guide
+Module 2: APIs, Webhooks & Backend Communication
+
+Backend Architecture for SaaS Products
+
+This is the study guide. Everything for Subscription Endpoints & Webhooks is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers APIs and backend logic as they apply specifically to SaaS applications—the subscription endpoints, Stripe webhook handlers, usage-tracking APIs, and billing lifecycle management that make a subscription product actually collect revenue. You already know API fundamentals from the CADE program. This goes deeper into the patterns that separate a SaaS backend from a regular app: webhook idempotency, subscription state machines, trial-to-paid conversion flows, and the terrifying moment when a payment fails and your system needs to decide what happens next. Your AI coding tool can scaffold a Stripe integration in an hour. But if the webhook handler doesn't verify signatures, if a failed payment doesn't trigger a grace period, or if your subscription endpoint doesn't handle the difference between a plan change and a cancellation—you'll lose revenue silently and won't know until customers complain.
+
+Why It Matters
+
+The subscription API is your cash register. Every bug in this layer costs you real money. A webhook handler that processes the same event twice charges a customer twice. A cancellation endpoint that doesn't actually cancel the Stripe subscription means you're billing people who left. A trial expiration flow that doesn't prompt conversion means you're giving away your product for free indefinitely. Stripe's API is well-documented and AI tools generate clean Stripe integrations. But the hard part isn't calling the Stripe API—it's handling every edge case in the subscription lifecycle. What happens when a card expires? What happens when a customer disputes a charge? What happens when they upgrade mid-cycle? These decisions determine whether your SaaS makes money or leaks it.
+
+Module Certification Goal
+
+You can describe subscription API endpoints and Stripe webhook handlers to an AI coding tool, evaluate the output for idempotency, signature verification, and proper lifecycle management, and ship a billing backend that collects revenue without losing money to duplicate charges, missed cancellations, or unhandled payment failures.
+
+What You Need to Know
+
+Stripe webhook fundamentals: When something happens in Stripe—a payment succeeds, a subscription renews, a card expires—Stripe sends an HTTP POST to a URL you configure. Your app needs to listen for these events, verify they came from Stripe (signature verification), and process them correctly. If your endpoint is down, Stripe retries—but your app needs to handle receiving the same event more than once without processing it twice.
+
+Idempotency in billing: Idempotency means processing the same request multiple times produces the same result as processing it once. If Stripe sends a payment_succeeded webhook twice, your system should not credit the account twice or send two confirmation emails. You do this by tracking which events you've already processed.
+
+Subscription lifecycle states: A SaaS subscription moves through states: trial → active → past_due → canceled → expired. Your backend needs to handle each transition. When a trial ends, prompt for payment. When a payment fails, enter a grace period. When canceled, decide whether access ends immediately or at the billing period end. Your AI tool won't build this state machine unless you describe every transition.
+
+Usage-based billing APIs: Some SaaS products charge based on usage—API calls, storage, active users. Your backend needs endpoints that track usage, enforce limits, and report to Stripe for metered billing. This means your API needs to count things accurately, in real time, and handle what happens when a customer hits their limit.
+
+Plan change logic: Upgrading and downgrading are different operations. An upgrade usually takes effect immediately with a prorated charge. A downgrade usually takes effect at the end of the billing period. Your API needs to handle both cases and communicate with Stripe accordingly.
+
+Webhook signature verification: Every incoming webhook should be verified using Stripe's webhook signing secret. This confirms the request came from Stripe and wasn't spoofed. Without this check, anyone who discovers your webhook URL could send fake payment confirmations.
+
+Your Toolkit
+
+AI coding tool (pick one): Cursor, Lovable, Bolt, Claude Code, or your preferred AI builder. You'll describe webhook handlers, subscription endpoints, and billing logic to it.
+
+Stripe Dashboard and Stripe CLI: Stripe's dashboard shows events, payments, and subscriptions in real time. The CLI lets you forward webhooks to your local environment for testing without deploying.
+
+A webhook testing tool: Stripe CLI webhook forwarding, or ngrok to expose your local server so Stripe can reach your development endpoint for testing.
+
+API testing tool: Postman, Insomnia, or curl for manually testing subscription endpoints before relying on the frontend to call them.
+
+Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+Webhook handling: Can you evaluate whether a webhook handler verifies Stripe signatures, handles duplicate events, and responds with the correct status codes?
+
+Idempotency: Can you identify when a billing operation would produce duplicate charges or repeated emails if the same event is processed twice?
+
+Subscription state management: Can you trace a subscription through its lifecycle—trial to active to past_due to canceled—and verify each transition is handled correctly?
+
+Payment failure handling: Can you evaluate what happens when a payment fails—grace period, retry logic, customer notification, and eventual access revocation?
+
+Plan change logic: Can you assess whether an upgrade takes effect immediately with proration and a downgrade takes effect at period end?
+
+Usage tracking: Can you verify that usage-based billing endpoints count accurately, enforce limits, and handle what happens when a customer exceeds their allocation?
+
+Security: Can you spot when a webhook endpoint is missing signature verification or when API keys are exposed in client-side code?
+
+Error responses: Can you evaluate whether billing APIs return clear, actionable error messages when a payment fails or a webhook can't be processed?
+
+Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Not verifying Stripe webhook signatures. Without verification, anyone who discovers your webhook URL can send fake payment events and your system will process them as real. Processing the same webhook event multiple times. Stripe retries failed deliveries, so your handler might receive the same event 3-5 times. Without tracking processed events, you'll charge customers multiple times or send duplicate emails. Building a cancellation endpoint that removes access immediately instead of at the end of the paid billing period. The customer paid for the full month—cutting them off early is wrong and will generate disputes. Not handling the past_due state. When a payment fails, your system should enter a grace period where the customer can update their card. Cutting off access on the first failed charge is aggressive and loses recoverable revenue. Storing Stripe API keys in your frontend code. Secret keys belong in environment variables on your server. If your secret key is in the frontend, anyone can view your source and access your Stripe account. Hardcoding plan IDs in your codebase. When you create new plans in Stripe, you'll have to redeploy just to reference them. Use a config or database instead.
+
+Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Can you describe a Stripe webhook handler to AI that includes signature verification, idempotency checks, and proper HTTP response codes? Does your webhook handler track which events it has already processed to prevent duplicate charges? Does your system handle the full subscription lifecycle—trial end, payment success, payment failure, plan change, and cancellation? When a payment fails, does your system enter a grace period and notify the customer, or does it immediately revoke access? Are your Stripe API keys stored in environment variables on the server—not in frontend code or committed to your repository? Can you test webhooks locally using the Stripe CLI before deploying to production? Does your cancellation flow end access at the end of the billing period, not immediately?
+
+AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers.
+
+Review my SaaS application's billing and subscription backend and check the following. For each one, tell me pass or fail with a specific example: Webhook security: Does the webhook handler verify Stripe signatures before processing any event? Idempotency: Does the handler track processed event IDs to prevent duplicate charges? Subscription lifecycle: Does the system handle trial expiration, payment success, payment failure, plan changes, and cancellation correctly? Payment failure: Does a failed payment trigger a grace period with customer notification instead of immediate access revocation? API key security: Are all Stripe secret keys stored in environment variables with no keys hardcoded or exposed in client code? Error handling: Do billing endpoints return clear error messages when payments fail or webhooks can't be processed? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+What's Next
+
+Once you've gone through this module and can answer "yes" to the self-assessment checklist, you're ready for the Module 2 exam. The best way to prepare: build a real Stripe integration. Set up a webhook endpoint that handles payment_intent.succeeded, customer.subscription.updated, and invoice.payment_failed. Use the Stripe CLI to send test events. Verify your handler doesn't process the same event twice. Test what happens when a payment fails. Every edge case you discover during building is exactly what the exam tests.
+
+Certification Pathway
+
+Platform Specialist — SaaS Build: Pass all 7 module exams in this course
+
+CADE Specialist (meta-credential): CADE Certified + 3 specialist badges
+
+CADE Distinguished: CADE Certified + 6 specialist badges Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+———
+
+Ready? Take the Subscription Endpoints & Webhooks Exam →
+
+Ready to move on to the next Lesson?

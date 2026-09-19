@@ -1,0 +1,94 @@
+# Module 1: Data Modeling Fundamentals — Study Guide
+
+## T4 The Mastery | Database Design and Migration
+
+This is the study guide. Everything for Data Modeling Fundamentals is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module teaches you how to think about data before a single table exists: what an entity is, what a primary key does, why data types and naming matter, and why every fact should live in exactly one place. You will learn to review the schemas your AI proposes the way an operator reviews a foundation pour, because everything else in your build stands on this.
+
+## Why It Matters
+
+Your AI can generate a working schema in thirty seconds. It can also generate a wrong one in thirty seconds, and the demo will run fine either way. A schema that mixes orders, payments, and support notes into one giant table, or stores the same phone number in four places, or uses email addresses as primary keys, will not fail today. It fails six months from now, when the business asks for revenue by month and the data cannot answer, when copies drift and nobody knows which is true, when a customer changes their email and every reference breaks. Code is cheap to regenerate. Data is not. Bad modeling is the most expensive mistake a builder can direct an AI into, because by the time you feel the pain, real records sit in the wrong shape. This module teaches you to catch those mistakes at the proposal stage, when a fix costs one prompt.
+
+## Certification Goal
+
+Passing the Module 1 exam proves you can direct an AI to model a business truthfully: entities drawn from the business's own nouns, stable generated keys, correct types, clear names, constrained values, and a single source of truth for every fact, pressure-tested before data arrives, not after.
+
+## What You Need to Know
+
+**Entities come from the business, not the screens.** Tables should be the nouns of the business itself: customers, appointments, services, orders, payments. Before your AI writes any tables, direct it to walk the core workflows and list what facts must be stored for each step to work. When one app serves two kinds of customer, like individuals and companies, the key question is what they share and where they differ, so shared fields live together and differences stay clean. Never let the agent invent structure unreviewed: it encodes wrong assumptions about your business that get expensive to unwind once data arrives.
+
+**Primary keys identify, nothing more.** A primary key's one job is to uniquely identify each row so any record can be referenced without ambiguity. Use a generated ID with no business meaning. Emails change and get reused; anything with business meaning eventually changes, and a key must stay stable forever.
+
+**One field, one fact, one clear name.** A column named "data2" that holds different things per row, a status of numeric codes nobody remembers, tables named "tbl1": all violate the same principle. The schema should be self-explanatory, because names are how humans and agents reason about the system, and meaning that lives only in someone's memory gets lost. One address column holding street, city, state, and zip becomes a problem the moment you must search or filter by part of it, so split compound fields into clearly named columns with one meaning each.
+
+**Constrain what the database accepts.** Free-text statuses collect "shipped", "Shipped", and "SHIPPED"; quantity fields accept impossible negatives. The fix is never a cleanup script or frontend warning: constrain columns to fixed sets of allowed values and add rules that reject impossible values, so bad data cannot enter no matter the path. Make columns nullable only when missing is a real, meaningful state; otherwise require a value so gaps cannot hide bugs.
+
+**Single source of truth.** Every fact lives once. Copies drift, and once they drift nobody knows which is true. Values you can calculate, like an order total, are generally derived when needed and stored only deliberately, with a plan to keep them in sync. Files like images belong in object storage with only their locations in the database, so the database stays lean and fast.
+
+**The schema is a contract, and data outlives code.** Code and integrations depend on the schema's structure, so changing it casually breaks everything that trusted it. Give every table created_at and updated_at from day one, because you cannot answer "when did this change" retroactively, and record who made each change in important tables, because that is the first question you will ask when data looks wrong. Model the business truthfully now: the data outlives every version of the code.
+
+## Your Toolkit
+
+- **The workflow walkthrough.** Before any tables exist, direct your AI to walk the core business workflows and list the facts each step must store. This list is your entity map and your first defense against invented structure.
+- **The scenario pressure test.** Walk real scenarios through a proposed schema: place an order, issue a refund, change a price, and see if the data holds up. Confidence scores and table counts prove nothing; scenarios do.
+- **Type and constraint review.** A checklist for every proposed table: decimal for money, timestamps on everything, fixed value sets for statuses, rules that reject impossible values, nullable only where missing means something.
+- **The naming audit.** Direct your AI to explain every table and column name out loud. Anything it cannot explain in one plain sentence gets renamed or split before launch, not after.
+
+## Exam Topics
+
+The Module 1 exam will test you on:
+
+1. Why unrelated concepts must not share one giant table
+2. What primary keys do and why generated IDs beat business values like email
+3. Choosing correct data types, including decimal for money
+4. Clear naming, self-explanatory schemas, and splitting compound fields
+5. Constraining values: fixed sets, rejection rules, and when nullable is legitimate
+6. Single source of truth, derived values, and keeping files out of the database
+7. Timestamps, change attribution, and the schema as a contract
+8. Deriving entities from workflows and pressure-testing schemas with real scenarios
+
+## Common Pitfalls
+
+- **Accepting the demo as proof.** A schema is wrong when it cannot answer questions the business will predictably ask, like revenue by month. A clean demo proves nothing about that.
+- **Letting the AI invent the schema unreviewed.** The structure will encode wrong assumptions about your business, and you will pay for them once data arrives.
+- **Keys with business meaning.** Emails, phone numbers, and usernames all change. A key that changes breaks every reference to it.
+- **Speculative columns.** Twenty "maybe useful someday" fields invite inconsistent future use and make real fields harder to trust. Model what the business needs now.
+- **Fixing data problems downstream.** Cleanup scripts, report filters, and user training are patches over a column the database should have constrained.
+- **Storing everything as flexible text.** Unstructured text locks nothing in, which is exactly why it can enforce nothing and answer nothing.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I explain why a generated ID beats an email address as a primary key?
+- [ ] Can I list the facts a booking app must store by walking its workflows, without opening a design file?
+- [ ] Can I explain why money needs decimal types instead of floats?
+- [ ] Can I say when a column should be nullable and when it must require a value?
+- [ ] Can I explain what "the schema is a contract" means for an AI-built app?
+- [ ] Can I spot a single-source-of-truth violation and explain the drift it causes?
+- [ ] Could I pressure-test my AI's proposed schema tomorrow by walking an order and a refund through it?
+
+## AI Audit Prompt Template
+
+Use this prompt to audit any schema your AI proposes before you approve it:
+
+> "You are a database design reviewer. Here is the proposed schema for my [type of app]: [paste schema]. Audit it: entities match the business's real nouns, every table has a generated primary key with no business meaning, money uses decimal types, every table has created_at and updated_at, statuses are constrained to fixed value sets, impossible values are rejected by database rules, no fact lives in more than one place, and every name is self-explanatory. Then walk three real scenarios through it: place an order, issue a refund, and answer 'revenue by month'. List every failure, ranked by how expensive it becomes after real data arrives."
+
+## What's Next
+
+Module 2 connects your clean single tables. You will direct AI to model one-to-many and many-to-many relationships, enforce them with foreign keys, and make the normalization calls that decide when duplication is a defect and when it is deliberate.
+
+## Certification Pathway
+
+This module opens Database Design and Migration, a T4 The Mastery course available with paid Builder Access, sitting alongside the SaaS Build course in the tier. Pass all seven module exams to earn the Database Build Specialist badge. Every module builds toward Module 7, where you ship a real production database.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the Data Modeling Fundamentals Exam →

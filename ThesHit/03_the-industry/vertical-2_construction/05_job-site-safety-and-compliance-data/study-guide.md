@@ -1,0 +1,95 @@
+# Module 5: Job Site Safety & Compliance Data — Study Guide
+
+## Module 5: Jobsite Safety & Compliance Data
+
+Security & RLS for Construction Technology
+
+This is the study guide. Everything for Job Site Safety & Compliance Data is on this page — there's nothing to download.
+
+———
+
+## What This Module Covers
+
+This module covers safety and compliance data management for construction technology—OSHA compliance tracking, safety incident reporting, daily safety inspections, toolbox talks, worker certification verification, insurance certificate management, and the regulatory documentation that keeps job sites legal and workers protected. Construction is one of the most heavily regulated industries. OSHA requires documented safety programs, daily inspections, incident reports within specific timeframes, and worker training certifications for tasks like confined space entry, fall protection, and crane operations. Your platform must make safety documentation fast enough that superintendents actually do it, structured enough that it satisfies regulatory requirements, and retrievable enough that it survives an OSHA audit.
+
+## Why It Matters
+
+A single OSHA violation can cost $15,625 for a serious citation and $156,259 for a willful or repeated violation. But the real cost is human—construction accounts for more workplace fatalities than any other industry. Safety technology that makes compliance easier saves lives. A platform that tracks toolbox talks, inspection checklists, incident reports, and worker certifications doesn't just prevent fines—it creates the culture of documentation that prevents accidents.
+
+## Module Certification Goal
+
+You can describe construction safety data requirements to an AI coding tool—OSHA-compliant inspection forms, incident reporting workflows, certification tracking, and insurance management—evaluate the output for regulatory compliance and field usability, and ship a safety system that superintendents actually use because it's faster than paper.
+
+## What You Need to Know
+
+**OSHA inspection checklists:** Daily site inspections are required. Your platform must support configurable inspection checklists by project type—a residential project has different hazards than a commercial high-rise. Each inspection records date, inspector, findings, corrective actions, and follow-up status.
+
+**Incident reporting and investigation:** Safety incidents must be documented immediately. Your incident report workflow captures date, time, location, injured party, witnesses, description, severity classification, root cause analysis, and corrective actions. OSHA Form 300 logging requirements must be met.
+
+**Worker certification tracking:** Many construction tasks require specific certifications—forklift operation, crane signaling, confined space entry, fall protection, first aid. Your platform must track which workers hold which certifications, expiration dates, and flag when certifications expire before the worker can be assigned to tasks requiring them.
+
+**Insurance certificate management:** Every subcontractor must provide certificates of insurance before working on a project. Your platform must track certificate receipt, coverage amounts, expiration dates, and additional insured status. Expired insurance means the sub cannot work.
+
+**Toolbox talk documentation:** Brief daily or weekly safety meetings (toolbox talks) must be documented with topic, date, attendees, and sign-in sheet. Your platform should offer a library of toolbox talk topics and a quick documentation flow—photo of sign-in sheet plus topic selection.
+
+## Your Toolkit
+
+**AI coding tool (pick one):** Cursor, Lovable, Bolt, Claude Code—describe your safety checklists, incident workflows, and certification tracking to it.
+
+**OSHA reference standards:** OSHA 29 CFR 1926 (Construction) for specific inspection requirements, incident reporting timelines, and documentation standards by hazard type.
+
+**Mobile form builder:** A form system that works offline for field inspections—dropdown selections, photo capture, GPS tagging, and signature capture for sign-in sheets.
+
+**Certification database:** A worker certification tracker with expiration alerts that integrates with your scheduling system to prevent unqualified task assignments.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+**OSHA inspection compliance:** Can you evaluate whether inspection checklists meet OSHA requirements for the specific project type and hazard categories?
+
+**Incident reporting workflow:** Can you assess whether the incident report captures all required fields and meets OSHA Form 300 logging requirements?
+
+**Certification tracking:** Can you verify that expired worker certifications trigger alerts and prevent task assignment for certification-required work?
+
+**Insurance management:** Can you assess whether subcontractor insurance certificates are tracked with expiration alerts and coverage verification?
+
+**Toolbox talk documentation:** Can you evaluate whether safety meeting documentation captures topic, date, attendees, and sign-in verification?
+
+**Field usability:** Can you verify that safety documentation can be completed on a phone in field conditions in under 3 minutes per form?
+
+**Audit readiness:** Can you assess whether all safety records are retrievable by date range, project, and type for regulatory audit response?
+
+**Corrective action tracking:** Can you evaluate whether inspection findings generate corrective action items with assigned responsibility and follow-up verification?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often in this area. No judgment—they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam. Building safety forms that take 15 minutes to complete on a phone. If the inspection checklist is slower than paper, the superintendent won't use it. Target under 3 minutes per form. Not tracking worker certification expiration dates. A worker with an expired confined space certification who enters a confined space creates an OSHA violation and a life-threatening situation. Storing safety records without structure. When OSHA shows up for an audit, they want all incident reports for the past 5 years organized by project and date. If your records are disorganized, the audit becomes an investigation. Not connecting inspection findings to corrective actions. An inspection that identifies a fall hazard but doesn't generate a corrective action item with an assigned person and deadline is documentation without teeth. Accepting subcontractor insurance certificates without tracking expiration. An insurance certificate that expired last month means the sub is working uninsured. If someone gets hurt, your client's insurance covers the claim. Making toolbox talks optional in the platform. OSHA expects documented evidence of regular safety training. If your platform doesn't track toolbox talks, the contractor has no proof they happened.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on. Can safety inspections be completed on a phone in under 3 minutes with photo capture and GPS tagging? Does your platform track worker certifications with expiration alerts that prevent unqualified task assignments? Are incident reports structured to meet OSHA Form 300 logging requirements? Does the platform track subcontractor insurance certificates with expiration monitoring? Are toolbox talks documented with topic, date, attendees, and sign-in verification? Can all safety records be retrieved by project, date range, and type for audit response? Do inspection findings generate corrective action items with assigned responsibility and deadlines?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI coding tool to get a quick health check. It checks the same things the certification exam covers. Review my construction safety system and check the following. For each one, tell me pass or fail with a specific example: Inspections: Can daily inspections be completed in under 3 minutes on mobile? Incidents: Do reports meet OSHA Form 300 requirements? Certifications: Are expired certifications flagged with task assignment prevention? Insurance: Are sub insurance certificates tracked with expiration alerts? Toolbox talks: Are meetings documented with topic and attendee verification? Audit readiness: Can all safety records be retrieved by project and date range? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer yes to the self-assessment checklist, you're ready for the Module 5 exam. The best way to prepare: fill out one of your own inspection checklists on your phone. Time yourself. Try to find all incident reports for a specific project from 6 months ago. Check if any worker certifications in your system have expired. Every compliance gap you find is exactly what the exam tests.
+
+## Certification Pathway
+
+**Industry Specialist — Construction:** Pass all 7 module exams in this course
+
+**CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+
+**CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake after a 24-hour cooldown. No rush—take the time to build something real first.
+
+MATT MURPHY .AI © 2026 Matt Murphy .AI. All rights reserved.
+
+———
+
+Ready? Take the Job Site Safety & Compliance Data Exam →

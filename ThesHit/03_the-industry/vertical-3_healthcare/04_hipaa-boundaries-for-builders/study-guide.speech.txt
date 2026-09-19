@@ -1,0 +1,94 @@
+Module 4: HIPAA Boundaries For Builders — Study Guide
+
+T5 The Industry | Healthcare Practice AI Engineering
+
+This is the study guide. Everything for HIPAA Boundaries For Builders is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module gives you the HIPAA boundary knowledge every builder working with medical practices must carry: what counts as protected health information, what triggers HIPAA obligations, what a Business Associate Agreement is and when you need one, what you can and cannot store or transmit, and when to stop and bring in counsel. This is not a compliance certification. It is the fence line that keeps you from accidentally crossing it.
+
+Why It Matters
+
+One misconfigured tool can turn a helpful builder into a practice's worst liability. HIPAA violations carry penalties that scale into the millions, and enforcement does not care that you meant well or that you are "just the tech person." Here is the part most builders miss: the moment you build and operate a tool that touches patient information on behalf of a practice, you are likely a business associate under the law, with direct obligations of your own. Not the practice's obligations. Yours. Builders who do not know this store patient data in random spreadsheets, wire intake forms to consumer email, and paste patient details into AI chat tools with no agreement in place. Builders who do know this design data flows that stay inside the fence, sign the right agreements, and tell clients "no" at the right moments. Practices can hear the difference in one conversation, and the builders who speak this language win the work. The boundary knowledge is not overhead. It is the credential.
+
+Certification Goal
+
+Passing the Module 4 exam proves you can identify PHI on sight, recognize when your work makes you a business associate, know when a BAA must exist before data flows, make sound store-versus-transmit decisions, and recognize the moments that require a lawyer instead of a guess. It proves practices can trust you near their data.
+
+What You Need to Know
+
+What PHI actually is. Protected health information is health information tied to an identifier: name, date of birth, address, phone, email, member ID, photos, and more, in the hands of a covered entity or its vendors. The combination is the trap. An appointment date alone is nothing. An appointment date with a name at a specialty clinic tells you who has what condition. Learn to see identifiers plus health context as PHI reflexively.
+
+Who HIPAA binds. Covered entities are providers, health plans, and clearinghouses. Business associates are vendors who create, receive, maintain, or transmit PHI for them. That second category is you, the moment your tool handles patient data on the practice's behalf. Being a business associate means HIPAA reaches you directly, including its security requirements and breach rules.
+
+The BAA. A Business Associate Agreement is the contract that must exist between the practice and you before PHI flows through anything you operate. It also chains downward: every subcontractor and service you use to handle that PHI, hosting, messaging, AI services, needs its own BAA with you. No BAA from a vendor means PHI does not touch that vendor. That single rule decides most of your architecture.
+
+Store and transmit boundaries. Minimum necessary is the operating principle: collect and keep only what the job requires. PHI belongs in encrypted, access-controlled, BAA-covered systems, never in personal drives, consumer chat apps, or free-tier tools with no agreement. Transmission needs encryption in transit. And patient data never goes into an AI model or service unless that service is under a BAA and configured not to train on it.
+
+Design patterns that shrink risk. The best builders architect so PHI barely touches their systems: let data land directly in the practice's PMS or EHR, hold references instead of copies, de-identify where the workflow allows, and log who accessed what. The less PHI you hold, the smaller your blast radius when something goes wrong.
+
+Escalation triggers. Some moments end the builder's lane: a suspected breach or lost device, a client asking you to skip safeguards, marketing uses of patient data, anything involving minors' records across state lines, subpoenas, or ambiguity about whether you are a business associate at all. The move is the same every time: stop, document, and get counsel or a compliance professional involved. Knowing when to stop is the skill.
+
+Your Toolkit
+
+BAA-ready infrastructure. Cloud and hosting providers that sign BAAs, such as AWS, Google Cloud, and Microsoft Azure, with their HIPAA-eligible services and configuration guides.
+HIPAA-eligible messaging and forms. Communication and form services that offer BAAs on paid tiers, such as Twilio and Jotform's HIPAA plans. The free tier of a tool is usually the non-covered tier.
+Encryption and access control checklists. AI-built checklists covering encryption at rest and in transit, role-based access, unique logins, and audit logging for every system that touches PHI.
+The HHS website. hhs.gov is the primary source for HIPAA rules, breach reporting, and guidance. When a client asks a rules question, you cite the source, not your memory.
+
+Exam Topics
+
+The Module 4 exam will test you on:
+
+Identifying PHI in realistic practice data scenarios
+Covered entities versus business associates, and where the builder sits
+When a BAA is required and what happens before one exists
+Subcontractor chains: BAAs for the services your tools rely on
+Store-versus-transmit decisions and the minimum necessary principle
+AI services and patient data: what must be true before they mix
+Architecture patterns that minimize the PHI you hold
+Recognizing escalation moments that require counsel, not improvisation
+
+Common Pitfalls
+
+"I'm just the developer." Building and operating the tool that handles PHI is exactly what makes you a business associate. The law does not accept the job title defense.
+Shipping first, BAA later. The agreement must exist before PHI flows. A signed BAA next month does not cover the data that moved yesterday.
+Free-tier data leaks. The free plan of a form, email, or AI tool almost never comes with a BAA. Builders wire up the free tier in testing and forget to move off it.
+Pasting patient details into AI chats. A quick "help me draft a reply to this patient" with real names in a consumer AI tool is a disclosure. De-identify or use covered services.
+Hoarding data you do not need. Keeping full intake copies in your own database because it was convenient multiplies your risk for zero benefit. Minimum necessary is an architecture instruction.
+Playing lawyer. Improvising answers on breach questions, marketing uses, or consent edge cases digs the hole deeper. The professional move is knowing the moment to escalate.
+
+Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+[ ] Can I look at five data fields and say which combinations constitute PHI?
+[ ] Can I explain, in plain language, why a builder operating an intake tool is a business associate?
+[ ] Can I state when a BAA must be signed relative to when data flows?
+[ ] Can I list which of my usual tools and services would need BAAs before touching PHI?
+[ ] Can I apply minimum necessary to a real intake form and cut what does not belong?
+[ ] Can I state the conditions under which patient data may touch an AI service?
+[ ] Can I name five situations where I would stop work and escalate to counsel?
+
+AI Audit Prompt Template
+
+Use this prompt to audit any healthcare build for boundary violations:
+
+"You are a HIPAA-aware technical reviewer. I am a builder, likely a business associate, working with a [specialty] practice. Here is my system's data flow: [describe every point where patient data is collected, stored, transmitted, or processed, and every third-party service involved]. Audit it: identify every element of PHI, every service that would need a BAA, every storage or transmission point lacking encryption or access control, any data I am holding beyond minimum necessary, and any place patient data could reach a non-covered AI service. Flag anything that requires a lawyer rather than a design change. Do not soften findings."
+
+What's Next
+
+Module 5 returns to the build with the boundaries installed: billing and insurance admin tools. The revenue cycle runs on some of the most sensitive data in the practice, and now you know how to handle it. Next you will direct AI to build superbill generation, claim tracking, and eligibility verification workflows.
+
+Certification Pathway
+
+This is the fourth of seven modules in Healthcare Practice AI Engineering, part of T5 The Industry. Pass all seven module exams to earn the Healthcare AI Specialist badge. Every component you ship in the Module 7 capstone will be designed inside the boundaries you learned here.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the HIPAA Boundaries For Builders Exam →

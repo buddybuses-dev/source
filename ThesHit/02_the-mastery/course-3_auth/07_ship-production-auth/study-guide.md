@@ -1,0 +1,113 @@
+# Module 7: Ship: Production Auth — Study Guide
+
+## T4 The Mastery | Authentication Systems Build
+
+This is the study guide. Everything for Ship: Production Auth is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This is the ship module. Everything you built across Modules 1 through 6 now has to survive real users, real attackers, and real time. You will learn the pre-launch checklist, secret handling and rotation, what monitoring watches, how incidents get handled, how auth changes reach production safely, and the reviews that keep the system healthy for years.
+
+## Why It Matters
+
+An auth mistake costs more than a typical feature bug. A feature bug breaks an experience; an auth failure breaks trust, accounts, and companies. That asymmetry is why production auth is not a milestone you pass but a posture you hold. The goal of this module has a name: boring. Six months after launch, "auth is boring now" means monitored, patched, rehearsed, and changed only through process. This module is also where your relationship with your AI matures. It will report the system complete and secure, and the professional response is to verify with evidence: run the flows, attempt the abuses, read the checks yourself. An agent's confidence is not a test result. Attackers greet every new login endpoint within days. Whether that greeting becomes an incident is decided entirely by what you did before it arrived.
+
+## Certification Goal
+
+Passing the Module 7 exam proves you can take an AI-built auth system to production: checklist complete, secrets managed and rotated, monitoring live against baselines, incident responses rehearsed, changes staged and flagged with rollback ready, and an operating rhythm that keeps the front door watched for the life of the app.
+
+## What You Need to Know
+
+The pre-launch checklist. Rate limits live at the edge, in front of the application, so floods are shed before they consume resources. Secrets out of code and into protected configuration. Flows tested including the edges. Monitoring on. Test accounts, magic backdoors, and debug flags removed and verified gone, because forgotten conveniences become entry points. Auth changes prove themselves on staging with production-like data and the full flow exercised, edges included, before they touch production.
+
+Secrets and access in production. Auth secrets live in protected configuration and rotate on schedule and after departures or incidents. Real key rotation is a sequence the app tolerates: overlap windows, dependents updated, old keys verified dead. Production auth dashboard access goes to the minimal set with operational need, reviewed as roles change, with actions logged. When the app runs on several servers, every server must read the same session truth, so users are not logged out by landing elsewhere.
+
+Monitoring and logs. Auth monitoring watches failed logins, reset volume, signup anomalies, and lockouts against known baselines, because attacks announce themselves as deviations. The log rule: events and metadata, never passwords, tokens, or codes, because logs leak and must be safe when they do.
+
+Incident readiness. Credential stuffing on launch week becomes an incident or a non-event based on preparation: rate limits, breach-password checks, monitoring, and a response plan ready. Confirmed credential exposure gets the professional response: force resets on affected accounts, invalidate sessions, notify honestly, investigate scope. A library vulnerability tests readiness: knowing your versions, having a tested update path, patching within days. A provider outage tests earlier thinking: knowing your blast radius, what degrades versus breaks, and what you will tell users. Managed providers remain legitimate in production: their security team and uptime likely beat what you would build.
+
+Change management. Significant auth changes, like a new session model, reach production gradually: behind flags, with rollback ready and both paths monitored as traffic shifts. Support procedures hold under pressure: the locked-out user begging for a bypass "just this once" is the attack script, and production-grade process follows verification exactly. When an enterprise prospect asks whether your auth has been security tested, the strong answer is an actual review of your auth surface, findings fixed, report available.
+
+The long game. Periodic reviews keep production auth healthy: access reviews, dependency updates, log audits, and re-testing flows as the app changes. Basic compliance asks for credentials protected properly, honest breach disclosure, and honored deletion requests. Auth stays connected to the business: every auth decision is also a funnel decision, and friction data shows where signups leak. The governing principle: the front door never sleeps. Proven parts, tested edges, watched always, changed with care.
+
+## Your Toolkit
+
+- The launch checklist. A written, verified list: rate limits at the edge, secrets in protected configuration, edge cases tested, monitoring live, backdoors gone. Direct your AI to produce evidence for each line, not assurances.
+
+- A staging environment with production-like data. Where every auth change exercises the full flow, edges included, before real users meet it.
+
+- Monitoring with baselines and alerts. Failed logins, reset volume, signup anomalies, and lockouts, measured against normal so abnormal gets seen live.
+
+- An incident runbook. Pre-written plays for credential stuffing, confirmed exposure, library vulnerabilities, and provider outages. The plan written calmly is the plan executed under fire.
+
+## Exam Topics
+
+- The Module 7 exam will test you on:
+
+- The pre-launch checklist and removing test accounts, backdoors, and debug flags
+
+- Secret handling, scheduled rotation, and the real key rotation sequence
+
+- Edge rate limiting, shared session stores across servers, and staging discipline
+
+- Monitoring targets, baselines, and the rule for what logs may contain
+
+- Incident response: credential stuffing, confirmed exposure, and library vulnerabilities
+
+- Rollout of significant auth changes: flags, rollback, and monitored migration
+
+- Access control on production dashboards, support procedures, and security testing evidence
+
+- Periodic reviews, compliance basics, provider outage planning, and verifying AI claims with evidence
+
+## Common Pitfalls
+
+- Trusting the completion report. Your AI saying "complete and secure" is a claim, not a test. Run the flows, attempt the abuses, read the checks yourself.
+
+- Backdoors that outlive development. The test account and debug flag you forgot are the entry points an attacker looks for. Removed and verified gone.
+
+- Secrets that never rotate. A key unchanged since launch has been seen by every departed teammate and every leaked backup. Rotate on schedule and after incidents.
+
+- Logs that hold credentials. Passwords, tokens, or codes in logs turn every log leak into a breach. Events and metadata only.
+
+- Big-bang auth changes. Cutting over a session model in one deploy with no rollback is how launches become outages. Flags, gradual traffic, both paths watched.
+
+- Set-and-forget operations. Auth nobody reviews drifts into vulnerability. Access reviews, dependency updates, log audits, and re-testing are the front door's maintenance.
+
+## Self-Assessment Checklist
+
+- Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I recite the pre-launch checklist for an auth system from memory?
+
+- [ ] Can I describe a key rotation sequence the app survives?
+
+- [ ] Can I name the four things auth monitoring watches against baselines?
+
+- [ ] Can I state the professional first response to confirmed credential exposure?
+
+- [ ] Can I explain how a significant auth change should reach production?
+
+- [ ] Do I know what auth logs may contain and what they never may?
+
+- [ ] Could I verify an AI's "complete and secure" claim with evidence today?
+
+## AI Audit Prompt Template
+
+Use this prompt as the final gate before your auth system goes live:
+
+"You are the launch reviewer for my production auth system. Here is my checklist and evidence: [paste checklist, monitoring setup, secret handling, and runbook]. Verify rate limits sit at the edge, secrets live in protected configuration with a rotation schedule, test accounts and debug backdoors are removed and verified gone, monitoring watches failed logins, resets, signup anomalies, and lockouts against baselines, logs never contain credentials, sessions share one store across servers, and runbooks exist for stuffing, exposure, library vulnerabilities, and provider outages. Demand evidence for every line, not assurance. Then tell me the first thing an attacker will try in week one and whether this system is ready for it."
+
+## What's Next
+
+Pass this exam and you have passed all seven, which earns the Auth Build Specialist badge: proof to The Faction and to clients that you can direct, audit, and operate the front door of any application. From here, stack it: the SaaS Build and Database Design courses in T4 The Mastery turn auth into complete products, and the T5 The Industry verticals turn those products into businesses. Auth is the skill every one of them sits on.
+
+## Certification Pathway
+
+This module completes the Authentication Systems Build course, a paid T4 The Mastery course inside Builder Access, alongside the SaaS Build and Database Design courses. Passing all seven module exams earns the Auth Build Specialist badge, carried in The Faction as evidence that your builds are trusted with real users and real credentials.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the Ship: Production Auth Exam →

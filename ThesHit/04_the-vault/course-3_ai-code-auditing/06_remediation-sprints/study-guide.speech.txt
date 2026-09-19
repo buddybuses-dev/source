@@ -1,0 +1,87 @@
+Module 6: Remediation Sprints — Study Guide
+
+Vibecoder Security Audit Method
+
+T6 The Vault | Module 6 Study Guide
+
+Module 6: Remediation Sprints
+
+Direct AI through remediation sprints that close the gaps without breaking the build.
+
+What This Module Covers
+
+This module covers turning findings into fixes: prioritizing in dependency order, directing AI to implement remediations with the finding as context, verifying by re-scanning, preventing regressions, and running the fix-verify-rescan-document cadence. It also draws the lines between production-ready, audit-clean, and hardened.
+
+Why It Matters
+
+A report full of findings changes nothing until the findings are fixed, verified, and confirmed gone. Remediation is where the audit's value is realized, and it is also where new damage gets introduced if it is done carelessly. Directing AI to fix a vulnerability without the finding as context produces a plausible change that may not close the hole. Fixing without re-scanning produces the belief that you are safe without the evidence. Fixing in the wrong order means fixing the same code twice. The remediation sprint is a discipline precisely because the naive version, ask AI to fix each finding and move on, quietly fails at all three.
+
+Certification Goal
+
+Passing this exam proves you can prioritize remediation correctly, direct AI to implement fixes with proper context, verify each fix by re-scanning, prevent regressions, and distinguish the three finish lines: production-ready, audit-clean, and hardened.
+
+What You Need to Know
+
+Prioritize by severity and dependency order. Critical and High come first, always; a Medium fix shipped while a Critical stays open is misallocated effort. But within that, dependency order matters: some fixes are prerequisites for others, and some findings share a root cause that one change resolves. You direct the sequence so foundational fixes, an auth boundary, a shared validation layer, land before the findings that depend on them, avoiding rework and resolving families of findings together rather than one instance at a time.
+
+Fix with the finding as context. The finding is the specification for the fix. When you direct AI to remediate, you supply the full finding, the weakness, the location, the exploit path, and the intended secure behavior, so the fix targets the actual vulnerability rather than a guess at it. A fix directed without this context tends to address symptoms; a fix directed with it addresses the cause. And because of pattern replication, every fix prompt asks the same question: does this pattern appear elsewhere, and should this fix apply across the family?
+
+Verify by re-running the scan. A fix is a hypothesis until the evidence confirms it. After each remediation, you re-run the scan or test that produced the finding and confirm it now passes. This closes the loop that separates believing you are safe from knowing it. For manual findings, verification means re-running the exploit attempt and confirming it now fails. Unverified fixes are how a report gets marked resolved while the vulnerability quietly survives a change that looked right.
+
+Prevent regressions. A fixed vulnerability that returns in the next AI session is a recurring cost. Regression prevention means encoding the fix so it stays fixed: a test that fails if the vulnerability returns, a lint or Semgrep rule that catches the pattern, a documented standard the next session inherits. This is especially important for vibebuilt code, where the next generation session has no memory of the fix and will happily reintroduce the original pattern unless something stops it.
+
+The sprint cadence: fix, verify, re-scan, document. Each finding moves through the same loop. Fix: implement with the finding as context. Verify: confirm the specific issue is closed. Re-scan: run the broader scan to confirm nothing regressed and no sibling was missed. Document: record what was found, what was changed, and how it was verified, so the audit trail is complete and the next audit has a baseline. The cadence is deliberately boring; the discipline is the point, and skipping any step is where silent failures re-enter.
+
+Three finish lines: production-ready, audit-clean, hardened. These are different bars and clients conflate them. Production-ready: the app works and has no Critical or High findings; safe to operate. Audit-clean: every finding from the audit is resolved and verified, including Mediums and Lows; the scorecard is green. Hardened: defense-in-depth beyond the findings, proactive controls against attacks that were not found because they were not yet attempted. Most SMB clients need production-ready fast and audit-clean soon; hardened is a deliberate investment for higher-risk businesses. Naming the target explicitly prevents both over-building for a solo founder and under-building for a business handling sensitive data.
+
+Your Toolkit
+
+Priority queue: findings ordered by severity and dependency, with shared-root-cause families grouped
+Context-rich fix prompts: the full finding supplied as the remediation specification
+Re-scan and re-exploit verification: the evidence that a fix actually closed the finding
+Regression guards: tests, lint rules, and documented standards that keep fixes fixed across sessions
+
+Exam Topics
+
+Prioritization by severity and dependency order
+Grouping findings by shared root cause to fix families at once
+Fixing with the finding as full context
+Applying a fix across replicated instances, not just the found one
+Verification by re-scanning and re-attempting the exploit
+Regression prevention for code that will be regenerated
+The fix-verify-rescan-document cadence
+Production-ready vs audit-clean vs hardened as distinct targets
+
+Common Pitfalls
+
+Fixing Mediums while a Critical stays open because the Medium was easier
+Directing a fix without the finding, producing a plausible change that misses the cause
+Marking a finding resolved without re-running the check that proves it
+Fixing one instance of a replicated pattern and leaving the family live
+Shipping fixes with no regression guard, so the next session reintroduces them
+Building to hardened for a solo founder, or stopping at production-ready for a sensitive-data business
+
+Self-Assessment Checklist
+
+Is my fix order driven by severity and dependency, not convenience?
+Do I supply the full finding as context every time I direct a fix?
+After each fix, do I re-run the check and confirm it passes?
+When I fix a pattern, do I search for and fix its siblings?
+Does each fix leave behind something that prevents its regression?
+Can I state which finish line, production-ready, audit-clean, or hardened, this client needs and why?
+
+AI Audit Prompt Template
+
+You are running a remediation sprint against an audit's findings. (1) Order the findings by severity, then by dependency, grouping any that share a root cause. Then for each finding in order: (2) implement the fix using the full finding as context (weakness, location, exploit path, intended secure behavior), (3) search the codebase for the same pattern elsewhere and apply the fix across all instances, (4) verify by re-running the scan or re-attempting the exploit and confirm it now fails, (5) add a regression guard: a test, lint rule, or documented standard that catches the pattern if it returns, (6) record what was found, changed, and verified. At the end, state whether the codebase has reached production-ready, audit-clean, or hardened, and what remains for the next level.
+
+What's Next
+
+Module 7 is the capstone: running a complete 13-layer audit end-to-end, from scoping through report delivery and positioning the audit as a recurring relationship.
+
+Certification Pathway
+
+This is Module 6 of 7 in the Vibecoder Security Audit Method course, part of T6 The Vault. Passing all seven module exams earns the Code Audit Specialist badge. This module is where findings become a safer system.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

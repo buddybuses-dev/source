@@ -1,0 +1,88 @@
+# Module 3: Subscriptions and Billing Portal — Study Guide
+
+## Stripe Payments Build
+
+### T4 The Mastery | Module 3 Study Guide
+
+## Module 3: Subscriptions and Billing Portal
+
+> Direct AI to build recurring billing your customers can manage without opening a support ticket.
+
+## What This Module Covers
+
+This module covers directing AI to build recurring revenue: the subscription lifecycle from create through upgrade, downgrade, pause, and cancel, the four price models, trial mechanics, proration, and the Stripe Billing Portal that turns plan management into self-service.
+
+## Why It Matters
+
+Subscriptions are where SaaS revenue lives, and the lifecycle is where builders get hurt. A subscription is not a one-time event; it is a long-running state machine that renews, fails, upgrades, and cancels over months. Builders who treat it like a checkout with a repeat button end up hand-editing customer plans in the dashboard, guessing at proration, and building support queues out of problems the Billing Portal solves for free. The difference between a subscription build that scales and one that becomes a part-time job is whether you respected the lifecycle.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI to implement the full subscription lifecycle, choose the right price model for a business, configure trials that convert, wire the Billing Portal for self-service, and use subscription state plus metadata as the backbone of access control.
+
+## What You Need to Know
+
+**1. The subscription lifecycle is a state machine.** A subscription moves through statuses: trialing, active, past_due, canceled, and others. Each transition matters to your product. Active means grant access. Past_due means payment failed and recovery is underway (Module 6). Canceled means access ends, usually at period end rather than instantly. You direct AI to build your app's access logic as a function of subscription status, driven by webhook events, never by assumptions about what "should" have happened.
+
+**2. Four price models cover almost everything.** Flat rate: one price per interval, the simplest and the right default. Tiered: unit price changes with volume, graduated or volume-based. Metered: you report usage and Stripe bills in arrears, right for consumption products like API calls. Per-seat: quantity on the subscription multiplies a per-unit price, right for team products. Choosing a fancier model than the business needs multiplies every future change; you direct AI to start flat unless the revenue model genuinely is not flat.
+
+**3. Trials and the conversion moment.** Trials delay the first charge: trial_period_days on the subscription or trial settings on the price. The critical design decision is card-up-front vs no-card trials. Card-up-front converts silently at trial end and converts higher, but demands honest reminder emails. No-card trials generate more signups and a hard conversion wall. Either way, trial end is a payment event you handle through webhooks, and a trial without an end-of-trial communication plan is a refund generator.
+
+**4. Proration is policy, not magic.** When a customer changes plans mid-cycle, Stripe can prorate: credit unused time on the old price, charge partial time on the new one. Upgrades usually prorate immediately; downgrades often schedule at period end to avoid refund math. These are choices you direct explicitly. The failure mode is accepting defaults without deciding policy, then fielding "why was I charged $13.47?" tickets with no answer.
+
+**5. The Billing Portal is a build you should not do.** Stripe's hosted Billing Portal gives customers self-service: update cards, switch plans you allow, view invoices, cancel. You configure what it permits in the dashboard, direct AI to add one endpoint that creates a portal session, and link to it from your app. Rebuilding this UI by hand is weeks of work to create a worse, riskier version of something maintained for you. Configuration is the work: which plan switches are allowed, cancellation behavior, whether cancellations happen immediately or at period end.
+
+**6. Subscription metadata as access control backbone.** Your app needs to know what a customer is entitled to. The clean pattern: store your plan identifiers in subscription or price metadata, sync subscription status to your database via webhooks, and gate features on that local record. Checking Stripe live on every page load is slow and fragile; trusting your database without webhook sync means access drifts from reality the first time a payment fails.
+
+## Your Toolkit
+
+- **Stripe Billing**: the subscription engine: prices, trials, proration, and invoice generation
+- **Stripe Billing Portal**: configured self-service for plan changes, payment methods, and cancellation
+- **Stripe test clocks**: simulate time passing to verify renewals, trial conversions, and cancellations without waiting a month
+- **Subscription and price metadata**: the entitlement layer your app's access control reads
+
+## Exam Topics
+
+1. Subscription statuses and what each means for access control
+2. Choosing between flat, tiered, metered, and per-seat price models
+3. Trial configuration and card-up-front vs no-card conversion tradeoffs
+4. Proration behavior on upgrades vs downgrades and setting explicit policy
+5. Scheduling downgrades and cancellations at period end vs immediately
+6. Billing Portal configuration: allowed switches, cancellation behavior
+7. Metadata plus webhook sync as the entitlement pattern
+8. Using test clocks to verify time-based behavior before go-live
+
+## Common Pitfalls
+
+- Granting access on subscription creation and never revoking it because status changes were ignored
+- Choosing metered or tiered pricing for a product that is actually flat rate, multiplying complexity
+- Launching card-up-front trials with no reminder emails and eating the refund and dispute wave
+- Hand-building plan management UI instead of configuring the Billing Portal
+- Letting proration defaults run without a policy and losing customer trust over confusing partial charges
+- Canceling subscriptions immediately when customers expected access through the period they paid for
+
+## Self-Assessment Checklist
+
+- Can I name the subscription statuses and my app's response to each?
+- Could I defend my price model choice to a skeptical CFO in one minute?
+- Do I know what my trial end communication sequence looks like?
+- Can I explain what proration produces on an upgrade vs a downgrade in my build?
+- Is my access control reading local synced state instead of calling Stripe per request?
+- Have I run a full renewal and a trial conversion under a test clock?
+- Do customers have a self-service path to update cards and cancel without emailing support?
+
+## AI Audit Prompt Template
+
+> You are auditing the subscription system of my project. Review it and report: (1) how each subscription status maps to access in my app and any status with no handler, (2) the price model in use and whether a simpler model would serve the business, (3) trial configuration, conversion moment handling, and reminder communications, (4) proration policy on upgrades and downgrades and whether it is explicit or defaulted, (5) Billing Portal configuration vs hand-built management UI, (6) whether entitlements come from webhook-synced local state. Output findings with severity, the customer-facing symptom each produces, and a remediation plan I can direct you to execute.
+
+## What's Next
+
+Module 4 is the module that protects everything you have built so far: webhooks. You will direct AI to build the event handling layer that makes payment state real, verified, and durable.
+
+## Certification Pathway
+
+This is Module 3 of 7 in the Stripe Payments Build course, part of T4 The Mastery. Passing all seven module exams earns the Payments Build Specialist badge. This module establishes the recurring revenue engine.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

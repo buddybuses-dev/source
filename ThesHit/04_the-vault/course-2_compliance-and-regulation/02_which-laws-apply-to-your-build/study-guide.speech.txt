@@ -1,0 +1,104 @@
+﻿Module 2: Which Laws Apply To Your Build — Study Guide
+
+Compliance Foundations for Builders
+
+T6 The Vault | Module 2 Study Guide
+
+Direct AI to map which regulations apply to any build before shipping it.
+
+What This Module Covers
+
+Module 1 gave you the regulatory landscape. Module 2 puts your specific build on that map and answers the question that matters before you ship: which laws actually apply to this thing? You will learn a repeatable decision tree with three trigger categories: the data you collect, the industry you touch, and where your users live.
+
+You will apply the tree to real builds. A scheduling app for dentists is not "just a calendar," it touches patient information. A SaaS tool with signups from Berlin operates under GDPR. A checkout page touching card numbers pulls you into PCI DSS scope whether you knew the acronym or not.
+
+By the end, you can direct your AI to run the tree against any product description and list the likely applicable regulations. That list is not legal advice and does not make you compliant. It tells you what to investigate and when to call a professional.
+
+Why It Matters
+
+The builders who get burned are rarely reckless. They just did not know a regulation existed. The Faction member who shipped a scheduling app for a dental office did solid work: clean auth, happy client. Nobody told them appointment records tied to patients can be protected health information, or that HIPAA required a business associate agreement first. The exposure hit the builder and the client at once.
+
+Regulators do not grade on effort, and "my AI built it" is not a defense. GDPR fines reach into the millions, CCPA violations stack per consumer, and a PCI incident can end a client's ability to take cards. Running the tree costs an hour with your AI. Skipping it can cost the business.
+
+Certification Goal
+
+Passing the Module 2 exam proves you can take any product description, identify its data, industry, and geography triggers, name the regulations each points to, and produce a compliance map that flags what needs professional review. It certifies boundary knowledge: what applies and when to escalate, not practicing law.
+
+What You Need to Know
+
+The Three-Trigger Decision Tree
+
+Every applicability question breaks into three passes: what data the build touches, what industry it serves, and where the users are. Run all three every time. A single build can trip HIPAA, CCPA, and PCI DSS at once.
+
+Data Privacy Triggers
+
+Who the data belongs to determines which law fires. EU residents trigger GDPR. California residents trigger CCPA and its expansion CPRA. Children under 13 trigger COPPA, student education records trigger FERPA, and patient health information triggers HIPAA. Collecting anything tied to a person probably puts at least one in play.
+
+Industry Triggers
+
+Some regulations attach to what the data is, not who it belongs to. Card payments put you in PCI DSS scope, even if a processor like Stripe carries most of the burden. Consumer financial data triggers GLBA, health information triggers HIPAA, and legal records carry privilege and retention rules. If your client is in a regulated industry, assume their rules reach into your build until proven otherwise.
+
+Geography Triggers: Users Over Location
+
+Where your users are matters more than where you are. A solo builder in Ohio serving EU users is subject to GDPR. Privacy laws follow the data subject, not the company headquarters, so "I am not based there" never ends the analysis.
+
+Regulations Stack, They Do Not Replace Each Other
+
+Meeting GDPR does not cover you for HIPAA, and passing a PCI questionnaire says nothing about COPPA. Each triggered regulation adds its own obligations, so your map lists each one separately with its own trigger and open questions.
+
+The Map Is the Deliverable, Not a Verdict
+
+The output is a compliance map: each likely regulation, why it applies, and what needs professional confirmation. You never conclude "we are compliant." You conclude "here is what applies, and here is what a professional needs to review."
+
+Your Toolkit
+
+The Three-Pass Trigger Sheet: A one-page worksheet forcing you through data, industry, and geography passes before you write a single feature spec.
+The Data Inventory Prompt: Direct your AI to enumerate every field your product collects or infers, then classify each against the trigger list.
+The Regulation-to-Trigger Table: A reference mapping GDPR, CCPA/CPRA, COPPA, FERPA, HIPAA, PCI DSS, and GLBA to the trigger that activates each. Use it to double-check your AI's output.
+The Escalation Flag: A standing rule: any high-stakes regulation marked likely, like HIPAA or PCI DSS, gets a professional review line item before launch.
+
+Exam Topics
+
+The three trigger categories and the order to run them
+Which regulation applies to EU residents' data versus California residents' data
+The population COPPA protects and its age threshold
+The difference between FERPA and HIPAA triggers
+What puts a build in PCI DSS scope and how a processor changes, but does not eliminate, that scope
+Which regulation governs consumer financial data (GLBA) and how it differs from PCI DSS
+Why user location controls applicability more than company location
+The required elements of a compliance map and why "we are compliant" is never one of them
+
+Common Pitfalls
+
+Assuming your industry defines your obligations: Your client is a dental office, so their exposure reaches into your build. HIPAA does not care what your LLC's business code says.
+Treating geography as your address: Launching worldwide by default triggers worldwide regulations by default. The founder who "launched in the EU" the moment a German user signed up learned this the hard way.
+Believing Stripe makes PCI someone else's problem: A processor shrinks your PCI scope, it does not delete it. If your pages touch the payment flow, you have obligations.
+Stopping at the first match: Finding GDPR and quitting leaves CCPA, COPPA, or PCI DSS undiscovered. Regulations stack, so run every pass.
+Confusing the map with clearance: A finished map means you know what applies, not that you comply. Blur that line and you make promises a regulator later grades.
+Letting AI output stand unverified: Your AI can miss a trigger or invent one. Check it against the Regulation-to-Trigger Table.
+
+Self-Assessment Checklist
+
+I can run the three trigger categories against any product description
+I can match GDPR, CCPA/CPRA, COPPA, FERPA, and HIPAA to the population or data that triggers each
+I can explain PCI DSS scope and what a processor does and does not take off my plate
+I can explain why a US-based builder can still be subject to EU regulations
+I can spot stacked regulations, like a kids' tutoring app that takes card payments
+I can produce a map listing each likely regulation, its trigger, and what needs professional review
+I can state why my map identifies applicability but never certifies compliance
+
+AI Audit Prompt Template
+
+Fill in your product description and direct your AI to walk the full decision tree.
+
+You are my compliance mapping assistant. I am a builder, not a lawyer. I need a regulatory applicability map, not legal advice. MY PRODUCT: [what it does, who uses it, what data it collects, how users pay, which countries or states users can sign up from] Walk the three-pass decision tree. Skip nothing. PASS 1, DATA: List every category of personal data collected or inferred. Flag likely triggers: GDPR (EU residents), CCPA/CPRA (California residents), COPPA (under 13), FERPA (student records), HIPAA (patient health information). PASS 2, INDUSTRY: Flag payments (PCI DSS), consumer financial data (GLBA), health information (HIPAA), or legal records, and what activates each. PASS 3, GEOGRAPHY: Based on where users can be located, not where I am based, list which jurisdictions' laws likely apply. OUTPUT: A table: Regulation, Trigger, Confidence (likely/possible/unlikely), Open Questions, Needs Professional Review (yes/no). Mark HIPAA and PCI DSS "yes" for review whenever likely or possible. End with: "This map identifies likely applicable regulations. It is not legal advice and does not establish compliance."
+
+What's Next
+
+Your map now tells you which regulations apply. Module 3, Data Residency and Cross-Border Rules, goes deeper: where your data physically lives and what happens when it crosses borders. If Pass 3 lit up more than one country, Module 3 shows what that means for your database and hosting choices.
+
+Certification Pathway
+
+Pass this module's exam at 80 percent, 20 of 25 questions, to earn the Module 2 badge. Pass all seven module exams to earn the Compliance Foundations Specialist badge.
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

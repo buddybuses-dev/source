@@ -1,0 +1,94 @@
+# Module 3: Scheduling and Reminder Systems — Study Guide
+
+## T5 The Industry | Healthcare Practice AI Engineering
+
+This is the study guide. Everything for Scheduling and Reminder Systems is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module teaches you to direct AI to build appointment scheduling systems for medical practices: provider availability modeling, multi-location support, automated SMS and email reminders, waitlist management, no-show tracking, and rescheduling workflows that do not require a phone call.
+
+## Why It Matters
+
+The schedule is the practice's revenue engine. Every empty slot is money that never existed, and every no-show is money that evaporated after the practice paid staff to prepare for it. A typical practice runs no-show rates between five and fifteen percent, and for some clinics it is worse. Multiply a fifteen percent no-show rate across a four-provider family medicine group and you are looking at six figures of vanished annual revenue. Meanwhile, the front desk spends half its day on scheduling phone tag: booking, rebooking, confirming, and chasing. Practices know this. That is why scheduling tools are the second most requested build after intake, and why the two are usually sold together. A builder who can model provider availability correctly, fill cancellations from a waitlist automatically, and cut no-shows with a well-timed reminder sequence is delivering measurable dollars, not software. Measurable dollars is what gets your next referral in this vertical.
+
+## Certification Goal
+
+Passing the Module 3 exam proves you can design scheduling logic that respects how providers actually work: appointment types, buffers, locations, and exceptions. It proves you can build reminder sequences that measurably reduce no-shows and waitlist workflows that refill cancelled slots without a single phone call.
+
+## What You Need to Know
+
+**Availability modeling.** A provider's schedule is not an open calendar. It is a template: appointment types with set durations, blocks for procedures versus office visits, lunch holds, admin time, hospital rounds, and days at a second location. Model the template first, then let booking fill it. Direct AI to encode the rules; never let patients book into raw open time.
+
+**Appointment types and duration logic.** A new patient visit runs longer than a follow-up. A pediatric well-child visit differs from a sick visit. An orthopedic practice separates surgical consults from cast checks. Booking flows must ask the right question first, because the visit type determines the slot length, the provider, and sometimes the location.
+
+**Multi-location and multi-provider logic.** Group practices split providers across offices by day. The scheduler must prevent double-booking a provider across locations, show patients only the location-appropriate slots, and let the front desk see one combined view. This is where naive calendar tools break and custom builds win.
+
+**Reminder sequence design.** The evidence-backed pattern is multi-touch: a confirmation at booking, a reminder days ahead, and a final reminder the day before or morning of, with at least one touch requiring a reply to confirm. SMS outperforms email for response. Timing, channel, and a reply option are the design levers you control.
+
+**No-show tracking and defense.** Track no-shows per patient and per appointment type. Defenses stack: reminder sequences, easy self-rescheduling, waitlist backfill, and flagging repeat no-show patients for confirmation calls. Prediction is pattern math on history; the response to risk is policy the practice sets, not something your tool invents.
+
+**Waitlist and backfill workflows.** A cancellation should trigger an automatic offer to waitlisted patients, first-come or priority-ordered, with a short claim window. A filled cancellation is pure recovered revenue, and it is the feature practice managers brag about to other practice managers.
+
+## Your Toolkit
+
+- **Scheduling engines.** Direct AI to build custom booking logic, or integrate practice-friendly systems like Acuity or Cal.com when managed infrastructure fits. Know what the PMS scheduler already does so you extend rather than duplicate it.
+- **SMS and email delivery.** Messaging services like Twilio for texts and transactional email services for confirmations. Reminders live or die on deliverability and timing.
+- **Calendar sync layers.** Two-way sync against the systems providers actually check, so the custom scheduler and the PMS calendar never disagree about the same hour.
+- **No-show analytics dashboards.** AI-built reporting that shows no-show rates by provider, day, appointment type, and reminder sequence, so the practice can see the tool paying for itself.
+
+## Exam Topics
+
+The Module 3 exam will test you on:
+
+1. Modeling provider availability with templates, appointment types, and buffers
+2. Duration and visit-type logic in patient-facing booking flows
+3. Multi-location scheduling conflicts and combined front-desk views
+4. Designing reminder sequences: touches, timing, and channel choice
+5. No-show tracking, risk patterns, and stacked defenses
+6. Waitlist mechanics and automatic cancellation backfill
+7. Self-service rescheduling flows that keep slots filled
+8. Deciding what to build custom versus lean on the PMS scheduler
+
+## Common Pitfalls
+
+- **Letting patients book raw calendar time.** Without appointment-type rules, a fifteen-minute follow-up lands in a slot meant for a new-patient hour, and the day collapses.
+- **One reminder, one channel.** A single email the week before moves nothing. No-show reduction comes from sequenced touches with a confirm-or-reschedule action.
+- **Ignoring the second location.** A group practice scheduler that does not know Dr. Alvarez is at the north office on Thursdays will double-book her across town.
+- **Making rescheduling harder than cancelling.** If the path of least resistance is not showing up, patients will take it. One-tap reschedule links convert would-be no-shows into moved visits.
+- **Building a second source of truth.** If the custom scheduler and the PMS calendar can disagree, the front desk trusts neither and reverts to the phone.
+- **Punishing instead of preventing.** Leading with no-show fees before fixing reminders and rescheduling friction treats patients as the problem when the workflow is.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I model a provider's real week as a template with visit types, buffers, and blocks?
+- [ ] Can I explain why visit type must be captured before showing available slots?
+- [ ] Can I design scheduling logic that keeps one provider consistent across two locations?
+- [ ] Can I write out a three-touch reminder sequence with channels, timing, and a confirm action?
+- [ ] Can I describe how a cancellation triggers waitlist backfill without staff involvement?
+- [ ] Can I list the no-show defenses in order of what I would deploy first?
+- [ ] Can I say exactly where my scheduling build ends and the PMS calendar remains the source of truth?
+
+## AI Audit Prompt Template
+
+Use this prompt to audit your scheduling build before go-live:
+
+> "You are a practice operations reviewer auditing a scheduling system for a [specialty] practice with [N] providers across [N] locations. Here is my design: [paste spec]. Audit it for: availability rules a patient could book around, visit types with wrong durations, double-booking risks across locations, reminder sequence gaps in timing or channel, missing confirm and reschedule actions, waitlist logic that requires staff touches, and any place my system and the PMS calendar could disagree. Rank the issues by revenue impact and give me the fix for each."
+
+## What's Next
+
+Module 4 steps out of the build and into the boundary: HIPAA for builders. Everything you have designed so far touches patient information, and before you ship any of it you need to know exactly what that means for you. Not compliance certification. Boundary knowledge that keeps you and your practice clients safe.
+
+## Certification Pathway
+
+This is the third of seven modules in Healthcare Practice AI Engineering, part of T5 The Industry. Pass all seven module exams to earn the Healthcare AI Specialist badge. Scheduling is the second major component of the Practice Admin Toolkit you will ship in Module 7.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the Scheduling and Reminder Systems Exam →

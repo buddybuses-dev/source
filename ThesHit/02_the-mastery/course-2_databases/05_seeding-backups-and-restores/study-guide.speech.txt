@@ -1,0 +1,94 @@
+Module 5: Seeding, Backups and Restores — Study Guide
+
+T4 The Mastery | Database Design and Migration
+
+This is the study guide. Everything for Seeding, Backups and Restores is on this page — there's nothing to download.
+
+What This Module Covers
+
+This module covers the data your app starts with and the data it can get back. You will learn what seed data is and how to keep it healthy, how to judge a backup schedule against what you can afford to lose, what point-in-time recovery buys you, and the discipline that makes it all real: restore drills, runbooks, and the hard truth that a backup only counts once it has restored.
+
+Why It Matters
+
+Every builder has backups. Almost nobody has tested a restore. That gap is where businesses die, because a backup job reporting success for six months proves only that a job ran; whether those copies can bring your app back is unknown until tested, and an unrestorable backup is indistinguishable from none. The everyday side of this module, seed data, decides whether you can stand up a fresh environment on demand without parking real customer data where it does not belong. And when a bug writes garbage into one table for three hours, the difference between a shrug and a catastrophe is whether you can restore that table to just before the bug without losing the rest of the day. None of this is exotic. It is schedules, drills, runbooks, and two numbers, RTO and RPO, decided before the incident instead of during it. This module is the cheapest insurance in the course.
+
+Certification Goal
+
+Passing the Module 5 exam proves you can direct a recovery posture that survives a real incident: seeds separated from migrations, backup frequency matched to acceptable loss, backups stored apart from what they protect, restores drilled on a schedule, and a runbook written for use under stress.
+
+What You Need to Know
+
+Seed data, and where it belongs. Seed data is the set of known starter records, categories, admin accounts, default settings, that the app needs from day one. Keep seed scripts separate from migrations: structure and data change for different reasons, and mixing them makes both harder to rerun safely. For development, realistic fake data beats a copy of production: no real customer information sits in a weaker environment, and the shape still tests the app. Never seed production with test accounts for demos: test data mixes into real data, pollutes metrics, and risks exposure to customers. Retest seeds after schema changes, because broken seeds block fresh environments at the worst time: setup or recovery.
+
+RPO and RTO set the schedule. The recovery point objective, RPO, is how much recent data you are willing to lose, and it sets how often backups must run. The recovery time objective, RTO, is how long the business can be down while you restore, from failure to working again. A backup schedule is adequate, not merely present, when its frequency matches what you can afford to lose. Retention follows a policy balancing recovery needs, storage cost, and legal duties, not "forever" and not "until the next backup."
+
+Where backups live and who can use them. Backups live somewhere separate from the database they protect, so the failure or breach that takes the database cannot take them too. Beware the circular dependency: backups that require the original app to be running to restore mean the disaster that took the app down also takes your recovery path. More than one trusted person must be able to reach the restore credentials and keys, because recovery cannot depend on a single individual.
+
+Point-in-time recovery and coverage. Point-in-time recovery restores the database to a specific moment, vital when bad data arrived at a known time: a bug that wrote garbage for three hours yesterday gets rolled back to just before it started, without losing the rest of the day. Coverage does not extend itself: when your app adds new tables, ask whether they are actually included in the backups.
+
+Restores are the product; drills are the proof. A restore drill means actually restoring a backup into a test environment and verifying the app runs against it. Drills happen on a recurring schedule and after major changes, so the procedure never rots. A restore succeeded when the app's critical paths work and spot-checked data matches expectations, not when the command exits cleanly. One habit gives daily proof for free: a staging environment that restores last night's production backup every morning proves the backups restore and gives staging realistic data. Automate backups; keep restores a human decision, because backups are routine and restores are rare, high-stakes calls.
+
+The runbook, and disciplined data sharing. The restore runbook holds exact steps, locations, credentials, and verification checks, written for use under stress. When a teammate needs production data for debugging, the disciplined response is a masked or minimized copy that keeps the bug visible but strips sensitive fields, never the raw backup file and never standing production access.
+
+Your Toolkit
+
+Seed scripts. Versioned, rerunnable scripts for starter records, kept separate from migrations and retested after every schema change. Direct your AI to generate realistic fake data for development, shaped like production without being it.
+The RPO/RTO worksheet. Two questions answered in writing: how much data can we afford to lose, and how long can we afford to be down. Every frequency and retention decision traces back to these answers.
+The restore drill. A scheduled, repeated exercise: restore into a test environment, run the app, spot-check the data.
+The restore runbook. Steps, locations, credential access, and verification checks in one document, reachable by more than one person, written for the worst day rather than the best one.
+
+Exam Topics
+
+The Module 5 exam will test you on:
+
+What seed data is, why seeds stay separate from migrations, and retesting seeds after schema changes
+Fake data for development, and why production is never seeded with test accounts
+RPO and RTO in plain terms, and matching backup frequency and retention to them
+Backup placement: separation from the database, and the circular dependency trap
+Point-in-time recovery and verifying that new tables are covered
+Restore drills: what one is, how often, and what confirms a restore succeeded
+Runbooks, shared credential access, and automated backups with human-decided restores
+Disciplined sharing: masked or minimized data for debugging
+
+Common Pitfalls
+
+Trusting the green checkmark. Six months of "backup succeeded" proves a job ran. Whether the copies restore your app is unknown until you test one.
+Backups beside the database. Same server, same account, same blast radius. The incident that takes one takes both.
+Seeds welded into migrations. Structure and data change for different reasons; mixed scripts make both harder to rerun safely.
+Debugging with real customer data. A production copy in a weaker environment is a breach waiting for a timestamp. Mask or minimize first.
+The single keyholder. One person holding the restore credentials makes recovery a single point of failure with a phone that can be off.
+A runbook written for calm. Vague steps read fine in review and fail at 2 AM. Write for stress: exact locations, exact commands, explicit checks.
+
+Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+[ ] Can I explain the difference between RPO and RTO and what each decides?
+[ ] Can I say what a successful backup job actually proves, and what it does not?
+[ ] Can I describe a restore drill and what confirms the restore worked?
+[ ] Do I know why backups must live separately from the database they protect?
+[ ] Can I explain why seeds stay separate from migrations and why dev uses fake data?
+[ ] Could I use point-in-time recovery to undo three hours of bad writes?
+[ ] Does more than one person know where my runbook and restore credentials live?
+
+AI Audit Prompt Template
+
+Use this prompt to audit your recovery posture before you need it:
+
+"You are a disaster recovery auditor. Here is my current setup: [describe backup schedule, storage location, retention, seed scripts, and drills done]. State my effective RPO and RTO as configured and compare them to what I said I can afford. Flag backups stored with the database, any restore that requires the app to be running, tables added since the backup configuration, and seeds not retested since the last schema change. Then design a restore drill I can run this week in a test environment, with the verification checks that prove the app works against the restored data, and draft the runbook steps for use under stress."
+
+What's Next
+
+Module 6 turns from surviving failure to handling growth: scaling and read replicas. You will learn when a bigger machine is the answer, when replicas are, what replication lag does to user experience, and why most scaling problems are really query problems. The tested-restore discipline built here is also the foundation of failover.
+
+Certification Pathway
+
+This is Module 5 of Database Design and Migration, a T4 The Mastery course available with paid Builder Access, sitting alongside the SaaS Build course in the tier. Pass all seven module exams to earn the Database Build Specialist badge. Recovery discipline makes every other skill in this course survivable when something goes wrong.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai
+
+———
+
+Ready? Take the Seeding, Backups and Restores Exam →

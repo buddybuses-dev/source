@@ -1,0 +1,89 @@
+# Module 1: Finding Your First Client — Study Guide
+
+## What This Module Covers
+
+This module covers the single hardest transition in a builder's career: going from someone who can build to someone who gets paid to build. You have the skills. You've shipped projects through the certification. What you don't have yet is a client, and nobody teaches this part. This module covers where first clients actually come from, how to pitch when you have no track record, how to run a discovery conversation, and how to turn one finished project into the next three.
+
+Here's your real situation: you're not competing against other builders for your first client. You're competing against the prospect's inertia, their skepticism about AI-built software, and their fear of hiring someone unproven. Every technique in this module exists to dissolve one of those three obstacles.
+
+And you won't do it alone. You'll direct AI through every step of client acquisition: researching prospects, mapping your network, drafting outreach that doesn't read like spam, prepping discovery questions, and building the demo that does your talking for you. Your job is to pick the target, make the human connection, and close. AI handles the research, the drafts, and the grunt work in between.
+
+## Why It Matters
+
+First clients are where builder careers live or die. Most certified builders never land one. Not because they can't build, but because they wait to be discovered, pitch technology instead of outcomes, and give up after two weeks of silence. The skills gap isn't technical. It's commercial. A builder with average technical skills and a working acquisition system will out-earn a brilliant builder with no pipeline every single time.
+
+Client acquisition is where hesitation gets expensive. AI tools are excellent at researching a prospect's business, drafting personalized outreach at scale, and building the demo that proves you're real. They're terrible at deciding who you should serve, reading the room in a discovery call, and knowing when to ask for the work. Those decisions are yours. This module teaches you what to direct, what to say, and when to ask.
+
+## Module Certification Goal
+
+You can identify and research a specific niche of prospects using AI, direct AI to build the demo and outreach assets that open conversations, and run a discovery-to-close process that converts one of those conversations into your first paid engagement.
+
+## What You Need to Know
+
+- **Your network is the shortest path, and AI can map it:** First clients most reliably come from people who already know you, or businesses one introduction away from someone who does. Cold strangers are the hardest possible starting point. Direct your AI assistant to help you inventory your network: former employers, church, gym, family businesses, local owners you already talk to. Have it generate a contact map, identify which contacts touch businesses with painful repetitive processes, and draft the first message to each. You bring the relationships. AI turns them into a working prospect list.
+- **Proof beats credentials, so direct AI to build it:** With no client history, the strongest thing you can lead with is a working product you directed AI to build. Not your certificate. Not your logo. A live demo. Pick a real problem in your target niche, direct your AI coding tool to build a working slice of the solution, and lead every pitch with it. A skeptical prospect who watches software work in front of them stops arguing about whether AI-built products are real.
+- **Outcome language, not technology language:** A small business owner does not care about your thirteen-layer methodology or which models you use. They care about hours saved, revenue unlocked, and problems that disappear. Direct AI to translate every feature of what you build into a business outcome, and to rewrite your pitch until a non-technical owner would understand it in one read. If your pitch mentions a framework before it mentions their problem, it fails.
+- **Niche positioning makes everything easier:** "I build for anyone who needs software" is positioning that converts nobody. A specific audience with a specific problem makes referrals, pitches, and proof dramatically easier. Direct AI to research three niches you have some connection to, list the most painful repetitive processes in each, and identify which problems software clearly fixes. Pick one. You can expand later. You can't get referred as "the builder for everyone."
+- **Discovery is listening, and AI preps you to listen well:** The goal of a first conversation is to understand their problem, their workflow, and what a win looks like before you propose anything. The prospect should be talking most of the time. Before every call, direct AI to research the company, draft the questions that will get them describing their pain, and identify what a small, clearly scoped starter engagement might look like. Hesitant prospects don't need a bigger pitch. They need a smaller first step.
+- **Outreach and follow-up run as a system:** What separates effective outreach from spam is specificity: their actual business, a real problem, and a credible reason you can fix it. Direct AI to draft every outreach message individually from your research, never as a blast. When a warm prospect goes quiet, direct AI to find something genuinely useful to send: an idea, an example, a resource tied to the problem you discussed. And keep the rhythm going while you deliver. Prospecting is a rhythm, not a phase. The pipeline dies the week you stop.
+
+## Your Toolkit
+
+- **Claude or ChatGPT:** Your acquisition engine. Prospect research, network mapping, outreach drafting, discovery prep, follow-up ideas, and objection practice all run through it.
+- **Your AI coding tool (Cursor, Lovable, Bolt, Claude Code):** Builds the demo that carries your pitch. One working build in your niche is worth more than any deck.
+- **Notion or a simple CRM:** Your pipeline lives here. Every prospect, every conversation, every follow-up date. If it's not written down, it's not a pipeline.
+- **Loom or any screen recorder:** Turns your demo into a two-minute video a prospect can watch before they ever take your call.
+
+## Certification Exam Topics
+
+Every exam question is scenario-based. You'll see a situation and need to identify what's right, what's wrong, or what to do next. Here's what gets tested:
+
+- Can you identify where first clients most reliably come from, and why paid ads and marketplaces underperform your existing network at the start?
+- Can you evaluate what to lead a pitch with when you have no client history, and why a working demo beats credentials and discounts?
+- Can you spot when a pitch is written in technology language instead of outcome language, and translate it for a non-technical owner?
+- Can you assess why generic "I build for anyone" positioning fails, and what a specific niche unlocks?
+- Can you run a discovery conversation correctly: who talks, what you're listening for, and what you propose to a hesitant prospect?
+- Can you distinguish effective outreach from spam, and identify the right follow-up when a warm prospect goes silent?
+- Can you identify the highest-leverage move after a successful first project, and what makes a case study persuasive?
+- Can you recognize a deal that should be declined or restructured, including handshake agreements and free work for exposure?
+
+## Common Pitfalls
+
+These are the mistakes vibecoders make most often at this stage. No judgment, they're easy to make. But if you recognize any of them in your own workflow, fix them before sitting for the exam.
+
+- **You pitch the technology instead of the outcome.** You explain the stack, the models, the methodology, and the owner's eyes glaze over. They're not buying AI. They're buying saved hours and solved problems. Lead with their problem, close with the outcome, and let the technology stay invisible.
+- **You work free "for the exposure."** Free work is rarely valued or prioritized by the client, and it anchors your worth at zero from day one. If a prospect can't commit to a small paid starter engagement, they weren't going to become a real client anyway. Scope it small, but charge for it.
+- **You blast identical messages to a hundred businesses.** Volume feels productive and converts nothing. One researched, specific message that names their business and a real problem beats fifty templates. Direct AI to research first and draft second, never the reverse.
+- **You do all the talking in discovery.** You're nervous, so you fill the silence with your pitch. The prospect leaves having learned about you, and you leave having learned nothing about them. Ask, then listen. Their description of the problem is the raw material for your proposal.
+- **You stop outreach the moment delivery starts.** Two good weeks of prospecting, then a client lands, then the pipeline starves while you build. Six weeks later the project ends and you're starting from zero. Keep a minimum outreach rhythm running through every delivery.
+- **You accept the handshake deal.** Unlimited revisions, no written scope, "we'll figure it out as we go." That's not flexibility, that's how first projects turn into disasters. Decline or restructure. A client who won't agree to written scope is showing you exactly who they'll be mid-project.
+
+## Self-Assessment Checklist
+
+Before you take the exam, run through these questions. Every "no" is something to work on.
+
+- Have you picked one specific niche and written down the three most painful problems software could fix for them?
+- Do you have a working demo, built by directing AI, that you could show a prospect today?
+- Can you describe what you do in one sentence a non-technical business owner would understand?
+- Have you directed AI to map your network and produce a list of at least twenty warm or one-introduction-away prospects?
+- Can you name the five discovery questions you'd ask before ever proposing anything?
+- Do you have a written follow-up planned for every prospect currently sitting in silence?
+- Do you know what you'd propose to an interested but hesitant prospect, and is it small, scoped, and paid?
+
+## AI Audit Prompt Template
+
+Copy this prompt into your AI assistant to get a quick health check. It checks the same things the certification exam covers.
+
+> Review my first-client acquisition setup and check the following. For each one, tell me pass or fail with a specific example: Niche: Have I defined one specific audience and their painful, repetitive problems, or am I positioned as a builder for anyone? Proof: Do I have a working demo relevant to that niche that I can show in a pitch? Pitch language: Here is my current pitch [paste it]. Is it written in business outcomes or in technology terms? Prospect list: Here are my prospects [paste them]. Are they warm network contacts and niche gathering places, or cold strangers? Outreach: Here is my outreach draft [paste it]. Is it specific to their business and problem, or could it be sent to anyone? Follow-up: Do I have a useful, non-pushy follow-up planned for stalled conversations? Give me an overall score out of 6 and list the top 3 things to fix first.
+
+## What's Next
+
+Once you can answer "yes" to the self-assessment checklist, you're ready for the Module 1 exam. The best way to prepare: run the loop for real. Pick your niche, direct AI to build one demo and one prospect list, send five pieces of specific outreach, and book one discovery conversation. Every uncomfortable moment in that process is exactly what the exam tests.
+
+## Certification Pathway
+
+- **Launchpad Specialist — Builder Business Foundations:** Pass all 7 module exams in this course
+- **CADE Specialist (meta-credential):** CADE Certified + 3 specialist badges
+- **CADE Distinguished:** CADE Certified + 6 specialist badges
+
+Each exam requires 80% to pass. You can retake immediately. No rush, take the time to build something real first.

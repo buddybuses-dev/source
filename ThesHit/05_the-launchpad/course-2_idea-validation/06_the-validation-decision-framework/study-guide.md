@@ -1,0 +1,96 @@
+# Module 6: The Validation Decision Framework — Study Guide
+
+## Stop building things nobody wants. Validate demand before you write a single prompt.
+
+## What This Module Covers
+
+You have spent five modules gathering evidence. You validated the problem in Module 2, tested your solution in Module 3, sized the market in Module 4, and mapped the competition in Module 5. Now comes the moment that actually matters: deciding. Go, pivot, or kill. This module gives you a framework for turning a pile of interview notes, waitlist signups, and competitor research into a clear decision you can defend.
+
+Here is the uncomfortable truth up front: you will never have certainty. What you can have is a structured way to weigh your evidence, a scorecard that keeps you honest, and an awareness of the mental traps that push smart builders into dumb decisions. I have watched hundreds of builders reach this point. The ones who fail are rarely the ones with weak evidence. They are the ones who had the evidence, ignored it, and built anyway.
+
+## Why It Matters
+
+Think about the builder who wants to make a CRM for dentists. She did twelve interviews. Eight dentists said scheduling was their real pain, not contact management. Her answer was sitting in her notes. But she had already named the CRM and sketched the dashboard, so she built the CRM. Six months later nobody bought it, and the scheduling insight was still unbuilt. The decision moment is where validation either pays off or gets thrown away.
+
+The stakes are your most limited resources: time, energy, and belief in yourself. As a vibecoder you can direct AI to build a working product in weeks. That speed is a gift, but it means skipping the decision framework just lets you ship the wrong thing faster. A disciplined go/no-go decision separates builders who launch things people want from builders who launch things, period.
+
+## Certification Goal
+
+Passing this module's exam proves you can synthesize validation evidence into a defensible go, pivot, or kill decision using the five-part validation scorecard, and that you can recognize and counter the decision traps, sunk cost, confirmation bias, and shiny object syndrome, that derail most builders at this stage.
+
+## What You Need to Know
+
+### Enough Validation Is a Judgment Call, Not a Number
+
+There is no threshold where an idea becomes officially validated. You are looking for converging evidence: multiple independent signals pointing the same direction. If your interviews, landing page conversions, and competitive research all agree, you have enough. If they conflict, understand why before you decide.
+
+### The Validation Scorecard
+
+Score your idea across five dimensions: problem evidence (did real people confirm the pain without you leading them), solution signal (did anyone commit time, money, or reputation to your fix), market size (from Module 4), competitive position (from Module 5), and your unfair advantage (why you, specifically). Score each 1 to 5, honestly. A strong idea scores high across all five, not just one.
+
+### Go Means Evidence, Not Enthusiasm
+
+A go decision requires strong problem evidence plus at least one costly commitment signal: a preorder, a signed letter of intent, a waitlist that grew without paid ads. Enthusiasm in interviews is not commitment. "I would totally use that" has killed more products than any competitor ever has.
+
+### Pivot vs Kill
+
+Pivot when the problem is real but your solution missed: the dentist CRM builder should pivot to scheduling, because the pain was validated even though her solution was not. Kill when the problem itself failed: nobody has the pain, nobody will pay, or the market is too small. Killing an idea is not failure. It is the entire point of validating before building.
+
+### When to Validate More vs When to Build
+
+Validate more when your scorecard has one weak dimension you can test cheaply in under two weeks. Start building when additional validation would cost more than a scrappy MVP, because at some point the fastest way to learn is to ship something small and watch what people do with it. The trap is using "more validation" as socially acceptable procrastination.
+
+### The Three Decision Traps
+
+Sunk cost bias says "I have already spent two months on this, I cannot quit now." Confirmation bias says "let me reread the three positive interviews and skip the nine negative ones." Shiny object syndrome says "this new idea feels easier, let me abandon the half-validated one." All three replace evidence with emotion. Name the trap out loud and it loses most of its power.
+
+## Your Toolkit
+
+- **The Validation Scorecard.** A five-dimension rubric (problem evidence, solution signal, market size, competitive position, unfair advantage) scored 1 to 5 each. Anything under 15 total, or with a 1 in problem evidence, is not a go.
+- **The Pre-Mortem.** Before deciding, write one paragraph: "It is six months from now and this idea failed. Here is why." If the reason you write down is something your evidence already flagged, believe the evidence.
+- **The Kill Criteria List.** Written before you review your evidence, this lists the specific results that would make you walk away. Deciding your exit conditions in advance is the strongest defense against sunk cost bias.
+- **Your AI as Devil's Advocate.** Direct your AI to argue against your decision using your own evidence. It has no emotional attachment to your idea, which makes it the cheapest honest advisor you will ever have. The prompt template below does exactly this.
+
+## Exam Topics
+
+- The five dimensions of the validation scorecard and what each one measures
+- Why certainty is impossible and what "converging evidence" means as the practical standard
+- The difference between enthusiasm signals and commitment signals in a go decision
+- Conditions that indicate a pivot (validated problem, failed solution) vs a kill (failed problem or market)
+- How to decide between validating more and starting to build, including the two-week cheap test rule
+- Definitions and examples of sunk cost bias, confirmation bias, and shiny object syndrome
+- Why kill criteria must be written before reviewing evidence
+- How the CRM-for-dentists scenario illustrates ignoring evidence at the decision stage
+
+## Common Pitfalls
+
+- **Treating validation as a formality.** If you were going to build no matter what, you did not validate, you performed a ritual. The decision has to be genuinely open.
+- **Counting compliments as evidence.** Friends, family, and polite strangers will say your idea is great. Only costly commitments belong on your scorecard.
+- **Averaging away a fatal flaw.** A 5 in unfair advantage does not rescue a 1 in problem evidence. Problem evidence is the foundation.
+- **Endless validation loops.** The builder running a fourth round of interviews instead of shipping is usually afraid of the answer, not short on data.
+- **Pivoting into a brand new idea.** A real pivot keeps your validated learning. Jumping to an unrelated mobile app idea because it feels fresh is shiny object syndrome in a pivot costume.
+- **Killing quietly and learning nothing.** If you kill an idea, write down why. That paragraph is the most valuable asset the dead idea produced.
+
+## Self-Assessment Checklist
+
+- I can score an idea across all five validation scorecard dimensions and justify each score with specific evidence
+- I can explain why "enough validation" means converging evidence rather than a fixed number
+- I can distinguish a commitment signal from an enthusiasm signal and give an example of each
+- I can state the conditions for pivoting an idea versus killing it
+- I can decide whether to validate more or start building using the cheap two-week test rule
+- I can identify sunk cost bias, confirmation bias, and shiny object syndrome in my own reasoning
+- I can write kill criteria for an idea before reviewing my evidence
+
+## AI Audit Prompt Template
+
+Copy this prompt, paste in your evidence, and let your AI stress test your decision before you commit.
+
+> You are a ruthless but fair validation advisor. I am about to make a go/pivot/kill decision on a product idea, and I need you to challenge me. MY IDEA: [one-sentence description] MY CURRENT DECISION: [go / pivot / kill] because [my reasoning] MY EVIDENCE: - Problem evidence: [interview findings, who I talked to, what they said] - Solution signal: [commitments received: preorders, waitlist, signups, LOIs] - Market size: [my sizing estimate and how I got it] - Competitive position: [key competitors and the gap I believe I can own] - Unfair advantage: [why me, specifically] DO THIS: 1. Score each of the five dimensions 1 to 5 using only the evidence above. Flag any score where I gave you enthusiasm instead of commitment. 2. Identify the weakest dimension and state whether it is fatal or testable. 3. Check my reasoning for sunk cost bias, confirmation bias, and shiny object syndrome. Quote my own words back to me where you find them. 4. Argue the OPPOSITE of my current decision as convincingly as you can. 5. Give your final verdict: go, pivot, kill, or run one specific cheap test first. If a test, define it: what to test, with whom, in under two weeks, and what result changes the decision. Do not soften your answer to make me feel good. My time is the budget here.
+
+## What's Next
+
+You have a decision and the evidence to back it up. Module 7 is the capstone, Ship: Your Validated Idea Brief, where you package everything from this course into a single document: problem, evidence, market, competitive gap, scorecard, and decision. That brief becomes the blueprint you hand your AI when it is finally time to build. See you there.
+
+## Certification Pathway
+
+Pass this module's exam with a score of 80% (20 of 25 questions) to earn the Module 6 badge. Pass all 7 module exams to earn the Validation Specialist badge and certify that you know how to prove demand before you build.

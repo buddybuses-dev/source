@@ -1,0 +1,83 @@
+Module 5: Dynamic Context Assembly — Study Guide
+
+Context Engineering
+
+T8 The Frontier | Module 5 Study Guide
+
+Dynamic Context Assembly
+
+"Direct AI to assemble a different context for every task, built at runtime from exactly what the task needs."
+
+Why This Matters
+
+Static context treats every query the same: same instructions, same documents, same layout. Real products face refund questions, technical questions, and small talk in the same minute, and each deserves a different window. Dynamic assembly is what separates a demo that answers one kind of question from a system that handles a business.
+
+Core Concepts
+
+Conditional context. The assembly step inspects the incoming query and includes different information for different query types. A billing question pulls pricing tables and account data; a troubleshooting question pulls error docs and device state; neither pays for the other's content. Classification can be a cheap model call, a rule, or a keyword match; the point is that inclusion becomes a decision, not a default.
+
+Tool output injection. Some context does not exist until you create it. The system runs a function (query a database, call an API, run a calculation) and places the result into the window for the model to reason about. The model then works from live data instead of guessing. Injected tool output needs the same discipline as retrieved documents: labeled, delimited, and budgeted.
+
+Multi-step context. Complex tasks run as chains, where each step's output becomes part of the next step's context. Research, then outline, then draft: the outline step sees the research; the draft step sees the outline. Each step gets a purpose-built window rather than one bloated window carrying everything for every step.
+
+The orchestration layer. The code that runs before every model call and decides what this call's context contains: which template, which retrievals, which memories, which tool results, in what order, within which budgets. Modules 1 through 4 built the ingredients; orchestration is the recipe, chosen per task at runtime.
+
+Assembly is testable logic. Because orchestration is ordinary code with inputs and outputs, you can unit test it: given this query type, the window must contain account data and must not contain the entire product manual. Test assembly separately from the model, and most "AI bugs" become ordinary logic bugs.
+
+How It Works
+
+A dynamic pipeline handles each request in stages: classify the query, select a context recipe for that class, gather ingredients in parallel (retrieval, memory, tool calls), assemble them into the layout from Module 2 with budgets enforced, call the model, and log what was assembled. For multi-step tasks, the orchestrator repeats the cycle per step, passing forward only what the next step needs. Start with two or three query classes and one tool; add recipes as real traffic reveals distinct needs.
+
+Directing AI
+
+"Classify our incoming queries into 3 to 5 types based on this sample of real traffic, and propose a context recipe for each: which sources, which tools, which budgets."
+"Direct the orchestrator to route billing queries to a window with account data and pricing tables, and support queries to one with product docs, with neither including the other's sources."
+"When the user asks about order status, call the order API first and inject the JSON result into context, labeled and delimited, before the model composes its answer."
+"Break this report task into research, outline, and draft steps, where each step's context contains only the prior step's output plus its own instructions."
+"Write tests for the assembler: for each query type, assert which sources must appear in the window and which must not."
+
+Common Mistakes
+
+One static context for all query types, so every window hauls everything and excels at nothing.
+Dumping raw unlabeled tool output into the window and letting the model guess what it is looking at.
+Passing the entire accumulated context through every step of a chain until step four drowns in step one.
+Over-engineering classification into a taxonomy of twenty types when traffic contains three.
+Letting tool failures inject empty or error text silently, so the model reasons from a stack trace.
+Never logging what the assembler built, making runtime assembly impossible to debug.
+
+Real-World Application
+
+A builder runs an internal assistant for an e-commerce operations team. Version one stuffs every window with the full policy manual, recent orders, and all conversation history; answers are slow, expensive, and oddly vague. The builder directs AI to study a week of real queries, which cluster neatly: order lookups, policy questions, and shipping exceptions. Each gets a recipe. Order lookups now call the order API and inject one labeled JSON record; policy questions retrieve three relevant sections; shipping exceptions pull the carrier feed. Windows shrink by 70 percent, answers get sharper and faster, and when a bug appears the assembly log shows exactly which recipe fired and what it packed.
+
+Decision Framework
+
+All queries getting identical context? Classify traffic and split recipes as soon as types diverge.
+Model guessing at live facts like status or inventory? Inject tool output instead of hoping.
+Single window bloating on complex tasks? Chain steps, passing forward only what each needs.
+Choosing a classifier? Start with rules or keywords; upgrade to a model call when rules misroute.
+Tool call failed mid-assembly? Inject an explicit labeled failure notice, never silence or raw errors.
+Assembly getting complex? Unit test the recipes; assert what each window must and must not contain.
+
+Tool and Platform Notes
+
+Native tool-use APIs from Anthropic and OpenAI handle the call-inject-respond loop for you and are the right default. Orchestration frameworks like LangGraph manage multi-step chains but add abstraction between you and the window; plain code that builds message arrays is often easier to log and test. Whatever you use, the assembly log from Module 1 remains non-negotiable.
+
+Key Takeaways
+
+Different query types deserve different windows; inclusion is a runtime decision.
+Tool output is context you create on demand: label it, delimit it, budget it.
+In multi-step chains, each step gets a purpose-built window, not the whole accumulated pile.
+The orchestration layer is ordinary, testable code; treat it like the infrastructure it is.
+Start with few recipes and one tool; let real traffic justify complexity.
+
+What's Next
+
+Module 6 confronts the failure modes: when assembled context goes wrong, outputs look right while being wrong, and you need debugging tools to see it.
+
+Exam Prep Notes
+
+Expect scenarios about routing query types to recipes, injecting tool output correctly, and slimming multi-step chains. Know what the orchestration layer decides, how conditional context differs from static context, and why assembly logic should be unit tested like any other code.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

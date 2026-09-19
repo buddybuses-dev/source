@@ -1,0 +1,108 @@
+# Module 3: Row-Level Security Policies — Study Guide
+
+## Supabase Backend Build
+
+### T4 The Mastery | Module 3 Study Guide
+
+## Module 3: Row-Level Security Policies
+
+> Direct AI to build production backends on Supabase with security policies that hold.
+
+## What This Module Covers
+
+This is the module the entire course orbits around. Row-Level Security decides whether your Supabase backend is production grade or a data breach waiting for its first curious user. You learn what RLS actually does, why Supabase is built around it, and how to direct your AI to enable it on every table and write policies that hold under pressure.
+
+You will cover the full policy surface: SELECT, INSERT, UPDATE, and DELETE. You will learn how auth.uid() ties every row to the logged-in user, how to extend that into multi-tenant isolation so 50 tenants share one database without ever seeing each other's data, and how to test policies by impersonating different roles instead of trusting that they work.
+
+You will also learn the failure modes: policies that are too permissive, policies that lock out your own admins, and the new table someone forgot to protect. By the end you can review any policy your AI writes and know whether it holds.
+
+## Why It Matters
+
+Here is the uncomfortable truth about Supabase: your database is reachable from the browser. The anon key ships in your frontend code, which means anyone can open dev tools, copy it, and query your tables directly. RLS is the only thing standing between that person and every row in your database. A table without RLS is a public table, full stop. The Supabase breach stories you see online are rarely exotic hacks. They are builders who shipped tables with RLS off, and someone noticed.
+
+The stakes scale with your app. Your SaaS with 50 tenants works fine in your demo because you are the only user. The moment tenant 12 can query tenant 31's invoices, you do not have a bug, you have a breach, and possibly a lawyer. Your marketplace with uploads, your client portal with role-based access: each lives or dies on policies written correctly before real users show up. AI will happily scaffold a beautiful schema with RLS disabled unless you direct it otherwise. That direction is your job.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI to enable RLS on every table, write and review policies for all four operations, scope data with auth.uid(), enforce multi-tenant isolation, and test policies against multiple roles before shipping. It certifies you as the security reviewer of your own backend.
+
+## What You Need to Know
+
+### RLS Is Deny by Default, Off by Default
+
+RLS enabled with no policies means nobody gets in through the API: every query returns nothing. That is the safe starting point. But RLS starts disabled on tables created through raw SQL, and a disabled table is fully open to anyone with your anon key. The rule is absolute: every table gets RLS enabled, no exceptions.
+
+### Policies Are Per Operation
+
+A policy grants one action: SELECT, INSERT, UPDATE, or DELETE. SELECT and DELETE use a USING clause that filters which rows are visible or deletable. INSERT uses WITH CHECK to validate new rows. UPDATE needs both: USING for which rows can be touched, WITH CHECK for what they can become. A table with only a SELECT policy silently blocks all writes.
+
+### auth.uid() Scopes Data to the Logged-In User
+
+auth.uid() returns the current user's ID from their JWT. The core pattern of almost every policy is auth.uid() = user_id, so users only see and modify their own rows. Every user-owned table needs a user_id column referencing auth.users, ideally set by default so the client cannot spoof it.
+
+### Multi-Tenant Isolation Rides on Membership
+
+For your 50-tenant SaaS, ownership is per organization, not per user. Every tenant table carries a tenant_id, and policies check that auth.uid() belongs to that tenant, usually via a memberships table or a JWT claim. Wrap the lookup in a security definer function so policies stay fast and do not recurse.
+
+### Roles Change What Policies Should Allow
+
+A client portal has clients, staff, and admins, each needing different access. Policies can branch on a role column or JWT claim, but the service_role key bypasses RLS entirely and must never reach the browser. Admin access should come from explicit admin policies, not from disabling RLS.
+
+### Policies Are Only Real Once Tested
+
+A policy never tested as a non-admin user is a guess. Supabase lets you impersonate users in the dashboard, and SQL lets you set the request JWT to simulate any user or the anon role. Prove both directions: user A sees their data, and user A cannot see, insert into, or update user B's data.
+
+## Your Toolkit
+
+- **Supabase Dashboard Policy Editor and Security Advisor**: Shows every table's RLS status at a glance and flags exposed tables. Check it after every AI-generated migration.
+- **SQL Editor with Role Impersonation**: Run queries as anon or as a specific user to verify policies behave. This is where you prove tenant 12 cannot read tenant 31's rows.
+- **A Standing RLS Prompt Block**: A reusable instruction pasted into every AI build session: enable RLS on every new table, write all four policy types, scope by auth.uid() or tenant membership.
+- **The Audit Prompt Template**: The prompt at the end of this guide, run before every deploy, forcing a full sweep of RLS status and policy coverage across your schema.
+
+## Exam Topics
+
+- What happens to a table's API accessibility when RLS is disabled versus enabled with no policies
+- The SQL statement that enables RLS, and why it belongs in every table migration
+- The difference between USING and WITH CHECK, and which operations require each
+- Writing a SELECT policy that restricts rows to auth.uid() = user_id
+- Why UPDATE policies need both USING and WITH CHECK to prevent ownership transfer tricks
+- The multi-tenant pattern: tenant_id columns, membership checks, security definer functions
+- Which Supabase API key bypasses RLS and where that key must never appear
+- How to test a policy set by impersonating different users and roles before shipping
+
+## Common Pitfalls
+
+- **Shipping tables with RLS off**: The number one Supabase security failure. Anyone with your anon key can read and write the whole table. Enable RLS in the same migration that creates the table.
+- **Policies that are too permissive**: USING (true) on a private table is RLS theater. It passes the "is RLS enabled" check while granting everyone everything.
+- **Trusting client-supplied IDs on INSERT**: Without WITH CHECK (auth.uid() = user_id), a user can insert rows attributed to someone else. Validate writes, not just reads.
+- **Locking out your own admins**: Tight user-scoped policies leave the admin dashboard empty. Fix it with explicit admin policies, never by disabling RLS or shipping the service_role key to the client.
+- **Forgetting RLS on new tables**: Ten tables locked down, then week six ships a notifications table wide open. RLS has no inheritance, so every new table needs the ritual again.
+- **Recursive or slow policy subqueries**: A membership lookup in a policy on the memberships table can infinitely recurse, and unindexed subqueries crawl at scale. Use security definer functions and index tenant_id and user_id.
+
+## Self-Assessment Checklist
+
+- I can explain why a table without RLS is publicly readable and writable through the anon key
+- I can direct AI to enable RLS in every table migration and verify it was done
+- I can read any policy and state exactly who it lets do what
+- I can explain USING versus WITH CHECK and spot a missing WITH CHECK
+- I can review a multi-tenant policy set and confirm one tenant cannot reach another's rows
+- I can grant admin access through policies without disabling RLS or exposing the service_role key
+- I can test policies by impersonating the anon role and multiple users, in both allow and deny directions
+
+## AI Audit Prompt Template
+
+Paste this prompt into your AI assistant whenever you want a full security sweep of your Supabase backend, and always before a production deploy.
+
+`Act as a Supabase security auditor for my project. Do a complete Row-Level Security audit: 1. List every table in the public schema with its RLS status. Flag any table with RLS disabled as CRITICAL. 2. For each table, list all policies by operation (SELECT, INSERT, UPDATE, DELETE). Flag missing operations and any bare "true" condition as overly permissive. 3. Check every INSERT and UPDATE policy for a WITH CHECK clause that stops users from writing rows owned by other users or tenants. 4. Verify user-owned tables scope by auth.uid() and tenant tables scope by tenant membership. Flag missing user_id or tenant_id columns. 5. Confirm the service_role key never appears in client-side code. 6. Write SQL test scripts impersonating each role (anonymous visitor, regular user, a second user, tenant member, tenant outsider, admin). For each role, test that allowed actions succeed AND forbidden actions fail, including cross-user and cross-tenant reads and writes. 7. Output a findings table: table, issue, severity, and the exact SQL to fix it. Do not apply fixes until I approve them. My user roles are: [LIST YOUR ROLES]. My tenant model is: [DESCRIBE HOW TENANTS ARE STRUCTURED].`
+
+## What's Next
+
+Module 4: Auth and User Management covers the other half of the equation: who auth.uid() actually is. You will direct AI to build sign-up and login flows, manage roles, and connect the auth system your policies depend on. RLS decides what a user can touch, Module 4 decides who that user is.
+
+## Certification Pathway
+
+Pass this module's exam at 80 percent, 20 of 25 questions, to earn the Module 3 badge. Pass all 7 module exams to earn the Supabase Specialist badge, certifying you can direct AI to build production backends on Supabase with security policies that hold.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

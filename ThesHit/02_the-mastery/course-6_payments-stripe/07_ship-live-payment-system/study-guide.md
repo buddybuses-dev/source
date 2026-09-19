@@ -1,0 +1,88 @@
+# Module 7: Ship: Live Payment System — Study Guide
+
+## Stripe Payments Build
+
+### T4 The Mastery | Module 7 Study Guide
+
+## Module 7: Ship: Live Payment System
+
+> Direct AI to ship a live payment system you can trust with real customers and real money.
+
+## What This Module Covers
+
+This is the capstone: taking the payment system live and keeping it alive. You will learn the go-live checklist, the test-to-live key switch, production webhook endpoints, Stripe Radar fraud basics, PCI compliance scope, and the monitoring discipline that treats payments as infrastructure that must never silently break.
+
+## Why It Matters
+
+A payment system is not done when it works in test mode. It is done when it is live, monitored, fraud-aware, compliant, and loud about its own failures. The most dangerous payment bug is not the one that throws errors; it is the webhook endpoint that has been quietly failing for nine days while renewals pile up unprocessed, or the fraud pattern nobody was watching for until the dispute rate threatened the account itself. Going live is a discipline, not a key swap. This module is the difference between a builder who shipped a demo and a Payments Build Specialist who runs revenue infrastructure.
+
+## Certification Goal
+
+Passing this exam proves you can direct AI through a complete production launch: a verified go-live sequence, live webhook endpoints with monitoring, Radar configured for the business's risk profile, PCI scope kept minimal, and dashboards plus alerts on the metrics that tell you the system is healthy.
+
+## What You Need to Know
+
+**1. The go-live sequence is a checklist, not a moment.** Live keys into server-side environment configuration, never committed. A live webhook endpoint registered with its own signing secret, because test and live endpoints have different secrets and the number one go-live failure is a live system verifying against a test secret. Live products and prices, which do not copy over from test mode automatically. Business verification and bank details complete in the dashboard. Then a real end-to-end transaction with a real card, refunded after, because only a live transaction proves the live path.
+
+**2. Production webhooks need production discipline.** The live endpoint must be reachable, fast, and monitored. You direct AI to wire alerting on webhook delivery failures, because Stripe retries for days and then stops, and an endpoint that was down during a deploy window may have missed events you must reconcile. The dashboard shows every delivery attempt and response; someone, or some automation, has to be looking. Missed events are recoverable if noticed, silent revenue damage if not.
+
+**3. Radar and fraud posture.** Stripe Radar scores every payment using network-wide signals and blocks obvious fraud by default. Your job is calibration, not paranoia: review rules, set thresholds appropriate to your risk tolerance, and use Radar's review queue for borderline payments rather than blocking aggressively and losing good customers. Watch the dispute rate; card networks monitor it, and sustained high dispute rates threaten your ability to process at all. Fraud posture is a dial you set consciously per business, not a default you never look at.
+
+**4. PCI scope: stay in SAQ-A territory.** PCI DSS applies to anyone touching card data. Using Stripe Checkout or Elements means raw card numbers go from the customer's browser directly to Stripe and never transit your servers, which keeps you in the lightest self-assessment tier, SAQ-A. The rule you direct and enforce: card data never touches your servers, your logs, or your database. The moment a build accepts card numbers into its own backend, even just to pass them along, compliance scope explodes. There is almost never a legitimate reason to leave SAQ-A territory, and any AI-generated code that handles raw card fields is a finding, not a feature.
+
+**5. Monitor the business, not just the server.** Uptime monitoring tells you the endpoint is alive; it does not tell you revenue is healthy. The payment dashboard you direct AI to build watches: MRR and its movements, churn split into voluntary and involuntary, failed payment rate, recovery rate from Module 6, dispute rate, and webhook delivery health. Anomalies in these numbers are how you catch the silent failures: a payment success rate that dips after a deploy, a webhook backlog after a certificate expiry, a dispute cluster from a fraud probe.
+
+**6. Payments are infrastructure with an on-call mindset.** The standard you hold: any failure in the payment path is a sev-1 that pages someone, because every hour of silent payment failure is unrecoverable trust and possibly unrecoverable money. That means error monitoring on payment code paths, alerts with thresholds on the business metrics, a documented runbook for the common incidents, endpoint down, key rotation, dispute spike, and a habit of reading the Stripe dashboard's event feed like a pilot reads instruments. Boring vigilance is the feature.
+
+## Your Toolkit
+
+- **Stripe Radar**: fraud scoring, rules, and the review queue you calibrate to the business
+- **Webhook delivery monitoring** (dashboard plus your alerting): the watchdog on your source of truth
+- **Error monitoring on payment paths** (your stack's error tracker): payment exceptions treated as sev-1 signals
+- **A revenue metrics dashboard**: MRR, churn split, failure rate, recovery rate, dispute rate in one view someone actually reads
+
+## Exam Topics
+
+1. The go-live checklist and correct ordering of the key and endpoint switch
+2. Live vs test signing secrets and the classic go-live webhook failure
+3. Recreating products, prices, and configuration in live mode
+4. Radar calibration: rules, review queue, and dispute rate stakes
+5. PCI scope: what keeps a build in SAQ-A and what breaks it
+6. Business metric monitoring vs server uptime monitoring
+7. Incident response for payment infrastructure: alerts, runbooks, severity
+8. Reconciling missed webhook events after endpoint downtime
+
+## Common Pitfalls
+
+- Pointing live traffic at a handler still verifying with the test signing secret
+- Assuming test mode products and prices exist in live mode and shipping a checkout that cannot find its price
+- Never doing a real live transaction, so the first live customer is the test
+- Leaving Radar on defaults forever, or cranking it so tight that good customers bounce
+- Letting AI-built code accept raw card data into the backend and detonating PCI scope
+- Monitoring server uptime while webhook deliveries fail for days unnoticed
+
+## Self-Assessment Checklist
+
+- Have I executed a real live transaction end to end, including the refund?
+- Does my live endpoint have its own signing secret in production configuration?
+- Would I know within an hour if webhook deliveries started failing?
+- Can I state my current dispute rate and Radar posture?
+- Does card data ever touch my servers, logs, or database? (The only acceptable answer: no.)
+- Do I have alerts on failed payment rate and MRR anomalies, not just uptime?
+- Is there a runbook for my three most likely payment incidents?
+
+## AI Audit Prompt Template
+
+> You are performing the go-live audit of my payment system. Review it and report: (1) key management: where live keys live, any test/live mixing, rotation readiness, (2) webhook endpoints: live registration, correct signing secret, delivery monitoring and alerting, downtime reconciliation plan, (3) live catalog parity: products, prices, portal, and tax configuration recreated in live mode, (4) Radar posture: rules, thresholds, review queue usage, current dispute rate, (5) PCI scope: verify no code path accepts raw card data server-side, (6) monitoring: which business metrics are dashboarded and alerted vs watched by nobody. Output a go or no-go verdict, findings with severity, and the remediation plan I can direct you to execute before launch.
+
+## What's Next
+
+You have completed the Stripe Payments Build course. Pass this exam to earn the Payments Build Specialist badge. From here, T6 The Vault's security methods and T8 The Frontier's orchestration patterns build on the infrastructure discipline you proved here.
+
+## Certification Pathway
+
+This is Module 7 of 7 in the Stripe Payments Build course, part of T4 The Mastery. Passing this final exam completes the course and earns the Payments Build Specialist badge.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

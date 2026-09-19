@@ -1,0 +1,83 @@
+Module 4: Articulating Your Value Proposition — Study Guide
+
+Positioning and Your Offer
+
+T7 The Launchpad | Module 4 Study Guide
+
+Articulating Your Value Proposition
+
+"Direct AI to generate and pressure-test value propositions until one survives the so-what test in client language."
+
+Why This Matters
+
+You can have the right position and a well-built offer and still lose the room in the first ten seconds, because the words describing them are builder words. The value proposition is the bridge sentence: what you do, for whom, and why it matters, in language the client already uses. Get it right and prospects finish the sentence for you.
+
+Core Concepts
+
+The one-sentence test. Can you explain what you do, for whom, and why it matters in one sentence a stranger could repeat? "I build patient intake systems for private clinics so front desks stop drowning in paperwork" passes. "I leverage AI to build custom automation solutions" fails twice: no whom, no why.
+
+The so-what test. Read your sentence and ask "so what?" after it. If the sentence survives, it names an outcome the client already wants. "I build AI chatbots." So what? "So your team stops answering the same 40 questions and follow-up leads stop going cold." The second sentence is the value proposition; the first was a feature description wearing a suit.
+
+Capability translates to business outcomes. Every technical capability maps to time, money, or risk: hours saved, revenue recovered, errors prevented, deadlines met. Clients buy the right side of the map. "Automated data extraction" is a capability; "your team stops retyping invoices for six hours a week" is why someone pays for it.
+
+Client language beats builder language. Builders say automation, integration, workflow, LLM. Clients say "we keep losing track of leads," "the phone never stops," "I do invoices on Sundays." The strongest value propositions quote the client's own words back at them, which is why you harvest phrasing from validation calls, reviews, and forums instead of inventing vocabulary.
+
+Before/after framing. "Before working with me, your front desk spends three hours a day on intake calls. After, patients book themselves and the desk handles exceptions." Before/after makes the transformation concrete, measurable, and easy to repeat to a business partner who was not in the room.
+
+How It Works
+
+Build the sentence from harvested material, not from a blank page. Collect the exact phrases your niche uses to complain about the problem: validation call notes, online reviews of competitors, forum threads, and job postings. Direct AI to cluster the complaints and extract the recurring words. Draft ten one-sentence value propositions using those words, in the shape "I build [what] for [whom] so [outcome in their words]." Run each through the so-what test, cut the ones that fail, and test the survivors on real prospects. The winner is the one people repeat back to you, sometimes slightly wrong, which proves it traveled.
+
+Directing AI
+
+"Here are my validation notes, competitor reviews, and forum threads from my niche. Extract the 20 most repeated complaint phrases in the customers' own words."
+"Draft 10 one-sentence value propositions using those phrases, in the form: I build [what] for [whom] so [their outcome]."
+"Run the so-what test on each draft: append the question, answer it, and rewrite any sentence that needed the answer."
+"Translate this list of my technical capabilities into business outcomes measured in hours, dollars, or risk."
+"Write before/after framings for my three best client results, two sentences each, in language a non-technical owner would use."
+
+Common Mistakes
+
+Leading with the technology ("AI-powered," "GPT-based") when the client is buying an outcome, not a model.
+Writing the sentence in builder vocabulary that the client must translate before they can care.
+Cramming three audiences and four outcomes into one sentence until it says nothing to anyone.
+Skipping the so-what test and shipping a capability description that sounds impressive and sells nothing.
+Inventing pain language from imagination instead of harvesting the words clients actually use.
+Stopping at the first decent draft instead of testing which sentence prospects repeat back.
+
+Real-World Application
+
+A builder's website says "Custom AI Solutions for Modern Businesses," and his networking pitch matches it. People smile, nod, and never call. He runs the harvest: his validation notes from bookkeeping firms repeat one phrase five times: "chasing clients for documents." He redrafts: "I build document-chasing systems for bookkeeping firms, so month-end close stops depending on twelve reminder emails." At his next meetup, a bookkeeper interrupts him halfway through the sentence: "wait, it chases the documents for me?" She books a call on the spot and later introduces him to her professional association, describing his service almost word for word. The sentence traveled because it was made of her industry's own words.
+
+Decision Framework
+
+Sentence fails the one-sentence test? Cut until what, whom, and why-it-matters each appear once.
+Survives grammar but dies on "so what?" Replace the capability with the outcome it produces.
+Not sure which outcome to lead with? Pick the one your validation calls complained about most.
+Choosing between your words and theirs? Theirs, verbatim, even when yours sound more professional.
+Two strong drafts? Test both on prospects and keep the one that gets repeated back.
+Explaining to a technical buyer? You may add the how, but the outcome still leads the sentence.
+
+Tool and Platform Notes
+
+The harvest sources are free: your validation notes, Google and Yelp reviews of competitors, niche subreddits and Facebook groups, and job postings that describe the pain in the hiring company's words. Direct AI to do the clustering and drafting; your judgment picks the winner. Put the final sentence everywhere at once: LinkedIn headline, website hero, email signature, and your spoken introduction, so every surface runs the same test.
+
+Key Takeaways
+
+One sentence: what you do, for whom, why it matters, repeatable by a stranger.
+The so-what test kills capability descriptions and leaves outcomes standing.
+Translate every capability into time, money, or risk; clients buy that side of the map.
+Harvest client language and use it verbatim; invented vocabulary does not travel.
+Before/after framing makes the transformation concrete and referable.
+
+What's Next
+
+Module 5 handles the crowd: differentiation, or how to stand out when every other builder also says they use AI, and why cheaper is the worst answer.
+
+Exam Prep Notes
+
+Expect flawed value propositions to diagnose: missing audience, capability-first wording, builder jargon. Know the one-sentence test, the so-what test, capability-to-outcome translation, why client language wins, and how before/after framing works.
+
+———
+
+Matt Murphy AI | The Faction Group LLC | mattmurphy.ai

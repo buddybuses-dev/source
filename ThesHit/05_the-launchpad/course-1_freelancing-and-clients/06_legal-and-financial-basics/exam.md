@@ -1,0 +1,10 @@
+﻿# Module Legal and Financial Basics - Exam
+
+- [ ] Attempted
+- [ ] Passed
+- [ ] Badge earned
+
+## Questions I missed
+
+## Retake notes
+

@@ -1,0 +1,94 @@
+# Module 6: Scaling and Read Replicas — Study Guide
+
+## T4 The Mastery | Database Design and Migration
+
+This is the study guide. Everything for Scaling and Read Replicas is on this page — there's nothing to download.
+
+## What This Module Covers
+
+This module teaches you how to grow a database on purpose. You will learn the difference between scaling up and scaling out, what read replicas do and what replication lag does to your users, why connection pooling matters, what makes failover real instead of theoretical, and the discipline underneath every capacity decision: measure first, scale the proven constraint, and pay for complexity only when it buys headroom.
+
+## Why It Matters
+
+Scaling is where builders burn the most money for the least result, because the instinct under load is to buy: a bigger server, a caching layer, a fleet of replicas. But most scaling problems in AI-built apps originate in inefficient queries and missing indexes, not insufficient hardware, and scaling the wrong layer buys nothing. The opposite failures are just as real. An app that adds replicas but keeps sending every read to the primary pays for capacity it was never wired to use. A "highly available" setup whose failover has never been drilled is a single point of failure wearing a costume. This module gives you the operator's frame: every added component must be purchased with evidence, because each one is more parts to monitor and more places for state to disagree. Growth should feel like a series of measured, boring decisions. That is what you are learning to direct.
+
+## Certification Goal
+
+Passing the Module 6 exam proves you can direct scaling from evidence: read the metrics that show the database is the real bottleneck, match vertical or horizontal scaling to the constraint, deploy replicas with lag handled honestly, and treat failover as tested behavior rather than an architecture diagram.
+
+## What You Need to Know
+
+**Measure before you scale anything.** When the app slows under load, the first move is measuring where the load actually comes from. The metric that most directly indicts the database is query latency and connection saturation rising while app server capacity sits unused. A daily noon spike gets the same treatment: identify what the spike does, then target it, cache it, replicate it, or queue it. Remember where problems usually live: queries and indexes, not hardware. Doing nothing is legitimate when measurements show headroom and projections say growth will not consume it soon.
+
+**Scaling up versus scaling out.** Vertical scaling gives the existing server more power: more CPU, more memory, faster storage. It is simple and often right, until you near the ceiling of one machine or one machine becomes an availability risk. The framing is matching the fix to the constraint: a bigger machine for raw capacity, more machines for resilience. Sharding, splitting data across databases, is powerful but adds complexity most apps never need; treat it as a last resort. Aggressive cost-triggered autoscaling has its own trap: scale-downs can hit during real demand, trading user experience for small savings.
+
+**Read replicas and replication lag.** A read replica is a continuously synced copy of the database that serves reads, taking load off the primary. The classic first workload to move onto one is heavy reporting and analytics, which otherwise competes with customer traffic; the same logic sends vendor queries and long batch jobs to a replica or separate capacity, never the primary. Replication lag is the catch: replicas trail the primary slightly, so a read right after a write may not see that write. When a user saves a change and the reloaded page misses it, the fix is read-your-own-writes: route that user's next reads to the primary until the replicas catch up. And wiring matters: replicas you never route reads to improve nothing.
+
+**Connection pooling and queues.** Connection pooling reuses a managed set of database connections, because opening one per request overwhelms the database as traffic grows. A queue between app and database can absorb write spikes, but name the trade honestly: writes become eventual rather than instant, and the app must reflect that to users. Caching cuts read load, but every cache entry needs a defined invalidation story, when it expires or updates, so users do not see stale data forever.
+
+**Failover is a drill, not a diagram.** "The database is a single point of failure" means exactly this: if that one system goes down, everything goes down, and resilience requires a tested second. Whether users notice a primary failure is determined by failover design: whether a replica is promoted quickly and the app reconnects. Trust a replica for failover only after you have tested promotion: it actually took over in a drill and the app followed it.
+
+**Complexity is the real invoice.** The honest cost of every added replica, cache, and queue is complexity: more parts to monitor, more failure modes, more places for state to disagree. The governing principle: measure first, scale the proven constraint, prefer the simplest fix that buys real headroom.
+
+## Your Toolkit
+
+- **The bottleneck dashboard.** Query latency, connection saturation, and app server utilization side by side. When database numbers climb while app capacity idles, the constraint has named itself.
+- **Read replicas.** Synced copies that carry reporting, analytics, and read-heavy traffic away from the primary, wired into the app's read paths.
+- **The connection pool.** The managed set of reused connections between app and database. Verify it early, because per-request connections fail exactly when traffic finally arrives.
+- **The failover drill.** A scheduled promotion test: take the primary away, watch the replica take over, confirm the app reconnects. Until this has happened on purpose, your resilience is a hypothesis.
+
+## Exam Topics
+
+The Module 6 exam will test you on:
+
+1. Measuring before scaling, and the metrics that show the database is the bottleneck
+2. Vertical scaling: when it is right, and when its ceiling or availability risk ends it
+3. Read replicas, the workloads that move first, and the cost of replicas nobody reads from
+4. Replication lag and the read-your-own-writes pattern
+5. Connection pooling, write queues and their eventual-consistency trade, and cache invalidation
+6. Failover, single points of failure, and tested promotion drills
+7. Sharding as a last resort, autoscaling risks, and when doing nothing is correct
+8. The complexity cost of added components, and matching the fix to the constraint
+
+## Common Pitfalls
+
+- **Scaling by reflex.** Doubling the server or adding caches before measuring means paying to run bad queries faster. Most load problems are query problems.
+- **Replicas nobody reads from.** Adding replicas without rewiring the app's read paths improves nothing and bills monthly.
+- **Ignoring lag.** Serving a user's post-save reload from a replica shows them their change missing. Fresh writes read from the primary.
+- **Paper failover.** A replica that has never been promoted in a drill is not a failover plan; it is a diagram.
+- **Caches without invalidation stories.** Every entry needs a known answer for when it expires or updates, or stale data becomes your newest feature.
+- **Buying complexity as a badge.** Sharding, queues, and layered caching signal sophistication and deliver failure modes. The simplest fix that buys headroom wins.
+
+## Self-Assessment Checklist
+
+Answer yes or no. Six or more yes answers means you are ready for the exam.
+
+- [ ] Can I name the metrics that show the database, not the app tier, is the bottleneck?
+- [ ] Can I explain vertical versus horizontal scaling as matching the fix to the constraint?
+- [ ] Can I say which workload moves to a read replica first, and why?
+- [ ] Can I explain replication lag and the read-your-own-writes fix in plain language?
+- [ ] Do I know what connection pooling prevents and what a write queue trades away?
+- [ ] Can I state what must be true before a replica counts for failover?
+- [ ] Can I name the honest cost of every replica, cache, and queue I add?
+
+## AI Audit Prompt Template
+
+Use this prompt when the app slows down or before a growth event:
+
+> "You are a database scaling consultant. Here are my current metrics: [paste query latency, connection counts, app server utilization, and traffic patterns]. Tell me with evidence whether the bottleneck is the database, the queries, or the app tier, and check for missing indexes and inefficient queries before proposing any capacity change. If scaling is justified, recommend the simplest fix that buys real headroom, and state whether the constraint is raw capacity or resilience. If you propose replicas, specify which read paths move, how read-your-own-writes is handled, and the failover promotion test we will run. For any cache or queue, state the invalidation story or consistency trade explicitly, and list the new monitoring each added component requires."
+
+## What's Next
+
+Module 7 is the ship: the production database. Everything converges there, launch checklists with restore-verified backups, least-privilege access, monitoring, incident runbooks, and the long-term posture where AI agents are powerful hands within guardrails. You finish by proving the whole stack of skills on a live system.
+
+## Certification Pathway
+
+This is Module 6 of Database Design and Migration, a T4 The Mastery course available with paid Builder Access, sitting alongside the SaaS Build course in the tier. Pass all seven module exams to earn the Database Build Specialist badge. One module remains.
+
+———
+
+**Matt Murphy AI | The Faction Group LLC | mattmurphy.ai**
+
+———
+
+Ready? Take the Scaling and Read Replicas Exam →

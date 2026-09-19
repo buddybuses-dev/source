@@ -1,0 +1,98 @@
+# Module 2: Problem Validation — Study Guide
+
+## Stop building things nobody wants. Validate demand before you write a single prompt.
+
+## What This Module Covers
+
+Module 1 gave you the validation mindset. This module puts it to work on the most important question you will ever ask as a builder: is this problem real? Not "is my idea cool," but does a specific group of people feel this pain often enough, and badly enough, that they are actively looking for a way out?
+
+You will learn how to find problems worth solving, how to talk to real people in your target market instead of your friends, and how to run a problem interview: a structured conversation that reveals pain, frequency, and willingness to pay without you ever pitching a thing. You will learn to tell "nice to have" apart from "need to have," and to spot the red flags that say a problem is too small to build a business on.
+
+Just as important, you will learn to document what you hear. Evidence you cannot reference later is evidence you never collected. Your evidence log from this module feeds directly into your Validated Idea Brief in Module 7.
+
+## Why It Matters
+
+I have watched hundreds of builders make the same mistake. They fall in love with a solution, spend three months directing their AI to build it, launch to silence, and conclude that marketing is hard. Marketing was never the problem. Nobody had the problem. A builder in The Faction wanted to build a CRM for dentists. Great niche, clear customer, obvious idea. Then he talked to twelve dental office managers and discovered they were fine with their practice software. They were drowning in insurance verification. The real problem was sitting right next to the imagined one, and only conversations revealed it.
+
+Here is the founder math. As a vibecoder, your build cost is lower than ever, which is exactly why validation matters more, not less. When building takes a weekend, the temptation is to skip validation and just ship. But your time, attention, and momentum are still finite. Ten problem interviews cost you a week. A product nobody wants costs you a quarter of your life and a chunk of your confidence. This module is the cheapest insurance you will ever buy.
+
+## Certification Goal
+
+Passing the Module 2 exam proves you can identify a problem worth solving, design and run problem interviews that surface real evidence instead of polite lies, distinguish need-to-have pain from nice-to-have preferences, spot the red flags of an undersized problem, and document your findings in a form you can act on.
+
+## What You Need to Know
+
+### Problems Worth Solving Have Three Markers
+
+A problem worth building for is frequent, painful, and currently being worked around. If people hit it rarely, shrug it off, or have no existing workaround, demand is weak. The strongest signal on earth is someone already paying money, or burning hours, on a duct-tape solution.
+
+### Your Friends Are Not Your Market
+
+Friends and family want you to succeed, so they tell you your idea is great. That is affection, not data. Real validation means reaching strangers who match your target customer profile. If you have not talked to a stranger in your market, you have not validated anything.
+
+### The Problem Interview Never Pitches
+
+A problem interview explores the person's life, not your idea. You ask about the last time they hit the problem, what they did, what it cost, and what they have already tried. The moment you pitch, people switch from telling the truth to being nice, and the interview is dead as evidence.
+
+### Past Behavior Beats Future Promises
+
+"Would you use this?" invites a polite yes that means nothing. "What did you do the last time this happened?" produces facts. Anchor every question in specific past behavior. People mispredict their future constantly, but they rarely misremember paying for something.
+
+### Need to Have vs. Nice to Have
+
+Need-to-have problems come with urgency, budget, and existing workarounds. Nice-to-have problems come with compliments. If a prospect says "that would be cool" but cannot name what they currently do about the problem, it is a nice-to-have. Businesses get built on problems people are already trying to solve badly.
+
+### Evidence Must Be Documented, Not Remembered
+
+After every interview, log who you talked to, the problem in their words, frequency, workaround, cost, and a direct quote. Memory smooths over discouraging answers and amplifies flattering ones. A written evidence log keeps you honest and becomes the backbone of your Module 7 brief.
+
+## Your Toolkit
+
+- **The Problem Interview Script:** A repeatable set of open questions: "Tell me about the last time you dealt with X," "What did you do about it?", "What have you tried?", "What did that cost you?" No pitching, no leading, no yes-or-no questions.
+- **The Evidence Log:** A spreadsheet with one row per interview: name, role, problem in their words, frequency, workaround, cost, willingness-to-pay signal, and a verbatim quote. Direct your AI to build the template in five minutes.
+- **The Stranger Sourcing List:** A written list of where your target market gathers: subreddits, LinkedIn groups, trade forums, local meetups. Ten interviews with strangers from these channels beats a hundred chats with friends.
+- **The Red Flag Checklist:** A pre-written list of disqualifiers you review after every five interviews: low frequency, no workaround, no budget, "cool idea" responses, and pain you had to explain. If the flags stack up, the problem fails.
+
+## Exam Topics
+
+- The three markers of a problem worth solving: frequency, pain, and existing workarounds
+- Why friends and family produce unreliable signals, and who counts as a real target market interviewee
+- The structure of a problem interview and why it must not include a pitch
+- Question types that reveal pain, frequency, and willingness to pay, anchored in past behavior
+- Why "Would you use this?" is a flawed question and what to ask instead
+- The behavioral differences between need-to-have and nice-to-have problems
+- Red flags that indicate a problem is too small or too shallow to build for
+- What belongs in an evidence log and why you document immediately after each interview
+
+## Common Pitfalls
+
+- **Interviewing only friends and family:** They optimize for your feelings, not the truth, so every idea sounds like a winner until launch day.
+- **Pitching during the problem interview:** Once you reveal your idea, people respond to you instead of their own reality, and everything after that is contaminated data.
+- **Asking hypothetical questions:** "Would you pay for this?" collects promises, not evidence. Future intentions are the least reliable data in validation.
+- **Hearing compliments as validation:** "That's a cool idea" is a rejection wearing a smile. Compliments cost the speaker nothing, which is exactly what they are worth.
+- **Explaining the problem to your interviewee:** If they do not recognize the pain until you describe it, they do not have it. Real pain needs no introduction.
+- **Trusting memory instead of a log:** Unrecorded interviews get rewritten by optimism within days, and you end up validating your hopes instead of the market.
+
+## Self-Assessment Checklist
+
+- I can name the three markers of a problem worth solving and explain why each matters.
+- I can identify at least three channels where strangers in my target market gather.
+- I can run a full problem interview without pitching or describing my idea.
+- I can write questions that surface pain, frequency, and willingness to pay using past behavior.
+- I can classify a problem as need-to-have or nice-to-have based on interview evidence.
+- I can list at least four red flags that a problem is too small to build for.
+- I can document an interview in an evidence log with quotes, workarounds, and cost data.
+
+## AI Audit Prompt Template
+
+Before you run your interviews, paste this prompt into your AI along with your interview plan and any evidence you have collected so far.
+
+> You are a blunt validation coach auditing my problem validation work. Here is my target customer, problem hypothesis, interview question list, and evidence log so far: [PASTE YOUR MATERIALS]. Audit it against these standards: 1. Flag every question that pitches my idea, leads the witness, or asks about hypothetical future behavior instead of specific past behavior. Rewrite each flagged question. 2. Check whether my interviewees are strangers in my target market. Flag anyone who is a friend, family member, or outside my customer profile. 3. Review my evidence for the three markers: frequency, pain severity, and existing workarounds. Tell me which have real support and which are assumptions. 4. Identify anything I am treating as validation that is actually a compliment or a polite promise. 5. List the red flags present: low frequency, no workaround, no budget signal, or pain I had to explain. 6. Give me a verdict: is this evidence strong enough to move to solution validation, or do I need more interviews? Be direct. Do not soften the answer.
+
+## What's Next
+
+Once you have documented evidence that a real problem exists, you have earned the right to talk about solutions. Module 3: Solution Validation shows you how to test whether your specific solution fits the problem you just confirmed, using smoke tests, mockups, and pre-commitment signals, before you direct your AI to build anything real.
+
+## Certification Pathway
+
+Pass this module's exam with a score of 80 percent or higher, that is 20 of 25 questions, to earn the Module 2 badge. Pass all 7 module exams to earn the Validation Specialist badge and prove you know how to confirm demand before you build. This course is free, the badge is real, and the habit will save you every time you have an idea for the rest of your building life.
